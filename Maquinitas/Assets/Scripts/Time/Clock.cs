@@ -8,9 +8,9 @@ public class Clock : MonoBehaviour
     public float tiempoInicial;
 
     [Range(-30.0f, 30.0f)]
-    public float escalaDeTiempo = 1;
+    private float escalaDeTiempo = 1;
 
-    private Text timeText;
+    static public float tiempoDeUnDiaSegundos = 1440f;
     static public float tiempoDelJuego = 0f;
     private float tiempoAMostrarEnMinutos = 0f;
     private float escalaDeTiempoAlPausar, escalaDelTiempoInicial;
@@ -29,6 +29,10 @@ public class Clock : MonoBehaviour
     {
         //La siguiente variable representa el tiempo de cada considerado la escala de tiempo
         tiempoDelJuego += Time.deltaTime * escalaDeTiempo;
+        if (tiempoDelJuego > tiempoDeUnDiaSegundos)
+        {
+            tiempoDelJuego = 0f;
+        }
         //La siguiente variable va acumulando el tiempo transcurrido para el juego mostratlo en el reloj
         //ActualizarReloj(tiempoDelFrameConTimeScale);
     }
@@ -60,7 +64,7 @@ public class Clock : MonoBehaviour
         else if (escalaDeTiempo == 2)
         {
             estaPausado = false;
-            escalaDeTiempo = 4;
+            escalaDeTiempo = 100;
         }
         else 
         {

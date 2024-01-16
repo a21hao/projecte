@@ -1298,6 +1298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1948925033}
   - component: {fileID: 1948925032}
+  - component: {fileID: 1948925034}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1382,6 +1383,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1948925034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948925031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8df5bd2eaaf91647992860febfa6064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2046426834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,9 +1440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8df5bd2eaaf91647992860febfa6064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 0
-  grados: 0
-  timeSpeed: 1
 --- !u!114 &2046426837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,7 +1453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiempoInicial: 0
-  escalaDeTiempo: 1
 --- !u!1 &2071568432
 GameObject:
   m_ObjectHideFlags: 0

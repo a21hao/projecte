@@ -11,7 +11,7 @@ public class Clock : MonoBehaviour
     public float escalaDeTiempo = 1;
 
     private Text timeText;
-    private float tiempoDelFrameConTimeScale = 0f;
+    static public float tiempoDelJuego = 0f;
     private float tiempoAMostrarEnMinutos = 0f;
     private float escalaDeTiempoAlPausar, escalaDelTiempoInicial;
     private bool estaPausado = false;
@@ -20,41 +20,21 @@ public class Clock : MonoBehaviour
     void Start()
     {
         escalaDelTiempoInicial = escalaDeTiempo;//Establecer la escala del tiempo original
-        timeText = GetComponent<Text>();//Get the text component
         tiempoAMostrarEnMinutos = tiempoInicial;//Inicializar la variable que acumula los tiempos de cada frame con el tiempo inicial
-        ActualizarReloj(tiempoInicial);
+        //ActualizarReloj(tiempoInicial);
     }
 
     // Update is called once per frame
     void Update()
     {
         //La siguiente variable representa el tiempo de cada considerado la escala de tiempo
-        tiempoDelFrameConTimeScale = Time.deltaTime * escalaDeTiempo;
+        tiempoDelJuego += Time.deltaTime * escalaDeTiempo;
         //La siguiente variable va acumulando el tiempo transcurrido para el juego mostratlo en el reloj
-        tiempoAMostrarEnMinutos += tiempoDelFrameConTimeScale;
-        ActualizarReloj(tiempoAMostrarEnMinutos);
-    }
-    public void ActualizarReloj(float tiempoEnMinutos)
-    {
-        int hora = 0;
-        int min = 0;
-        string textoDelReloj;
-
-        //Assegurar que el tiempo no sea negativo
-        if (tiempoEnMinutos < 0) tiempoEnMinutos = 0;
-
-        //Calcular minutos y horas
-        hora = (int)tiempoEnMinutos / 60;
-        min = (int)tiempoEnMinutos % 60;
-
-        //Crear la cadena de caracteres con 2 digitos para los minutos, separados por ":"
-        textoDelReloj = hora.ToString("00") + ":" + min.ToString("00");
-
-        //Actualizar el elemento de text de UI con la cadena de caracteres
-        timeText.text = textoDelReloj;
+        //ActualizarReloj(tiempoDelFrameConTimeScale);
     }
 
-    public void Pausa()
+
+    public void Pausa() //Pausa el Tiempo
     {
         if (!estaPausado)
         {
@@ -64,26 +44,32 @@ public class Clock : MonoBehaviour
         }
     }
 
-    public void Play()
+    public void Play()//Reprende el tiempo
     {
-        if (estaPausado)
-        {
             estaPausado = false;
-            escalaDeTiempo = escalaDeTiempoAlPausar;
-        }
+            escalaDeTiempo = 1;
     }
 
-    public void Velocidadpor2()
+    public void Acelerar()//Acelera el tiempo por 2 y por 4, la tercera vez que le das vuelve el tiempo a 2
     {
-        if (estaPausado)
+        if (escalaDeTiempo == 1 || escalaDeTiempo == 0)
         {
             estaPausado = false;
-            escalaDeTiempo = escalaDeTiempoAlPausar * 2;
+            escalaDeTiempo = 2;
         }
-        else
+        else if (escalaDeTiempo == 2)
         {
             estaPausado = false;
-            escalaDeTiempo = escalaDeTiempoAlPausar * 2;
+            escalaDeTiempo = 4;
         }
+        else 
+        {
+            estaPausado = false;
+            escalaDeTiempo = 2;
+        }
+    }
+    public float GetTime()
+    {
+        return tiempoDelJuego;
     }
 }

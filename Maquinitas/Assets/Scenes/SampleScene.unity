@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1871095522}
+      - m_Target: {fileID: 2046426837}
         m_TargetAssemblyTypeName: Clock, Assembly-CSharp
         m_MethodName: Pausa
         m_Mode: 1
@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 1656111535}
   - component: {fileID: 1656111534}
   m_Layer: 5
-  m_Name: Play*2
+  m_Name: Acelerar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1146,9 +1146,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1871095522}
+      - m_Target: {fileID: 2046426837}
         m_TargetAssemblyTypeName: Clock, Assembly-CSharp
-        m_MethodName: Velocidadpor2
+        m_MethodName: Acelerar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1285,11 +1285,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1871095518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29815526652efd442948caf74ffbf60d, type: 3}
+  m_Script: {fileID: 11500000, guid: 381da17b0d3b8e84e825067a1a10f613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoInicial: 0
-  escalaDeTiempo: 1
 --- !u!1 &1948925031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,7 +1298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1948925033}
   - component: {fileID: 1948925032}
-  - component: {fileID: 1948925034}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1385,13 +1382,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &1948925034
+--- !u!1 &2046426834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2046426835}
+  - component: {fileID: 2046426837}
+  - component: {fileID: 2046426836}
+  m_Layer: 0
+  m_Name: TimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2046426835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046426834}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2091761503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2046426836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948925031}
+  m_GameObject: {fileID: 2046426834}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8df5bd2eaaf91647992860febfa6064, type: 3}
@@ -1399,7 +1429,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 0
   grados: 0
-  timeSpeed: 2
+  timeSpeed: 1
+--- !u!114 &2046426837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046426834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29815526652efd442948caf74ffbf60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiempoInicial: 0
+  escalaDeTiempo: 1
 --- !u!1 &2071568432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1527,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1871095522}
+      - m_Target: {fileID: 2046426837}
         m_TargetAssemblyTypeName: Clock, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -1533,6 +1577,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071568432}
   m_CullTransparentMesh: 1
+--- !u!1 &2091761502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2091761503}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2091761503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091761502}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1105.5773, y: 557.9513, z: -478.1372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2046426835}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1541,3 +1617,4 @@ SceneRoots:
   - {fileID: 1948925033}
   - {fileID: 1516052858}
   - {fileID: 1309688601}
+  - {fileID: 2091761503}

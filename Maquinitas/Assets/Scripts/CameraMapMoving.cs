@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraMapMoving : MonoBehaviour
+{
+    // Start is called before the first frame update
+    float distance = 10;
+    private Vector3 _lastMousePosition;
+    [SerializeField]
+    private float maxMapx;
+    [SerializeField]
+    private float maxMapy;
+    [SerializeField]
+    private float velocityCamera;
+    private float cameraAltitude;
+
+    void OnMouseDrag()
+    {
+        Debug.Log("Enter");
+        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
+        Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        transform.position = objPosition;
+
+    }
+    void Start()
+    {
+        cameraAltitude = transform.position.z;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 currentMousePosition = new Vector3(Input.mousePosition.x*velocityCamera, cameraAltitude , Input.mousePosition.y*velocityCamera);
+            if (_lastMousePosition != Vector3.zero)
+            {
+                Vector3 delta = currentMousePosition - _lastMousePosition;
+                transform.position += delta;
+            }
+            _lastMousePosition = currentMousePosition;
+        }
+        else
+        {
+            _lastMousePosition = Vector3.zero;
+        }
+    }
+}
+

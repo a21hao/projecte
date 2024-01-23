@@ -20,13 +20,13 @@ public class VendingMachineController : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Enter");
-            cameraVendingMachine.Priority = 12;
+            cameraVendingMachine.Priority = 10;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+       /*if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.Log("Enter2");
             cameraVendingMachine.Priority = 10;
@@ -40,10 +40,10 @@ public class VendingMachineController : MonoBehaviour
             //if (Physics.Raycast(ray, out RaycastHit)) ;
 
 
-        }
+        }*/
     }
 
-    private void OnMouseEnter()
+   /* private void OnMouseEnter()
     {
         Debug.Log("Enter");
         cameraVendingMachine.Priority = 12;
@@ -53,5 +53,10 @@ public class VendingMachineController : MonoBehaviour
     private void OnMouseExit()
     {
         cameraVendingMachine.Priority = 10;
+    }*/
+
+    private void OnMouseDown()
+    {
+        cameraVendingMachine.Priority = 12;
     }
 }

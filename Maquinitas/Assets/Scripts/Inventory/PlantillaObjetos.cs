@@ -7,5 +7,5 @@ public class PlantillaObjetos : ScriptableObject
 {
     public Sprite imagenObjeto;
     public string textoObjeto;
-    public int precioOBjeto;
+    public int precioObjeto;
 }

@@ -25,7 +25,7 @@ public class Objeto : MonoBehaviour
         textoObjecto.text = datosObjeto.textoObjeto;
         precioObjeto.text = datosObjeto.precioObjeto.ToString();
     }
-    
+
     public void ComprarObjetos()
     {
         inventario.IncluirObjeto(precio, imagenObjeto);

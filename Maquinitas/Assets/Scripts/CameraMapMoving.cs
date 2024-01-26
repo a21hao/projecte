@@ -12,8 +12,9 @@ public class CameraMapMoving : MonoBehaviour
     [SerializeField]
     private float maxMapy;
     [SerializeField]
-    private float velocityCamera;
+    private float velocityDragCamera;
     private float cameraAltitude;
+    private MovementBehaviour mb;
 
     void OnMouseDrag()
     {
@@ -27,6 +28,7 @@ public class CameraMapMoving : MonoBehaviour
     void Start()
     {
         cameraAltitude = transform.position.z;
+        mb = GetComponent<MovementBehaviour>();
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class CameraMapMoving : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            Vector3 currentMousePosition = new Vector3(Input.mousePosition.x*velocityCamera, cameraAltitude , Input.mousePosition.y*velocityCamera);
+            Vector3 currentMousePosition = new Vector3(Input.mousePosition.x*-velocityDragCamera, cameraAltitude , Input.mousePosition.y*-velocityDragCamera);
             if (_lastMousePosition != Vector3.zero)
             {
                 Vector3 delta = currentMousePosition - _lastMousePosition;
@@ -45,6 +47,11 @@ public class CameraMapMoving : MonoBehaviour
         else
         {
             _lastMousePosition = Vector3.zero;
+        }
+
+        if(NewControls.mapMovementDirection != new Vector2(0,0))
+        {
+            mb.Move(new Vector3 (NewControls.mapMovementDirection.x,0,NewControls.mapMovementDirection.y));
         }
     }
 }

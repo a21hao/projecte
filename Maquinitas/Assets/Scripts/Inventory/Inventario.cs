@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +8,8 @@ public class Inventario : MonoBehaviour
     [SerializeField] private int dineroTotal = 50;
     [SerializeField] TextMeshProUGUI textoDinero;
     [SerializeField] GameObject objetoDeTienda;
+
+    private Dictionary<PlantillaObjetos, int> inventario = new Dictionary<PlantillaObjetos, int>();
 
     private int nuemroMaximoObjeto = 0;
 

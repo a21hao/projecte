@@ -8,7 +8,7 @@ public class Inventario : MonoBehaviour
 {
     [SerializeField] private int dineroTotal = 50;
     [SerializeField] TextMeshProUGUI textoDinero;
-    [SerializeField] GameObject objetoDeEquipo;
+    [SerializeField] GameObject objetoDeTienda;
 
     private int nuemroMaximoObjeto = 0;
 
@@ -23,7 +23,7 @@ public class Inventario : MonoBehaviour
         {
             dineroTotal -= dinero;
             nuemroMaximoObjeto++;
-            GameObject inventario = GameObject.Instantiate(objetoDeEquipo, Vector2.zero, Quaternion.identity, GameObject.FindGameObjectWithTag("Equipo").transform);
+            GameObject inventario = GameObject.Instantiate(objetoDeTienda, Vector2.zero, Quaternion.identity, GameObject.FindGameObjectWithTag("ObjetoComprable").transform);
             Image imagen = inventario.GetComponent<Image>();
             imagen.sprite = imageObjeto.sprite;
             textoDinero.text = dineroTotal.ToString();

@@ -5,23 +5,22 @@ using UnityEngine;
 public class Tienda : MonoBehaviour
 {
     [SerializeField] GameObject prefabObjetoTienda;
-    [SerializeField] int numeroMaxTienda;
     [SerializeField] PlantillaObjetos[] listaTienda;
-    [SerializeField] List<PlantillaObjetos> listaProvisionalTienda;
 
-    private Objeto objeto;
-
-    void Start()
+    private void Start()
     {
-        listaProvisionalTienda.AddRange(listaTienda);
-
-        for (int i = 0; i < numeroMaxTienda - 1; i++)
+        // Itera sobre la lista de objetos de la tienda y crea un objeto para cada uno
+        foreach (PlantillaObjetos objeto in listaTienda)
         {
-            GameObject tienda = GameObject.Instantiate(prefabObjetoTienda, Vector2.zero, Quaternion.identity, GameObject.FindGameObjectWithTag("Tienda").transform);
-            int indice = Random.Range(0, listaTienda.Length);
-            objeto = tienda.GetComponent<Objeto>();
-            objeto.CrearObjeto(listaTienda[indice]);
-            listaProvisionalTienda.Remove(listaProvisionalTienda[indice]);
+            // Instancia un nuevo objeto de tienda
+            GameObject tienda = Instantiate(prefabObjetoTienda, Vector2.zero, Quaternion.identity, transform);
+
+            // Obtiene el componente Objeto del objeto de tienda instanciado
+            Objeto objetoComponente = tienda.GetComponent<Objeto>();
+
+            // Crea el objeto utilizando los datos de la plantilla correspondiente
+            objetoComponente.CrearObjeto(objeto);
         }
     }
+
 }

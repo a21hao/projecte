@@ -9,8 +9,9 @@ public class Objeto : MonoBehaviour
     [SerializeField] Image imagenObjeto;
     [SerializeField] TextMeshProUGUI textoObjecto;
     [SerializeField] TextMeshProUGUI precioObjeto;
+    [SerializeField] TextMeshProUGUI descripcionObjeto;
 
-    private int precio;
+    private PlantillaObjetos datosObjeto; // Objeto asociado a este script
     private Inventario inventario;
 
     private void Awake()
@@ -18,16 +19,25 @@ public class Objeto : MonoBehaviour
         inventario = FindObjectOfType<Inventario>();
     }
 
-    public void CrearObjeto (PlantillaObjetos datosObjeto)
+    public void CrearObjeto (PlantillaObjetos datos)
     {
-        precio = datosObjeto.precioObjeto;
+        datosObjeto = datos;
+        precioObjeto.text = datosObjeto.precioObjeto.ToString();
         imagenObjeto.sprite = datosObjeto.imagenObjeto;
-        textoObjecto.text = datosObjeto.textoObjeto;
+        textoObjecto.text = datosObjeto.nameObjeto;
+        textoObjecto.text = datosObjeto.descripcionObjeto;
         precioObjeto.text = datosObjeto.precioObjeto.ToString();
     }
 
-    public void ComprarObjetos()
+    public void ComprarObjetos(Sprite imageObjeto)
     {
-        inventario.IncluirObjeto(precio, imagenObjeto);
+        if (datosObjeto != null)
+        {
+            inventario.IncluirObjeto(datosObjeto, imageObjeto);
+        }
+        else
+        {
+            Debug.LogError("No se ha asignado ningún objeto a este script.");
+        }
     }
 }

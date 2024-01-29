@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106a3a797297f1c499e580f1e9a12239, type: 3}
   m_Name: Botella
   m_EditorClassIdentifier: 
+  id: 0
   imagenObjeto: {fileID: 21300000, guid: c4819f6fbf6cc724588d654b88aadd2a, type: 3}
-  textoObjeto: ' Botella Grande'
+  nameObjeto: Botella Grande
+  descripcionObjeto: Botella de agua Grande
   precioObjeto: 2

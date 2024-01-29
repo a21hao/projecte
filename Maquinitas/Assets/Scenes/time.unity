@@ -1589,13 +1589,13 @@ MonoBehaviour:
   m_Padding:
     m_Left: 32
     m_Right: 0
-    m_Top: 87
+    m_Top: 40
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 59, y: 137.88}
+  m_Spacing: {x: 53.78, y: 173.1}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1920974615
@@ -1625,17 +1625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabObjetoTienda: {fileID: 302704229892403269, guid: 3f4545cacc512bc42bfe195816045f9f, type: 3}
-  listaTienda:
+  listaObjetosTienda:
   - {fileID: 11400000, guid: 585d2fcce10e4bb4fad22c7c42db8d92, type: 2}
-  - {fileID: 11400000, guid: 585d2fcce10e4bb4fad22c7c42db8d92, type: 2}
-  - {fileID: 11400000, guid: 7621e4377baf08347a2a7cf0e3eab226, type: 2}
-  - {fileID: 11400000, guid: 5d08b9038c5a3ba4f895231b32d3c213, type: 2}
-  - {fileID: 11400000, guid: 59a67525d57f0d142b6488becdc612fc, type: 2}
-  - {fileID: 11400000, guid: 295654a118b20b241b801858252e14cb, type: 2}
-  - {fileID: 11400000, guid: f4d9e7a3497ef4244a227e92a698751f, type: 2}
-  - {fileID: 11400000, guid: 8aa7219487f14304891cd22d8ad66e7d, type: 2}
-  - {fileID: 11400000, guid: 0e322532758cd4c468f639a926be0aaa, type: 2}
-  - {fileID: 11400000, guid: ddc0bb4bfd5a36a429d5a41001096939, type: 2}
   - {fileID: 11400000, guid: cc9afd6ab7ace0e49aa2548d2d8398ab, type: 2}
 --- !u!114 &2046426837 stripped
 MonoBehaviour:

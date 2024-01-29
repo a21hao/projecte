@@ -7,7 +7,8 @@ public class PlantillaObjetos : ScriptableObject
 
     public int id;
     public Sprite imagenObjeto;
-    public string textoObjeto;
+    public string nameObjeto;
+    public string descripcionObjeto;
     public int precioObjeto;
 
     private void OnEnable()

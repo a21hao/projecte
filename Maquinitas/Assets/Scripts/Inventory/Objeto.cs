@@ -6,6 +6,7 @@ using TMPro;
 
 public class Objeto : MonoBehaviour
 {
+    [SerializeField] int idObjeto;
     [SerializeField] Image imagenObjeto;
     [SerializeField] TextMeshProUGUI textoObjecto;
     [SerializeField] TextMeshProUGUI precioObjeto;
@@ -22,6 +23,7 @@ public class Objeto : MonoBehaviour
     public void CrearObjeto (PlantillaObjetos datos)
     {
         datosObjeto = datos;
+        idObjeto = datosObjeto.id;
         precioObjeto.text = datosObjeto.precioObjeto.ToString();
         imagenObjeto.sprite = datosObjeto.imagenObjeto;
         textoObjecto.text = datosObjeto.nameObjeto;

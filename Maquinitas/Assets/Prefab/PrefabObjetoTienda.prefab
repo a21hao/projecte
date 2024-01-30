@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -134.5332, y: 145.53006}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 92.7015, y: 92.8576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2364220103696369004
 CanvasRenderer:
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f22c562b213ad48ac7d911ca38fc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idObjeto: 0
   imagenObjeto: {fileID: 8161116053507425234}
   textoObjecto: {fileID: 70368381074086685}
   precioObjeto: {fileID: 7928881142348530552}

@@ -29,7 +29,6 @@ public class Inventario : MonoBehaviour
             GameObject objetoInstanciado = Instantiate(objetoDeTienda, Vector3.zero, Quaternion.identity, GameObject.FindGameObjectWithTag("ObjetoComprable").transform);
             // Obtiene el componente Image del nuevo objeto
             Image imagen = objetoInstanciado.GetComponent<Image>();
-
             // Asigna la imagen recibida al componente Image
             imagen.sprite = datos.imagenObjeto;
             // Asigna los datos del objeto a la instancia

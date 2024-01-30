@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,7 +33,7 @@ public class Inventario : MonoBehaviour
 
             // Agrega el objeto al inventario con cantidad 1
             inventario.Add(objeto, 1);
-            Debug.Log("Se agregï¿½ el objeto al inventario: " + objeto.nameObjeto);
+            Debug.Log("Se agregó el objeto al inventario: " + objeto.nameObjeto);
 
             // Actualiza la UI
             ActualizarUI();

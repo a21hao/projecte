@@ -14,6 +14,7 @@ public class NewControls : MonoBehaviour
     public bool isJump;
     public bool isFire;
     static public Vector2 mapMovementDirection;
+    static public bool isExitVendingMachine;
     //private Player player;
     //private MovementBehaviour mvb;
     //private Animator anim;
@@ -27,6 +28,7 @@ public class NewControls : MonoBehaviour
     private void Awake()
     {
         InputActionMap Player = playerActions.FindActionMap("Player");
+        isExitVendingMachine = false;
 
         /*Player.FindAction("Forward").performed += OnRun;
         Player.FindAction("Forward").canceled += OnStopRun;
@@ -44,7 +46,8 @@ public class NewControls : MonoBehaviour
         Player.FindAction("GodMode").performed += OnnGoodMode;*/
         Player.FindAction("MoveMap").performed += OnnMoveMap;
         Player.FindAction("MoveMap").canceled += OnnMoveMap;
-
+        Player.FindAction("ExitVendingMachine").performed += OnnMoveMap;
+        Player.FindAction("ExitVendingMachine").canceled += OnnMoveMap;
         /*playerActions = new InputActions();
         playerActions.Player.Forward.performed += OnRun;
         playerActions.Player.Forward.canceled += OnStopRun;
@@ -170,6 +173,16 @@ public class NewControls : MonoBehaviour
     {
         mapMovementDirection = ctx.ReadValue<Vector2>();
         Debug.Log(mapMovementDirection);
+    }
+
+    private void OnnExitVendingMachinePressed()
+    {
+        isExitVendingMachine = true;
+    }
+
+    private void OnnExitVendingMachineCanceled()
+    {
+        isExitVendingMachine = false;
     }
 
 

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Cinemachine;
 
-public class VendingMachineController : MonoBehaviour
+public class VendingMachineController : MonoBehaviour, IPointerClickHandler
 {
     // Start is called before the first frame update
 
@@ -20,10 +21,11 @@ public class VendingMachineController : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(NewControls.isExitVendingMachine)
         {
             Debug.Log("Enter");
             cameraVendingMachine.Priority = 10;
+            NewControls.isExitVendingMachine = false;
         }
 
        /*if (Input.GetKeyDown(KeyCode.S))
@@ -55,7 +57,12 @@ public class VendingMachineController : MonoBehaviour
         cameraVendingMachine.Priority = 10;
     }*/
 
-    private void OnMouseDown()
+    /*private void OnMouseDown()
+    {
+        cameraVendingMachine.Priority = 12;
+    }*/
+
+    public void OnPointerClick(PointerEventData eventData)
     {
         cameraVendingMachine.Priority = 12;
     }

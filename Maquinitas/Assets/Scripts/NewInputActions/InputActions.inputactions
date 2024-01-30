@@ -13,6 +13,33 @@
                     "processors": "Scale",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ExitVendingMachine",
+                    "type": "Button",
+                    "id": "e9242cea-51d0-473e-929f-e4f59e8bdbe7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseClick",
+                    "type": "Button",
+                    "id": "84238cf1-239e-4f2b-8b6b-28fc9543c4b4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseMove",
+                    "type": "Value",
+                    "id": "aef9f86e-5ea7-4f90-8437-46d55364f822",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -114,6 +141,39 @@
                     "action": "MoveMap",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "42b9a7ec-cc72-46e0-b176-6141cf053e7d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitVendingMachine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56df4807-292a-44f2-98db-8a854abf7547",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2832a9f6-e744-4b66-8e06-7c5a04375929",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

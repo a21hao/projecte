@@ -35,6 +35,33 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": ""Scale"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ExitVendingMachine"",
+                    ""type"": ""Button"",
+                    ""id"": ""e9242cea-51d0-473e-929f-e4f59e8bdbe7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""84238cf1-239e-4f2b-8b6b-28fc9543c4b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""aef9f86e-5ea7-4f90-8437-46d55364f822"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -136,6 +163,39 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MoveMap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42b9a7ec-cc72-46e0-b176-6141cf053e7d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitVendingMachine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56df4807-292a-44f2-98db-8a854abf7547"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2832a9f6-e744-4b66-8e06-7c5a04375929"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -145,6 +205,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MoveMap = m_Player.FindAction("MoveMap", throwIfNotFound: true);
+        m_Player_ExitVendingMachine = m_Player.FindAction("ExitVendingMachine", throwIfNotFound: true);
+        m_Player_MouseClick = m_Player.FindAction("MouseClick", throwIfNotFound: true);
+        m_Player_MouseMove = m_Player.FindAction("MouseMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,11 +270,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_MoveMap;
+    private readonly InputAction m_Player_ExitVendingMachine;
+    private readonly InputAction m_Player_MouseClick;
+    private readonly InputAction m_Player_MouseMove;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveMap => m_Wrapper.m_Player_MoveMap;
+        public InputAction @ExitVendingMachine => m_Wrapper.m_Player_ExitVendingMachine;
+        public InputAction @MouseClick => m_Wrapper.m_Player_MouseClick;
+        public InputAction @MouseMove => m_Wrapper.m_Player_MouseMove;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -224,6 +293,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MoveMap.started += instance.OnMoveMap;
             @MoveMap.performed += instance.OnMoveMap;
             @MoveMap.canceled += instance.OnMoveMap;
+            @ExitVendingMachine.started += instance.OnExitVendingMachine;
+            @ExitVendingMachine.performed += instance.OnExitVendingMachine;
+            @ExitVendingMachine.canceled += instance.OnExitVendingMachine;
+            @MouseClick.started += instance.OnMouseClick;
+            @MouseClick.performed += instance.OnMouseClick;
+            @MouseClick.canceled += instance.OnMouseClick;
+            @MouseMove.started += instance.OnMouseMove;
+            @MouseMove.performed += instance.OnMouseMove;
+            @MouseMove.canceled += instance.OnMouseMove;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -231,6 +309,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MoveMap.started -= instance.OnMoveMap;
             @MoveMap.performed -= instance.OnMoveMap;
             @MoveMap.canceled -= instance.OnMoveMap;
+            @ExitVendingMachine.started -= instance.OnExitVendingMachine;
+            @ExitVendingMachine.performed -= instance.OnExitVendingMachine;
+            @ExitVendingMachine.canceled -= instance.OnExitVendingMachine;
+            @MouseClick.started -= instance.OnMouseClick;
+            @MouseClick.performed -= instance.OnMouseClick;
+            @MouseClick.canceled -= instance.OnMouseClick;
+            @MouseMove.started -= instance.OnMouseMove;
+            @MouseMove.performed -= instance.OnMouseMove;
+            @MouseMove.canceled -= instance.OnMouseMove;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -251,5 +338,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMoveMap(InputAction.CallbackContext context);
+        void OnExitVendingMachine(InputAction.CallbackContext context);
+        void OnMouseClick(InputAction.CallbackContext context);
+        void OnMouseMove(InputAction.CallbackContext context);
     }
 }

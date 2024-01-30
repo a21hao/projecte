@@ -29,11 +29,11 @@ public class Objeto : MonoBehaviour
         precioObjeto.text = datosObjeto.precioObjeto.ToString();
     }
 
-    public void ComprarObjetos(Sprite imageObjeto)
+    public void ComprarObjetos()
     {
         if (datosObjeto != null)
         {
-            inventario.IncluirObjeto(datosObjeto, imageObjeto);
+            inventario.IncluirObjeto(datosObjeto);
         }
         else
         {

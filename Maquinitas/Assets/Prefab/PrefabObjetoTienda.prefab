@@ -150,6 +150,7 @@ MonoBehaviour:
   imagenObjeto: {fileID: 8161116053507425234}
   textoObjecto: {fileID: 70368381074086685}
   precioObjeto: {fileID: 7928881142348530552}
+  descripcionObjeto: {fileID: 0}
 --- !u!1 &890912144774481226
 GameObject:
   m_ObjectHideFlags: 0

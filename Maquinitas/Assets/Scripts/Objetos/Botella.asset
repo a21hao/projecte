@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Botella
   m_EditorClassIdentifier: 
   id: 0
-  imagenObjeto: {fileID: 21300000, guid: c4819f6fbf6cc724588d654b88aadd2a, type: 3}
+  imagenObjeto: {fileID: 21300000, guid: 2313f0eb7f00c4e49a7008dabce483e0, type: 3}
   nameObjeto: Botella Grande
   descripcionObjeto: Botella de agua Grande
   precioObjeto: 2

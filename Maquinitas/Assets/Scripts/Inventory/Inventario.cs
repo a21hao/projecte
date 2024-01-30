@@ -13,11 +13,16 @@ public class Inventario : MonoBehaviour
 
     private Dictionary<PlantillaObjetos, int> inventario = new Dictionary<PlantillaObjetos, int>();
 
-    public void IncluirObjeto(PlantillaObjetos objeto, Sprite imageObjeto)
+    private void Update()
     {
-        if (dineroTotal >= objeto.precioObjeto && !inventario.ContainsKey(objeto) && numeroMaximoObjeto > 0)
+        ActualizarUI();
+    }
+
+    public void IncluirObjeto(PlantillaObjetos datos)
+    {
+        if (dineroTotal >= datos.precioObjeto && !inventario.ContainsKey(datos) && numeroMaximoObjeto > 0)
         {
-            dineroTotal -= objeto.precioObjeto;
+            dineroTotal -= datos.precioObjeto;
             numeroMaximoObjeto--;
 
             // Instancia el objeto utilizando la prefab
@@ -26,14 +31,14 @@ public class Inventario : MonoBehaviour
             Image imagen = objetoInstanciado.GetComponent<Image>();
 
             // Asigna la imagen recibida al componente Image
-            imagen.sprite = imageObjeto;
+            imagen.sprite = datos.imagenObjeto;
             // Asigna los datos del objeto a la instancia
             Objeto scriptObjeto = objetoInstanciado.GetComponent<Objeto>();
-            scriptObjeto.CrearObjeto(objeto);
+            scriptObjeto.CrearObjeto(datos);
 
             // Agrega el objeto al inventario con cantidad 1
-            inventario.Add(objeto, 1);
-            Debug.Log("Se agregó el objeto al inventario: " + objeto.nameObjeto);
+            inventario.Add(datos, 1);
+            Debug.Log("Se agregó el objeto al inventario: " + datos.nameObjeto);
 
             // Actualiza la UI
             ActualizarUI();

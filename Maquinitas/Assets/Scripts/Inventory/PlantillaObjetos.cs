@@ -5,14 +5,57 @@ public class PlantillaObjetos : ScriptableObject
 {
     private static int nextID = 0;
 
-    public int id;
-    public Sprite imagenObjeto;
-    public string nameObjeto;
-    public string descripcionObjeto;
-    public int precioObjeto;
+    [System.Serializable]
+    public struct Mercancia
+    {
+        public int id;
+        public Tipo tipo;
+        public Sprite imagenObjeto;
+        public bool acumulable;
+        public string nameObjeto;
+        public int maxStack;
+        public string descripcionObjeto;
+        public int precioObjeto;
+        //public BaseItem item;
+        
+    }
+
+    public enum Tipo
+    {
+        Bebida,
+        ComidaPrehecha,
+        Comida,
+        Ropa,
+        ProductosElectronicos,
+        Juguetes,
+        Libros
+    }
+
+    public Mercancia[] dataBase;
 
     private void OnEnable()
     {
-        id = nextID++;
+        if (dataBase != null)
+        {
+            for (int i = 0; i < dataBase.Length; i++)
+            {
+                dataBase[i].id = nextID++;
+            }
+        }
+    }
+
+    private void OnValidate()
+    {
+        if(dataBase != null)
+        {
+            for(int i = 0; i < dataBase.Length; i++)
+            {
+                if (dataBase[i].id != i)
+                {
+                    dataBase[i].id = i;
+                }
+            }
+
+        }
     }
 }

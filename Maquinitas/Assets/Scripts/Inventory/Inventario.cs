@@ -11,14 +11,14 @@ public class Inventario : MonoBehaviour
     //[SerializeField] Sprite imagenObjeto; // Definir la variable imagenObjeto
     private int numeroMaximoObjeto = 9999;
 
-    private Dictionary<PlantillaObjetos, int> inventario = new Dictionary<PlantillaObjetos, int>();
+    private Dictionary<PlantillaObjetos.Mercancia, int> inventario = new Dictionary<PlantillaObjetos.Mercancia, int>();
 
     private void Update()
     {
         ActualizarUI();
     }
 
-    public void IncluirObjeto(PlantillaObjetos datos)
+    public void IncluirObjeto(PlantillaObjetos.Mercancia datos)
     {
         if (dineroTotal >= datos.precioObjeto && !inventario.ContainsKey(datos) && numeroMaximoObjeto > 0)
         {

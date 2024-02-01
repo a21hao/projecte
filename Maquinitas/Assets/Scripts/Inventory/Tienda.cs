@@ -5,10 +5,10 @@ using UnityEngine;
 public class Tienda : MonoBehaviour
 {
     [SerializeField] GameObject prefabObjetoTienda;
-    [SerializeField] List<PlantillaObjetos> listaObjetosTienda; // Lista de ScriptableObjects
+    [SerializeField] List<PlantillaObjetos.Mercancia> listaObjetosTienda; // Lista de ScriptableObjects
 
     // El Dictionary será generado a partir de los ScriptableObjects en la lista
-    private Dictionary<int, PlantillaObjetos> diccionarioTienda = new Dictionary<int, PlantillaObjetos>();
+    private Dictionary<int, PlantillaObjetos.Mercancia> diccionarioTienda = new Dictionary<int, PlantillaObjetos.Mercancia>();
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class Tienda : MonoBehaviour
     private void Start()
     {
         // Itera sobre el diccionario de objetos de la tienda y crea un objeto para cada uno
-        foreach (KeyValuePair<int, PlantillaObjetos> par in diccionarioTienda)
+        foreach (KeyValuePair<int, PlantillaObjetos.Mercancia> par in diccionarioTienda)
         {
             // Instancia un nuevo objeto de tienda
             GameObject tienda = Instantiate(prefabObjetoTienda, Vector2.zero, Quaternion.identity, transform);

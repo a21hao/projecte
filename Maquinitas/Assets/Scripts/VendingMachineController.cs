@@ -25,7 +25,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         {
             Debug.Log("Enter");
             cameraVendingMachine.Priority = 10;
-            NewControls.isExitVendingMachine = false;
+            //NewControls.isExitVendingMachine = false;
         }
 
        /*if (Input.GetKeyDown(KeyCode.S))

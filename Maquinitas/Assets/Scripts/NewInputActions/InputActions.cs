@@ -53,15 +53,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MouseMove"",
-                    ""type"": ""Value"",
-                    ""id"": ""aef9f86e-5ea7-4f90-8437-46d55364f822"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -99,6 +90,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""up"",
+                    ""id"": ""1b99b263-ccd2-4423-a60d-c7259a53f142"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(max=1)"",
+                    ""groups"": """",
+                    ""action"": ""MoveMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""down"",
                     ""id"": ""9cfb0a88-f492-4ba0-ac23-31290e3bd2a6"",
                     ""path"": ""<Keyboard>/s"",
@@ -113,6 +115,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": ""down"",
                     ""id"": ""51d12ba9-1453-4ade-84f3-e3de16864a39"",
                     ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(max=1)"",
+                    ""groups"": """",
+                    ""action"": ""MoveMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5aec51af-054b-48fa-aa7e-ca48e8483110"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(max=1)"",
                     ""groups"": """",
@@ -143,6 +156,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""left"",
+                    ""id"": ""de688cf3-d081-46c8-bb17-4d72ee824ad5"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(max=1)"",
+                    ""groups"": """",
+                    ""action"": ""MoveMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""right"",
                     ""id"": ""c9fcde66-a7d8-4dc4-9c0f-51f016bb76ea"",
                     ""path"": ""<Keyboard>/d"",
@@ -165,9 +189,31 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""right"",
+                    ""id"": ""321dfa95-1137-460a-a46d-4dfa68b21a2d"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(max=1)"",
+                    ""groups"": """",
+                    ""action"": ""MoveMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""42b9a7ec-cc72-46e0-b176-6141cf053e7d"",
                     ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitVendingMachine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b467f112-9426-4cc1-bbbf-118801fcd01f"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -185,17 +231,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2832a9f6-e744-4b66-8e06-7c5a04375929"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MouseMove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -207,7 +242,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_MoveMap = m_Player.FindAction("MoveMap", throwIfNotFound: true);
         m_Player_ExitVendingMachine = m_Player.FindAction("ExitVendingMachine", throwIfNotFound: true);
         m_Player_MouseClick = m_Player.FindAction("MouseClick", throwIfNotFound: true);
-        m_Player_MouseMove = m_Player.FindAction("MouseMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -272,7 +306,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MoveMap;
     private readonly InputAction m_Player_ExitVendingMachine;
     private readonly InputAction m_Player_MouseClick;
-    private readonly InputAction m_Player_MouseMove;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -280,7 +313,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @MoveMap => m_Wrapper.m_Player_MoveMap;
         public InputAction @ExitVendingMachine => m_Wrapper.m_Player_ExitVendingMachine;
         public InputAction @MouseClick => m_Wrapper.m_Player_MouseClick;
-        public InputAction @MouseMove => m_Wrapper.m_Player_MouseMove;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -299,9 +331,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MouseClick.started += instance.OnMouseClick;
             @MouseClick.performed += instance.OnMouseClick;
             @MouseClick.canceled += instance.OnMouseClick;
-            @MouseMove.started += instance.OnMouseMove;
-            @MouseMove.performed += instance.OnMouseMove;
-            @MouseMove.canceled += instance.OnMouseMove;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -315,9 +344,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MouseClick.started -= instance.OnMouseClick;
             @MouseClick.performed -= instance.OnMouseClick;
             @MouseClick.canceled -= instance.OnMouseClick;
-            @MouseMove.started -= instance.OnMouseMove;
-            @MouseMove.performed -= instance.OnMouseMove;
-            @MouseMove.canceled -= instance.OnMouseMove;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -340,6 +366,5 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMoveMap(InputAction.CallbackContext context);
         void OnExitVendingMachine(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
-        void OnMouseMove(InputAction.CallbackContext context);
     }
 }

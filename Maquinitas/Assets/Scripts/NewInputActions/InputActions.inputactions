@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "MouseMove",
-                    "type": "Value",
-                    "id": "aef9f86e-5ea7-4f90-8437-46d55364f822",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -77,6 +68,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "up",
+                    "id": "1b99b263-ccd2-4423-a60d-c7259a53f142",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "Clamp(max=1)",
+                    "groups": "",
+                    "action": "MoveMap",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "down",
                     "id": "9cfb0a88-f492-4ba0-ac23-31290e3bd2a6",
                     "path": "<Keyboard>/s",
@@ -91,6 +93,17 @@
                     "name": "down",
                     "id": "51d12ba9-1453-4ade-84f3-e3de16864a39",
                     "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "Clamp(max=1)",
+                    "groups": "",
+                    "action": "MoveMap",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "5aec51af-054b-48fa-aa7e-ca48e8483110",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "Clamp(max=1)",
                     "groups": "",
@@ -121,6 +134,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "de688cf3-d081-46c8-bb17-4d72ee824ad5",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "Clamp(max=1)",
+                    "groups": "",
+                    "action": "MoveMap",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
                     "id": "c9fcde66-a7d8-4dc4-9c0f-51f016bb76ea",
                     "path": "<Keyboard>/d",
@@ -143,9 +167,31 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "right",
+                    "id": "321dfa95-1137-460a-a46d-4dfa68b21a2d",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "Clamp(max=1)",
+                    "groups": "",
+                    "action": "MoveMap",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "42b9a7ec-cc72-46e0-b176-6141cf053e7d",
                     "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitVendingMachine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b467f112-9426-4cc1-bbbf-118801fcd01f",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -161,17 +207,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2832a9f6-e744-4b66-8e06-7c5a04375929",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

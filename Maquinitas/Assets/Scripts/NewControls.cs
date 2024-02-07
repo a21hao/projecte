@@ -46,8 +46,8 @@ public class NewControls : MonoBehaviour
         Player.FindAction("GodMode").performed += OnnGoodMode;*/
         Player.FindAction("MoveMap").performed += OnnMoveMap;
         Player.FindAction("MoveMap").canceled += OnnMoveMap;
-        Player.FindAction("ExitVendingMachine").performed += OnnMoveMap;
-        Player.FindAction("ExitVendingMachine").canceled += OnnMoveMap;
+        Player.FindAction("ExitVendingMachine").performed += OnnExitVendingMachinePressed;
+        Player.FindAction("ExitVendingMachine").canceled += OnnExitVendingMachineCanceled;
         /*playerActions = new InputActions();
         playerActions.Player.Forward.performed += OnRun;
         playerActions.Player.Forward.canceled += OnStopRun;
@@ -175,12 +175,12 @@ public class NewControls : MonoBehaviour
         Debug.Log(mapMovementDirection);
     }
 
-    private void OnnExitVendingMachinePressed()
+    private void OnnExitVendingMachinePressed(InputAction.CallbackContext ctx)
     {
         isExitVendingMachine = true;
     }
 
-    private void OnnExitVendingMachineCanceled()
+    private void OnnExitVendingMachineCanceled(InputAction.CallbackContext ctx)
     {
         isExitVendingMachine = false;
     }

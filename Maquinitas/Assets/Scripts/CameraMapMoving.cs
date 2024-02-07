@@ -9,9 +9,9 @@ public class CameraMapMoving : MonoBehaviour
     //float distance = 10;
     private Vector3 _lastMousePosition;
     [SerializeField]
-    private float maxMapx;
+    private GameObject pointRightUp;
     [SerializeField]
-    private float maxMapy;
+    private GameObject pointLeftDown;
     [SerializeField]
     private float velocityDragCamera;
     private float cameraAltitude;
@@ -62,6 +62,8 @@ public class CameraMapMoving : MonoBehaviour
             {
                 Vector3 delta = currentMousePosition - _lastMousePosition;
                 transform.position += delta;
+                CheckCameraIntoPoints();
+
             }
             _lastMousePosition = currentMousePosition;
         }
@@ -73,7 +75,20 @@ public class CameraMapMoving : MonoBehaviour
         if (NewControls.mapMovementDirection != Vector2.zero)
         {
             mb.Move(new Vector3(NewControls.mapMovementDirection.x, 0, NewControls.mapMovementDirection.y));
+            CheckCameraIntoPoints();
         }
+    }
+
+    private void CheckCameraIntoPoints()
+    {
+        if (transform.position.z > pointRightUp.transform.position.z)
+            transform.position = new Vector3(transform.position.x, transform.position.y, pointRightUp.transform.position.z);
+        if (transform.position.x > pointRightUp.transform.position.x)
+            transform.position = new Vector3(pointRightUp.transform.position.x, transform.position.y, transform.position.z);
+        if (transform.position.z < pointLeftDown.transform.position.z)
+            transform.position = new Vector3(transform.position.x, transform.position.y, pointLeftDown.transform.position.z);
+        if (transform.position.x < pointLeftDown.transform.position.x)
+            transform.position = new Vector3(pointLeftDown.transform.position.x, transform.position.y, transform.position.z);
     }
 }
 

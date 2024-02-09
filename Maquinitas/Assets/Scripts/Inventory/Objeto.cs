@@ -6,15 +6,39 @@ using TMPro;
 
 public class Objeto : MonoBehaviour
 {
+    [SerializeField] int idObjeto;
     [SerializeField] Image imagenObjeto;
     [SerializeField] TextMeshProUGUI textoObjecto;
     [SerializeField] TextMeshProUGUI precioObjeto;
+    [SerializeField] TextMeshProUGUI descripcionObjeto;
 
-    public void CrearObjeto (PlantillaObjetos datosObjeto)
+    private PlantillaObjetos.Mercancia datosObjeto; // Objeto asociado a este script
+    private Inventario inventario;
+
+    private void Awake()
     {
-        imagenObjeto.sprite = datosObjeto.imagenObjeto;
-        textoObjecto.text = datosObjeto.textoObjeto;
-        precioObjeto.text = datosObjeto.precioOBjeto.ToString();
+        inventario = FindObjectOfType<Inventario>();
     }
-    
+
+    public void CrearObjeto (PlantillaObjetos.Mercancia datos)
+    {
+        datosObjeto = datos;
+        idObjeto = datosObjeto.id;
+        precioObjeto.text = datosObjeto.precioObjeto.ToString();
+        imagenObjeto.sprite = datosObjeto.imagenObjeto;
+        textoObjecto.text = datosObjeto.nameObjeto;
+        descripcionObjeto.text = datosObjeto.descripcionObjeto;
+    }
+
+    public void ComprarObjetos()
+    {
+        if (datosObjeto.id != null)
+        {
+            inventario.IncluirObjeto(datosObjeto);
+        }
+        else
+        {
+            Debug.LogError("No se ha asignado ningún objeto a este script.");
+        }
+    }
 }

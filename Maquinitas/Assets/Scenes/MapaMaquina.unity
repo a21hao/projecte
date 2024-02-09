@@ -528,7 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMapx: 0
   maxMapy: 0
-  velocityCamera: 0.13
+  velocityCamera: 0.05
 --- !u!1 &708364556
 GameObject:
   m_ObjectHideFlags: 0

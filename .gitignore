@@ -69,10 +69,18 @@ crashlytics-build.properties
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
 # Temporary auto-generated Android Assets
-/[Aa]ssets/[Ss]treamingAssets/aa.meta
-/[Aa]ssets/[Ss]treamingAssets/aa/*
-Maquinitas/Assembly-CSharp.csproj
-*.csproj
+# /[Aa]ssets/[Ss]treamingAssets/aa.meta
+# /[Aa]ssets/[Ss]treamingAssets/aa/*
+# Maquinitas/Assembly-CSharp.csproj
+# *.csproj
+# *.cache
+*.cache
+
+*.cache
+Maquinitas/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache
 *.cache
 *.cache
+*.cache
+Maquinitas/Logs/shadercompiler-UnityShaderCompiler.exe0.log
+Maquinitas/Logs/shadercompiler-UnityShaderCompiler.exe0.log
 

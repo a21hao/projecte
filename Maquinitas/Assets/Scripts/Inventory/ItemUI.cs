@@ -18,19 +18,39 @@ public class ItemUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     Image iconoImage;
     Vector3 dragOffset;
 
-    //void Awake()
-    //{
-    //    quantityText = transform.GetComponent<TextMeshProUGUI>();
-    //    iconoImage = GetComponent<Image>();
+    void Awake()
+    {
+        quantityText = transform.GetComponent<TextMeshProUGUI>();
+        iconoImage = GetComponent<Image>();
 
-    //    exParent = transform.parent;
-    //    if (exParent.GetComponent<Image>())
-    //    {
-    //        exParent.GetComponent<Image>().fillCenter = true;
-    //    }
+        exParent = transform.parent;
+        if (exParent.GetComponent<Image>())
+        {
+            exParent.GetComponent<Image>().fillCenter = true;
+        }
 
-    //    InitializeItem(id, quantity);
-    //}
+        InitializeItem(id, quantity);
+    }
+
+    void Update()
+    {
+        if(quantityText != null)
+        {
+            quantityText.text = quantity.ToString();
+        }
+    }
+
+    public void InitializeItem(int id, int quantity)
+    {
+        itemData.ID = id;
+        itemData.acumulable = db.database[id].acumulable;
+        itemData.descripcionObjeto = db.database[id].descripcionObjeto;
+        itemData.imagenObjeto = db.database[id].imagenObjeto;
+        itemData.nameObjeto = db.database[id].nameObjeto;
+        itemData.tipo = db.database[id].tipo;
+        itemData.maxStack = db.database[id].maxStack;
+        itemData.item = db.database[id].item;
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {

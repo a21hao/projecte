@@ -34,7 +34,7 @@ public class ItemUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
 
     //void Update()
     //{
-    //    if(quantityText != null)
+    //    if (quantityText != null)
     //    {
     //        quantityText.text = quantity.ToString();
     //    }

@@ -5,19 +5,39 @@ using UnityEngine;
 public class Tienda : MonoBehaviour
 {
     [SerializeField] GameObject prefabObjetoTienda;
-    [SerializeField] int numeroMaxTienda;
-    [SerializeField] PlantillaObjetos[] listaTienda;
+    [SerializeField] List<PlantillaObjetos.Mercancia> listaObjetosTienda; // Lista de ScriptableObjects
 
-    private Objeto objeto;
+    // El Dictionary será generado a partir de los ScriptableObjects en la lista
+    private Dictionary<int, PlantillaObjetos.Mercancia> diccionarioTienda = new Dictionary<int, PlantillaObjetos.Mercancia>();
 
-    void Start()
+    private void Awake()
     {
-        for (int i = 0; i < numeroMaxTienda; i++) 
+        // Llena el Dictionary con los ScriptableObjects de la lista
+        for (int i = 0; i < listaObjetosTienda.Count; i++)
         {
-            GameObject tienda = GameObject.Instantiate(prefabObjetoTienda, Vector2.zero, Quaternion.identity, GameObject.FindGameObjectWithTag("Tienda").transform);
-            int indice = Random.Range(0, listaTienda.Length); 
-            objeto = tienda.GetComponent<Objeto>();
-            objeto.CrearObjeto(listaTienda[indice]); 
+            if (!diccionarioTienda.ContainsKey(listaObjetosTienda[i].id))
+            {
+                diccionarioTienda.Add(listaObjetosTienda[i].id, listaObjetosTienda[i]);
+            }
+            else
+            {
+                Debug.LogWarning("Se encontró un duplicado de ID en la lista de objetos de tienda: " + listaObjetosTienda[i].id);
+            }
+        }
+    }
+
+    private void Start()
+    {
+        // Itera sobre el diccionario de objetos de la tienda y crea un objeto para cada uno
+        foreach (KeyValuePair<int, PlantillaObjetos.Mercancia> par in diccionarioTienda)
+        {
+            // Instancia un nuevo objeto de tienda
+            GameObject tienda = Instantiate(prefabObjetoTienda, Vector2.zero, Quaternion.identity, transform);
+            // Obtiene el componente Objeto del objeto de tienda instanciado
+            Objeto objetoComponente = tienda.GetComponent<Objeto>();
+
+            // Crea el objeto utilizando los datos de la plantilla correspondiente
+            objetoComponente.CrearObjeto(par.Value);
         }
     }
 }

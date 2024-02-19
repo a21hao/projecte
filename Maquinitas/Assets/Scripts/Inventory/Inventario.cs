@@ -5,12 +5,9 @@ using TMPro;
 
 public class Inventario : MonoBehaviour
 {
-    [SerializeField] private int dineroTotal = 50;
     [SerializeField] TextMeshProUGUI textoDinero;
     [SerializeField] GameObject objetoDeTienda;
-    //[SerializeField] Sprite imagenObjeto; // Definir la variable imagenObjeto
     private int numeroMaximoObjeto = 9999;
-
     private Dictionary<PlantillaObjetos.Mercancia, int> inventario = new Dictionary<PlantillaObjetos.Mercancia, int>();
 
     private void Update()
@@ -20,9 +17,9 @@ public class Inventario : MonoBehaviour
 
     public void IncluirObjeto(PlantillaObjetos.Mercancia datos)
     {
-        if (dineroTotal >= datos.precioObjeto && !inventario.ContainsKey(datos) && numeroMaximoObjeto > 0)
+        if (MoneyManager.DineroTotal >= datos.precioObjeto && !inventario.ContainsKey(datos) && numeroMaximoObjeto > 0)
         {
-            dineroTotal -= datos.precioObjeto;
+            MoneyManager.DecrementarDinero(datos.precioObjeto);
             numeroMaximoObjeto--;
 
             // Instancia el objeto utilizando la prefab
@@ -50,6 +47,6 @@ public class Inventario : MonoBehaviour
 
     private void ActualizarUI()
     {
-        textoDinero.text = dineroTotal.ToString();
+        textoDinero.text = MoneyManager.DineroTotal.ToString();
     }
 }

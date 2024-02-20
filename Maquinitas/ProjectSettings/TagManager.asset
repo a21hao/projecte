@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Tienda
   - ObjetoComprable
-  - Item_UI
-  - Slot
   layers:
   - Default
   - TransparentFX

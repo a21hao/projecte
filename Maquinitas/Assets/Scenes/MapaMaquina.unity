@@ -1672,6 +1672,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9154233449693259820, guid: eb426f6afe0b4c641bf728e447f2ea7a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2030,7 +2034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5659922886234976524, guid: a74eb99a851b9584dbdaf1f5487f4f91, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8225975
+      value: -3.62
       objectReference: {fileID: 0}
     - target: {fileID: 5659922886234976524, guid: a74eb99a851b9584dbdaf1f5487f4f91, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2068,7 +2072,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7744342110594142065, guid: a74eb99a851b9584dbdaf1f5487f4f91, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2259,6 +2264,14 @@ PrefabInstance:
     - target: {fileID: 2291900163162743457, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_Name
       value: MaquinaExpendedora
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980031629194933357, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980031629194933357, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -47,7 +47,7 @@ public class EnemyBehavior : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("·ZESWDR$R$TFESW$AE");
-        if(TryGetComponent<AAA>(out AAA Vending_)){
+        if(other.TryGetComponent<AAA>(out AAA Vending_)){
             Vending_.Buy();
             Debug.Log("·Ha entrado");
         }

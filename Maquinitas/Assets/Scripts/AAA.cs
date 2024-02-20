@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AAA : MonoBehaviour
 {
 
-	[SerializeField]
+    public TMP_Text moneyUI;
+
+    [SerializeField]
 	int money;
 
 	[SerializeField]
@@ -34,6 +37,7 @@ public class AAA : MonoBehaviour
 
 
             Debug.Log(item1.stock);
+            moneyUI.text = money.ToString();
 
         }
     }

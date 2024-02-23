@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyBehavior : MonoBehaviour
 {
-
+    
     public float speed = 3f;
 
     private Transform target;
@@ -49,7 +50,6 @@ public class EnemyBehavior : MonoBehaviour
         Debug.Log("·ZESWDR$R$TFESW$AE");
         if(other.TryGetComponent<AAA>(out AAA Vending_)){
             Vending_.Buy();
-            Debug.Log("·Ha entrado");
         }
     }
 }

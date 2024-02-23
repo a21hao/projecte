@@ -964,6 +964,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1281024818798116872, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
+      propertyPath: item1
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b29702d3310c114fa13e253b073ff90, type: 2}
     - target: {fileID: 2291900163162743457, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_Name
       value: MaquinaExpendedora (1)
@@ -2276,6 +2280,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1281024818798116872, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
+      propertyPath: item1
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b29702d3310c114fa13e253b073ff90, type: 2}
     - target: {fileID: 1281024818798116872, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: moneyUI
       value: 

@@ -67,15 +67,9 @@
     <Compile Include="Assets\Scripts\CameraMapMoving.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\Scripts\Cosas Nazis de Jowy\AAA.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-    <Compile Include="Assets\Scripts\Cosas Nazis de Jowy\PathBehavior.cs" />
-=======
     <Compile Include="Assets\Scripts\Time\DayCicle.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
->>>>>>> a22joel
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\NewInputActions\InputActions.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventario.cs" />
@@ -87,11 +81,8 @@
     <Compile Include="Assets\Scripts\Inventory\MoneyManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\InventoryManager.cs" />
-=======
     <Compile Include="Assets\Scripts\AAA.cs" />
->>>>>>> a22joel
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Items.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
@@ -100,7 +91,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-    <Compile Include="Assets\Scripts\Cosas Nazis de Jowy\EnemyBehavior.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scripts\Time\Clock.cs" />
@@ -111,18 +101,13 @@
     <Compile Include="Assets\Scripts\Inventory\PlantillaObjetos.cs" />
     <Compile Include="Assets\Scripts\VendingMachineController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\Scripts\Cosas Nazis de Jowy\MovementBehavior.cs" />
-=======
     <Compile Include="Assets\Scripts\PathBehavior.cs" />
     <Compile Include="Assets\Scripts\MovementBehaviour.cs" />
->>>>>>> a22joel
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Scripts\NewControls.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
-    <Compile Include="Assets\Scripts\Cosas Nazis de Jowy\CuboPrimero.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Time\TextTime.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />

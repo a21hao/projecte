@@ -14,8 +14,13 @@ public class ButtonOnClick : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        gameObject.GetComponent<Button>().onClick.Invoke();
         
-        
+    }
+
+    public void proba()
+    {
+        Debug.Log("Hola");
     }
 
     

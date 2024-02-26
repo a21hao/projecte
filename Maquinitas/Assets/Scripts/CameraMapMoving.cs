@@ -14,8 +14,12 @@ public class CameraMapMoving : MonoBehaviour
     private GameObject pointLeftDown;
     [SerializeField]
     private float velocityDragCamera;
+    
+    //[SerializeField]
+    //private float speedScroll;
     private float cameraAltitude;
     private MovementBehaviour mb;
+    
 
     /*void OnMouseDrag()
     {
@@ -77,6 +81,17 @@ public class CameraMapMoving : MonoBehaviour
             mb.Move(new Vector3(NewControls.mapMovementDirection.x, 0, NewControls.mapMovementDirection.y));
             CheckCameraIntoPoints();
         }
+        /*
+
+        if(NewControls.scrollValue.y > 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - speedScroll, transform.position.z);
+        }
+
+        if (NewControls.scrollValue.y < 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + speedScroll, transform.position.z);
+        }*/
     }
 
     private void CheckCameraIntoPoints()

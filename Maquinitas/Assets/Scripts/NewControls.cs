@@ -15,6 +15,7 @@ public class NewControls : MonoBehaviour
     public bool isFire;
     static public Vector2 mapMovementDirection;
     static public bool isExitVendingMachine;
+    static public Vector2 scrollValue;
     //private Player player;
     //private MovementBehaviour mvb;
     //private Animator anim;
@@ -48,6 +49,8 @@ public class NewControls : MonoBehaviour
         Player.FindAction("MoveMap").canceled += OnnMoveMap;
         Player.FindAction("ExitVendingMachine").performed += OnnExitVendingMachinePressed;
         Player.FindAction("ExitVendingMachine").canceled += OnnExitVendingMachineCanceled;
+        Player.FindAction("MouseScroll").performed += OnnScroll;
+        Player.FindAction("MouseScroll").canceled += OnnScroll;
         /*playerActions = new InputActions();
         playerActions.Player.Forward.performed += OnRun;
         playerActions.Player.Forward.canceled += OnStopRun;
@@ -183,6 +186,11 @@ public class NewControls : MonoBehaviour
     private void OnnExitVendingMachineCanceled(InputAction.CallbackContext ctx)
     {
         isExitVendingMachine = false;
+    }
+
+    private void OnnScroll(InputAction.CallbackContext ctx)
+    {
+        scrollValue = ctx.ReadValue<Vector2>();
     }
 
 

@@ -406,6 +406,7 @@ GameObject:
   - component: {fileID: 261439548}
   - component: {fileID: 261439550}
   - component: {fileID: 261439551}
+  - component: {fileID: 261439552}
   m_Layer: 0
   m_Name: MapCamera
   m_TagString: Untagged
@@ -496,6 +497,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+--- !u!114 &261439552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261439547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca42f571aa702d54f95388d4f87a7467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeed: 1
+  zoomAcceleration: 2.5
+  menorZoom: 10
+  maxZoom: 20
 --- !u!1001 &561998307
 PrefabInstance:
   m_ObjectHideFlags: 0

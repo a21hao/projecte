@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class CameraZoom : MonoBehaviour
+public class CameraZoomOrthografic : MonoBehaviour
 {
-
     //public GameObject player;
-    private CinemachineVirtualCamera freeLookCameraToZoom;
+    private CinemachineVirtualCamera vcam;
     public float zoomSpeed = 1f;
     public float zoomAcceleration = 2.5f;
     public float Zoom;
@@ -21,26 +20,28 @@ public class CameraZoom : MonoBehaviour
     private Vector3 dirZoom;
     private Vector3 vectorZoom;
     private Vector3 lastposition;
+    private float initialOthograifcSize;
 
     private void Awake()
     {
         // Suscríbete a las acciones del mouse scroll
         //Input.mouseScrollDelta += ZoomWithMouseScroll;
-        freeLookCameraToZoom = GetComponent<CinemachineVirtualCamera>();
+        vcam = GetComponent<CinemachineVirtualCamera>();
         currentMiddleRigRadius = 0;
         newMiddleRigRadius = 0;
-        dirZoom = transform.forward.normalized;
-        zoomInnerRange = - Zoom;
+        //dirZoom = transform.forward.normalized;
+        zoomInnerRange = -Zoom;
         zoomOuterRange = OutZoom;
-        initialPosition = transform.position;
+        //initialPosition = transform.position;
         lastposition = transform.position;
-        
+        initialOthograifcSize = vcam.m_Lens.OrthographicSize;
+
     }
 
     private void Update()
     {
         // Actualiza el nivel de zoom
-        if(NewControls.scrollValue.y != 0)
+        if (NewControls.scrollValue.y != 0)
         {
             ZoomWithMouseScroll(NewControls.scrollValue);
         }
@@ -50,7 +51,6 @@ public class CameraZoom : MonoBehaviour
     private void ZoomWithMouseScroll(Vector2 scrollDelta)
     {
         float zoomYAxis = scrollDelta.y;
-        Debug.Log(zoomYAxis);
         AdjustCameraZoomIndex(zoomYAxis);
     }
 
@@ -66,11 +66,12 @@ public class CameraZoom : MonoBehaviour
         freeLookCameraToZoom.m_Orbits[2].m_Height = -freeLookCameraToZoom.m_Orbits[1].m_Radius;*/
         //Vector3 vectorSum = transform.position.normalized * currentMiddleRigRadius;
         //transform.position = transform.position + vectorSum;
-        
-        transform.position =new Vector3(transform.position.x, (initialPosition + (-dirZoom * currentMiddleRigRadius)).y,transform.position.z + (initialPosition + (-dirZoom * currentMiddleRigRadius)).z - lastposition.z);
-        Debug.Log((initialPosition + (-dirZoom * currentMiddleRigRadius)).z - lastposition.z);
-        lastposition = (initialPosition + (-dirZoom * currentMiddleRigRadius));
-        
+
+        //transform.position = new Vector3(transform.position.x, (initialPosition + (-dirZoom * currentMiddleRigRadius)).y, transform.position.z + (initialPosition + (-dirZoom * currentMiddleRigRadius)).z - lastposition.z);
+        //Debug.Log((initialPosition + (-dirZoom * currentMiddleRigRadius)).z - lastposition.z);
+        //lastposition = (initialPosition + (-dirZoom * currentMiddleRigRadius));
+        vcam.m_Lens.OrthographicSize = initialOthograifcSize + currentMiddleRigRadius;
+
     }
 
     private void AdjustCameraZoomIndex(float zoomYAxis)

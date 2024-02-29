@@ -34,9 +34,6 @@ public class AAA : MonoBehaviour
         {
             item1.stock -= 1;
             money += item1.sellPrice;
-
-
-            Debug.Log(item1.stock);
             moneyUI.text = money.ToString();
 
         }

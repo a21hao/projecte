@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class CameraMapMoving : MonoBehaviour
 {
@@ -14,12 +15,17 @@ public class CameraMapMoving : MonoBehaviour
     private GameObject pointLeftDown;
     [SerializeField]
     private float velocityDragCamera;
+    private Vector3 directionCameraz;
+    private Vector3 directionCamerax;
+
+
+    static public CinemachineVirtualCamera mapVirtualCamera;
     
     //[SerializeField]
     //private float speedScroll;
     private float cameraAltitude;
     private MovementBehaviour mb;
-    
+
 
     /*void OnMouseDrag()
     {
@@ -30,10 +36,21 @@ public class CameraMapMoving : MonoBehaviour
         transform.position = objPosition;
 
     }*/
+
+    private void Awake()
+    {
+        mapVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+    }
     void Start()
     {
         cameraAltitude = transform.position.z;
         mb = GetComponent<MovementBehaviour>();
+        directionCameraz = transform.forward;
+        directionCameraz = new Vector3(directionCameraz.x, 0, directionCameraz.z);
+        directionCameraz.Normalize();
+        directionCamerax = transform.right;
+        directionCamerax = new Vector3(directionCamerax.x, 0, directionCamerax.z);
+        directionCamerax.Normalize();
     }
 
     // Update is called once per frame
@@ -58,14 +75,19 @@ public class CameraMapMoving : MonoBehaviour
          {
              mb.Move(new Vector3 (NewControls.mapMovementDirection.x,0,NewControls.mapMovementDirection.y));
          }*/
+        
+        
 
         if (Mouse.current.leftButton.isPressed)
         {
-            Vector3 currentMousePosition = new Vector3(Mouse.current.position.x.ReadValue() * -velocityDragCamera, cameraAltitude, Mouse.current.position.y.ReadValue() * -velocityDragCamera);
+            Vector3 currentMousePosition = new Vector3(Mouse.current.position.x.ReadValue() * -velocityDragCamera, -cameraAltitude, Mouse.current.position.y.ReadValue() * -velocityDragCamera);
             if (_lastMousePosition != Vector3.zero)
             {
-                Vector3 delta = currentMousePosition - _lastMousePosition;
-                transform.position += delta;
+                Vector3 delta = (currentMousePosition - _lastMousePosition);
+                Vector3 newPositionx = delta.x * directionCamerax;
+                Vector3 newPositionz = delta.z * directionCameraz;
+                Vector3 newPosition = newPositionx + newPositionz + new Vector3(0, delta.y, 0);
+                transform.position += newPosition;
                 CheckCameraIntoPoints();
 
             }
@@ -78,7 +100,8 @@ public class CameraMapMoving : MonoBehaviour
 
         if (NewControls.mapMovementDirection != Vector2.zero)
         {
-            mb.Move(new Vector3(NewControls.mapMovementDirection.x, 0, NewControls.mapMovementDirection.y));
+            mb.Move(NewControls.mapMovementDirection.x*directionCamerax);
+            mb.Move(NewControls.mapMovementDirection.y*directionCameraz);
             CheckCameraIntoPoints();
         }
         /*
@@ -105,5 +128,11 @@ public class CameraMapMoving : MonoBehaviour
         if (transform.position.x < pointLeftDown.transform.position.x)
             transform.position = new Vector3(pointLeftDown.transform.position.x, transform.position.y, transform.position.z);
     }
+
+    public static void ChangeTypeOfCameraToOrthografic(bool isOrthografic)
+    {
+        mapVirtualCamera.m_Lens.Orthographic = isOrthografic;
+    }
+
 }
 

@@ -11,9 +11,20 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     //public Camera camera;
 
     private CinemachineVirtualCamera cameraVendingMachine;
+
+    //[SerializeField]
+    //private float speedScroll;
+    private float cameraAltitude;
+    private MovementBehaviour mb;
+    private CinemachineVirtualCamera ortograficaCamera;
+    private CinemachineVirtualCamera perspectivaCamera;
+    public float duracionTransicion = 1.9f; // Duración de la transición en segundos
+
     void Start()
     {
         cameraVendingMachine = gameObject.transform.GetComponentInChildren<CinemachineVirtualCamera>();
+        ortograficaCamera = CameraMapMoving.mapVirtualCamera;
+        perspectivaCamera = cameraVendingMachine;
         //Debug.Log(cameraVendingMachine != null);
     }
 
@@ -23,8 +34,10 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
 
         if(NewControls.isExitVendingMachine)
         {
-            Debug.Log("Enter");
             cameraVendingMachine.Priority = 10;
+            //StartCoroutine(ChangeTypeOfCamerain2Seconds());
+            //StartCoroutine(TransicionSuave());
+            //TransicionSuave();
             //NewControls.isExitVendingMachine = false;
         }
 
@@ -65,5 +78,29 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         cameraVendingMachine.Priority = 12;
+       // CameraMapMoving.ChangeTypeOfCameraToOrthografic(false);
+        //StartCoroutine(TransicionSuave());
+    }
+
+    private IEnumerator TransicionSuave()
+    {
+        float tiempoPasado = 0f;
+        while (tiempoPasado < duracionTransicion)
+        {
+            float t = tiempoPasado / duracionTransicion;
+            ortograficaCamera.m_Lens.OrthographicSize = Mathf.Lerp(ortograficaCamera.m_Lens.OrthographicSize, 10f, t);
+            perspectivaCamera.m_Lens.FieldOfView = Mathf.Lerp(perspectivaCamera.m_Lens.FieldOfView, 60f, t);
+            //perspectivaCamera.m_Lens.Orthographic = true;
+            Debug.Log(ortograficaCamera.m_Lens.FieldOfView);
+            Debug.Log(perspectivaCamera.m_Lens.FieldOfView + "2");
+            tiempoPasado += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    private IEnumerator ChangeTypeOfCamerain2Seconds()
+    {
+        yield return new WaitForSeconds(2f);
+        CameraMapMoving.ChangeTypeOfCameraToOrthografic(true);
     }
 }

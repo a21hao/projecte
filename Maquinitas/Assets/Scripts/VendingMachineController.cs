@@ -18,13 +18,22 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     private MovementBehaviour mb;
     private CinemachineVirtualCamera ortograficaCamera;
     private CinemachineVirtualCamera perspectivaCamera;
-    public float duracionTransicion = 1.9f; // Duración de la transición en segundos
+    public float duracionTransicion = 1.9f;
+    public float duracionTransicionP = 5f;// Duración de la transición en segundos
+    private GameObject objetoCameraVendingMachine;
+    private Vector3 initialLocalPositionCameraVending;
+    [SerializeField]
+    private Vector3 positionCameraInPerspective;
+    [SerializeField]
+    private float FOVinPerspective;
 
     void Start()
     {
         cameraVendingMachine = gameObject.transform.GetComponentInChildren<CinemachineVirtualCamera>();
         ortograficaCamera = CameraMapMoving.mapVirtualCamera;
-        perspectivaCamera = cameraVendingMachine;
+ 
+        objetoCameraVendingMachine = transform.GetChild(0).gameObject;
+        initialLocalPositionCameraVending = objetoCameraVendingMachine.transform.localPosition;
         //Debug.Log(cameraVendingMachine != null);
     }
 
@@ -34,7 +43,9 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
 
         if(NewControls.isExitVendingMachine)
         {
-            cameraVendingMachine.Priority = 10;
+            StartCoroutine(ChangeToOrthograficinTwoSeconds());
+            
+
             //StartCoroutine(ChangeTypeOfCamerain2Seconds());
             //StartCoroutine(TransicionSuave());
             //TransicionSuave();
@@ -78,7 +89,8 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         cameraVendingMachine.Priority = 12;
-       // CameraMapMoving.ChangeTypeOfCameraToOrthografic(false);
+        StartCoroutine(ChangeToPerspectiveinTwoSeconds());
+        // CameraMapMoving.ChangeTypeOfCameraToOrthografic(false);
         //StartCoroutine(TransicionSuave());
     }
 
@@ -102,5 +114,39 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     {
         yield return new WaitForSeconds(2f);
         CameraMapMoving.ChangeTypeOfCameraToOrthografic(true);
+    }
+
+    private IEnumerator ChangeToPerspectiveinTwoSeconds()
+    {
+        yield return new WaitForSeconds(2f);
+        cameraVendingMachine.m_Lens.Orthographic = false;
+        cameraVendingMachine.m_Lens.FieldOfView = 10f;
+        float tiempoPasado = 0f;
+        Debug.Log(tiempoPasado);
+        while (tiempoPasado < duracionTransicionP)
+        {
+            float t = tiempoPasado / duracionTransicionP;
+            cameraVendingMachine.m_Lens.FieldOfView = Mathf.Lerp(10f, FOVinPerspective, t);
+            objetoCameraVendingMachine.transform.localPosition = new Vector3(Mathf.Lerp(initialLocalPositionCameraVending.x, positionCameraInPerspective.x, t), Mathf.Lerp(initialLocalPositionCameraVending.y, positionCameraInPerspective.y, t), Mathf.Lerp(initialLocalPositionCameraVending.z, positionCameraInPerspective.z, t));
+            Debug.Log(objetoCameraVendingMachine.transform.localPosition);
+            tiempoPasado += Time.deltaTime;           
+            yield return null;
+        }
+    }
+
+    private IEnumerator ChangeToOrthograficinTwoSeconds()
+    {
+        float tiempoPasado = 0f;
+        while (tiempoPasado < duracionTransicionP)
+        {
+            float t = tiempoPasado / duracionTransicionP;
+            cameraVendingMachine.m_Lens.FieldOfView = Mathf.Lerp(FOVinPerspective, 10f, t);
+            objetoCameraVendingMachine.transform.localPosition = new Vector3(Mathf.Lerp(positionCameraInPerspective.x, initialLocalPositionCameraVending.x, t), Mathf.Lerp(positionCameraInPerspective.y, initialLocalPositionCameraVending.y,t), Mathf.Lerp(positionCameraInPerspective.z, initialLocalPositionCameraVending.z, t));
+            Debug.Log(objetoCameraVendingMachine.transform.localPosition);
+            tiempoPasado += Time.deltaTime;
+            yield return null;
+        }
+        cameraVendingMachine.m_Lens.Orthographic = true;
+        cameraVendingMachine.Priority = 10;      
     }
 }

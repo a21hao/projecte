@@ -32,11 +32,12 @@ public class Inventario : MonoBehaviour
         {
             pointerData.position = Input.mousePosition;
             graphRay.Raycast(pointerData, raycastResults);
-            if(raycastResults.Count >0)
+            if (raycastResults.Count > 0)
             {
-                if (raycastResults[0].gameObject.GetComponent<Item>());
-                objetoSeleccionado = raycastResults[0].gameObject;
-                objetoSeleccionado.transform.SetParent(canvas);
+                if (raycastResults[0].gameObject.GetComponent<Item>()) { 
+                    objetoSeleccionado = raycastResults[0].gameObject;
+                    objetoSeleccionado.transform.SetParent(canvas);
+                }
             }
         }
 
@@ -60,8 +61,9 @@ public class Inventario : MonoBehaviour
                         objetoSeleccionado.transform.localPosition = Vector2.zero;
                     }
                 }
+                objetoSeleccionado = null;
             }
-            //objetoSeleccionado = null;
+            
         }
         raycastResults.Clear();
     }

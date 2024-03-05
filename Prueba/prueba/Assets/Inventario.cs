@@ -8,6 +8,22 @@ using UnityEngine.Experimental.Rendering;
 
 public class Inventario : MonoBehaviour
 {
+    //[System.Serializable]
+    //public struct ObjetoInventarioId
+    //{
+    //    public int id;
+    //    public int cantidad;
+
+    //    public ObjetoInventarioId(int id, int cantidad)
+    //    {
+    //        this.id = id;
+    //        this.cantidad = cantidad;
+    //    }
+    //}
+
+    //[SerializeField]
+    //ObjectDataBase data;
+    //[Header("Variables Drag nad Drop")]
 
     public GraphicRaycaster graphRay;
     public Transform canvas;
@@ -40,6 +56,7 @@ public class Inventario : MonoBehaviour
                 {
                     objetoSeleccionado = raycastResults[0].gameObject;
                     exParent = objetoSeleccionado.transform.parent.transform;
+                    exParent.GetComponent<Image>().fillCenter = false;
                     objetoSeleccionado.transform.SetParent(canvas);
                 }
             }
@@ -50,59 +67,88 @@ public class Inventario : MonoBehaviour
             objetoSeleccionado.GetComponent<RectTransform>().localPosition = CanvasScreen(Input.mousePosition);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (objetoSeleccionado != null)
         {
-            pointerData.position = Input.mousePosition;
-            raycastResults.Clear();
-            graphRay.Raycast(pointerData, raycastResults);
-
-            objetoSeleccionado.transform.SetParent(exParent);
-
-                if(raycastResults.Count > 0)
-            //    {
-            //        foreach(var resultado in raycastResults)
-            //        {
-            //            if (resultado.gameObject.tag == "Slot")
-            //            {
-            //                if (resultado.gameObject.GetComponentInChildren<Item>() == null)
-            //                {
-            //                    objetoSeleccionado.transform.SetParent(resultado.gameObject.transform);
-            //                    objetoSeleccionado.transform.localPosition = Vector2.zero;
-            //                    exParent = objetoSeleccionado.transform.parent.transform;
-            //                    Debug.Log("Libre");
-            //                }
-            //                else
-            //                {
-            //                    if(resultado.gameObject.GetComponentInChildren<Item>().ID == objetoSeleccionado.GetComponent<Item>().ID){
-            //                        Debug.Log("ID igual");
-            //                        resultado.gameObject.GetComponentInChildren<Item>().cantidad += objetoSeleccionado.GetComponent<Item>().cantidad;
-            //                        Destroy(objetoSeleccionado.gameObject);
-            //                    }
-            //                    else
-            //                    {
-            //                        Debug.Log("ID diferente");
-            //                        objetoSeleccionado.transform.SetParent(exParent.transform);
-            //                        objetoSeleccionado.transform.localPosition = Vector2.zero;
-            //                    }
-            //                }
-            //            }
-            //            else
-            //            {
-            //                Debug.Log("Fuera del inventario");
-            //                objetoSeleccionado.transform.SetParent(exParent.transform);
-            //                objetoSeleccionado.transform.localPosition = Vector2.zero;
-            //            }
-            //        }
-            //        objetoSeleccionado = null;
-            //    }   
-            //}
-            //raycastResults.Clear();
+            if (Input.GetMouseButtonUp(0))
+            {
+                pointerData.position = Input.mousePosition;
+                raycastResults.Clear();
+                graphRay.Raycast(pointerData, raycastResults);
+                objetoSeleccionado.transform.SetParent(exParent);
+                if (raycastResults.Count > 0)
+                {
+                    foreach (var resultado in raycastResults)
+                    {
+                        if (resultado.gameObject == objetoSeleccionado) continue;
+                        if (resultado.gameObject.CompareTag("Slot"))
+                        {
+                            if (resultado.gameObject.GetComponentInChildren<Item>() == null)
+                            {
+                                objetoSeleccionado.transform.SetParent(resultado.gameObject.transform);
+                                Debug.Log("Slot Libre");
+                            }
+                        }
+                        if (resultado.gameObject.CompareTag("Item"))
+                        {
+                            if (resultado.gameObject.GetComponentInChildren<Item>().ID == objetoSeleccionado.GetComponent<Item>().ID)
+                            {
+                                Debug.Log("ID igual");
+                                resultado.gameObject.GetComponentInChildren<Item>().cantidad += objetoSeleccionado.GetComponent<Item>().cantidad;
+                                Destroy(objetoSeleccionado.gameObject);
+                            }
+                            else
+                            {
+                                Debug.Log("ID diferente");
+                                objetoSeleccionado.transform.SetParent(resultado.gameObject.transform.parent);
+                                resultado.gameObject.transform.SetParent(exParent);
+                                resultado.gameObject.transform.localPosition = Vector3.zero;
+                            }
+                        }
+                    }
+                }
+                objetoSeleccionado.transform.localPosition = Vector3.zero;
+                objetoSeleccionado = null;
+                //    {
+                //        foreach(var resultado in raycastResults)
+                //        {
+                //            if (resultado.gameObject.tag == "Slot")
+                //            {
+                //                if (resultado.gameObject.GetComponentInChildren<Item>() == null)
+                //                {
+                //                    objetoSeleccionado.transform.SetParent(resultado.gameObject.transform);
+                //                    objetoSeleccionado.transform.localPosition = Vector2.zero;
+                //                    exParent = objetoSeleccionado.transform.parent.transform;
+                //                    Debug.Log("Libre");
+                //                }
+                //                else
+                //                {
+                //                    if(resultado.gameObject.GetComponentInChildren<Item>().ID == objetoSeleccionado.GetComponent<Item>().ID){
+                //                        Debug.Log("ID igual");
+                //                        resultado.gameObject.GetComponentInChildren<Item>().cantidad += objetoSeleccionado.GetComponent<Item>().cantidad;
+                //                        Destroy(objetoSeleccionado.gameObject);
+                //                    }
+                //                    else
+                //                    {
+                //                        Debug.Log("ID diferente");
+                //                        objetoSeleccionado.transform.SetParent(exParent.transform);
+                //                        objetoSeleccionado.transform.localPosition = Vector2.zero;
+                //                    }
+                //                }
+                //            }
+                //            else
+                //            {
+                //                Debug.Log("Fuera del inventario");
+                //                objetoSeleccionado.transform.SetParent(exParent.transform);
+                //                objetoSeleccionado.transform.localPosition = Vector2.zero;
+                //            }
+                //        }
+                //        objetoSeleccionado = null;
+                //    }   
+                //}
+            }
         }
+        raycastResults.Clear();
     }
-    //public void GetIndex(int index)
-    //{
-
-    //}
     public Vector2 CanvasScreen(Vector2 screenPos)
     {
         Vector2 viewportPoint = Camera.main.ScreenToViewportPoint(screenPos);

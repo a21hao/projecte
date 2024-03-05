@@ -9,6 +9,8 @@ public class Item : MonoBehaviour
     public int cantidad = 1;
     public TextMeshProUGUI textoCantidad;
     public int ID;
+    public bool acumulable;
+    //public ObjetoDatabase DB;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,10 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textoCantidad.text = cantidad.ToString();        
+        if (transform.parent.GetComponent<Image>() != null)
+        {
+            transform.parent.GetComponent<Image>().fillCenter = true;
+        }
+        //textoCantidad.text = cantidad.ToString();        
     }
 }

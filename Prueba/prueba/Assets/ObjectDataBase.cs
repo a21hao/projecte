@@ -12,15 +12,16 @@ public class ObjectDataBase : ScriptableObject
         public int ID;
         public Sprite icono;
         public Tipo tipo;
-        public bool acumulabre;
         public string descripcion;
+        public string Void;
     }
 
     public enum Tipo
     {
         bebida,
         comida,
-        ropa
+        ropa,
+        maquina
     }
 
     public ObjetoInventario[] baseDatos;

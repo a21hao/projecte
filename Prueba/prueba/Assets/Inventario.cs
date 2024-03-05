@@ -175,11 +175,30 @@ public class Inventario : MonoBehaviour
 
     public void AgregarItem(int id, int cantidad)
     {
-
+        for (int i = 0; i < inventario.Count; i++)
+        {
+            if (inventario[i].id == id)
+            {
+                inventario[i] = new ObjetoInventarioId(inventario[i].id, inventario[i].cantidad + cantidad);
+                InventoryUpdate();
+                return;
+            }
+        }
+        InventoryUpdate();
     }
     public void EliminarItem(int id, int cantidad)
     {
-
+        for (int i =0; i < inventario.Count; i++)
+        {
+            inventario[i] = new ObjetoInventarioId(inventario[i].id, inventario[i].cantidad - cantidad);
+            if (inventario[i].cantidad <= 0)
+            {
+                inventario.Remove(inventario[i]);
+                InventoryUpdate();
+                break;
+            }
+            InventoryUpdate();
+        }
     }
 
     List<Item> pool = new List<Item>();

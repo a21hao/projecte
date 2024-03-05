@@ -436,6 +436,7 @@ GameObject:
   - component: {fileID: 139770717}
   - component: {fileID: 139770716}
   - component: {fileID: 139770715}
+  - component: {fileID: 139770718}
   m_Layer: 5
   m_Name: Inventario
   m_TagString: Untagged
@@ -532,6 +533,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139770713}
   m_CullTransparentMesh: 1
+--- !u!114 &139770718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139770713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af819f1f4ed92c42be70f3380aa0955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 8b08c15d9df407d49915db350ec848a7, type: 2}
+  graphRay: {fileID: 71513216}
+  objetoSeleccionado: {fileID: 0}
+  exParent: {fileID: 0}
+  contenido: {fileID: 1448597418}
+  item: {fileID: 0}
+  inventario: []
 --- !u!224 &224764641 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2123154415388041057, guid: a096c89e3c345034d9f10dfd516af747, type: 3}
@@ -1829,6 +1849,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrefabobjetoAlmacen
       objectReference: {fileID: 0}
+    - target: {fileID: 8161116053507425234, guid: 0093d5b367015944086d0e0e3c14f916, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161116053507425234, guid: 0093d5b367015944086d0e0e3c14f916, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c563f228f4dbfe4a92b74e2ee1be1c0, type: 3}
     - target: {fileID: 8263834730059548144, guid: 0093d5b367015944086d0e0e3c14f916, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2703,15 +2731,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448597417}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7af819f1f4ed92c42be70f3380aa0955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 8b08c15d9df407d49915db350ec848a7, type: 2}
   graphRay: {fileID: 71513216}
-  canvas: {fileID: 71513219}
   objetoSeleccionado: {fileID: 0}
   exParent: {fileID: 0}
+  contenido: {fileID: 1448597418}
+  item: {fileID: 0}
+  inventario: []
 --- !u!224 &1477540593 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2123154415388041057, guid: a096c89e3c345034d9f10dfd516af747, type: 3}

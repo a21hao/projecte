@@ -124,43 +124,6 @@ public class Inventario : MonoBehaviour
                 }
                 objetoSeleccionado.transform.localPosition = Vector3.zero;
                 objetoSeleccionado = null;
-                //    {
-                //        foreach(var resultado in raycastResults)
-                //        {
-                //            if (resultado.gameObject.tag == "Slot")
-                //            {
-                //                if (resultado.gameObject.GetComponentInChildren<Item>() == null)
-                //                {
-                //                    objetoSeleccionado.transform.SetParent(resultado.gameObject.transform);
-                //                    objetoSeleccionado.transform.localPosition = Vector2.zero;
-                //                    exParent = objetoSeleccionado.transform.parent.transform;
-                //                    Debug.Log("Libre");
-                //                }
-                //                else
-                //                {
-                //                    if(resultado.gameObject.GetComponentInChildren<Item>().ID == objetoSeleccionado.GetComponent<Item>().ID){
-                //                        Debug.Log("ID igual");
-                //                        resultado.gameObject.GetComponentInChildren<Item>().cantidad += objetoSeleccionado.GetComponent<Item>().cantidad;
-                //                        Destroy(objetoSeleccionado.gameObject);
-                //                    }
-                //                    else
-                //                    {
-                //                        Debug.Log("ID diferente");
-                //                        objetoSeleccionado.transform.SetParent(exParent.transform);
-                //                        objetoSeleccionado.transform.localPosition = Vector2.zero;
-                //                    }
-                //                }
-                //            }
-                //            else
-                //            {
-                //                Debug.Log("Fuera del inventario");
-                //                objetoSeleccionado.transform.SetParent(exParent.transform);
-                //                objetoSeleccionado.transform.localPosition = Vector2.zero;
-                //            }
-                //        }
-                //        objetoSeleccionado = null;
-                //    }   
-                //}
             }
         }
         raycastResults.Clear();
@@ -214,14 +177,14 @@ public class Inventario : MonoBehaviour
                 pool[i].GetComponent<Image>().sprite = data.baseDatos[o.id].icono;
                 pool[i].GetComponent<RectTransform>().localPosition = Vector3.zero;
                 pool[i].cantidad = o.cantidad;
-                //pool[i].Boton.onClick.RemoveAllListeners();
-                //pool[i].Boton.onClick.AddListener(() => gameObject.SendMessage(data.baseDatos[o.id].Void, SendMessageOptions.DontRequireReceiver));
+                pool[i].Boton.onClick.RemoveAllListeners();
+                pool[i].Boton.onClick.AddListener(() => gameObject.SendMessage(data.baseDatos[o.id].Void, SendMessageOptions.DontRequireReceiver));
                 pool[i].gameObject.SetActive(true);
             }
             else
             {
                 pool[i].gameObject.SetActive(false);
-                //pool[i]._descripcion.SetActive(false);
+                pool[i]._descripcion.SetActive(false);
                 pool[i].gameObject.transform.parent.GetComponent<Image>().fillCenter = false;
             }
         }
@@ -251,8 +214,8 @@ public class Inventario : MonoBehaviour
                 pool[i].GetComponent<RectTransform>().localPosition = Vector3.zero;
                 pool[i].GetComponent<Image>().sprite = data.baseDatos[o.id].icono;
                 pool[i].cantidad = o.cantidad;
-                //pool[i].Boton.onClick.RemoveAllListeners();
-                //pool[i].Boton.onClick.AddListener(() => gameObject.SendMessage(data.baseDatos[o.id].Void, SendMessageOptions.DontRequireReceiver));
+                pool[i].Boton.onClick.RemoveAllListeners();
+                pool[i].Boton.onClick.AddListener(() => gameObject.SendMessage(data.baseDatos[o.id].Void, SendMessageOptions.DontRequireReceiver));
                 pool[i].gameObject.SetActive(true);
             }
         }

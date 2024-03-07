@@ -12,7 +12,7 @@ public class Objeto : MonoBehaviour
     [SerializeField] TextMeshProUGUI precioObjeto;
     [SerializeField] TextMeshProUGUI descripcionObjeto;
 
-    private PlantillaObjetos.Mercancia datosObjeto; // Objeto asociado a este script
+    private PlantillaObjetos datosObjeto; // Objeto asociado a este script
     private Inventario inventario;
 
     private void Awake()
@@ -20,7 +20,7 @@ public class Objeto : MonoBehaviour
         inventario = FindObjectOfType<Inventario>();
     }
 
-    public void CrearObjeto (PlantillaObjetos.Mercancia datos)
+    public void CrearObjeto (PlantillaObjetos datos)
     {
         datosObjeto = datos;
         idObjeto = datosObjeto.id;

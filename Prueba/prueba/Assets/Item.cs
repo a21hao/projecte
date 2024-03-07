@@ -19,7 +19,7 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
     {
 
     }
-
+    s
     void Update()
     {
         textoCantidad.text = cantidad.ToString();

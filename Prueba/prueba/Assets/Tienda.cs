@@ -1,43 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tienda : MonoBehaviour
 {
     [SerializeField] GameObject prefabObjetoTienda;
+    [SerializeField] Transform contenidoScrollView;
     [SerializeField] List<ObjectBase> listaObjetosTienda;
 
-    // El Dictionary será generado a partir de los ScriptableObjects en la lista
-    private Dictionary<int, ObjectBase> diccionarioTienda = new Dictionary<int, ObjectBase>();
+    private Dictionary<int, GameObject> diccionarioTienda = new Dictionary<int, GameObject>();
 
     private void Awake()
     {
-        // Llena el Dictionary con los ScriptableObjects de la lista
-        //for (int i = 0; i < listaObjetosTienda.Count; i++)
-        //{
-        //    if (!diccionarioTienda.ContainsKey(listaObjetosTienda[i].id))
-        //    {
-        //        diccionarioTienda.Add(listaObjetosTienda[i].id, listaObjetosTienda[i]);
-        //    }
-        //    else
-        //    {
-        //        Debug.LogWarning("Se encontró un duplicado de ID en la lista de objetos de tienda: " + listaObjetosTienda[i].id);
-        //    }
-        //}
+        InstanciarObjetosTienda();
     }
 
-    private void Start()
+    private void InstanciarObjetosTienda()
     {
-        //// Itera sobre el diccionario de objetos de la tienda y crea un objeto para cada uno
-        //foreach (KeyValuePair<int, ObjectBase> par in diccionarioTienda)
-        //{
-        //    // Instancia un nuevo objeto de tienda
-        //    GameObject tienda = Instantiate(prefabObjetoTienda, Vector2.zero, Quaternion.identity, transform);
-        //    // Obtiene el componente Objeto del objeto de tienda instanciado
-        //    Objeto objetoComponente = tienda.GetComponent<Objeto>();
+        foreach (ObjectBase objeto in listaObjetosTienda)
+        {
+            GameObject objetoTienda = Instantiate(prefabObjetoTienda, contenidoScrollView);
+            // Configura el objetoTienda con los datos del objeto ScriptableObject
+            ConfigurarObjetoTienda(objetoTienda, objeto);
 
-        //    // Crea el objeto utilizando los datos de la plantilla correspondiente
-        //    objetoComponente.CrearObjeto(par.Value);
-        //}
+            // Agrega el objetoTienda al diccionario utilizando el ID del objeto como clave
+            diccionarioTienda.Add(objeto.ID, objetoTienda);
+        }
+    }
+
+    private void ConfigurarObjetoTienda(GameObject objetoTienda, ObjectBase objeto)
+    {
+        // Aquí configura el objetoTienda con los datos del objeto
+        // Por ejemplo, establece el nombre, sprite, descripción, etc.
+        // Supongamos que tienes un script adjunto al prefab llamado "ObjetoTienda"
+        ObjetoTienda scriptObjetoTienda = objetoTienda.GetComponent<ObjetoTienda>();
+        scriptObjetoTienda.SetNombre(objeto.nombre);
+        scriptObjetoTienda.SetSprite(objeto.sprite);
+        scriptObjetoTienda.SetDescripcion(objeto.descripcion);
+        // Configura otros campos según sea necesario
+    }
+
+    // Método para acceder al GameObject asociado a un ID específico
+    public GameObject ObtenerObjetoPorID(int id)
+    {
+        GameObject objetoTienda;
+        diccionarioTienda.TryGetValue(id, out objetoTienda);
+        return objetoTienda;
     }
 }

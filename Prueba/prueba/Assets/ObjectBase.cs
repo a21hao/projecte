@@ -7,9 +7,10 @@ public class ObjectBase : ScriptableObject
 {
     public string nombre;
     public int ID;
-    public Sprite icono;
+    public Sprite sprite;
     public Tipo tipo;
     public string descripcion;
+    public string precio;
 
     public enum Tipo
     {

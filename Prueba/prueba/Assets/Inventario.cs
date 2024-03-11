@@ -76,10 +76,10 @@ public class Inventario : MonoBehaviour
                         }
                         if (resultado.gameObject.CompareTag("Item"))
                         {
-                            if (resultado.gameObject.GetComponentInChildren<Item>().ID == objetoSeleccionado.GetComponent<Item>().ID)
+                            if (resultado.gameObject.GetComponentInChildren<Item>().GetID() == objetoSeleccionado.GetComponent<Item>().GetID())
                             {
                                 Debug.Log("ID igual");
-                                resultado.gameObject.GetComponentInChildren<Item>().cantidad += objetoSeleccionado.GetComponent<Item>().cantidad;
+                                resultado.gameObject.GetComponentInChildren<Item>().SetCantidad(resultado.gameObject.GetComponentInChildren<Item>().GetCantidad() + objetoSeleccionado.GetComponent<Item>().GetCantidad());
                                 Destroy(objetoSeleccionado.gameObject);
                             }
                             else

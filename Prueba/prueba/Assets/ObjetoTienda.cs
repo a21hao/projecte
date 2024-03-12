@@ -22,8 +22,8 @@ public class ObjetoTienda : MonoBehaviour
     }
 
     // Método para configurar la descripción del objeto
-    public void SetDescripcion(string descripcion)
+    public void SetPrecio(string precio)
     {
-        precioObjeto.text = descripcion;
+        precioObjeto.text = precio;
     }
 }

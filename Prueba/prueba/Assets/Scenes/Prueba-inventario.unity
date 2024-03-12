@@ -718,6 +718,8 @@ MonoBehaviour:
   contenidoScrollView: {fileID: 186317939}
   listaObjetosTienda:
   - {fileID: 11400000, guid: 80f78433afdd2d24a9be1cab6d9e75f4, type: 2}
+  - {fileID: 11400000, guid: db188e2eadf339349b208d076a9260e2, type: 2}
+  - {fileID: 11400000, guid: 9334906ad9d033d43b154dd1384dcbaa, type: 2}
 --- !u!224 &224764641 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2123154415388041057, guid: a096c89e3c345034d9f10dfd516af747, type: 3}

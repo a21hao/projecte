@@ -17,6 +17,7 @@ public class ObjectBase : ScriptableObject
         bebida,
         comida,
         ropa,
-        maquina
+        maquina,
+        juguete
     }
 }

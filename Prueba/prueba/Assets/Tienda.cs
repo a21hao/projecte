@@ -37,7 +37,7 @@ public class Tienda : MonoBehaviour
         ObjetoTienda scriptObjetoTienda = objetoTienda.GetComponent<ObjetoTienda>();
         scriptObjetoTienda.SetNombre(objeto.nombre);
         scriptObjetoTienda.SetSprite(objeto.sprite);
-        scriptObjetoTienda.SetDescripcion(objeto.descripcion);
+        scriptObjetoTienda.SetPrecio(objeto.precio);
         // Configura otros campos según sea necesario
     }
 

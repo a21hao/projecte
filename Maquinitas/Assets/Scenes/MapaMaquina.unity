@@ -513,6 +513,59 @@ MonoBehaviour:
   zoomAcceleration: 3.5
   Zoom: 4
   OutZoom: 0
+--- !u!1 &518992022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 518992024}
+  - component: {fileID: 518992023}
+  m_Layer: 0
+  m_Name: VendingZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &518992023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518992022}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 26.922203, y: 1.2010506, z: 7.1270027}
+  m_Center: {x: 0.25940514, y: 0.10052532, z: -0.012542725}
+--- !u!4 &518992024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518992022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.07, y: 0.45, z: -9.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &561998307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -723,7 +776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1, y: 4}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691533189
@@ -746,7 +799,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'Vending
+
+    Machine'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -841,7 +896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &732725516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1048,31 +1103,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.009
+      value: 3.0089676
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.13999975
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.126
+      value: -2.1255
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.01807827
+      value: 0.018381882
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0085425405
+      value: -0.008846076
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70687574
+      value: 0.70687205
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7070551
+      value: 0.7070473
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1084,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8003338250478720633, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 89.999
+      value: 89.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1196,8 +1251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 666, y: 106}
+  m_SizeDelta: {x: 150.4385, y: 148.0504}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1004835072
 MonoBehaviour:
@@ -2506,3 +2561,4 @@ SceneRoots:
   - {fileID: 1688241258}
   - {fileID: 1920448403}
   - {fileID: 690007213}
+  - {fileID: 518992024}

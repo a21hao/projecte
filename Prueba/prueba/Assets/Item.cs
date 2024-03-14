@@ -22,7 +22,7 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
     
     void Update()
     {
-        textoCantidad.text = cantidad.ToString();
+        //textoCantidad.text = cantidad.ToString();
     }
     public int GetID()
     {

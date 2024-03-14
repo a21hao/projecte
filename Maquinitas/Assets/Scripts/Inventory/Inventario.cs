@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
 public class Inventario : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI textoDinero;
-    [SerializeField] GameObject objetoDeTienda;
-    private int numeroMaximoObjeto = 9999;
-    private Dictionary<PlantillaObjetos, int> inventario = new Dictionary<PlantillaObjetos, int>();
-
     public GraphicRaycaster graphRay;
     public static Transform canvas;
     public GameObject objetoSeleccionado;
@@ -33,15 +27,14 @@ public class Inventario : MonoBehaviour
 
     private void Update()
     {
-        ActualizarUI();
         Arrastrar();
     }
 
     void Arrastrar()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Input.GetMouseButtonDown(0))
         {
-            pointerData.position = Mouse.current.position.ReadValue();
+            pointerData.position = Input.mousePosition;
             graphRay.Raycast(pointerData, raycastResults);
             if (raycastResults.Count > 0)
             {
@@ -62,9 +55,9 @@ public class Inventario : MonoBehaviour
 
         if (objetoSeleccionado != null)
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (Input.GetMouseButtonUp(0))
             {
-                pointerData.position = Mouse.current.position.ReadValue();
+                pointerData.position = Input.mousePosition;
                 raycastResults.Clear();
                 graphRay.Raycast(pointerData, raycastResults);
                 objetoSeleccionado.transform.SetParent(exParent);
@@ -83,10 +76,10 @@ public class Inventario : MonoBehaviour
                         }
                         if (resultado.gameObject.CompareTag("Item"))
                         {
-                            if (resultado.gameObject.GetComponentInChildren<Item>().ID == objetoSeleccionado.GetComponent<Item>().ID)
+                            if (resultado.gameObject.GetComponentInChildren<Item>().GetID() == objetoSeleccionado.GetComponent<Item>().GetID())
                             {
                                 Debug.Log("ID igual");
-                                resultado.gameObject.GetComponentInChildren<Item>().cantidad += objetoSeleccionado.GetComponent<Item>().cantidad;
+                                resultado.gameObject.GetComponentInChildren<Item>().SetCantidad(resultado.gameObject.GetComponentInChildren<Item>().GetCantidad() + objetoSeleccionado.GetComponent<Item>().GetCantidad());
                                 Destroy(objetoSeleccionado.gameObject);
                             }
                             else
@@ -111,40 +104,5 @@ public class Inventario : MonoBehaviour
         Vector2 canvasSize = canvas.GetComponent<RectTransform>().sizeDelta;
 
         return (new Vector2(viewportPoint.x * canvasSize.x, viewportPoint.y * canvasSize.y) - (canvasSize / 2));
-    }
-
-    public void IncluirObjeto(PlantillaObjetos datos)
-    {
-        if (MoneyManager.DineroTotal >= datos.precioObjeto && !inventario.ContainsKey(datos) && numeroMaximoObjeto > 0)
-        {
-            MoneyManager.DecrementarDinero(datos.precioObjeto);
-            numeroMaximoObjeto--;
-
-            // Instancia el objeto utilizando la prefab
-            GameObject objetoInstanciado = Instantiate(objetoDeTienda, Vector3.zero, Quaternion.identity, GameObject.FindGameObjectWithTag("ObjetoComprable").transform);
-            // Obtiene el componente Image del nuevo objeto
-            Image imagen = objetoInstanciado.GetComponent<Image>();
-            // Asigna la imagen recibida al componente Image
-            imagen.sprite = datos.imagenObjeto;
-            // Asigna los datos del objeto a la instancia
-            Objeto scriptObjeto = objetoInstanciado.GetComponent<Objeto>();
-            scriptObjeto.CrearObjeto(datos);
-
-            // Agrega el objeto al inventario con cantidad 1
-            inventario.Add(datos, 1);
-            Debug.Log("Se agregó el objeto al inventario: " + datos.nameObjeto);
-
-            // Actualiza la UI
-            ActualizarUI();
-        }
-        else
-        {
-            Debug.Log("No se puede agregar el objeto al inventario.");
-        }
-    }
-
-    private void ActualizarUI()
-    {
-        textoDinero.text = MoneyManager.DineroTotal.ToString();
     }
 }

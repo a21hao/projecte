@@ -9,7 +9,7 @@ public class TabletAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tablet = GetComponentInChildren<Animation>();
+        tablet = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame

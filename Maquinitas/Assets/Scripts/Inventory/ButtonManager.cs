@@ -12,13 +12,28 @@ public class ButtonManager : MonoBehaviour
     public GameObject upgrades;
     public GameObject apagar;
 
-    // Método para activar o desactivar un GameObject según su estado actual
     void ToggleGameObject(GameObject obj)
     {
         obj.SetActive(!obj.activeSelf);
+        PlayAnimation(obj.activeSelf, obj);
     }
 
-    // Funciones que activan los GameObjects si están desactivados y los desactivan si están activados
+    void PlayAnimation(bool isActive, GameObject obj)
+    {
+        Animator animator = obj.GetComponentInChildren<Animator>();
+        if (animator != null)
+        {
+            if (isActive)
+            {
+                animator.Play("Encender");
+            }
+            else
+            {
+                animator.Play("Apagar");
+            }
+        }
+    }
+
     public void ToggleAmazing()
     {
         ToggleGameObject(amazing);
@@ -52,5 +67,29 @@ public class ButtonManager : MonoBehaviour
     public void ToggleApagar()
     {
         ToggleGameObject(apagar);
+    }
+
+    void PlayAnimationToAll(bool isActive)
+    {
+        PlayAnimation(isActive, amazing);
+        PlayAnimation(isActive, almacen);
+        PlayAnimation(isActive, mapa);
+        PlayAnimation(isActive, perfil);
+        PlayAnimation(isActive, ajustes);
+        PlayAnimation(isActive, upgrades);
+        PlayAnimation(isActive, apagar);
+    }
+
+    public void ToggleAll()
+    {
+        amazing.SetActive(!amazing.activeSelf);
+        almacen.SetActive(!almacen.activeSelf);
+        mapa.SetActive(!mapa.activeSelf);
+        perfil.SetActive(!perfil.activeSelf);
+        ajustes.SetActive(!ajustes.activeSelf);
+        upgrades.SetActive(!upgrades.activeSelf);
+        apagar.SetActive(!apagar.activeSelf);
+
+        PlayAnimationToAll(amazing.activeSelf);
     }
 }

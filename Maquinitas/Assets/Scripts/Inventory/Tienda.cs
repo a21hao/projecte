@@ -9,7 +9,7 @@ public class Tienda : MonoBehaviour
     [SerializeField] Transform contenidoScrollView;
     [SerializeField] List<ObjectBase> listaObjetosTienda;
 
-    private Dictionary<int, GameObject> diccionarioTienda = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> dicionarioTienda = new Dictionary<int, GameObject>();
 
     private void Awake()
     {
@@ -25,27 +25,24 @@ public class Tienda : MonoBehaviour
             ConfigurarObjetoTienda(objetoTienda, objeto);
 
             // Agrega el objetoTienda al diccionario utilizando el ID del objeto como clave
-            diccionarioTienda.Add(objeto.ID, objetoTienda);
+            dicionarioTienda.Add(objeto.ID, objetoTienda);
         }
     }
 
     private void ConfigurarObjetoTienda(GameObject objetoTienda, ObjectBase objeto)
     {
-        // Aquí configura el objetoTienda con los datos del objeto
-        // Por ejemplo, establece el nombre, sprite, descripción, etc.
-        // Supongamos que tienes un script adjunto al prefab llamado "ObjetoTienda"
         ObjetoTienda scriptObjetoTienda = objetoTienda.GetComponent<ObjetoTienda>();
         scriptObjetoTienda.SetNombre(objeto.nombre);
         scriptObjetoTienda.SetSprite(objeto.sprite);
         scriptObjetoTienda.SetPrecio(objeto.precio);
-        // Configura otros campos según sea necesario
+        scriptObjetoTienda.SetDescripcion(objeto.descripcion);
     }
 
     // Método para acceder al GameObject asociado a un ID específico
     public GameObject ObtenerObjetoPorID(int id)
     {
         GameObject objetoTienda;
-        diccionarioTienda.TryGetValue(id, out objetoTienda);
+        dicionarioTienda.TryGetValue(id, out objetoTienda);
         return objetoTienda;
     }
 }

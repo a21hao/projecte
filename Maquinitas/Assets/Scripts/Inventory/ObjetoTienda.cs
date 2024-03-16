@@ -8,6 +8,7 @@ public class ObjetoTienda : MonoBehaviour
     public TextMeshProUGUI nombreText;
     public Image spriteImage;
     public TextMeshProUGUI precioObjeto;
+    public TextMeshProUGUI descripcionObjeto;
 
     // Método para configurar el nombre del objeto
     public void SetNombre(string nombre)
@@ -25,5 +26,9 @@ public class ObjetoTienda : MonoBehaviour
     public void SetPrecio(string precio)
     {
         precioObjeto.text = precio;
+    }
+    public void SetDescripcion(string descripcion)
+    {
+        descripcionObjeto.text = descripcion;
     }
 }

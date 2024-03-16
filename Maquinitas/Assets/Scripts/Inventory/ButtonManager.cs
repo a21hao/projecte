@@ -10,29 +10,14 @@ public class ButtonManager : MonoBehaviour
     public GameObject perfil;
     public GameObject ajustes;
     public GameObject upgrades;
-    public GameObject apagar;
+    public GameObject tablet;
+
 
     void ToggleGameObject(GameObject obj)
     {
         obj.SetActive(!obj.activeSelf);
-        PlayAnimation(obj.activeSelf, obj);
     }
 
-    void PlayAnimation(bool isActive, GameObject obj)
-    {
-        Animator animator = obj.GetComponentInChildren<Animator>();
-        if (animator != null)
-        {
-            if (isActive)
-            {
-                animator.Play("Encender");
-            }
-            else
-            {
-                animator.Play("Apagar");
-            }
-        }
-    }
 
     public void ToggleAmazing()
     {
@@ -66,19 +51,9 @@ public class ButtonManager : MonoBehaviour
 
     public void ToggleApagar()
     {
-        ToggleGameObject(apagar);
+        ToggleGameObject(tablet);
     }
 
-    void PlayAnimationToAll(bool isActive)
-    {
-        PlayAnimation(isActive, amazing);
-        PlayAnimation(isActive, almacen);
-        PlayAnimation(isActive, mapa);
-        PlayAnimation(isActive, perfil);
-        PlayAnimation(isActive, ajustes);
-        PlayAnimation(isActive, upgrades);
-        PlayAnimation(isActive, apagar);
-    }
 
     public void ToggleAll()
     {
@@ -88,8 +63,7 @@ public class ButtonManager : MonoBehaviour
         perfil.SetActive(!perfil.activeSelf);
         ajustes.SetActive(!ajustes.activeSelf);
         upgrades.SetActive(!upgrades.activeSelf);
-        apagar.SetActive(!apagar.activeSelf);
+        tablet.SetActive(!tablet.activeSelf);
 
-        PlayAnimationToAll(amazing.activeSelf);
     }
 }

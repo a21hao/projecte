@@ -6,11 +6,13 @@ using UnityEngine;
 public class ObjectBase : ScriptableObject
 {
     public string nombre;
-    public int ID;
     public Sprite sprite;
     public Tipo tipo;
     public string descripcion;
     public string precio;
+    private static int nextID = 1; 
+
+    [HideInInspector] public int ID;
 
     public enum Tipo
     {
@@ -19,5 +21,10 @@ public class ObjectBase : ScriptableObject
         ropa,
         maquina,
         juguete
+    }
+    private void OnEnable()
+    {
+        ID = nextID;
+        nextID++;
     }
 }

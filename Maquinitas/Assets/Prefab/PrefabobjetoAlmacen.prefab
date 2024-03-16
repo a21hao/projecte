@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8625961047356582369}
   - component: {fileID: 215198311183537341}
   m_Layer: 5
-  m_Name: PrefabobjetoAlmacen
+  m_Name: PrefabObjetoAlmacen
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

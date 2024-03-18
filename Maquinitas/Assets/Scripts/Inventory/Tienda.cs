@@ -10,11 +10,18 @@ public class Tienda : MonoBehaviour
     [SerializeField] Transform contenidoScrollView;
     [SerializeField] List<ObjectBase> listaObjetosTienda;
 
+    private MoneyManager moneyManager;
+
     private Dictionary<int, GameObject> dicionarioTienda = new Dictionary<int, GameObject>();
 
     private void Awake()
     {
         InstanciarObjetosTienda();
+    }
+
+    private void Start()
+    {
+        moneyManager.ActualizarTextoDinero();
     }
 
     private void InstanciarObjetosTienda()

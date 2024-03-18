@@ -6,12 +6,12 @@ public class VentanaCompra : MonoBehaviour
 {
     public ObjetoTienda objetoTienda;
 
-    [SerializeField] TextMeshProUGUI nombreText;
-    [SerializeField] Image spriteImage;
-    [SerializeField] TextMeshProUGUI precioText;
-    [SerializeField] TextMeshProUGUI descripcionText;
-    [SerializeField] Slider cantidadSlider;
-    [SerializeField] TextMeshProUGUI cantidadTexto;
+    [SerializeField] private TextMeshProUGUI nombreText;
+    [SerializeField] private Image spriteImage;
+    [SerializeField] private TextMeshProUGUI precioText;
+    [SerializeField] private TextMeshProUGUI descripcionText;
+    [SerializeField] private Slider cantidadSlider;
+    [SerializeField] private TextMeshProUGUI cantidadTexto;
 
     private void Start()
     {

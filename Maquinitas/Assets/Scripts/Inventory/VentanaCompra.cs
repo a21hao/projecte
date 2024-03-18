@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class VentanaCompra : MonoBehaviour
 {
+    public ObjetoTienda objetoTienda;
+
     [SerializeField] TextMeshProUGUI nombreText;
     [SerializeField] Image spriteImage;
     [SerializeField] TextMeshProUGUI precioText;
@@ -11,27 +13,15 @@ public class VentanaCompra : MonoBehaviour
     [SerializeField] Slider cantidadSlider;
     [SerializeField] TextMeshProUGUI cantidadTexto;
 
-    private Tienda tienda; // Referencia a la tienda
-
-    // Configurar la ventana de compra con la información del objeto seleccionado
-    public void ConfigurarVentana(string nombre, Sprite sprite, string precio, string descripcion)
+    private void Start()
     {
-        nombreText.text = nombre;
-        spriteImage.sprite = sprite;
-        precioText.text = precio;
-        descripcionText.text = descripcion;
-    }
-
-    public void ConfigurarVentanaDesdeObjetoTienda(string nombre, Sprite sprite, string precio, string descripcion, Tienda tienda)
-    {
-        ConfigurarVentana(nombre, sprite, precio, descripcion); // Configurar la ventana con la información del objeto
-        SetTienda(tienda); // Establecer una referencia a la tienda
-    }
-
-    // Establecer una referencia a la tienda
-    public void SetTienda(Tienda tienda)
-    {
-        this.tienda = tienda;
+        if (objetoTienda != null)
+        {
+            nombreText.text = objetoTienda.nombreText;
+            spriteImage.sprite = objetoTienda.spriteImage;
+            precioText.text = objetoTienda.precioObjeto;
+            descripcionText.text = objetoTienda.descripcionObjeto;
+        }
     }
 
     // Actualizar el texto de cantidad según el valor del slider

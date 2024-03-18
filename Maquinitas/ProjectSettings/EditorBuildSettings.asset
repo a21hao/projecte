@@ -8,5 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prueba-inventario.unity
     guid: 9d9e121767be2974690e0e60040e1b53
+  - enabled: 1
+    path: Assets/Scenes/MenuPrincipal.unity
+    guid: 7eaa5dd73dd690549861f0445783309e
+  - enabled: 1
+    path: Assets/Scenes/MapaMaquina.unity
+    guid: 403135c4eddbce948b5e051b7c5430a9
+  - enabled: 1
+    path: Assets/Scenes/time.unity
+    guid: 3573cdee245796f438192f18ff75be34
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b9d3d25a1038972499cc69c5423cf372, type: 2}

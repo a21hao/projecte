@@ -1322,6 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1140b046540ec41bba0154ca35deb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objetoTienda: {fileID: 8620730770044528589, guid: d4cbc13fdfa39ba449582f54b0b016c6, type: 3}
   nombreText: {fileID: 2329662484057745571}
   spriteImage: {fileID: 3265647027141518534}
   precioText: {fileID: 1937786109922381792}

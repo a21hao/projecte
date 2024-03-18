@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8161116053507425234}
   - component: {fileID: 8625961047356582369}
   - component: {fileID: 8620730770044528589}
+  - component: {fileID: 4063816723986869067}
   m_Layer: 5
   m_Name: PrefabObjetoTienda
   m_TagString: Untagged
@@ -123,10 +124,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8620730770044528589}
-        m_TargetAssemblyTypeName: ObjetoTienda, Assembly-CSharp
-        m_MethodName: AbrirVentanaCompra
-        m_Mode: 3
+      - m_Target: {fileID: 4063816723986869067}
+        m_TargetAssemblyTypeName: UIObjetoTienda, Assembly-CSharp
+        m_MethodName: MostrarVentanaCompra
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -147,12 +148,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76b00ee4fe821f42b0a30942dc106ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreText: {fileID: 70368381074086685}
-  spriteImage: {fileID: 8161116053507425234}
-  precioObjeto: {fileID: 7928881142348530552}
-  descripcionObjeto: {fileID: 0}
-  idText: {fileID: 0}
-  tipoText: {fileID: 0}
+  nombreText: 
+  spriteImage: {fileID: 0}
+  precioObjeto: 
+  descripcionObjeto: 
+  id: 0
+  tipo: 
+--- !u!114 &4063816723986869067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302704229892403269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611429e1b872f34439acf2e0b35acdd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objetoTienda: {fileID: 8620730770044528589}
+  ventanaCompraPrefab: {fileID: 7026538205682411938, guid: c8ae9c3e92b5a3a4aa2291defae3f64f, type: 3}
+  nombreTextUI: {fileID: 70368381074086685}
+  spriteImageUI: {fileID: 8161116053507425234}
+  precioTextUI: {fileID: 7928881142348530552}
 --- !u!1 &890912144774481226
 GameObject:
   m_ObjectHideFlags: 0

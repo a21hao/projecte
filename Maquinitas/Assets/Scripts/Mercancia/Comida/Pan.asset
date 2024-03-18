@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
-  m_Name: Patata
+  m_Name: Pan
   m_EditorClassIdentifier: 
-  nombre: Patata
   ID: 1
-  sprite: {fileID: 21300000, guid: 8b2b128a5a8f5fa4cb8c6c0bf2a11885, type: 3}
+  nombre: Pan
+  sprite: {fileID: 21300000, guid: 9c563f228f4dbfe4a92b74e2ee1be1c0, type: 3}
   tipo: 1
-  descripcion: "Bolsa de patatas peque\xF1a"
-  precio: 20
+  descripcion: Pan normal
+  precio: 1

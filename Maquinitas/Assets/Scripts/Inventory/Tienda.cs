@@ -1,43 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tienda : MonoBehaviour
 {
     [SerializeField] GameObject prefabObjetoTienda;
-    [SerializeField] List<PlantillaObjetos.Mercancia> listaObjetosTienda; // Lista de ScriptableObjects
+    [SerializeField] Transform contenidoScrollView;
+    [SerializeField] List<ObjectBase> listaObjetosTienda;
 
-    // El Dictionary será generado a partir de los ScriptableObjects en la lista
-    private Dictionary<int, PlantillaObjetos.Mercancia> diccionarioTienda = new Dictionary<int, PlantillaObjetos.Mercancia>();
+    private Dictionary<int, GameObject> dicionarioTienda = new Dictionary<int, GameObject>();
 
     private void Awake()
     {
-        // Llena el Dictionary con los ScriptableObjects de la lista
-        for (int i = 0; i < listaObjetosTienda.Count; i++)
+        InstanciarObjetosTienda();
+    }
+
+    private void InstanciarObjetosTienda()
+    {
+        dicionarioTienda.Clear();
+
+        foreach (ObjectBase objeto in listaObjetosTienda)
         {
-            if (!diccionarioTienda.ContainsKey(listaObjetosTienda[i].id))
-            {
-                diccionarioTienda.Add(listaObjetosTienda[i].id, listaObjetosTienda[i]);
-            }
-            else
-            {
-                Debug.LogWarning("Se encontró un duplicado de ID en la lista de objetos de tienda: " + listaObjetosTienda[i].id);
-            }
+            GameObject objetoTienda = Instantiate(prefabObjetoTienda, contenidoScrollView);
+            // Configura el objetoTienda con los datos del objeto ScriptableObject
+            ConfigurarObjetoTienda(objetoTienda, objeto);
+
+            // Agrega el objetoTienda al diccionario utilizando el ID del objeto como clave
+            dicionarioTienda.Add(objeto.ID, objetoTienda);
         }
     }
 
-    private void Start()
+    private void ConfigurarObjetoTienda(GameObject objetoTienda, ObjectBase objeto)
     {
-        // Itera sobre el diccionario de objetos de la tienda y crea un objeto para cada uno
-        foreach (KeyValuePair<int, PlantillaObjetos.Mercancia> par in diccionarioTienda)
-        {
-            // Instancia un nuevo objeto de tienda
-            GameObject tienda = Instantiate(prefabObjetoTienda, Vector2.zero, Quaternion.identity, transform);
-            // Obtiene el componente Objeto del objeto de tienda instanciado
-            Objeto objetoComponente = tienda.GetComponent<Objeto>();
+        ObjetoTienda scriptObjetoTienda = objetoTienda.GetComponent<ObjetoTienda>();
+        scriptObjetoTienda.SetNombre(objeto.nombre);
+        //Debug.Log("Nombre enviado a ObjetoTienda: " + objeto.nombre);
 
-            // Crea el objeto utilizando los datos de la plantilla correspondiente
-            objetoComponente.CrearObjeto(par.Value);
-        }
+        scriptObjetoTienda.SetSprite(objeto.sprite);
+        //Debug.Log("Sprite enviado a ObjetoTienda: " + objeto.sprite);
+
+        scriptObjetoTienda.SetPrecio(objeto.precio.ToString());
+        //Debug.Log("Precio enviado a ObjetoTienda: " + objeto.precio);
+
+        scriptObjetoTienda.SetDescripcion(objeto.descripcion);
+        //Debug.Log("Descripcion enviada a ObjetoTienda: " + objeto.descripcion);
+
+        scriptObjetoTienda.SetID(objeto.ID);
+        //Debug.Log("ID enviado a ObjetoTienda: " + objeto.ID);
+
+        scriptObjetoTienda.SetTipo(objeto.tipo.ToString());
+        //Debug.Log("Tipo enviado a ObjetoTienda: " + objeto.tipo.ToString());
+    }
+
+    // Método para acceder al GameObject asociado a un ID específico
+    public GameObject ObtenerObjetoPorID(int id)
+    {
+        GameObject objetoTienda;
+        dicionarioTienda.TryGetValue(id, out objetoTienda);
+        return objetoTienda;
     }
 }

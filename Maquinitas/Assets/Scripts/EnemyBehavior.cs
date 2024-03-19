@@ -5,7 +5,7 @@ using TMPro;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    
+
     public float speed = 3f;
 
     private Transform target;

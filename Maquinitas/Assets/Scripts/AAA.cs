@@ -9,23 +9,23 @@ public class AAA : MonoBehaviour
     public TMP_Text moneyUI;
 
     [SerializeField]
-	int money;
+    int money;
 
-	[SerializeField]
-	int maxStock;
+    [SerializeField]
+    int maxStock;
 
-	public Items item1;
+    public ObjectBase item1;
 
     // Start is called before the first frame update
     void Start()
     {
-		item1.stock = maxStock;
+        item1.stock = maxStock;
     }
 
     // Update is called once per frame
     void Update()
     {
-		
+
     }
 
     public void Buy()

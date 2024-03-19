@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5659922886234976524}
   - component: {fileID: 7678215880788625118}
   - component: {fileID: 983583857795276583}
-  - component: {fileID: 3181593095779382524}
   - component: {fileID: 7744342110594142065}
   - component: {fileID: 6913513102589808799}
   - component: {fileID: 3852360698366836732}
@@ -88,29 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3181593095779382524
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5341349015664504705}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &7744342110594142065
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -160,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8be50ea4b9d80542856ea1154ea147d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
 --- !u!54 &3362920208801667198
 Rigidbody:
   m_ObjectHideFlags: 0

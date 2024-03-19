@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 8003338250478720633}
   - component: {fileID: 5876881757143481576}
   - component: {fileID: 5980031629194933357}
-  - component: {fileID: 1281024818798116872}
   m_Layer: 0
   m_Name: MaquinaExpendedora
   m_TagString: Untagged

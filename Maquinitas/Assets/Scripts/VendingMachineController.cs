@@ -2,18 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class VendingMachineController : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called before the first frame update
-
-    //public Camera camera;
 
     private CinemachineVirtualCamera cameraVendingMachine;
-
-    //[SerializeField]
-    //private float speedScroll;
+    private bool canChangeToCamera = true;
     private float cameraAltitude;
     private MovementBehaviour mb;
     private CinemachineVirtualCamera ortograficaCamera;
@@ -26,72 +22,47 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     private Vector3 positionCameraInPerspective;
     [SerializeField]
     private float FOVinPerspective;
+    private MeshRenderer mshMachine;
+    private Color originalColor;
+    private Material matMachine;
+    private Image imgCanvas;
 
+    void Awake()
+    {
+        Transform cube = gameObject.transform.Find("Máquina_Low_Poly/Cube");
+        mshMachine = cube.gameObject.GetComponent<MeshRenderer>();
+        matMachine = mshMachine.materials[1];
+        originalColor = matMachine.color;
+        Transform img = gameObject.transform.Find("Canvas/Image");
+        imgCanvas = img.gameObject.GetComponent<Image>();
+    }
     void Start()
     {
         cameraVendingMachine = gameObject.transform.GetComponentInChildren<CinemachineVirtualCamera>();
         ortograficaCamera = CameraMapMoving.mapVirtualCamera;
- 
         objetoCameraVendingMachine = transform.GetChild(0).gameObject;
         initialLocalPositionCameraVending = objetoCameraVendingMachine.transform.localPosition;
-        //Debug.Log(cameraVendingMachine != null);
+        
+        //originalColor = materialMachine.color;
+        //matMachine = materialMachine;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         if(NewControls.isExitVendingMachine)
         {
             StartCoroutine(ChangeToOrthograficinTwoSeconds());
-            
-
-            //StartCoroutine(ChangeTypeOfCamerain2Seconds());
-            //StartCoroutine(TransicionSuave());
-            //TransicionSuave();
-            //NewControls.isExitVendingMachine = false;
         }
-
-       /*if (Input.GetKeyDown(KeyCode.S))
-        {
-            Debug.Log("Enter2");
-            cameraVendingMachine.Priority = 10;
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            //Camera camera = cameraVendingMachine.GetComponent<Camera>();
-            //Debug.Log(camera != null);
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //if (Physics.Raycast(ray, out RaycastHit)) ;
-
-
-        }*/
     }
-
-   /* private void OnMouseEnter()
-    {
-        Debug.Log("Enter");
-        cameraVendingMachine.Priority = 12;
-        
-    }
-
-    private void OnMouseExit()
-    {
-        cameraVendingMachine.Priority = 10;
-    }*/
-
-    /*private void OnMouseDown()
-    {
-        cameraVendingMachine.Priority = 12;
-    }*/
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        cameraVendingMachine.Priority = 12;
-        StartCoroutine(ChangeToPerspectiveinTwoSeconds());
-        // CameraMapMoving.ChangeTypeOfCameraToOrthografic(false);
-        //StartCoroutine(TransicionSuave());
+        if(canChangeToCamera)
+        {
+            cameraVendingMachine.Priority = 12;
+            StartCoroutine(ChangeToPerspectiveinTwoSeconds());
+        }
     }
 
     private IEnumerator TransicionSuave()
@@ -102,7 +73,6 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
             float t = tiempoPasado / duracionTransicion;
             ortograficaCamera.m_Lens.OrthographicSize = Mathf.Lerp(ortograficaCamera.m_Lens.OrthographicSize, 10f, t);
             perspectivaCamera.m_Lens.FieldOfView = Mathf.Lerp(perspectivaCamera.m_Lens.FieldOfView, 60f, t);
-            //perspectivaCamera.m_Lens.Orthographic = true;
             Debug.Log(ortograficaCamera.m_Lens.FieldOfView);
             Debug.Log(perspectivaCamera.m_Lens.FieldOfView + "2");
             tiempoPasado += Time.deltaTime;
@@ -149,4 +119,32 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         cameraVendingMachine.m_Lens.Orthographic = true;
         cameraVendingMachine.Priority = 10;      
     }
+
+    public void ChangeCanUseCamera(bool canChange)
+    {
+        canChangeToCamera = canChange;
+    }
+
+    public void ChangeToColorUsefull(bool useFull)
+    {
+        if(!useFull)
+        {
+
+            //originalColor = materialMachine.color;
+            //Debug.Log(matMachine);
+            matMachine.color = Color.gray;
+            imgCanvas.color = Color.gray;
+        }
+        else
+        {
+            matMachine.color = originalColor;
+            imgCanvas.color = Color.white;
+        }
+        
+    }
+
+    public void GetOutImageCanvas()
+    {
+        imgCanvas.color = new Color(1f, 1f, 1f, 0f);
+    } 
 }

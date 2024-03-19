@@ -36,22 +36,22 @@ public class Tienda : MonoBehaviour
     {
         ObjetoTienda scriptObjetoTienda = objetoTienda.GetComponent<ObjetoTienda>();
         scriptObjetoTienda.SetNombre(objeto.nombre);
-        Debug.Log("Nombre enviado a ObjetoTienda: " + objeto.nombre);
+        //Debug.Log("Nombre enviado a ObjetoTienda: " + objeto.nombre);
 
         scriptObjetoTienda.SetSprite(objeto.sprite);
-        Debug.Log("Sprite enviado a ObjetoTienda: " + objeto.sprite);
+        //Debug.Log("Sprite enviado a ObjetoTienda: " + objeto.sprite);
 
         scriptObjetoTienda.SetPrecio(objeto.precio);
-        Debug.Log("Precio enviado a ObjetoTienda: " + objeto.precio);
+        //Debug.Log("Precio enviado a ObjetoTienda: " + objeto.precio);
 
         scriptObjetoTienda.SetDescripcion(objeto.descripcion);
-        Debug.Log("Descripcion enviada a ObjetoTienda: " + objeto.descripcion);
+        //Debug.Log("Descripcion enviada a ObjetoTienda: " + objeto.descripcion);
 
         scriptObjetoTienda.SetID(objeto.ID);
-        Debug.Log("ID enviado a ObjetoTienda: " + objeto.ID);
+        //Debug.Log("ID enviado a ObjetoTienda: " + objeto.ID);
 
         scriptObjetoTienda.SetTipo(objeto.tipo.ToString());
-        Debug.Log("Tipo enviado a ObjetoTienda: " + objeto.tipo.ToString());
+        //Debug.Log("Tipo enviado a ObjetoTienda: " + objeto.tipo.ToString());
     }
 
     // Método para acceder al GameObject asociado a un ID específico

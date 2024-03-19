@@ -13,9 +13,11 @@ public class Inventario : MonoBehaviour
     public GameObject objetoSeleccionado;
     public Transform exParent;
     public Transform contenido;
+    public List<GameObject> slots;
 
     private PointerEventData pointerData;
     private List<RaycastResult> raycastResults;
+
 
     private void Awake()
     {
@@ -25,53 +27,6 @@ public class Inventario : MonoBehaviour
 
         canvas = transform.parent.transform;
     }
-
-    private void Start()
-    {
-        NewControls.InputActions playerInput = new NewControls().Input;
-        playerInput.Enable();
-        playerInput.Player.MoveMap.performed += ctx => OnMoveMap(ctx.ReadValue<Vector2>());
-        playerInput.Player.ExitVendingMachine.started += ctx => OnExitVendingMachinePressed();
-        playerInput.Player.ExitVendingMachine.canceled += ctx => OnExitVendingMachineCanceled();
-        playerInput.Player.MouseScroll.performed += ctx => OnScroll(ctx.ReadValue<Vector2>());
-    }
-
-    private void OnMoveMap(Vector2 direction)
-    {
-        Debug.Log("Movimiento del mapa: " + direction);
-        // Implementa la lógica para mover el objeto seleccionado en el inventario según la dirección recibida
-    }
-
-    private void OnExitVendingMachinePressed()
-    {
-        Debug.Log("Botón de salida de la máquina expendedora presionado");
-        // Implementa la lógica para manejar la salida de la máquina expendedora
-    }
-
-    private void OnExitVendingMachineCanceled()
-    {
-        Debug.Log("Botón de salida de la máquina expendedora soltado");
-        // Implementa la lógica para manejar el evento de soltar el botón de salida de la máquina expendedora
-    }
-
-    private void OnScroll(Vector2 scrollValue)
-    {
-        Debug.Log("Valor de desplazamiento del mouse: " + scrollValue);
-        // Implementa la lógica para manejar el desplazamiento del mouse en el inventario
-    }
-
-    // Resto del código del script...
-    void Arrastrar()
-    {
-        // Método de arrastrar si es necesario
-    }
-
-    public Vector2 CanvasScreen(Vector2 screenPos)
-    {
-        // Método de conversión de coordenadas si es necesario
-        return Vector2.zero;
-    }
-
 
     void Arrastrar()
     {
@@ -141,6 +96,19 @@ public class Inventario : MonoBehaviour
         }
         raycastResults.Clear();
     }
+
+    public GameObject GetSlotVacio()
+    {
+        foreach (var slot in slots)
+        {
+            if (slot.transform.childCount == 0)
+            {
+                return slot;
+            }
+        }
+        return null;
+    }
+
     public Vector2 CanvasScreen(Vector2 screenPos)
     {
         Vector2 viewportPoint = Camera.main.ScreenToViewportPoint(screenPos);

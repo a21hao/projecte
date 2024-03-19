@@ -1225,8 +1225,8 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 999
-  m_WholeNumbers: 0
-  m_Value: 0
+  m_WholeNumbers: 1
+  m_Value: 13
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1484,7 +1484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.688797, y: -0.0000019073486}
+  m_AnchoredPosition: {x: 1.6887817, y: -0.0000019073486}
   m_SizeDelta: {x: 23.3777, y: -0.0000076294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7962338986602507534
@@ -1851,6 +1851,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objetoTienda: {fileID: 8620730770044528589, guid: d4cbc13fdfa39ba449582f54b0b016c6, type: 3}
+  moneyManager: {fileID: 0}
+  inventario: {fileID: 8709282452910044883, guid: cd503aee570ec274786f9bd959095d97, type: 3}
+  prefabObjetoInventario: {fileID: 302704229892403269, guid: 0093d5b367015944086d0e0e3c14f916, type: 3}
   nombreText: {fileID: 2329662484057745571}
   spriteImage: {fileID: 3265647027141518534}
   precioText: {fileID: 1937786109922381792}

@@ -11,7 +11,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject ajustes;
     public GameObject upgrades;
     public GameObject tablet;
-
+    private Animator animator;
 
     void ToggleGameObject(GameObject obj)
     {

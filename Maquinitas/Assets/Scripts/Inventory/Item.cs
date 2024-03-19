@@ -7,22 +7,24 @@ using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private string nombre;
-    [SerializeField] private int ID;
-    [SerializeField] private Sprite sprite;
-    [SerializeField] private int cantidad;
-    [SerializeField] private TextMeshProUGUI textoCantidad;
-    [SerializeField] private string descripcion;
-    [SerializeField] private ObjectBase tipo;
+
+    public string nombreText;
+    public Sprite spriteImage;
+    public string precioObjeto;
+    public string descripcionObjeto;
+    public int ID;
+    public string tipo;
+    public int cantidad;
+    public TextMeshProUGUI cantidadText; 
 
     void Start()
     {
-
+        cantidadText.text = cantidad.ToString();
     }
     
     void Update()
     {
-        //textoCantidad.text = cantidad.ToString();
+        cantidadText.text = cantidad.ToString();
     }
     public int GetID()
     {
@@ -42,5 +44,14 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
     public void SetCantidad(int newCantidad)
     {
         cantidad = newCantidad;
+    }
+    public void SetInformacion(string nombre, Sprite sprite, string precio, string descripcion, int id, string tipo)
+    {
+        nombreText = nombre;
+        spriteImage = sprite;
+        precioObjeto = precio;
+        descripcionObjeto = descripcion;
+        ID = id;
+        this.tipo = tipo;
     }
 }

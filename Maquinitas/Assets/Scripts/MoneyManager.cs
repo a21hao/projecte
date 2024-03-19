@@ -22,12 +22,14 @@ public class MoneyManager : MonoBehaviour
 
     public static void IncrementarDinero(int cantidad)
     {
+        Debug.Log(cantidad + "mas");
         dineroTotal += cantidad;
         ActualizarTextoDinero();
     }
 
     public static void DecrementarDinero(int cantidad)
     {
+        Debug.Log(cantidad + "menos");
         dineroTotal -= cantidad;
         ActualizarTextoDinero();
     }

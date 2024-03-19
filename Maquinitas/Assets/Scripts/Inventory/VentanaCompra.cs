@@ -6,9 +6,10 @@ public class VentanaCompra : MonoBehaviour
 {
     public ObjetoTienda objetoTienda;
 
-    private MoneyManager moneyManager;
-    private Inventario inventario;
+    [SerializeField] private MoneyManager moneyManager;
+    [SerializeField] private Inventario inventario;
 
+    [SerializeField] private GameObject prefabObjetoInventario;
     [SerializeField] private TextMeshProUGUI nombreText;
     [SerializeField] private Image spriteImage;
     [SerializeField] private TextMeshProUGUI precioText;
@@ -18,6 +19,9 @@ public class VentanaCompra : MonoBehaviour
 
     private void Start()
     {
+        moneyManager = GameObject.FindWithTag("Money").GetComponent<MoneyManager>();
+        inventario = FindObjectOfType<Inventario>(true);
+        Debug.Log(inventario);
         if (objetoTienda != null)
         {
             nombreText.text = objetoTienda.nombreText;
@@ -29,7 +33,6 @@ public class VentanaCompra : MonoBehaviour
         //ActualizarCantidadTexto(cantidadSlider.value);
     }
 
-    // Actualizar el texto de cantidad según el valor del slider
     public void ActualizarCantidadTexto(float cantidad)
     {
         cantidadTexto.text = Mathf.RoundToInt(cantidad).ToString();
@@ -38,10 +41,9 @@ public class VentanaCompra : MonoBehaviour
             float precio = float.Parse(objetoTienda.precioObjeto);
             float precioTotal = (cantidad * precio);
             precioText.text = Mathf.RoundToInt(precioTotal).ToString();
-         }
+        }
     }
 
-    // Método para comprar
     public void Comprar()
     {
         int cantidad = (int)cantidadSlider.value;
@@ -53,23 +55,27 @@ public class VentanaCompra : MonoBehaviour
         }
         for (int i = 0; i < cantidad; i++)
         {
-            GameObject nuevoObjeto = Instantiate(objetoTienda.gameObject); // Instancia el prefab del objeto
-            nuevoObjeto.transform.SetParent(inventario.contenido); // Establece el contenido del inventario como padre
-            nuevoObjeto.transform.localScale = Vector3.one; // Restaura la escala del objeto
-            nuevoObjeto.GetComponent<Item>().SetCantidad(1); // Establece la cantidad del objeto a 1
+            GameObject nuevoObjeto = Instantiate(prefabObjetoInventario);
+            GameObject emptySlot = inventario.GetSlotVacio();
+            if (emptySlot != null)
+            {
+                nuevoObjeto.transform.SetParent(emptySlot.transform);
+                nuevoObjeto.transform.localScale = Vector3.one;
+                nuevoObjeto.GetComponent<Item>().SetCantidad(1);
+            }
+            else
+            {
+                Debug.Log("Esta lleno");
+            }
         }
-        // Cerrar la ventana de compra
         CerrarVentana();
     }
 
-    // Método para cancelar la compra y cerrar la ventana
     public void Cancelar()
     {
-        // Cerrar la ventana de compra
         CerrarVentana();
     }
 
-    // Método para cerrar la ventana de compra
     private void CerrarVentana()
     {
         Destroy(gameObject);

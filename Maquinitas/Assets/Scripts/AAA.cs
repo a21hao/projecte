@@ -33,7 +33,7 @@ public class AAA : MonoBehaviour
         if (item1.stock > 0)
         {
             item1.stock -= 1;
-            money += item1.sellPrice;
+            money += item1.precio;
             moneyUI.text = money.ToString();
 
         }

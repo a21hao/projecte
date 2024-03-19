@@ -429,7 +429,6 @@ GameObject:
   - component: {fileID: 8003338250478720633}
   - component: {fileID: 5876881757143481576}
   - component: {fileID: 5980031629194933357}
-  - component: {fileID: 1281024818798116872}
   m_Layer: 0
   m_Name: MaquinaExpendedora
   m_TagString: Untagged
@@ -488,21 +487,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0106163025, y: 0.01039555, z: 0.019095575}
   m_Center: {x: -0.000090975765, y: -0.00007664799, z: 0.010451857}
---- !u!114 &1281024818798116872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2291900163162743457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e98e70531886c484c86d83222cc6a178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 0
-  maxStock: 10
-  item1: {fileID: 11400000, guid: 4b29702d3310c114fa13e253b073ff90, type: 2}
 --- !u!1 &2763535238160017867
 GameObject:
   m_ObjectHideFlags: 0

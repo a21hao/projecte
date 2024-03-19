@@ -41,7 +41,7 @@ public class Tienda : MonoBehaviour
         scriptObjetoTienda.SetSprite(objeto.sprite);
         //Debug.Log("Sprite enviado a ObjetoTienda: " + objeto.sprite);
 
-        scriptObjetoTienda.SetPrecio(objeto.precio);
+        scriptObjetoTienda.SetPrecio(objeto.precio.ToString());
         //Debug.Log("Precio enviado a ObjetoTienda: " + objeto.precio);
 
         scriptObjetoTienda.SetDescripcion(objeto.descripcion);

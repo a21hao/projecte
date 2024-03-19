@@ -11,8 +11,10 @@ public class ObjectBase : ScriptableObject
     public Sprite sprite;
     public Tipo tipo;
     public string descripcion;
-    public string precio;
-    private static int nextID = 1; 
+    public int precio;
+    private static int nextID = 1;
+    public int precioVenta;
+    public int stock;
 
     public enum Tipo
     {

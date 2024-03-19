@@ -6,6 +6,8 @@ public class VentanaCompra : MonoBehaviour
 {
     public ObjetoTienda objetoTienda;
 
+    private MoneyManager moneyManager;
+
     [SerializeField] private TextMeshProUGUI nombreText;
     [SerializeField] private Image spriteImage;
     [SerializeField] private TextMeshProUGUI precioText;
@@ -22,20 +24,32 @@ public class VentanaCompra : MonoBehaviour
             precioText.text = objetoTienda.precioObjeto;
             descripcionText.text = objetoTienda.descripcionObjeto;
         }
+        cantidadSlider.maxValue = 999;
+        //ActualizarCantidadTexto(cantidadSlider.value);
     }
 
     // Actualizar el texto de cantidad según el valor del slider
     public void ActualizarCantidadTexto(float cantidad)
     {
-        cantidadTexto.text = cantidad.ToString();
+        cantidadTexto.text = Mathf.RoundToInt(cantidad).ToString();
+        if (objetoTienda != null)
+        {
+            float precio = float.Parse(objetoTienda.precioObjeto);
+            float precioTotal = (cantidad * precio);
+            precioText.text = Mathf.RoundToInt(precioTotal).ToString();
+         }
     }
 
     // Método para comprar
     public void Comprar()
     {
         int cantidad = (int)cantidadSlider.value;
-        // Aquí puedes implementar la lógica para realizar la compra, usando la referencia a la tienda
-        //tienda.Comprar();
+        if (moneyManager != null && objetoTienda != null)
+        {
+            float precio = float.Parse(objetoTienda.precioObjeto);
+            int precioTotal = Mathf.RoundToInt(cantidad * precio);
+            MoneyManager.DecrementarDinero(precioTotal);
+        }
         // Cerrar la ventana de compra
         CerrarVentana();
     }

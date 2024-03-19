@@ -6,8 +6,14 @@ using TMPro;
 
 public class MoneyManager : MonoBehaviour
 {
-    private static int dineroTotal = 50;
-    public TextMeshProUGUI textoDinero; 
+    private static int dineroTotal = 1000;
+    public TextMeshProUGUI textoDinero;
+
+
+    private void Start()
+    {
+        textoDinero.text = dineroTotal.ToString();
+    }
 
     public static int DineroTotal
     {

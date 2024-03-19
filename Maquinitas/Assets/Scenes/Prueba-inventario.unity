@@ -425,6 +425,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Pausa
       objectReference: {fileID: 0}
+    - target: {fileID: 2814153289604032812, guid: 35e11d2b5d9d4b24b8d0e55744cdcd12, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3324131185119824480, guid: 35e11d2b5d9d4b24b8d0e55744cdcd12, type: 3}
       propertyPath: m_Name
       value: Canvas

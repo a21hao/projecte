@@ -7,6 +7,7 @@ public class VentanaCompra : MonoBehaviour
     public ObjetoTienda objetoTienda;
 
     private MoneyManager moneyManager;
+    private Inventario inventario;
 
     [SerializeField] private TextMeshProUGUI nombreText;
     [SerializeField] private Image spriteImage;
@@ -49,6 +50,13 @@ public class VentanaCompra : MonoBehaviour
             float precio = float.Parse(objetoTienda.precioObjeto);
             int precioTotal = Mathf.RoundToInt(cantidad * precio);
             MoneyManager.DecrementarDinero(precioTotal);
+        }
+        for (int i = 0; i < cantidad; i++)
+        {
+            GameObject nuevoObjeto = Instantiate(objetoTienda.gameObject); // Instancia el prefab del objeto
+            nuevoObjeto.transform.SetParent(inventario.contenido); // Establece el contenido del inventario como padre
+            nuevoObjeto.transform.localScale = Vector3.one; // Restaura la escala del objeto
+            nuevoObjeto.GetComponent<Item>().SetCantidad(1); // Establece la cantidad del objeto a 1
         }
         // Cerrar la ventana de compra
         CerrarVentana();

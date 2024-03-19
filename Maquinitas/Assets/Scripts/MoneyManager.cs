@@ -9,7 +9,6 @@ public class MoneyManager : MonoBehaviour
     private static int dineroTotal = 1000;
     public TextMeshProUGUI textoDinero;
 
-
     private void Start()
     {
         textoDinero.text = dineroTotal.ToString();

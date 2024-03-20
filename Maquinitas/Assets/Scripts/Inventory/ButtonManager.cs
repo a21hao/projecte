@@ -49,7 +49,7 @@ public class ButtonManager : MonoBehaviour
         ToggleGameObject(upgrades);
     }
 
-    public void ToggleApagar()
+    public void ToggleTablet()
     {
         ToggleGameObject(tablet);
     }

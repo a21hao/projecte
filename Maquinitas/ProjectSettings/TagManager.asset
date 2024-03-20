@@ -9,6 +9,7 @@ TagManager:
   - Item
   - Slot
   - Inventario
+  - Money
   layers:
   - Default
   - TransparentFX

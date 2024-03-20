@@ -29,7 +29,6 @@ public class PointsVendingMachine : MonoBehaviour
 
         for (int i = 0; i < cantidadHijos; i++)
         {
-            Debug.Log(i);
             pointsVendingMachineTransform[i] = gameObject.transform.GetChild(i).gameObject;
         }
         pointsVendingMachine = new PointVending[cantidadHijos];

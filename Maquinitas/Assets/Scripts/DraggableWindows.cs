@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 public class DraggableWindow : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     private bool arrastrando = false;

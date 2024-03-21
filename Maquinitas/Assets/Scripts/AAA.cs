@@ -16,13 +16,11 @@ public class AAA : MonoBehaviour
 
     public ObjectBase item1;
 
-    // Start is called before the first frame update
     void Start()
     {
         item1.stock = maxStock;
     }
 
-    // Update is called once per frame
     void Update()
     {
 

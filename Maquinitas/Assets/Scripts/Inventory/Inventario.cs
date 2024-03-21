@@ -49,8 +49,8 @@ public class Inventario : MonoBehaviour
                     exParent = objetoSeleccionado.transform.parent.transform;
                     exParent.GetComponent<Image>().fillCenter = false;
                     objetoSeleccionado.transform.SetParent(canvas);
-                    objetoArrastrado = true; // Establecer el indicador de que se está arrastrando un objeto
-                    scrollRect.enabled = false; // Desactivar el ScrollRect mientras se arrastra un objeto
+                    objetoArrastrado = true;
+                    scrollRect.enabled = false;
                 }
             }
         }
@@ -99,8 +99,8 @@ public class Inventario : MonoBehaviour
             }
             objetoSeleccionado.transform.localPosition = Vector3.zero;
             objetoSeleccionado = null;
-            objetoArrastrado = false; // Restablecer el indicador de que no se está arrastrando ningún objeto
-            scrollRect.enabled = true; // Reactivar el ScrollRect después de soltar el objeto
+            objetoArrastrado = false;
+            scrollRect.enabled = true;
         }
         raycastResults.Clear();
     }

@@ -31,7 +31,6 @@ public class VentanaCompra : MonoBehaviour
             descripcionText.text = objetoTienda.descripcionObjeto;
         }
         cantidadSlider.maxValue = 999;
-        //ActualizarCantidadTexto(cantidadSlider.value);
     }
 
     public void ActualizarCantidadTexto(float cantidad)

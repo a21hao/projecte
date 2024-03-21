@@ -23,22 +23,15 @@ public class UIObjetoTienda : MonoBehaviour
 
     public void MostrarVentanaCompra()
     {
-        // Verifica si el prefab de la ventana de compra está asignado
         if (ventanaCompraPrefab != null)
         {
-            // Encuentra el Canvas en la escena
             Canvas canvas = FindObjectOfType<Canvas>();
             if (canvas != null)
             {
-                // Calcula la posición central del Canvas
                 Vector3 centroCanvas = canvas.transform.position;
 
-                // Instancia la ventana de compra en el centro del Canvas
                 GameObject ventanaCompraInstance = Instantiate(ventanaCompraPrefab, centroCanvas, Quaternion.identity, canvas.transform);
-
-                // Obtén una referencia al script VentanaCompra
                 VentanaCompra ventanaCompra = ventanaCompraInstance.GetComponent<VentanaCompra>();
-                // Configura la ventana de compra con la información del objeto de la tienda
                 if (ventanaCompra != null && objetoTienda != null)
                 {
                     ventanaCompra.objetoTienda = objetoTienda;

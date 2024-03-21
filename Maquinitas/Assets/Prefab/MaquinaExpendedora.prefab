@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9165345636846210316}
   - component: {fileID: 6733626850107615222}
   - component: {fileID: 5996553255058076524}
-  - component: {fileID: 4448559866113876977}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -103,27 +102,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!65 &4448559866113876977
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880613280274022318}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.693405, y: 2.535475, z: 0.06620786}
-  m_Center: {x: -0.0009989738, y: -0.015554672, z: -0.006921361}
 --- !u!1 &2291900163162743457
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,8 +175,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.013380823, y: 0.007119086, z: 0.019318532}
-  m_Center: {x: 0.00561106, y: -0.00024711646, z: 0.015634611}
+  m_Size: {x: 0.013380823, y: 0.018595967, z: 0.01931853}
+  m_Center: {x: 0.0056110597, y: -0.005985565, z: 0.01563461}
 --- !u!114 &1281024818798116872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +192,7 @@ MonoBehaviour:
   moneyUI: {fileID: 0}
   money: 0
   maxStock: 10
-  item1: {fileID: 11400000, guid: 4b29702d3310c114fa13e253b073ff90, type: 2}
+  item1: {fileID: 11400000, guid: db188e2eadf339349b208d076a9260e2, type: 2}
 --- !u!1 &2487658300431492848
 GameObject:
   m_ObjectHideFlags: 0

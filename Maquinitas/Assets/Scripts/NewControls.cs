@@ -14,8 +14,9 @@ public class NewControls : MonoBehaviour
     public bool isJump;
     public bool isFire;
     static public Vector2 mapMovementDirection;
-    static public bool isExitVendingMachine;
+    static public bool isEscPressed;
     static public Vector2 scrollValue;
+    private float cursorSpeed = 5f;
     //private Player player;
     //private MovementBehaviour mvb;
     //private Animator anim;
@@ -29,7 +30,7 @@ public class NewControls : MonoBehaviour
     private void Awake()
     {
         InputActionMap Player = playerActions.FindActionMap("Player");
-        isExitVendingMachine = false;
+        isEscPressed = false;
 
         /*Player.FindAction("Forward").performed += OnRun;
         Player.FindAction("Forward").canceled += OnStopRun;
@@ -45,12 +46,19 @@ public class NewControls : MonoBehaviour
         Player.FindAction("Fire").canceled += OnStopFire;
         Player.FindAction("Menu").performed += OnnMenu;
         Player.FindAction("GodMode").performed += OnnGoodMode;*/
-        Player.FindAction("MoveMap").performed += OnnMoveMap;
-        Player.FindAction("MoveMap").canceled += OnnMoveMap;
-        Player.FindAction("ExitVendingMachine").performed += OnnExitVendingMachinePressed;
-        Player.FindAction("ExitVendingMachine").canceled += OnnExitVendingMachineCanceled;
+        
+        //Player.FindAction("ExitVendingMachine").performed += OnnEscButtonPressed;
+        //Player.FindAction("ExitVendingMachine").canceled += OnnEscButtonCanceled;      
         Player.FindAction("MouseScroll").performed += OnnScroll;
         Player.FindAction("MouseScroll").canceled += OnnScroll;
+        Player.FindAction("MoveMap").performed += OnnMoveMap;
+        Player.FindAction("MoveMap").canceled += OnnMoveMap;
+        Player.FindAction("MoveCursor").performed += OnnMoveCursor;
+        Player.FindAction("MoveCursor").canceled += OnnMoveCursor;
+        Player.FindAction("EscButton").performed += OnnEscButtonPressed;
+        Player.FindAction("EscButton").canceled += OnnEscButtonCanceled;
+        Player.FindAction("MouseClick").performed += OnnMouseClick;
+        Player.FindAction("MouseClick").canceled += OnnMouseClickCanceled;
         /*playerActions = new InputActions();
         playerActions.Player.Forward.performed += OnRun;
         playerActions.Player.Forward.canceled += OnStopRun;
@@ -175,17 +183,36 @@ public class NewControls : MonoBehaviour
     private void OnnMoveMap(InputAction.CallbackContext ctx)
     {
         mapMovementDirection = ctx.ReadValue<Vector2>();
-        Debug.Log(mapMovementDirection);
     }
 
-    private void OnnExitVendingMachinePressed(InputAction.CallbackContext ctx)
+    private void OnnMoveCursor(InputAction.CallbackContext ctx)
     {
-        isExitVendingMachine = true;
+        
+        Debug.Log(ctx.ReadValue<Vector2>());
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Calculate new cursor position
+        Vector3 cursorPosition = Input.mousePosition;
+        cursorPosition.x += ctx.ReadValue<Vector2>().x * cursorSpeed * Time.deltaTime;
+        cursorPosition.y += ctx.ReadValue<Vector2>().y * cursorSpeed * Time.deltaTime;
+
+        // Assign new cursor position
+        //Cursor.lockState = CursorLockMode.None; // Unlock cursor
+        //Cursor.visible = true; // Show cursor
+        //Cursor.SetCursorPosition((int)cursorPosition.x, (int)cursorPosition.y);
+        Input.simulateMouseWithTouches = true;
+
     }
 
-    private void OnnExitVendingMachineCanceled(InputAction.CallbackContext ctx)
+    private void OnnEscButtonPressed(InputAction.CallbackContext ctx)
     {
-        isExitVendingMachine = false;
+        isEscPressed = true;
+    }
+
+    private void OnnEscButtonCanceled(InputAction.CallbackContext ctx)
+    {
+        isEscPressed = false;
     }
 
     private void OnnScroll(InputAction.CallbackContext ctx)
@@ -227,6 +254,19 @@ public class NewControls : MonoBehaviour
     private void OnDisable()
     {
         playerActions.Disable();
+    }
+
+    private void OnnMouseClick(InputAction.CallbackContext ctx)
+    {
+        //isEscPressed = false;
+        Debug.Log("ha entrado");
+        Input.simulateMouseWithTouches = true;
+    }
+
+    private void OnnMouseClickCanceled(InputAction.CallbackContext ctx)
+    {
+        //isEscPressed = false;
+        Input.simulateMouseWithTouches = false;
     }
 }
 

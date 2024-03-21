@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class VentanaCompra : MonoBehaviour
 {
@@ -53,25 +54,24 @@ public class VentanaCompra : MonoBehaviour
             int precioTotal = Mathf.RoundToInt(cantidad * precio);
             MoneyManager.DecrementarDinero(precioTotal);
         }
-        for (int i = 0; i < cantidad; i++)
+
+        GameObject emptySlot = inventario.GetSlotVacio();
+        if (emptySlot != null)
         {
             GameObject nuevoObjeto = Instantiate(prefabObjetoInventario);
-            GameObject emptySlot = inventario.GetSlotVacio();
-            if (emptySlot != null)
-            {
-                nuevoObjeto.transform.SetParent(emptySlot.transform);
-                nuevoObjeto.transform.localScale = Vector3.one;
-                nuevoObjeto.GetComponent<Item>().SetCantidad(1);
-            }
-            else
-            {
-                Debug.Log("Esta lleno");
-            }
+            Item itemComponent = nuevoObjeto.GetComponent<Item>();
+            itemComponent.SetInformacion(objetoTienda.nombreText, objetoTienda.spriteImage, objetoTienda.precioObjeto, objetoTienda.descripcionObjeto, objetoTienda.id, objetoTienda.tipo, cantidad);
+            nuevoObjeto.transform.SetParent(emptySlot.transform);
+            nuevoObjeto.transform.localScale = Vector3.one;
+            nuevoObjeto.transform.localPosition = Vector3.zero;
         }
-        CerrarVentana();
+        else
+        {
+            Debug.Log("Inventario lleno");
+        }
     }
 
-    public void Cancelar()
+        public void Cancelar()
     {
         CerrarVentana();
     }

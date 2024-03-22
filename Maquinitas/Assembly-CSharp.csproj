@@ -884,13 +884,13 @@
       <Project>{22DDBBDB-F2D7-9D53-5BEE-2E090B3145EA}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{96E40341-479D-3CA5-9DDB-218AC7F70102}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="FMODUnityResonance.csproj">
       <Project>{D086441E-ECD2-3731-05BF-CFF31D7D6268}</Project>
       <Name>FMODUnityResonance</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{96E40341-479D-3CA5-9DDB-218AC7F70102}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="FMODUnity.csproj">
       <Project>{770E2CAE-DA19-577A-0EE9-8E8C0A08734A}</Project>

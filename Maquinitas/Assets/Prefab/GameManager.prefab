@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3144245293001628537}
   m_Layer: 0
   m_Name: MoneyManager
-  m_TagString: Untagged
+  m_TagString: Money
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a17dba4abb61214e80c011426e0838a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textoDinero: {fileID: 0}
 --- !u!1 &2243803481638888360
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,8 +76,60 @@ Transform:
   - {fileID: 3916523265945304205}
   - {fileID: 5492687022854529062}
   - {fileID: 362264056298556972}
+  - {fileID: 5532162343408267009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4067086805319064974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7612160047342538746}
+  - component: {fileID: 6524094583787720519}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7612160047342538746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067086805319064974}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5532162343408267009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6524094583787720519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067086805319064974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc46f4c887456e04cacaef509aae3026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <music>k__BackingField:
+    Guid:
+      Data1: -1604551780
+      Data2: 1299719440
+      Data3: 1373702540
+      Data4: -2096314094
+    Path: event:/Music/Music
 --- !u!1 &4880060930023562739
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +176,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiempoInicial: 0
+  FinDiaCanv: {fileID: 0}
+  textEarnedMoneyDay: {fileID: 0}
+  textMoneyThisDay: {fileID: 0}
+  winConditiontext: {fileID: 0}
+  winImage: {fileID: 0}
+  loseImage: {fileID: 0}
+  moneyToWin: 0
 --- !u!114 &7569642726739837132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +195,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8df5bd2eaaf91647992860febfa6064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6357531667884017952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5532162343408267009}
+  - component: {fileID: 4467346559059158416}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5532162343408267009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6357531667884017952}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 122.05719, y: -103.52069, z: 58.92752}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7612160047342538746}
+  m_Father: {fileID: 4716364875857814124}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4467346559059158416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6357531667884017952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f040f0459fb4484488cc1b4b76bb67a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 1
+  SFXVolume: 1
 --- !u!1 &6835390067657947989
 GameObject:
   m_ObjectHideFlags: 0

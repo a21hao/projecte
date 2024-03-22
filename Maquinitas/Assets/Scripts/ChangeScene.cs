@@ -9,9 +9,9 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
-    void EscenaMenu()
+    public void EscenaMenu()
     {
-
+        SceneManager.LoadScene(1);
     }
     public void Salir()
     {

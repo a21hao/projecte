@@ -16,6 +16,7 @@ public class VendingSpawner : MonoBehaviour
     private GameObject pointsOfVendingMachineFather;
     private PointsVendingMachine pvm;
     private PointVending pointVending;
+    private BoxCollider machineCollider;
     private bool isInGoodPosition;
     void Start()
     {
@@ -38,6 +39,7 @@ public class VendingSpawner : MonoBehaviour
             {
                 pvm.changePointVendingToBusy(pointVending, true);
                 vmc.GetOutImageCanvas();
+                machineCollider.enabled = true;
             }
             else
             {
@@ -49,15 +51,16 @@ public class VendingSpawner : MonoBehaviour
             Vector2 mousePosition = Mouse.current.position.ReadValue();
 
             // Convertir la posición del ratón a una posición en el mundo
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 100));
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 1000));
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 //Instantiate(prefab, hit.point, Quaternion.identity);
                 //Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10));
                 //Vector3 positionSpawn = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z);
                 pointVending = pvm.isNearSomePoint(hit.point);
-                Debug.Log(pointVending);
-                if(pointVending != null)
+                
+                Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
+                if (pointVending != null)
                 {
                     vendingInstantiate.transform.position = pointVending.transformPoint.position;
                     vendingInstantiate.transform.rotation = pointVending.transformPoint.rotation;
@@ -66,6 +69,7 @@ public class VendingSpawner : MonoBehaviour
                 }
                 else
                 {
+                    
                     vendingInstantiate.transform.position = hit.point;
                     vmc.ChangeToColorUsefull(false);
                     isInGoodPosition = false;
@@ -90,7 +94,7 @@ public class VendingSpawner : MonoBehaviour
         Vector2 mousePosition = Mouse.current.position.ReadValue();
 
         // Convertir la posición del ratón a una posición en el mundo
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 100));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 1000));
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
@@ -99,6 +103,8 @@ public class VendingSpawner : MonoBehaviour
             //Vector3 positionSpawn = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z);
             vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, prefabVendingMachine.transform.rotation);
             vmc = vendingInstantiate.GetComponent<VendingMachineController>();
+            machineCollider = vendingInstantiate.GetComponent<BoxCollider>();
+            machineCollider.enabled = false;
             vmc.ChangeToColorUsefull(false);
             vmc.ChangeCanUseCamera(false);
             if (vendingInstantiate != null)

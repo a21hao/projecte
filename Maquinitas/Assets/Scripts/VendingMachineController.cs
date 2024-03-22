@@ -50,7 +50,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     void Update()
     {
 
-        if(NewControls.isExitVendingMachine)
+        if(NewControls.isEscPressed)
         {
             StartCoroutine(ChangeToOrthograficinTwoSeconds());
         }

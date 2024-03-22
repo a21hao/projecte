@@ -7,11 +7,16 @@ using TMPro;
 public class MoneyManager : MonoBehaviour
 {
     private static int dineroTotal = 1000;
-    public TextMeshProUGUI textoDinero;
+    
+
+    [SerializeField] private static TMP_Text textoDinero;
 
     private void Start()
     {
+        //textoDinero.text = dineroTotal.ToString();
+        textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
         textoDinero.text = dineroTotal.ToString();
+        Debug.Log(textoDinero==null);
     }
 
     public static int DineroTotal
@@ -36,10 +41,13 @@ public class MoneyManager : MonoBehaviour
 
     private static void ActualizarTextoDinero()
     {
+        Debug.Log("actudinero");
+        textoDinero.text = dineroTotal.ToString();
+        /*
         MoneyManager[] moneyManagers = FindObjectsOfType<MoneyManager>();
         foreach (MoneyManager manager in moneyManagers)
         {
             manager.textoDinero.text = dineroTotal.ToString();
-        }
+        }*/
     }
 }

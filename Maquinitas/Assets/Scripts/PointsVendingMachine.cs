@@ -34,7 +34,6 @@ public class PointsVendingMachine : MonoBehaviour
         pointsVendingMachine = new PointVending[cantidadHijos];
         for(int i = 0; i < cantidadHijos; i++)
         {
-            Debug.Log(i);
             PointVending pointVend = new PointVending();
             pointVend.transformPoint = pointsVendingMachineTransform[i].transform;
             pointVend.isBusy = false;

@@ -4,15 +4,18 @@ using TMPro;
 
 public class UIObjetoTienda : MonoBehaviour
 {
+    public Canvas canvas;
+
     [SerializeField] private ObjetoTienda objetoTienda;
     [SerializeField] private GameObject ventanaCompraPrefab;
-
     [SerializeField] private TextMeshProUGUI nombreTextUI;
     [SerializeField] private Image spriteImageUI;
     [SerializeField] private TextMeshProUGUI precioTextUI;
 
     private void Start()
     {
+        canvas = GameObject.FindWithTag("Canvas").GetComponent<Canvas>();
+
         if (objetoTienda != null)
         {
             nombreTextUI.text = objetoTienda.nombreText;
@@ -25,7 +28,6 @@ public class UIObjetoTienda : MonoBehaviour
     {
         if (ventanaCompraPrefab != null)
         {
-            Canvas canvas = FindObjectOfType<Canvas>();
             if (canvas != null)
             {
                 Vector3 centroCanvas = canvas.transform.position;

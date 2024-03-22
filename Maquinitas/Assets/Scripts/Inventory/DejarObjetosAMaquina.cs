@@ -14,7 +14,7 @@ public class DejarObjetosAMaquina : MonoBehaviour
         if (Mouse.current.leftButton.isPressed)
         {
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, capaObjetosArrastrables))
             {

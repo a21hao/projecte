@@ -9,7 +9,6 @@ public class VentanaCompra : MonoBehaviour
 
     [SerializeField] private MoneyManager moneyManager;
     [SerializeField] private Inventario inventario;
-
     [SerializeField] private GameObject prefabObjetoInventario;
     [SerializeField] private TextMeshProUGUI nombreText;
     [SerializeField] private Image spriteImage;

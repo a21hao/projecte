@@ -15,8 +15,16 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = PathBehavior.Waypoints[1];
+        target = PathBehavior.Waypoints[2];
         _mvb = GetComponent<MovementBehavior>();
+        Vector3 dir = target.position - transform.position;
+        //Debug.Log(dir);
+        Quaternion rotation = Quaternion.LookRotation(dir);
+        
+        //Debug.Log(rotation);
+
+        // Aplica la rotación al objeto
+        transform.rotation = rotation;
     }
 
     // Update is called once per frame
@@ -25,12 +33,13 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        //this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
             GetNextWaypoint();
+            
         }
     }
 
@@ -44,6 +53,8 @@ public class EnemyBehavior : MonoBehaviour
 
         wayPoint++;
         target = PathBehavior.Waypoints[wayPoint];
+        Vector3 dir = target.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(dir);
     }
     void OnTriggerEnter(Collider other)
     {

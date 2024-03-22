@@ -58,6 +58,7 @@ public class VendingSpawner : MonoBehaviour
                 //Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10));
                 //Vector3 positionSpawn = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z);
                 pointVending = pvm.isNearSomePoint(hit.point);
+                
                 Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
                 if (pointVending != null)
                 {
@@ -68,7 +69,7 @@ public class VendingSpawner : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(hit.point);
+                    
                     vendingInstantiate.transform.position = hit.point;
                     vmc.ChangeToColorUsefull(false);
                     isInGoodPosition = false;

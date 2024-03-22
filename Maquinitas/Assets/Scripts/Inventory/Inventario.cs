@@ -5,35 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using System.IO;
-
-[System.Serializable]
-public class ChildInfo
-{
-    public string nombre;
-    public string spritePath;
-    public string precio;
-    public string descripcion;
-    public int id;
-    public string tipo;
-    public int cantidad;
-}
-
-[System.Serializable]
-public class SlotState
-{
-    public bool tieneHijos;
-    public List<ChildInfo> hijos;
-
-    public SlotState(bool tieneHijos, List<ChildInfo> hijos)
-    {
-        this.tieneHijos = tieneHijos;
-        this.hijos = hijos;
-    }
-}
 
 public class Inventario : MonoBehaviour
 {
+    public LayerMask capasRaycast;
     public GraphicRaycaster graphRay;
     public static Transform canvas;
     public GameObject objetoSeleccionado;
@@ -46,8 +21,6 @@ public class Inventario : MonoBehaviour
     private List<RaycastResult> raycastResults;
     private bool objetoArrastrado = false;
 
-    [SerializeField] GameObject prefabObjetoAlmacen;
-
     private void Awake()
     {
 
@@ -55,7 +28,6 @@ public class Inventario : MonoBehaviour
         raycastResults = new List<RaycastResult>();
 
         canvas = transform.parent.transform;
-        CargarEstadoSlots();
     }
 
     private void Update()
@@ -73,7 +45,7 @@ public class Inventario : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    Debug.Log("Objeto detectado: " + result.gameObject.name); // Agregar mensaje de depuración
+                    Debug.Log("Objeto detectado: " + result.gameObject.name); 
                 }
                 if (raycastResults[0].gameObject.GetComponent<Item>())
                 {
@@ -133,7 +105,6 @@ public class Inventario : MonoBehaviour
             objetoSeleccionado = null;
             objetoArrastrado = false;
             scrollRect.enabled = true;
-            GuardarEstadoSlots();
         }
         raycastResults.Clear();
     }
@@ -175,77 +146,5 @@ public class Inventario : MonoBehaviour
                 }
             }
         }
-    }
-
-    void CargarEstadoSlots()
-    {
-        for (int i = 0; i < slots.Count; i++)
-        {
-            string slotKey = "Slot" + i;
-            string json = PlayerPrefs.GetString(slotKey);
-
-            if (!string.IsNullOrEmpty(json))
-            {
-                SlotState slotState = JsonUtility.FromJson<SlotState>(json);
-
-                if (slotState.tieneHijos)
-                {
-                    foreach (var childInfo in slotState.hijos)
-                    {
-                        GameObject nuevoObjeto = Instantiate(prefabObjetoAlmacen);
-                        nuevoObjeto.transform.SetParent(slots[i].transform);
-                        nuevoObjeto.transform.localPosition = Vector3.zero;
-
-                        // Cargar la información del hijo desde ChildInfo
-                        nuevoObjeto.GetComponent<Item>().SetInformacion(childInfo.nombre, Resources.Load<Sprite>(childInfo.spritePath), childInfo.precio, childInfo.descripcion, childInfo.id, childInfo.tipo, childInfo.cantidad);
-                    }
-                }
-            }
-        }
-    }
-
-    void GuardarEstadoSlots()
-    {
-        for (int i = 0; i < slots.Count; i++)
-        {
-            string slotKey = "Slot" + i;
-            Transform slotTransform = slots[i].transform;
-            bool tieneHijos = slotTransform.childCount > 0;
-
-            if (tieneHijos)
-            {
-                List<ChildInfo> hijos = new List<ChildInfo>();
-
-                foreach (Transform hijoTransform in slotTransform)
-                {
-                    // Obtener la información del hijo
-                    Item item = hijoTransform.GetComponent<Item>();
-                    ChildInfo childInfo = new ChildInfo
-                    {
-                        nombre = item.nombreText,
-                        spritePath = "Sprites/" + item.spriteImage.sprite.name, // Ruta relativa al sprite
-                        precio = item.precioObjeto,
-                        descripcion = item.descripcionObjeto,
-                        id = item.GetID(),
-                        tipo = item.tipo,
-                        cantidad = item.GetCantidad()
-                    };
-                    hijos.Add(childInfo);
-                }
-
-                // Serializar la información de los hijos a JSON
-                SlotState slotState = new SlotState(true, hijos);
-                string json = JsonUtility.ToJson(slotState);
-
-                // Guardar el estado del slot en PlayerPrefs
-                PlayerPrefs.SetString(slotKey, json);
-            }
-            else
-            {
-                PlayerPrefs.DeleteKey(slotKey); // Eliminar la clave si no hay hijos
-            }
-        }
-
-        PlayerPrefs.Save();
     }
 }

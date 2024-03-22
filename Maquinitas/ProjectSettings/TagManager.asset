@@ -10,6 +10,8 @@ TagManager:
   - Slot
   - Inventario
   - Money
+  - tablet
+  - Maquina
   layers:
   - Default
   - TransparentFX

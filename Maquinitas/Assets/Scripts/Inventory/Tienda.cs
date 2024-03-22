@@ -58,4 +58,20 @@ public class Tienda : MonoBehaviour
         dicionarioTienda.TryGetValue(id, out objetoTienda);
         return objetoTienda;
     }
+
+    public void FiltrarPorTipo(string tipo = null)
+    {
+        foreach (KeyValuePair<int, GameObject> kvp in dicionarioTienda)
+        {
+            ObjetoTienda objetoTienda = kvp.Value.GetComponent<ObjetoTienda>();
+            if (tipo != null && objetoTienda.tipo != tipo)
+            {
+                kvp.Value.SetActive(false);
+            }
+            else
+            {
+                kvp.Value.SetActive(true);
+            }
+        }
+    }
 }

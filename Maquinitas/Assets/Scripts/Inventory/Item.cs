@@ -7,12 +7,12 @@ using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private string nombreText;
-    [SerializeField] private Image spriteImage;
-    [SerializeField] private string precioObjeto;
-    [SerializeField] private string descripcionObjeto;
+    public string nombreText;
+    public Image spriteImage;
+    public string precioObjeto;
+    public string descripcionObjeto;
     [SerializeField] private int ID;
-    [SerializeField] private string tipo;
+    public  string tipo;
     [SerializeField] private int cantidad;
     [SerializeField] TextMeshProUGUI cantidadText;
 
@@ -45,15 +45,7 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
     {
         cantidad = newCantidad;
     }
-    public void SetInformacion(string nombre, Sprite sprite, string precio, string descripcion, int id, string tipo)
-    {
-        nombreText = nombre;
-        spriteImage.sprite = sprite;
-        precioObjeto = precio;
-        descripcionObjeto = descripcion;
-        ID = id;
-        this.tipo = tipo;
-    }
+
     public void SetInformacion(string nombre, Sprite sprite, string precio, string descripcion, int id, string tipo, int cantidad)
     {
         nombreText = nombre;

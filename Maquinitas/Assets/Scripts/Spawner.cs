@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnTime = 1f;
+        spawnTime = 5f;
         timer = 0;
     }
 

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FMODUnity;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    [SerializeField] private EventReference buySound;
 
     public float speed = 3f;
 
@@ -60,6 +62,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if(other.TryGetComponent<AAA>(out AAA Vending_)){
             Vending_.Buy();
+            AudioManager.instance.PlayOneShot(buySound, this.transform.position);
         }
     }
 }

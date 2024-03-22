@@ -137,6 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8be50ea4b9d80542856ea1154ea147d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySound:
+    Guid:
+      Data1: 5263080
+      Data2: 1195290665
+      Data3: 1067966340
+      Data4: -1873524955
+    Path: event:/SFX/ItemBought
   speed: 5
 --- !u!54 &3362920208801667198
 Rigidbody:

@@ -6,26 +6,49 @@ using TMPro;
 public class AAA : MonoBehaviour
 {
 
-    public TMP_Text moneyUI;
+    [SerializeField] int money;
+    [SerializeField] int stock;
+    [SerializeField] int maxStock = 10;
 
-    [SerializeField]
-    int money;
+    public MoneyManager moneyManager;
 
     [SerializeField]
     int maxStock = 10;
+    public List<GameObject> objectList = new List<GameObject>();
 
-    public ObjectBase item1;
-
-    // Start is called before the first frame update
-    void Start()
+    // M�todo que se llama cuando un objeto es arrastrado y soltado sobre el cubo
+    public void OnDropItem(GameObject item)
     {
-        item1.stock = maxStock;
-    }
+        Item itemComponent = item.GetComponent<Item>(); // Obtener componente Item del objeto arrastrado
 
-    // Update is called once per frame
-    void Update()
-    {
+        if (itemComponent != null)
+        {
+            // Verificar si ya existe un objeto similar en la lista
+            bool found = false;
+            foreach (GameObject obj in objectList)
+            {
+                Item objItem = obj.GetComponent<Item>();
+                if (objItem != null && objItem.GetID() == itemComponent.GetID())
+                {
+                    objItem.SetCantidad(objItem.GetCantidad() + itemComponent.GetCantidad()); // Actualizar cantidad
+                    found = true;
+                    break;
+                }
+            }
 
+            // Si no se encontr� un objeto similar, agregarlo a la lista
+            if (!found)
+            {
+                GameObject newItem = Instantiate(item); // Clonar el objeto
+                newItem.transform.SetParent(transform); // Establecer como hijo del cubo
+                newItem.transform.localPosition = Vector3.zero; // Colocar en el centro del cubo
+                objectList.Add(newItem); // Agregar a la lista
+                Debug.Log("Objeto a�adido al cubo: " + newItem.name);
+            }
+
+            // Eliminar el objeto del inventario original
+            Destroy(item);
+        }
     }
 
     public void Buy()
@@ -39,7 +62,5 @@ public class AAA : MonoBehaviour
             //moneyUI.text = money.ToString();
             MoneyManager.IncrementarDinero(item1.precio);
 
-        }
     }
-
 }

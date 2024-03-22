@@ -24,10 +24,8 @@ public class Tienda : MonoBehaviour
         foreach (ObjectBase objeto in listaObjetosTienda)
         {
             GameObject objetoTienda = Instantiate(prefabObjetoTienda, contenidoScrollView);
-            // Configura el objetoTienda con los datos del objeto ScriptableObject
             ConfigurarObjetoTienda(objetoTienda, objeto);
 
-            // Agrega el objetoTienda al diccionario utilizando el ID del objeto como clave
             dicionarioTienda.Add(objeto.ID, objetoTienda);
         }
     }
@@ -54,11 +52,26 @@ public class Tienda : MonoBehaviour
         //Debug.Log("Tipo enviado a ObjetoTienda: " + objeto.tipo.ToString());
     }
 
-    // Método para acceder al GameObject asociado a un ID específico
     public GameObject ObtenerObjetoPorID(int id)
     {
         GameObject objetoTienda;
         dicionarioTienda.TryGetValue(id, out objetoTienda);
         return objetoTienda;
+    }
+
+    public void FiltrarPorTipo(string tipo = null)
+    {
+        foreach (KeyValuePair<int, GameObject> kvp in dicionarioTienda)
+        {
+            ObjetoTienda objetoTienda = kvp.Value.GetComponent<ObjetoTienda>();
+            if (tipo != null && objetoTienda.tipo != tipo)
+            {
+                kvp.Value.SetActive(false);
+            }
+            else
+            {
+                kvp.Value.SetActive(true);
+            }
+        }
     }
 }

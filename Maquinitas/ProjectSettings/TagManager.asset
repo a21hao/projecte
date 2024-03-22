@@ -11,6 +11,8 @@ TagManager:
   - Inventario
   - Money
   - MoneyText
+  - tablet
+  - Maquina
   layers:
   - Default
   - TransparentFX

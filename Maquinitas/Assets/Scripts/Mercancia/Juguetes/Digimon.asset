@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
+  m_Name: Digimon
+  m_EditorClassIdentifier: 
+  ID: 4
+  nombre: Digimon
+  sprite: {fileID: 97841650, guid: f36751066d5d3604b8e5215f7bbc1c4a, type: 3}
+  tipo: 4
+  descripcion: "Mu\xF1eco Digimon"
+  precio: 50
+  precioVenta: 0
+  stock: 0

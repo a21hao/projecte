@@ -22,7 +22,8 @@ public class ObjectBase : ScriptableObject
         comida,
         ropa,
         maquina,
-        juguete
+        juguete,
+        electrodomesticos
     }
     private void OnEnable()
     {

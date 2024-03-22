@@ -11,59 +11,76 @@ public class ButtonManager : MonoBehaviour
     public GameObject ajustes;
     public GameObject upgrades;
     public GameObject tablet;
-    private Animator animator;
+    private Animator almacenAnimator;
+    private Animator amazingAnimator;
+    private Animator tabletAnimator;
+    private Animator mapaAnimator;
+    private Animator perfilAnimator;
+    private Animator upgradesAnimator;
+    private Animator ajustesAnimator;
 
-    void ToggleGameObject(GameObject obj)
+    private void Start()
     {
+        almacenAnimator = almacen.GetComponent<Animator>();
+        amazingAnimator = amazing.GetComponent<Animator>();
+        tabletAnimator = tablet.GetComponent<Animator>();
+        mapaAnimator = mapa.GetComponent<Animator>();
+        perfilAnimator = perfil.GetComponent<Animator>();
+        upgradesAnimator = upgrades.GetComponent<Animator>();
+        ajustesAnimator = ajustes.GetComponent<Animator>();
+    }
+
+    IEnumerator ToggleGameObject(GameObject obj, Animator animator)
+    {
+        animator.SetTrigger("Abrir");
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length*5);
         obj.SetActive(!obj.activeSelf);
     }
 
 
     public void ToggleAmazing()
     {
-        ToggleGameObject(amazing);
+        StartCoroutine(ToggleGameObject(amazing, amazingAnimator));
     }
 
     public void ToggleAlmacen()
     {
-        ToggleGameObject(almacen);
+        StartCoroutine(ToggleGameObject(almacen, almacenAnimator));
     }
 
     public void ToggleMapa()
     {
-        ToggleGameObject(mapa);
+        StartCoroutine(ToggleGameObject(mapa, mapaAnimator));
     }
 
     public void TogglePerfil()
     {
-        ToggleGameObject(perfil);
+        StartCoroutine(ToggleGameObject(perfil, perfilAnimator));
     }
 
     public void ToggleAjustes()
     {
-        ToggleGameObject(ajustes);
+        StartCoroutine(ToggleGameObject(ajustes, ajustesAnimator));
     }
 
     public void ToggleUpgrades()
     {
-        ToggleGameObject(upgrades);
+        StartCoroutine(ToggleGameObject(upgrades, upgradesAnimator));
     }
 
-    public void ToggleApagar()
+    public void ToggleTablet()
     {
-        ToggleGameObject(tablet);
+        StartCoroutine(ToggleGameObject(tablet, tabletAnimator));
     }
 
 
     public void ToggleAll()
     {
-        amazing.SetActive(!amazing.activeSelf);
-        almacen.SetActive(!almacen.activeSelf);
-        mapa.SetActive(!mapa.activeSelf);
-        perfil.SetActive(!perfil.activeSelf);
-        ajustes.SetActive(!ajustes.activeSelf);
-        upgrades.SetActive(!upgrades.activeSelf);
-        tablet.SetActive(!tablet.activeSelf);
-
+        ToggleAmazing();
+        ToggleAlmacen();
+        ToggleTablet();
+        TogglePerfil();
+        ToggleAjustes();
+        ToggleTablet();
     }
 }

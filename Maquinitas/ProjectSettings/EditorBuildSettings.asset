@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Prueba-inventario.unity
     guid: 9d9e121767be2974690e0e60040e1b53
   - enabled: 1
@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapaMaquina.unity
     guid: 403135c4eddbce948b5e051b7c5430a9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/time.unity
     guid: 3573cdee245796f438192f18ff75be34
   m_configObjects:

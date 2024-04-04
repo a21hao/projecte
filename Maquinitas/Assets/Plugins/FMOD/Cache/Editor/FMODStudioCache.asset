@@ -1,6 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< HEAD
 --- !u!114 &-4969542855657656275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,9 +41,6 @@ MonoBehaviour:
     Value: 980
   Exists: 1
 --- !u!114 &-18024262011431640
-=======
---- !u!114 &-5210938445908851240
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,64 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Music.bank
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   Path: ../../../Nueva carpeta/SoundStuff-20240322T180741Z-001/SoundStuff/Maquinitas/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
   lastModified: 638467312937883157
-=======
-  Path: ../SoundStuff/Maquinitas/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 638467448290037658
->>>>>>> main
   FileSizes:
   - Name: Desktop
     Value: 2332320
   Exists: 1
-<<<<<<< HEAD
-=======
---- !u!114 &-1203067013137275271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../SoundStuff/Maquinitas/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638467448265648396
-  FileSizes:
-  - Name: Desktop
-    Value: 1340
-  Exists: 1
---- !u!114 &-237727773890272714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/SFX.bank
-  m_EditorClassIdentifier: 
-  Path: ../SoundStuff/Maquinitas/Build/Desktop/SFX.bank
-  Name: SFX
-  StudioPath: bank:/SFX
-  lastModified: 638467448290942353
-  FileSizes:
-  - Name: Desktop
-    Value: 41312
-  Exists: 1
->>>>>>> main
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,37 +73,21 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-<<<<<<< HEAD
   - {fileID: -4361367161203485421}
   - {fileID: -4969542855657656275}
   - {fileID: -18024262011431640}
   - {fileID: 4564001596328366207}
-=======
-  - {fileID: 2207695179255626263}
-  - {fileID: -1203067013137275271}
-  - {fileID: -5210938445908851240}
-  - {fileID: -237727773890272714}
->>>>>>> main
   EditorEvents:
   - {fileID: 8057009843461525813}
   - {fileID: 6600985971267947334}
   EditorParameters: []
   MasterBanks:
-<<<<<<< HEAD
   - {fileID: -4969542855657656275}
   StringsBanks:
   - {fileID: -4361367161203485421}
   cacheTime: 638467312937883157
   cacheVersion: 131617
 --- !u!114 &4564001596328366207
-=======
-  - {fileID: -1203067013137275271}
-  StringsBanks:
-  - {fileID: 2207695179255626263}
-  cacheTime: 638467448290942353
-  cacheVersion: 131617
---- !u!114 &2207695179255626263
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +97,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-<<<<<<< HEAD
   m_Name: bank:/SFX.bank
   m_EditorClassIdentifier: 
   Path: ../../../Nueva carpeta/SoundStuff-20240322T180741Z-001/SoundStuff/Maquinitas/Build/Desktop/SFX.bank
@@ -177,17 +106,6 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 41312
-=======
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../SoundStuff/Maquinitas/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638467448265658433
-  FileSizes:
-  - Name: Desktop
-    Value: 980
->>>>>>> main
   Exists: 1
 --- !u!114 &6600985971267947334
 MonoBehaviour:
@@ -208,11 +126,7 @@ MonoBehaviour:
     Data3: 1067966340
     Data4: -1873524955
   Banks:
-<<<<<<< HEAD
   - {fileID: 4564001596328366207}
-=======
-  - {fileID: -237727773890272714}
->>>>>>> main
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -239,11 +153,7 @@ MonoBehaviour:
     Data3: 1373702540
     Data4: -2096314094
   Banks:
-<<<<<<< HEAD
   - {fileID: -18024262011431640}
-=======
-  - {fileID: -5210938445908851240}
->>>>>>> main
   IsStream: 1
   Is3D: 0
   IsOneShot: 0

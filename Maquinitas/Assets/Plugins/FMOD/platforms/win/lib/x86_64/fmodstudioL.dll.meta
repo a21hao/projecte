@@ -22,10 +22,6 @@ PluginImporter:
       enabled: 1
       settings:
         CPU: x86_64
-<<<<<<< HEAD
-=======
-        DefaultValueInitialized: true
->>>>>>> main
         OS: Windows
   - first:
       Standalone: Win64

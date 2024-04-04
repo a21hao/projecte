@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e8d489ec-cf07-47f6-89a1-2fc0244515ed}">
+		<property name="assetPath">
+			<value>Sounds/Rebirth Golden Key Pickup Sound.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.6351020408163262</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c7abd220-389d-4eec-a2d6-188f2238b557}</destination>
+		</relationship>
+	</object>
+</objects>

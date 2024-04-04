@@ -13,6 +13,7 @@ TagManager:
   - MoneyText
   - tablet
   - Maquina
+  - Canvas
   layers:
   - Default
   - TransparentFX

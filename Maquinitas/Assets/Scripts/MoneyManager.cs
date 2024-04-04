@@ -27,6 +27,7 @@ public class MoneyManager : MonoBehaviour
 
     public static void IncrementarDinero(int cantidad)
     {
+        Debug.Log(cantidad + "mas");
         dineroTotal += cantidad;
         ActualizarTextoDinero();
     }
@@ -40,7 +41,7 @@ public class MoneyManager : MonoBehaviour
 
     private static void ActualizarTextoDinero()
     {
-        
+        Debug.Log("actudinero");
         textoDinero.text = dineroTotal.ToString();
         /*
         MoneyManager[] moneyManagers = FindObjectsOfType<MoneyManager>();

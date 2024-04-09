@@ -31,6 +31,12 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+
+        SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+
         InitializeMusic(FMODEvents.instance.music);
     }
     private void Awake()

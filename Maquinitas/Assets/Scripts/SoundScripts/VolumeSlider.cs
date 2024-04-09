@@ -23,6 +23,18 @@ public class VolumeSlider : MonoBehaviour
         volumeSlider = this.GetComponentInChildren<Slider>();
     }
 
+    private void Start()
+    {
+        //volumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        //volumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        //volumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+
+        //AudioManager.instance.masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+        //AudioManager.instance.musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+        //AudioManager.instance.SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+
+    }
+
     private void Update()
     {
         switch (volumeType)

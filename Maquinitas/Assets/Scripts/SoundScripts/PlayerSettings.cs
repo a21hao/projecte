@@ -12,7 +12,7 @@ public class PlayerSettings : MonoBehaviour
     {
         masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        masterSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     }
 
     public void SetMasterPref()

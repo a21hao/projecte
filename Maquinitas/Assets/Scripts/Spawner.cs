@@ -26,6 +26,7 @@ public class Spawner : MonoBehaviour
         {
             timer = 0;
             Instantiate(prefab, transform.position, Quaternion.identity);
+            spawnTime = Random.Range(3f, 8f);
         }
     }
 }

@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyUI: {fileID: 0}
   money: 0
-  maxStock: 10
+  maxStock: 500
   item1: {fileID: 11400000, guid: db188e2eadf339349b208d076a9260e2, type: 2}
 --- !u!1 &2487658300431492848
 GameObject:

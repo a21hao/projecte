@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyUI: {fileID: 0}
   money: 0
-  maxStock: 10
+  maxStock: 500
   item1: {fileID: 11400000, guid: db188e2eadf339349b208d076a9260e2, type: 2}
 --- !u!1 &2487658300431492848
 GameObject:
@@ -460,11 +460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00581
+      value: 0.00533
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00009
+      value: 0.00838
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalPosition.z
@@ -472,23 +472,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.48419368
+      value: 0.49720743
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.48419368
+      value: 0.49720746
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.51532173
+      value: 0.502777
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.51532185
+      value: 0.50277716
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 183.568
+      value: 180.638
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

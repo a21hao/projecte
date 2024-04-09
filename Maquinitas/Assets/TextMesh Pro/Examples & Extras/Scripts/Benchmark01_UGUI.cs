@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace TMPro.Examples
 {
-    
+
     public class Benchmark01_UGUI : MonoBehaviour
     {
 
@@ -17,7 +17,7 @@ namespace TMPro.Examples
 
         private TextMeshProUGUI m_textMeshPro;
         //private TextContainer m_textContainer;
-        private TextMeshProGUI m_textMesh;
+        private Text m_textMesh;
 
         private const string label01 = "The <#0050FF>count is: </color>";
         private const string label02 = "The <color=#0050FF>count is: </color>";
@@ -72,7 +72,7 @@ namespace TMPro.Examples
             }
             else if (BenchmarkType == 1) // TextMesh
             {
-                m_textMesh = gameObject.AddComponent<TextMeshProGUI>();
+                m_textMesh = gameObject.AddComponent<Text>();
 
                 if (TextMeshFont != null)
                 {

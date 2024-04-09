@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class TextTime : MonoBehaviour
 {
 
-    private TextMeshProGUI timeText;
+    private Text timeText;
 
 
     void Start()
     {
-        timeText = GetComponent<TextMeshProGUI>();//Get the text component
+        timeText = GetComponent<Text>();//Get the text component
 
     }
     void Update()

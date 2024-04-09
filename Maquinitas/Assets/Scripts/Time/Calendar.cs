@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-using TMPro;
 
 public class Calendar : MonoBehaviour
 {
@@ -32,11 +31,11 @@ public class Calendar : MonoBehaviour
             this.dayNum = newDayNum;
             if (dayColor == Color.white || dayColor == Color.green)
             {
-                obj.GetComponentInChildren<TextMeshProGUI>().text = (dayNum + 1).ToString();
+                obj.GetComponentInChildren<Text>().text = (dayNum + 1).ToString();
             }
             else
             {
-                obj.GetComponentInChildren<TextMeshProGUI>().text = "";
+                obj.GetComponentInChildren<Text>().text = "";
             }
         }
     }
@@ -45,7 +44,7 @@ public class Calendar : MonoBehaviour
 
     public Transform[] weeks;
 
-    public TextMeshProGUI MonthAndYear;
+    public Text MonthAndYear;
 
     public DateTime currDate = DateTime.Now;
 

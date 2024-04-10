@@ -17,6 +17,7 @@ public class CameraMapMoving : MonoBehaviour
     private float velocityDragCamera;
     private Vector3 directionCameraz;
     private Vector3 directionCamerax;
+    private bool canUseCameraMap;
 
 
     static public CinemachineVirtualCamera mapVirtualCamera;
@@ -40,6 +41,7 @@ public class CameraMapMoving : MonoBehaviour
     private void Awake()
     {
         mapVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        canUseCameraMap = true;
     }
     void Start()
     {
@@ -77,33 +79,36 @@ public class CameraMapMoving : MonoBehaviour
          }*/
         
         
-
-        if (Mouse.current.leftButton.isPressed)
+        if(canUseCameraMap)
         {
-            Vector3 currentMousePosition = new Vector3(Mouse.current.position.x.ReadValue() * -velocityDragCamera, -cameraAltitude, Mouse.current.position.y.ReadValue() * -velocityDragCamera);
-            if (_lastMousePosition != Vector3.zero)
+            if (Mouse.current.leftButton.isPressed)
             {
-                Vector3 delta = (currentMousePosition - _lastMousePosition);
-                Vector3 newPositionx = delta.x * directionCamerax;
-                Vector3 newPositionz = delta.z * directionCameraz;
-                Vector3 newPosition = newPositionx + newPositionz + new Vector3(0, delta.y, 0);
-                transform.position += newPosition;
-                CheckCameraIntoPoints();
+                Vector3 currentMousePosition = new Vector3(Mouse.current.position.x.ReadValue() * -velocityDragCamera, -cameraAltitude, Mouse.current.position.y.ReadValue() * -velocityDragCamera);
+                if (_lastMousePosition != Vector3.zero)
+                {
+                    Vector3 delta = (currentMousePosition - _lastMousePosition);
+                    Vector3 newPositionx = delta.x * directionCamerax;
+                    Vector3 newPositionz = delta.z * directionCameraz;
+                    Vector3 newPosition = newPositionx + newPositionz + new Vector3(0, delta.y, 0);
+                    transform.position += newPosition;
+                    CheckCameraIntoPoints();
 
+                }
+                _lastMousePosition = currentMousePosition;
             }
-            _lastMousePosition = currentMousePosition;
-        }
-        else
-        {
-            _lastMousePosition = Vector3.zero;
-        }
+            else
+            {
+                _lastMousePosition = Vector3.zero;
+            }
 
-        if (NewControls.mapMovementDirection != Vector2.zero)
-        {
-            mb.Move(NewControls.mapMovementDirection.x*directionCamerax);
-            mb.Move(NewControls.mapMovementDirection.y*directionCameraz);
-            CheckCameraIntoPoints();
+            if (NewControls.mapMovementDirection != Vector2.zero)
+            {
+                mb.Move(NewControls.mapMovementDirection.x * directionCamerax);
+                mb.Move(NewControls.mapMovementDirection.y * directionCameraz);
+                CheckCameraIntoPoints();
+            }
         }
+        
         /*
 
         if(NewControls.scrollValue.y > 0)
@@ -132,6 +137,11 @@ public class CameraMapMoving : MonoBehaviour
     public static void ChangeTypeOfCameraToOrthografic(bool isOrthografic)
     {
         mapVirtualCamera.m_Lens.Orthographic = isOrthografic;
+    }
+
+    public void CanUseCameraMap(bool canUse)
+    {
+        canUseCameraMap = canUse;
     }
 
 }

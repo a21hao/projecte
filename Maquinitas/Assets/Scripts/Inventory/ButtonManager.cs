@@ -11,6 +11,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject ajustes;
     public GameObject upgrades;
     public GameObject tablet;
+    
     private Animator almacenAnimator;
     private Animator amazingAnimator;
     private Animator tabletAnimator;
@@ -18,9 +19,16 @@ public class ButtonManager : MonoBehaviour
     private Animator perfilAnimator;
     private Animator upgradesAnimator;
     private Animator ajustesAnimator;
+    
+    [SerializeField]
+    private GameObject cameraMap;
+    private CameraMapMoving cmm;
 
     private void Start()
     {
+        Debug.Log("StartEntered");
+        cmm = cameraMap.GetComponent<CameraMapMoving>();
+        Debug.Log(cmm == null);
         almacenAnimator = almacen.GetComponent<Animator>();
         amazingAnimator = amazing.GetComponent<Animator>();
         tabletAnimator = tablet.GetComponent<Animator>();
@@ -28,6 +36,8 @@ public class ButtonManager : MonoBehaviour
         perfilAnimator = perfil.GetComponent<Animator>();
         upgradesAnimator = upgrades.GetComponent<Animator>();
         ajustesAnimator = ajustes.GetComponent<Animator>();
+        
+        
     }
 
     IEnumerator ToggleGameObject(GameObject obj, Animator animator)
@@ -35,6 +45,11 @@ public class ButtonManager : MonoBehaviour
         animator.SetTrigger("Abrir");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length*5);
         obj.SetActive(!obj.activeSelf);
+        if(obj == tablet)
+        {
+            Debug.Log("he entrado");
+            
+        }
     }
 
 
@@ -71,6 +86,7 @@ public class ButtonManager : MonoBehaviour
     public void ToggleTablet()
     {
         StartCoroutine(ToggleGameObject(tablet, tabletAnimator));
+        cmm.CanUseCameraMap(tablet.activeSelf);
     }
 
 

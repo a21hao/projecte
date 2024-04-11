@@ -19,15 +19,21 @@ public class ButtonManager : MonoBehaviour
     private Animator perfilAnimator;
     private Animator upgradesAnimator;
     private Animator ajustesAnimator;
+    private bool canUseToggleTablet;
+    private bool isTabletInUse;
     
     [SerializeField]
     private GameObject cameraMap;
     private CameraMapMoving cmm;
+    private CameraZoomOrthografic czo;
 
     private void Start()
     {
         Debug.Log("StartEntered");
         cmm = cameraMap.GetComponent<CameraMapMoving>();
+        czo = cameraMap.GetComponent<CameraZoomOrthografic>();
+        canUseToggleTablet = true;
+        isTabletInUse = false;
         Debug.Log(cmm == null);
         almacenAnimator = almacen.GetComponent<Animator>();
         amazingAnimator = amazing.GetComponent<Animator>();
@@ -56,13 +62,16 @@ public class ButtonManager : MonoBehaviour
     public void ToggleAmazing()
     {
         //StartCoroutine(ToggleGameObject(amazing, amazingAnimator));
+
         amazingAnimator.SetTrigger("Abrir");
         if (!amazing.activeSelf) amazing.SetActive(true);
     }
 
     public void ToggleAlmacen()
     {
-        StartCoroutine(ToggleGameObject(almacen, almacenAnimator));
+        //StartCoroutine(ToggleGameObject(almacen, almacenAnimator));
+        almacenAnimator.SetTrigger("Abrir");
+        if (!almacen.activeSelf) almacen.SetActive(true);
     }
 
     public void ToggleMapa()
@@ -88,10 +97,16 @@ public class ButtonManager : MonoBehaviour
     public void ToggleTablet()
     {
         //StartCoroutine(ToggleGameObject(tablet, tabletAnimator));
+        if(canUseToggleTablet)
+        {
+            if (!tablet.activeSelf) tablet.SetActive(true);
+            tabletAnimator.SetTrigger("Abrir");
+            cmm.CanUseCameraMap(isTabletInUse);
+            czo.CanZoom(isTabletInUse);
+            isTabletInUse = !isTabletInUse;
+            
+        }
         
-        if (!tablet.activeSelf) tablet.SetActive(true);
-        tabletAnimator.SetTrigger("Abrir");
-        cmm.CanUseCameraMap(tablet.activeSelf);
     }
 
 
@@ -103,6 +118,11 @@ public class ButtonManager : MonoBehaviour
         TogglePerfil();
         ToggleAjustes();
         ToggleTablet();
+    }
+
+    public void CanUseToggleTablet(bool canUse)
+    {
+        canUseToggleTablet = canUse;
     }
 
 }

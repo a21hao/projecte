@@ -55,7 +55,9 @@ public class ButtonManager : MonoBehaviour
 
     public void ToggleAmazing()
     {
-        StartCoroutine(ToggleGameObject(amazing, amazingAnimator));
+        //StartCoroutine(ToggleGameObject(amazing, amazingAnimator));
+        amazingAnimator.SetTrigger("Abrir");
+        if (!amazing.activeSelf) amazing.SetActive(true);
     }
 
     public void ToggleAlmacen()
@@ -85,7 +87,10 @@ public class ButtonManager : MonoBehaviour
 
     public void ToggleTablet()
     {
-        StartCoroutine(ToggleGameObject(tablet, tabletAnimator));
+        //StartCoroutine(ToggleGameObject(tablet, tabletAnimator));
+        
+        if (!tablet.activeSelf) tablet.SetActive(true);
+        tabletAnimator.SetTrigger("Abrir");
         cmm.CanUseCameraMap(tablet.activeSelf);
     }
 
@@ -99,4 +104,5 @@ public class ButtonManager : MonoBehaviour
         ToggleAjustes();
         ToggleTablet();
     }
+
 }

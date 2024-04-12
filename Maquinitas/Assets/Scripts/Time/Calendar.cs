@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.UI;
 
 public class Calendar : MonoBehaviour
@@ -43,38 +43,39 @@ public class Calendar : MonoBehaviour
     private List<Day> days = new List<Day>();
 
     public Transform[] weeks;
-
     public Text MonthAndYear;
 
     public DateTime currDate = DateTime.Now;
 
     private void Start()
     {
-        UpdateCalendar(DateTime.Now.Year, DateTime.Now.Month);
+        UpdateCalendar(DateTime.Now.Year, 0); // Comienza en la "primavera"
     }
 
-    void UpdateCalendar(int year, int month)
+    void UpdateCalendar(int year, int seasonIndex)
     {
-        string[] monthNames = { "Primavera", "Verano", "Otoño", "Invierno" };
+        int startDay = 0; // Comienza siempre en el primer día del mes
+        int endDay = 27; // 28 días en cada mes
 
-        currDate = new DateTime(year, month, 1);
-        MonthAndYear.text = monthNames[month - 1] + " " + year.ToString();
+        string[] seasons = { "Primavera", "Verano", "Otoño", "Invierno" };
+        string currentSeason = seasons[seasonIndex];
+        MonthAndYear.text = currentSeason + " " + year.ToString();
 
         if (days.Count == 0)
         {
-            for (int w = 0; w < 4; w++)
+            for (int w = 0; w < 6; w++)
             {
                 for (int i = 0; i < 7; i++)
                 {
                     Day newDay;
                     int currDay = (w * 7) + i;
-                    if (currDay >= DateTime.DaysInMonth(year, month))
+                    if (currDay < startDay || currDay - startDay > endDay)
                     {
-                        newDay = new Day(currDay - DateTime.DaysInMonth(year, month), Color.grey, weeks[w].GetChild(i).gameObject);
+                        newDay = new Day(currDay - startDay, Color.grey, weeks[w].GetChild(i).gameObject);
                     }
                     else
                     {
-                        newDay = new Day(currDay, Color.white, weeks[w].GetChild(i).gameObject);
+                        newDay = new Day(currDay - startDay, Color.white, weeks[w].GetChild(i).gameObject);
                     }
                     days.Add(newDay);
                 }
@@ -82,9 +83,9 @@ public class Calendar : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 28; i++)
+            for (int i = 0; i < 42; i++)
             {
-                if (i >= DateTime.DaysInMonth(year, month))
+                if (i < startDay || i - startDay > endDay)
                 {
                     days[i].UpdateColor(Color.grey);
                 }
@@ -93,38 +94,43 @@ public class Calendar : MonoBehaviour
                     days[i].UpdateColor(Color.white);
                 }
 
-                days[i].UpdateDay(i);
+                days[i].UpdateDay(i - startDay);
             }
         }
 
-        if (DateTime.Now.Year == year && DateTime.Now.Month == month)
+        if (DateTime.Now.Year == year && DateTime.Now.Month == seasonIndex)
         {
-            days[(DateTime.Now.Day - 1)].UpdateColor(Color.green);
+            days[(DateTime.Now.Day - 1) + startDay].UpdateColor(Color.green);
         }
+
     }
 
     int GetMonthStartDay(int year, int month)
     {
-        DateTime temp = new DateTime(year, month, 1);
+        DateTime temp = new DateTime(year, month + 1, 1); // Se suma 1 al mes para que sea consistente con el índice de los meses de DateTime
+
+        // DayOfWeek Sunday == 0, Saturday == 6 etc.
         return (int)temp.DayOfWeek;
     }
 
     int GetTotalNumberOfDays(int year, int month)
     {
-        return DateTime.DaysInMonth(year, month);
+        return 28; // Cada mes tiene 28 días
     }
 
-    public void SwitchMonth(int direction)
+    public void SwitchSeason(int direction)
     {
+        int currentSeasonIndex = Array.IndexOf(new string[] { "Primavera", "Verano", "Otoño", "Invierno" }, MonthAndYear.text.Split(' ')[0]);
+
         if (direction < 0)
         {
-            currDate = currDate.AddMonths(-1);
+            currentSeasonIndex = (currentSeasonIndex - 1 + 4) % 4;
         }
         else
         {
-            currDate = currDate.AddMonths(1);
+            currentSeasonIndex = (currentSeasonIndex + 1) % 4;
         }
 
-        UpdateCalendar(currDate.Year, currDate.Month);
+        UpdateCalendar(currDate.Year, currentSeasonIndex);
     }
 }

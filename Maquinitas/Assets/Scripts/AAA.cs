@@ -12,14 +12,18 @@ public class AAA : MonoBehaviour
     int money;
 
     [SerializeField]
-    int maxStock = 10;
+    private int maxStock = 10;
 
-    public ObjectBase item1;
+    [SerializeField]
+    private ObjectBase item1;
+
+    [SerializeField]
+    private int stock;
 
     // Start is called before the first frame update
     void Start()
     {
-        item1.stock = maxStock;
+        stock = maxStock;
     }
 
     // Update is called once per frame
@@ -30,11 +34,10 @@ public class AAA : MonoBehaviour
 
     public void Buy()
     {
-        Debug.Log("i");
-        if (item1.stock > 0)
+        if (stock > 0)
         {
             
-            item1.stock -= 1;
+            stock -= 1;
             money += item1.precio;
             Debug.Log(item1.precio);
             //moneyUI.text = money.ToString();

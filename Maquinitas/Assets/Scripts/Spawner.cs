@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnTime = 5f;
+        spawnTime = 1f;
         timer = 0;
     }
 
@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
         {
             timer = 0;
             Instantiate(prefab, transform.position, Quaternion.identity);
-            spawnTime = Random.Range(3f, 8f);
+            spawnTime = Random.Range(1f, 1f);
         }
     }
 }

@@ -7,7 +7,8 @@ using static PointsVendingMachine;
 public class VendingSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject prefabVendingMachine;
+    [SerializeField]
+    private GameObject prefabVendingMachine;
     private GameObject vendingInstantiate;
     private VendingMachineController vmc;
     private bool isDraging;

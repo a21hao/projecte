@@ -26,6 +26,10 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
         cantidadText.text = cantidad.ToString();
     }
 
+    public string GetNombre()
+    {
+        return nombreText;
+    }
     public int GetID()
     {
         return ID;
@@ -56,5 +60,20 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
         this.tipo = tipo;
         this.cantidad = cantidad;
         cantidadText.text = cantidad.ToString();
+    }
+
+
+    public void IncrementCantidad(int cantid)
+    {
+        cantidad += cantid;
+    }
+
+    public void DecrementCantidad(int cantid)
+    {
+        cantidad -= cantid;
+        if(cantidad <= 0)
+        {
+            cantidad = 0;
+        }
     }
 }

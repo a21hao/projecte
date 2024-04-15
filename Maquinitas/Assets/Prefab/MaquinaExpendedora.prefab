@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9165345636846210316}
   - component: {fileID: 6733626850107615222}
   - component: {fileID: 5996553255058076524}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 5876881757143481576}
   - component: {fileID: 5980031629194933357}
   - component: {fileID: 1281024818798116872}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MaquinaExpendedora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 3245132681958798179}
   - component: {fileID: 1775153164840639335}
   - component: {fileID: 1254082921612111265}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3293963680290539496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pointOfCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8201444980303577162}
   - component: {fileID: 2351136276438808775}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 5449993925661778026}
   - component: {fileID: 6659219785521751255}
   - component: {fileID: 8282736614479715043}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,9 +498,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
       propertyPath: m_Name
       value: "M\xE1quina_Low_Poly"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: c1976ecfdbbf5b34682f03ee7464e805, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

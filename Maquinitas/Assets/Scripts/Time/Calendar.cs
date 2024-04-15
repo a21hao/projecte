@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Calendar : MonoBehaviour
 {
@@ -12,17 +12,20 @@ public class Calendar : MonoBehaviour
         public Color dayColor;
         public GameObject obj;
 
+        private Image image;
+
         public Day(int dayNum, Color dayColor, GameObject obj)
         {
             this.dayNum = dayNum;
             this.obj = obj;
+            this.image = obj.GetComponent<Image>();
             UpdateColor(dayColor);
             UpdateDay(dayNum);
         }
 
         public void UpdateColor(Color newColor)
         {
-            obj.GetComponent<Image>().color = newColor;
+            image.color = newColor;
             dayColor = newColor;
         }
 
@@ -31,11 +34,11 @@ public class Calendar : MonoBehaviour
             this.dayNum = newDayNum;
             if (dayColor == Color.white || dayColor == Color.green)
             {
-                obj.GetComponentInChildren<Text>().text = (dayNum + 1).ToString();
+                obj.GetComponentInChildren<TextMeshProUGUI>().text = (dayNum + 1).ToString();
             }
             else
             {
-                obj.GetComponentInChildren<Text>().text = "";
+                obj.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
     }
@@ -43,94 +46,116 @@ public class Calendar : MonoBehaviour
     private List<Day> days = new List<Day>();
 
     public Transform[] weeks;
-    public Text MonthAndYear;
+    public TextMeshProUGUI MonthAndYear;
 
-    public DateTime currDate = DateTime.Now;
+    private int currentYear = 1;
+    private int currentSeasonIndex = 0;
+    private int currentDayIndex = -1;
+    Color brown = new Color(0.6f, 0.4f, 0.2f);
 
     private void Start()
     {
-        UpdateCalendar(DateTime.Now.Year, 0); // Comienza en la "primavera"
+        UpdateCalendar(currentYear, currentSeasonIndex);
+        currentYear = 1;
+        currentSeasonIndex = 0;
+        UpdateCalendar(currentYear, currentSeasonIndex);
     }
 
     void UpdateCalendar(int year, int seasonIndex)
     {
-        int startDay = 0; // Comienza siempre en el primer día del mes
-        int endDay = 27; // 28 días en cada mes
+        // Verificar si el año está dentro del rango permitido
+        if (year < 1 || year > 99)
+        {
+            Debug.LogWarning("El año está fuera del rango permitido.");
+            return;
+        }
 
+        MonthAndYear.text = year.ToString() + " " + GetSeasonName(seasonIndex);
+
+        int totalDays = 28;
+        days = new List<Day>(totalDays);
+
+        int startDay = 0;
+        int endDay = 27;
+
+        // Verificar si estamos en el primer año y la última estación es invierno
+        if (year == 1 && seasonIndex == 3)
+        {
+            endDay = 0; // El último día es el 28 de invierno del año 1
+        }
+        // Verificar si estamos en el último año y la última estación es invierno
+        else if (year == 99 && seasonIndex == 3)
+        {
+            endDay = 27; // El último día es el 28 de invierno del año 99
+        }
+
+        for (int i = 0; i < 42; i++)
+        {
+            days[i].UpdateColor(Color.grey);
+            days[i].UpdateDay(-1);
+        }
+
+        for (int w = 0; w < 6; w++)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                int currDay = (w * 7) + i;
+                if (currDay < startDay || currDay - startDay > endDay)
+                {
+                    continue;
+                }
+                Day newDay = new Day(currDay - startDay, Color.white, weeks[w].GetChild(i).gameObject);
+                days.Add(newDay);
+            }
+        }
+
+        if (currentDayIndex != -1)
+        {
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
+    }
+
+
+    string GetSeasonName(int seasonIndex)
+    {
         string[] seasons = { "Primavera", "Verano", "Otoño", "Invierno" };
-        string currentSeason = seasons[seasonIndex];
-        MonthAndYear.text = currentSeason + " " + year.ToString();
-
-        if (days.Count == 0)
-        {
-            for (int w = 0; w < 6; w++)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    Day newDay;
-                    int currDay = (w * 7) + i;
-                    if (currDay < startDay || currDay - startDay > endDay)
-                    {
-                        newDay = new Day(currDay - startDay, Color.grey, weeks[w].GetChild(i).gameObject);
-                    }
-                    else
-                    {
-                        newDay = new Day(currDay - startDay, Color.white, weeks[w].GetChild(i).gameObject);
-                    }
-                    days.Add(newDay);
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < 42; i++)
-            {
-                if (i < startDay || i - startDay > endDay)
-                {
-                    days[i].UpdateColor(Color.grey);
-                }
-                else
-                {
-                    days[i].UpdateColor(Color.white);
-                }
-
-                days[i].UpdateDay(i - startDay);
-            }
-        }
-
-        if (DateTime.Now.Year == year && DateTime.Now.Month == seasonIndex)
-        {
-            days[(DateTime.Now.Day - 1) + startDay].UpdateColor(Color.green);
-        }
-
+        return seasons[seasonIndex];
     }
 
-    int GetMonthStartDay(int year, int month)
+    public void NextSeason()
     {
-        DateTime temp = new DateTime(year, month + 1, 1); // Se suma 1 al mes para que sea consistente con el índice de los meses de DateTime
-
-        // DayOfWeek Sunday == 0, Saturday == 6 etc.
-        return (int)temp.DayOfWeek;
+        currentSeasonIndex++;
+        if (currentSeasonIndex >= 4)
+        {
+            currentSeasonIndex = 0;
+            currentYear++;
+        }
+        UpdateCalendar(currentYear, currentSeasonIndex);
     }
 
-    int GetTotalNumberOfDays(int year, int month)
+    public void PreviousSeason()
     {
-        return 28; // Cada mes tiene 28 días
+        currentSeasonIndex--;
+        if (currentSeasonIndex < 0)
+        {
+            currentSeasonIndex = 3;
+            currentYear--;
+        }
+        UpdateCalendar(currentYear, currentSeasonIndex);
     }
 
-    public void SwitchSeason(int direction)
+    public void SetCurrentDay(int dayIndex)
     {
-        int currentSeasonIndex = Array.IndexOf(new string[] { "Primavera", "Verano", "Otoño", "Invierno" }, MonthAndYear.text.Split(' ')[0]);
-
-        if (direction < 0)
+        if (currentDayIndex != -1)
         {
-            currentSeasonIndex = (currentSeasonIndex - 1 + 4) % 4;
-        }
-        else
-        {
-            currentSeasonIndex = (currentSeasonIndex + 1) % 4;
+            days[currentDayIndex].UpdateColor(Color.white);
         }
 
-        UpdateCalendar(currDate.Year, currentSeasonIndex);
+        currentDayIndex = dayIndex;
+
+        if (currentDayIndex != -1)
+        {
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
     }
 }

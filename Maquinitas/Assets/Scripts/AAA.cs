@@ -21,6 +21,8 @@ public class AAA : MonoBehaviour
     private int stock;
 
     // Start is called before the first frame update
+
+
     void Start()
     {
         stock = maxStock;
@@ -44,6 +46,11 @@ public class AAA : MonoBehaviour
             MoneyManager.IncrementarDinero(item1.precio);           
 
         }
+    }
+
+    public int getItemID()
+    {
+        return item1.ID;
     }
 
 }

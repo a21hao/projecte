@@ -14,9 +14,29 @@ public class EnemyBehavior : MonoBehaviour
     private int wayPoint = 1;
     private MovementBehavior _mvb;
 
+    private List<int> WishList = new List<int>();
+    
+
+    /*
+     * wishlist
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+
     // Start is called before the first frame update
     void Start()
     {
+        AddWishlistItem();
+        Debug.Log(WishList[0]);
+
+
         target = PathBehavior.Waypoints[2];
         _mvb = GetComponent<MovementBehavior>();
         Vector3 dir = target.position - transform.position;
@@ -60,9 +80,22 @@ public class EnemyBehavior : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+
         if(other.TryGetComponent<AAA>(out AAA Vending_)){
-            Vending_.Buy();
-            AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+            if (WishList[0] == Vending_.getItemID())
+            {
+                Vending_.Buy();
+                AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+            }
+            else
+            {
+                Debug.Log("CYKA BLYAAAAAAAAAAAAAAAAT");
+            }
         }
+    }
+
+    void AddWishlistItem()
+    {
+        WishList.Add(Random.Range(1, 4));
     }
 }

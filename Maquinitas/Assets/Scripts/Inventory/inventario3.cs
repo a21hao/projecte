@@ -9,6 +9,10 @@ using UnityEngine.InputSystem;
 public class inventario3 : MonoBehaviour
 {
     // Start is called before the first frame update
+    //[SerializeField]
+    //private InputSystem inpSys;
+    [SerializeField]
+    private EventSystem eventSystem;
     public LayerMask capasRaycast;
     public GraphicRaycaster graphRay;
     public static Transform canvas;
@@ -26,7 +30,7 @@ public class inventario3 : MonoBehaviour
     private void Awake()
     {
 
-        pointerData = new PointerEventData(null);
+        pointerData = new PointerEventData(eventSystem);
         raycastResults = new List<RaycastResult>();
 
         canvas = transform.parent.transform;
@@ -48,7 +52,7 @@ public class inventario3 : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    Debug.Log("Objeto detectado: " + result.gameObject.name);
+                    
                     if (result.gameObject.GetComponent<Item>())
                     {
                         objetoSeleccionado = result.gameObject;
@@ -61,6 +65,7 @@ public class inventario3 : MonoBehaviour
                 }
                 
             }
+            raycastResults.Clear();
         }
 
         if (objetoSeleccionado != null && Mouse.current.leftButton.isPressed)

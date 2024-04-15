@@ -98,7 +98,6 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
             float t = tiempoPasado / duracionTransicionP;
             cameraVendingMachine.m_Lens.FieldOfView = Mathf.Lerp(10f, FOVinPerspective, t);
             objetoCameraVendingMachine.transform.localPosition = new Vector3(Mathf.Lerp(initialLocalPositionCameraVending.x, positionCameraInPerspective.x, t), Mathf.Lerp(initialLocalPositionCameraVending.y, positionCameraInPerspective.y, t), Mathf.Lerp(initialLocalPositionCameraVending.z, positionCameraInPerspective.z, t));
-            Debug.Log(objetoCameraVendingMachine.transform.localPosition);
             tiempoPasado += Time.deltaTime;           
             yield return null;
         }

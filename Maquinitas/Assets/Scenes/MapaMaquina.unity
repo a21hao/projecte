@@ -17187,7 +17187,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8704383830408728480}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7af819f1f4ed92c42be70f3380aa0955, type: 3}
   m_Name: 
@@ -18417,6 +18417,7 @@ GameObject:
   - component: {fileID: 5344370217534552257}
   - component: {fileID: 8309625744404761328}
   - component: {fileID: 5309761404103573288}
+  - component: {fileID: 8704383830408728482}
   m_Layer: 5
   m_Name: Almacen
   m_TagString: Inventario
@@ -18437,6 +18438,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EventSystem: {fileID: 1764899059}
+--- !u!114 &8704383830408728482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8704383830408728480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33945be71a31c5643a2b6b4e623b734a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1764899059}
+  capasRaycast:
+    serializedVersion: 2
+    m_Bits: 0
+  graphRay: {fileID: 2655091610556264950}
+  objetoSeleccionado: {fileID: 0}
+  exParent: {fileID: 0}
+  contenido: {fileID: 0}
+  scrollRect: {fileID: 5344370217534552257}
+  slots: []
 --- !u!224 &8708731243426035846
 RectTransform:
   m_ObjectHideFlags: 0

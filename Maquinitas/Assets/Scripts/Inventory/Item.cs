@@ -11,6 +11,7 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
     public Image spriteImage;
     public string precioObjeto;
     public string descripcionObjeto;
+    public GameObject Objeto3d;
     [SerializeField] private int ID;
     public  string tipo;
     [SerializeField] private int cantidad;
@@ -50,7 +51,7 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
         cantidad = newCantidad;
     }
 
-    public void SetInformacion(string nombre, Sprite sprite, string precio, string descripcion, int id, string tipo, int cantidad)
+    public void SetInformacion(string nombre, Sprite sprite, string precio, string descripcion, int id, string tipo, int cantidad, GameObject obj3d)
     {
         nombreText = nombre;
         spriteImage.sprite = sprite;
@@ -60,6 +61,7 @@ public class Item : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
         this.tipo = tipo;
         this.cantidad = cantidad;
         cantidadText.text = cantidad.ToString();
+        Objeto3d = obj3d;
     }
 
 

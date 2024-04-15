@@ -50,6 +50,7 @@ public class Tienda : MonoBehaviour
 
         scriptObjetoTienda.SetTipo(objeto.tipo.ToString());
         //Debug.Log("Tipo enviado a ObjetoTienda: " + objeto.tipo.ToString());
+        scriptObjetoTienda.SetObject3d(objeto.objeto3d);
     }
 
     public GameObject ObtenerObjetoPorID(int id)

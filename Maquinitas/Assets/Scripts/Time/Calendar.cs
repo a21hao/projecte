@@ -12,7 +12,6 @@ public class Calendar : MonoBehaviour
         public int dayNum;
         public Color dayColor;
         public GameObject obj;
-        public EventData eventData; // Nuevo campo para almacenar el evento del día
 
         private Image image;
 
@@ -43,32 +42,22 @@ public class Calendar : MonoBehaviour
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
-
-        // Método para establecer el evento del día
-        public void SetEvent(EventData eventData)
-        {
-            this.eventData = eventData;
-            // Actualizar la apariencia del día según el estado del evento
-            if (eventData != null && eventData.eventState)
-            {
-                UpdateColor(Color.blue); // Color que indica un día con evento activo
-            }
-        }
     }
-
 
     private List<Day> days = new List<Day>();
 
     public Transform[] weeks;
     public TextMeshProUGUI MonthAndYear;
+    public TextMeshProUGUI currentDateText;
 
     private int currentYear = 1;
     private int currentSeasonIndex = 0;
-    private int currentDayIndex = -1;
+    private int currentDayIndex = 0;
     Color brown = new Color(0.6f, 0.4f, 0.2f);
 
     [SerializeField] private GameObject botonNext;
     [SerializeField] private GameObject botonPrevius;
+
 
     private void Start()
     {
@@ -76,7 +65,15 @@ public class Calendar : MonoBehaviour
         currentYear = 1;
         currentSeasonIndex = 0;
         UpdateCalendar(currentYear, currentSeasonIndex);
+        UpdateCurrentDateText();
     }
+
+    void UpdateCurrentDateText()
+    {
+        string currentDate = "Día " + (currentDayIndex + 1) + ", " + currentYear.ToString() + " " + GetSeasonName(currentSeasonIndex);
+        currentDateText.text = currentDate;
+    }
+
 
     void UpdateCalendar(int year, int seasonIndex)
     {
@@ -91,9 +88,6 @@ public class Calendar : MonoBehaviour
 
         int totalDays = 28;
         days = new List<Day>(totalDays);
-
-        // Aquí cargarías los eventos del año actual desde el Scriptable Object
-        EventData[] events = LoadEventsForYear(year);
 
         int startDay = 0;
         int endDay = 27;
@@ -124,12 +118,6 @@ public class Calendar : MonoBehaviour
                 Day newDay = new Day(currDay - startDay, Color.white, dayObject);
                 days.Add(newDay);
 
-                // Verificar si hay un evento para este día y establecerlo si lo hay
-                if (events != null && events.Length > currDay)
-                {
-                    newDay.SetEvent(events[currDay]);
-                }
-
                 // Verificar si este día es el día actual (1 de primavera del año 1)
                 if (currentYear == 1 && currentSeasonIndex == 0 && currDay == 0)
                 {
@@ -139,18 +127,6 @@ public class Calendar : MonoBehaviour
             }
         }
     }
-
-    // Método para cargar eventos para un año específico
-    EventData[] LoadEventsForYear(int year)
-    {
-        // Aquí cargarías los eventos para el año específico desde tu Scriptable Object
-        // Retorna un array de EventData
-
-        // Suponiendo que ya tienes implementada la lógica para cargar los eventos
-        // Simplemente coloca un return al final del método
-        return null; // o un array de EventData
-    }
-
 
 
 
@@ -179,6 +155,14 @@ public class Calendar : MonoBehaviour
         {
             botonNext.SetActive(true);
         }
+        if (currentYear <= 1 && currentSeasonIndex == 0)
+        {
+            botonPrevius.SetActive(false);
+        }
+        else
+        {
+            botonPrevius.SetActive(true);
+        }
     }
 
     public void PreviousSeason()
@@ -200,6 +184,14 @@ public class Calendar : MonoBehaviour
         {
             botonPrevius.SetActive(true);
         }
+        if (currentYear >= 99 && currentSeasonIndex == 3)
+        {
+            botonNext.SetActive(false);
+        }
+        else
+        {
+            botonNext.SetActive(true);
+        }
     }
 
     public void SetCurrentDay(int dayIndex)
@@ -216,4 +208,34 @@ public class Calendar : MonoBehaviour
             days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
         }
     }
+    public void AdvanceDay()
+    {
+        // Avanzar al siguiente día en el calendario
+        if (currentDayIndex != -1)
+        {
+            days[currentDayIndex].UpdateColor(Color.white);
+        }
+
+        currentDayIndex++;
+        if (currentDayIndex >= days.Count)
+        {
+            // Pasar al siguiente mes si se alcanza el día 28
+            currentSeasonIndex++;
+            if (currentSeasonIndex >= 4)
+            {
+                currentSeasonIndex = 0;
+                currentYear++;
+            }
+
+            UpdateCalendar(currentYear, currentSeasonIndex);
+
+            // Restablecer el índice del día
+            currentDayIndex = 0;
+        }
+
+        days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+
+        UpdateCurrentDateText(); // Actualizar el texto de la fecha actual
+    }
+
 }

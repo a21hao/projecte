@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DatosGuardado\LogicaGuardadoInventario.cs" />
-    <Compile Include="Assets\Scripts\Time\Calendario.cs" />
     <Compile Include="Assets\Scripts\VendingSpawner.cs" />
     <Compile Include="Assets\Scripts\Inventory\ObjetoTienda.cs" />
     <Compile Include="Assets\Scripts\SoundScripts\VolumeSlider.cs" />

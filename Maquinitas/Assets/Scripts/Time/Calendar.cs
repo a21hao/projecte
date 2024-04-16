@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,6 +54,9 @@ public class Calendar : MonoBehaviour
     private int currentDayIndex = -1;
     Color brown = new Color(0.6f, 0.4f, 0.2f);
 
+    [SerializeField] private GameObject botonNext;
+    [SerializeField] private GameObject botonPrevius;
+
     private void Start()
     {
         UpdateCalendar(currentYear, currentSeasonIndex);
@@ -89,12 +93,6 @@ public class Calendar : MonoBehaviour
             endDay = 27; // El último día es el 28 de invierno del año 99
         }
 
-        for (int i = 0; i < 42; i++)
-        {
-            days[i].UpdateColor(Color.grey);
-            days[i].UpdateDay(-1);
-        }
-
         for (int w = 0; w < 6; w++)
         {
             for (int i = 0; i < 7; i++)
@@ -104,16 +102,22 @@ public class Calendar : MonoBehaviour
                 {
                     continue;
                 }
-                Day newDay = new Day(currDay - startDay, Color.white, weeks[w].GetChild(i).gameObject);
+
+                // Crear el nuevo día
+                GameObject dayObject = weeks[w].GetChild(i).gameObject;
+                Day newDay = new Day(currDay - startDay, Color.white, dayObject);
                 days.Add(newDay);
+
+                // Verificar si este día es el día actual (1 de primavera del año 1)
+                if (currentYear == 1 && currentSeasonIndex == 0 && currDay == 0)
+                {
+                    // Cambiar el color del día actual
+                    newDay.UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+                }
             }
         }
-
-        if (currentDayIndex != -1)
-        {
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
-        }
     }
+
 
 
     string GetSeasonName(int seasonIndex)
@@ -131,6 +135,16 @@ public class Calendar : MonoBehaviour
             currentYear++;
         }
         UpdateCalendar(currentYear, currentSeasonIndex);
+
+        // Desactivar el botón de mes siguiente si llegamos al último año
+        if (currentYear >= 99 && currentSeasonIndex == 3)
+        {
+            botonNext.SetActive(false);
+        }
+        else
+        {
+            botonNext.SetActive(true);
+        }
     }
 
     public void PreviousSeason()
@@ -142,6 +156,16 @@ public class Calendar : MonoBehaviour
             currentYear--;
         }
         UpdateCalendar(currentYear, currentSeasonIndex);
+
+        // Desactivar el botón de mes anterior si llegamos al primer año
+        if (currentYear <= 1 && currentSeasonIndex == 0)
+        {
+            botonPrevius.SetActive(false);
+        }
+        else
+        {
+            botonPrevius.SetActive(true);
+        }
     }
 
     public void SetCurrentDay(int dayIndex)

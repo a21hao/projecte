@@ -35,12 +35,13 @@ public class ButtonManager : MonoBehaviour
         canUseToggleTablet = true;
         isTabletInUse = false;
         Debug.Log(cmm == null);
+        perfilAnimator = perfil.GetComponent<Animator>();
         almacenAnimator = almacen.GetComponent<Animator>();
         amazingAnimator = amazing.GetComponent<Animator>();
         tabletAnimator = tablet.GetComponent<Animator>();
-        mapaAnimator = mapa.GetComponent<Animator>();
-        perfilAnimator = perfil.GetComponent<Animator>();
         upgradesAnimator = upgrades.GetComponent<Animator>();
+        mapaAnimator = mapa.GetComponent<Animator>();
+            
         ajustesAnimator = ajustes.GetComponent<Animator>();
         
         
@@ -81,7 +82,9 @@ public class ButtonManager : MonoBehaviour
 
     public void TogglePerfil()
     {
-        StartCoroutine(ToggleGameObject(perfil, perfilAnimator));
+        //StartCoroutine(ToggleGameObject(perfil, perfilAnimator));
+        perfilAnimator.SetTrigger("Abrir");
+        if (!perfil.activeSelf) perfil.SetActive(true);
     }
 
     public void ToggleAjustes()
@@ -91,7 +94,8 @@ public class ButtonManager : MonoBehaviour
 
     public void ToggleUpgrades()
     {
-        StartCoroutine(ToggleGameObject(upgrades, upgradesAnimator));
+        //StartCoroutine(ToggleGameObject(upgrades, upgradesAnimator));
+        
     }
 
     public void ToggleTablet()

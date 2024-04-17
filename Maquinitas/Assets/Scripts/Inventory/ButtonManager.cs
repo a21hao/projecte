@@ -11,6 +11,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject ajustes;
     public GameObject upgrades;
     public GameObject tablet;
+    public GameObject calendar;
     private Animator almacenAnimator;
     private Animator amazingAnimator;
     private Animator tabletAnimator;
@@ -71,6 +72,11 @@ public class ButtonManager : MonoBehaviour
     public void ToggleTablet()
     {
         StartCoroutine(ToggleGameObject(tablet, tabletAnimator));
+    }
+
+    public void ToggleCalendar(GameObject obj)
+    {
+        obj.SetActive(!obj.activeSelf);
     }
 
 

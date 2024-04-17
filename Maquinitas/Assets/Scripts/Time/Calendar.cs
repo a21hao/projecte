@@ -12,6 +12,7 @@ public class Calendar : MonoBehaviour
         public int dayNum;
         public Color dayColor;
         public GameObject obj;
+        public List<string> events; // Lista de eventos
 
         private Image image;
 
@@ -20,6 +21,7 @@ public class Calendar : MonoBehaviour
             this.dayNum = dayNum;
             this.obj = obj;
             this.image = obj.GetComponent<Image>();
+            this.events = new List<string>(); // Inicializa la lista de eventos
             UpdateColor(dayColor);
             UpdateDay(dayNum);
         }
@@ -42,6 +44,20 @@ public class Calendar : MonoBehaviour
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
+        public void AddEvent(string eventName)
+        {
+            events.Add(eventName);
+        }
+
+        public void RemoveEvent(string eventName)
+        {
+            events.Remove(eventName);
+        }
+
+        public bool HasEvents()
+        {
+            return events.Count > 0;
+        }
     }
 
     private List<Day> days = new List<Day>();
@@ -57,7 +73,8 @@ public class Calendar : MonoBehaviour
 
     [SerializeField] private GameObject botonNext;
     [SerializeField] private GameObject botonPrevius;
-
+    [SerializeField] private GameObject close;
+    [SerializeField] private ParticleSystem particleSystem;
 
     private void Start()
     {
@@ -103,6 +120,7 @@ public class Calendar : MonoBehaviour
             endDay = 27; // El último día es el 28 de invierno del año 99
         }
 
+        // Dentro de la función UpdateCalendar
         for (int w = 0; w < 6; w++)
         {
             for (int i = 0; i < 7; i++)
@@ -118,17 +136,14 @@ public class Calendar : MonoBehaviour
                 Day newDay = new Day(currDay - startDay, Color.white, dayObject);
                 days.Add(newDay);
 
-                // Verificar si este día es el día actual (1 de primavera del año 1)
-                if (currentYear == 1 && currentSeasonIndex == 0 && currDay == 0)
+                // Agregar eventos a los días específicos (ejemplo)
+                if (currDay == 5)
                 {
-                    // Cambiar el color del día actual
-                    newDay.UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+                    newDay.AddEvent("Reunión importante");
                 }
             }
         }
     }
-
-
 
     string GetSeasonName(int seasonIndex)
     {
@@ -208,6 +223,7 @@ public class Calendar : MonoBehaviour
             days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
         }
     }
+
     public void AdvanceDay()
     {
         // Avanzar al siguiente día en el calendario
@@ -236,6 +252,11 @@ public class Calendar : MonoBehaviour
         days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
 
         UpdateCurrentDateText(); // Actualizar el texto de la fecha actual
+    }
+
+    public void CloseCalendar()
+    {
+        close.SetActive(false);
     }
 
 }

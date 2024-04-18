@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectBase : ScriptableObject
 {
     public int ID;
-
+    public int categoria;
     public string nombre;
     public Sprite sprite;
     public Tipo tipo;
@@ -30,5 +30,9 @@ public class ObjectBase : ScriptableObject
     {
         ID = nextID;
         nextID++;
+        if (categoria == 1) precioVenta = precio + (int)(precio * 0.4f);
+        if (categoria == 2) precioVenta = precio + (int)(precio * 0.7f);
+        if (categoria == 3) precioVenta = precio + precio;
+        
     }
 }

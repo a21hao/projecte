@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
-  m_Name: pepps
+  m_Name: Triangulo
   m_EditorClassIdentifier: 
-  ID: 5
-  categoria: 0
-  nombre: Pepps
-  sprite: {fileID: 21300000, guid: 13b05e76c29a79f43b4011b635529a73, type: 3}
-  tipo: 0
-  descripcion: Botella Pepps
-  objeto3d: {fileID: 6537022697807981192, guid: b5ee5c21f49d85c4e8f09a6458b0e424, type: 3}
-  precio: 30
-  precioVenta: 60
+  ID: 9
+  categoria: 1
+  nombre: Triangulo
+  sprite: {fileID: 21300000, guid: 8e9231e8ce70e6d42ae34c31b2bdae53, type: 3}
+  tipo: 1
+  descripcion: Comida Triangulos
+  objeto3d: {fileID: 1995052463108742678, guid: 8c98c3ee24393e2449fdd635f65b70e0, type: 3}
+  precio: 25
+  precioVenta: 0
   stock: 0

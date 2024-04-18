@@ -4,13 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tienda : MonoBehaviour
+public class Tienda2 : MonoBehaviour
 {
     [SerializeField] GameObject prefabObjetoTienda;
     [SerializeField] Transform contenidoScrollView;
-    [SerializeField] private GameObject objectsOfGame; 
-    //[SerializeField] List<ObjectBase> listaObjetosTienda;
+    [SerializeField] GameObject objectsOfGame;
     private List<ObjectBase> listaObjetosTienda;
+
     private Dictionary<int, GameObject> dicionarioTienda = new Dictionary<int, GameObject>();
 
     private void Awake()
@@ -78,3 +78,4 @@ public class Tienda : MonoBehaviour
         }
     }
 }
+

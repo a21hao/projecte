@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
-  m_Name: pepps
+  m_Name: Fontosma
   m_EditorClassIdentifier: 
-  ID: 5
-  categoria: 0
-  nombre: Pepps
-  sprite: {fileID: 21300000, guid: 13b05e76c29a79f43b4011b635529a73, type: 3}
+  ID: 0
+  nombre: 
+  sprite: {fileID: 0}
   tipo: 0
-  descripcion: Botella Pepps
-  objeto3d: {fileID: 6537022697807981192, guid: b5ee5c21f49d85c4e8f09a6458b0e424, type: 3}
-  precio: 30
-  precioVenta: 60
+  descripcion: 
+  objeto3d: {fileID: 0}
+  precio: 0
+  precioVenta: 0
   stock: 0

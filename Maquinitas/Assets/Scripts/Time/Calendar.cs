@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Globalization;
+using Unity.VisualScripting;
 
 public class Calendar : MonoBehaviour
 {
@@ -12,9 +14,9 @@ public class Calendar : MonoBehaviour
         public int dayNum;
         public Color dayColor;
         public GameObject obj;
-        public List<string> events; // Lista de eventos
-        public Sprite image; // Imagen del día
-        public string eventName; // Nombre del evento
+        public List<string> events;
+        public Sprite image;
+        public string eventName;
 
         private Image dayImage;
         private TextMeshProUGUI dayText;
@@ -25,7 +27,7 @@ public class Calendar : MonoBehaviour
             this.obj = obj;
             this.dayImage = obj.GetComponent<Image>();
             this.dayText = obj.GetComponentInChildren<TextMeshProUGUI>();
-            this.events = new List<string>(); // Inicializa la lista de eventos
+            this.events = new List<string>();
             UpdateColor(dayColor);
             UpdateDay(dayNum);
         }
@@ -67,12 +69,20 @@ public class Calendar : MonoBehaviour
     public TextMeshProUGUI MonthAndYear;
     public TextMeshProUGUI currentDateText;
     public TextMeshProUGUI eventNameText;
-    public Sprite sprite1;
-    public Sprite sprite2;
 
-    private int currentYear = 1;
-    private int currentSeasonIndex = 0;
-    private int currentDayIndex = 0;
+    [SerializeField] private Sprite defaultImage;
+    [SerializeField] private Sprite sprite1;
+    [SerializeField] private Sprite sprite2;
+
+    [SerializeField] private GameObject rainingFX;
+    [SerializeField] private GameObject snowingFX;
+
+    bool isRaining;
+    bool isSnowing;
+
+    [SerializeField] private int currentYear = 20;
+    [SerializeField] private int currentSeasonIndex = 3;
+    [SerializeField] private int currentDayIndex = 0;
     //Color brown = new Color(0.6f, 0.4f, 0.2f);
 
     [SerializeField] private GameObject botonNext;
@@ -141,6 +151,8 @@ public class Calendar : MonoBehaviour
             }
         }
 
+        //Eventos del primer mes
+        SetAllDaysImage(defaultImage);
         if (days.Count >= 5 && currentSeasonIndex == 0)
         {
             Sprite daySprite = sprite1;
@@ -151,6 +163,7 @@ public class Calendar : MonoBehaviour
             Sprite daySprite2 = sprite2;
             days[9].SetImage(daySprite2);
         }
+
     }
 
     string GetSeasonName(int seasonIndex)
@@ -216,8 +229,6 @@ public class Calendar : MonoBehaviour
         {
             botonNext.SetActive(true);
         }
-
-        //SetAllDaysImage(Sprite image);
     }
 
     public void SetCurrentDay(int dayIndex)
@@ -243,6 +254,11 @@ public class Calendar : MonoBehaviour
 
     public void AdvanceDay()
     {
+        rainingFX.SetActive(false);
+        isRaining = false;
+        snowingFX.SetActive(false);
+        isSnowing = false;
+
         // Avanzar al siguiente día en el calendario
         if (currentDayIndex != -1)
         {
@@ -269,6 +285,82 @@ public class Calendar : MonoBehaviour
         days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
 
         UpdateCurrentDateText(); // Actualizar el texto de la fecha actual
+
+        //Eventos
+        SetAllDaysImage(defaultImage);
+        if (days.Count >= 5 && currentSeasonIndex == 0)
+        {
+            Sprite daySprite = sprite1;
+            days[4].SetImage(daySprite);
+            if (currentDayIndex == 4 && currentSeasonIndex == 0)
+            {
+                Raining();
+            }
+        }
+        if (days.Count >= 10 && currentSeasonIndex == 0)
+        {
+            Sprite daySprite2 = sprite2;
+            days[9].SetImage(daySprite2);
+        }
+
+        RainingProbability();
+        SnowingProbability();
+    }
+
+    private void Raining()
+    {
+        rainingFX.SetActive(true);
+        isRaining = true;
+    }
+
+    private void Snowing()
+    {
+        snowingFX.SetActive(true);
+        isSnowing = true;
+    }
+
+    public void RainingProbability()
+    {
+        if (currentSeasonIndex == 0 || currentSeasonIndex == 2) {
+            // Generar un número aleatorio entre 0 y 100
+            float randomNum = UnityEngine.Random.Range(0f, 100f);
+
+            // Verificar si el número aleatorio está dentro de la probabilidad especificada
+            if (randomNum <= 10f)
+            {
+                // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
+                Raining();
+            }
+        }
+
+        if (currentSeasonIndex == 1)
+        {
+            // Generar un número aleatorio entre 0 y 100
+            float randomNum = UnityEngine.Random.Range(0f, 100f);
+
+            // Verificar si el número aleatorio está dentro de la probabilidad especificada
+            if (randomNum <= 5f)
+            {
+                // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
+                Raining();
+            }
+        }
+    }
+
+    public void SnowingProbability()
+    {
+        if (currentSeasonIndex == 3)
+        {
+            // Generar un número aleatorio entre 0 y 100
+            float randomNum = UnityEngine.Random.Range(0f, 100f);
+
+            // Verificar si el número aleatorio está dentro de la probabilidad especificada
+            if (randomNum <= 15f)
+            {
+                // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
+                Snowing();
+            }
+        }
     }
 
     void UpdateCurrentDayColor()

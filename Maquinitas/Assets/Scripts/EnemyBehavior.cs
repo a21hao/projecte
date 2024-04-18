@@ -66,6 +66,7 @@ public class EnemyBehavior : MonoBehaviour
         }*/
         if (other.TryGetComponent<MachineInventory>(out MachineInventory Vending_))
         {
+            Debug.Log("he entrado");
             Vending_.VenderItem(1, 1);
             AudioManager.instance.PlayOneShot(buySound, this.transform.position);
         }

@@ -7,6 +7,14 @@ public class ObjectsList : MonoBehaviour
     // Start is called before the first frame update
     public List<ObjectBase> listObjects;
 
+    private void Start()
+    {
+        for(int i = 0; i < listObjects.Count; i++)
+        {
+            Debug.Log(listObjects[i].ID + " " + listObjects[i].nombre);
+        }
+    }
+
     public List<ObjectBase> objectsList()
     {
         return listObjects;

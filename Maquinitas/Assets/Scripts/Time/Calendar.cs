@@ -13,14 +13,18 @@ public class Calendar : MonoBehaviour
         public Color dayColor;
         public GameObject obj;
         public List<string> events; // Lista de eventos
+        public Sprite image; // Imagen del día
+        public string eventName; // Nombre del evento
 
-        private Image image;
+        private Image dayImage;
+        private TextMeshProUGUI dayText;
 
         public Day(int dayNum, Color dayColor, GameObject obj)
         {
             this.dayNum = dayNum;
             this.obj = obj;
-            this.image = obj.GetComponent<Image>();
+            this.dayImage = obj.GetComponent<Image>();
+            this.dayText = obj.GetComponentInChildren<TextMeshProUGUI>();
             this.events = new List<string>(); // Inicializa la lista de eventos
             UpdateColor(dayColor);
             UpdateDay(dayNum);
@@ -28,7 +32,7 @@ public class Calendar : MonoBehaviour
 
         public void UpdateColor(Color newColor)
         {
-            image.color = newColor;
+            dayImage.color = newColor;
             dayColor = newColor;
         }
 
@@ -37,12 +41,23 @@ public class Calendar : MonoBehaviour
             this.dayNum = newDayNum;
             if (dayColor == Color.white || dayColor == Color.green)
             {
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = (dayNum + 1).ToString();
+                dayText.text = (dayNum + 1).ToString();
             }
             else
             {
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = "";
+                dayText.text = "";
             }
+        }
+
+        public void SetImage(Sprite sprite)
+        {
+            image = sprite;
+            dayImage.sprite = sprite;
+        }
+
+        public void SetEventName(string name)
+        {
+            eventName = name;
         }
     }
 
@@ -51,11 +66,14 @@ public class Calendar : MonoBehaviour
     public Transform[] weeks;
     public TextMeshProUGUI MonthAndYear;
     public TextMeshProUGUI currentDateText;
+    public TextMeshProUGUI eventNameText;
+    public Sprite sprite1;
+    public Sprite sprite2;
 
     private int currentYear = 1;
     private int currentSeasonIndex = 0;
     private int currentDayIndex = 0;
-    Color brown = new Color(0.6f, 0.4f, 0.2f);
+    //Color brown = new Color(0.6f, 0.4f, 0.2f);
 
     [SerializeField] private GameObject botonNext;
     [SerializeField] private GameObject botonPrevius;
@@ -122,6 +140,17 @@ public class Calendar : MonoBehaviour
                 days.Add(newDay);
             }
         }
+
+        if (days.Count >= 5 && currentSeasonIndex == 0)
+        {
+            Sprite daySprite = sprite1;
+            days[4].SetImage(daySprite);
+        }
+        if (days.Count >= 10 && currentSeasonIndex == 0)
+        {
+            Sprite daySprite2 = sprite2;
+            days[9].SetImage(daySprite2);
+        }
     }
 
     string GetSeasonName(int seasonIndex)
@@ -138,6 +167,7 @@ public class Calendar : MonoBehaviour
             currentSeasonIndex = 0;
             currentYear++;
         }
+
         UpdateCalendar(currentYear, currentSeasonIndex);
 
         // Desactivar el botón de mes siguiente si llegamos al último año
@@ -186,12 +216,8 @@ public class Calendar : MonoBehaviour
         {
             botonNext.SetActive(true);
         }
-        // Verificar si hay un día actual seleccionado
-        if (currentDayIndex != -1)
-        {
-            // Actualizar el color del día actual
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
-        }
+
+        //SetAllDaysImage(Sprite image);
     }
 
     public void SetCurrentDay(int dayIndex)
@@ -205,13 +231,13 @@ public class Calendar : MonoBehaviour
 
         if (currentDayIndex != -1)
         {
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+            days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
         }
         // Verificar si hay un día actual seleccionado
         if (currentDayIndex != -1)
         {
             // Actualizar el color del día actual
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+            days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
         }
     }
 
@@ -240,7 +266,7 @@ public class Calendar : MonoBehaviour
             currentDayIndex = 0;
         }
 
-        days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
 
         UpdateCurrentDateText(); // Actualizar el texto de la fecha actual
     }
@@ -251,7 +277,7 @@ public class Calendar : MonoBehaviour
         if (currentDayIndex != -1)
         {
             // Actualizar el color del día actual
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+            days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
         }
     }
 
@@ -260,4 +286,27 @@ public class Calendar : MonoBehaviour
         close.SetActive(false);
     }
 
+    public void SetAllDaysImage(Sprite image)
+    {
+        foreach (Day day in days)
+        {
+            day.SetImage(image);
+        }
+    }
+
+    // Método para mostrar el nombre del evento cuando el ratón está encima del día
+    public void ShowEventName(int dayIndex)
+    {
+        if (dayIndex >= 0 && dayIndex < days.Count)
+        {
+            if (!string.IsNullOrEmpty(days[dayIndex].eventName))
+            {
+                eventNameText.text = days[dayIndex].eventName;
+            }
+            else
+            {
+                eventNameText.text = "";
+            }
+        }
+    }
 }

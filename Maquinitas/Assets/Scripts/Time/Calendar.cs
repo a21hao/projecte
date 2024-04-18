@@ -44,20 +44,6 @@ public class Calendar : MonoBehaviour
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
-        public void AddEvent(string eventName)
-        {
-            events.Add(eventName);
-        }
-
-        public void RemoveEvent(string eventName)
-        {
-            events.Remove(eventName);
-        }
-
-        public bool HasEvents()
-        {
-            return events.Count > 0;
-        }
     }
 
     private List<Day> days = new List<Day>();
@@ -74,15 +60,14 @@ public class Calendar : MonoBehaviour
     [SerializeField] private GameObject botonNext;
     [SerializeField] private GameObject botonPrevius;
     [SerializeField] private GameObject close;
-    [SerializeField] private ParticleSystem particleSystem;
 
     private void Start()
     {
-        UpdateCalendar(currentYear, currentSeasonIndex);
         currentYear = 1;
         currentSeasonIndex = 0;
         UpdateCalendar(currentYear, currentSeasonIndex);
         UpdateCurrentDateText();
+        UpdateCurrentDayColor();
     }
 
     void UpdateCurrentDateText()
@@ -135,12 +120,6 @@ public class Calendar : MonoBehaviour
                 GameObject dayObject = weeks[w].GetChild(i).gameObject;
                 Day newDay = new Day(currDay - startDay, Color.white, dayObject);
                 days.Add(newDay);
-
-                // Agregar eventos a los días específicos (ejemplo)
-                if (currDay == 5)
-                {
-                    newDay.AddEvent("Reunión importante");
-                }
             }
         }
     }
@@ -207,6 +186,12 @@ public class Calendar : MonoBehaviour
         {
             botonNext.SetActive(true);
         }
+        // Verificar si hay un día actual seleccionado
+        if (currentDayIndex != -1)
+        {
+            // Actualizar el color del día actual
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
     }
 
     public void SetCurrentDay(int dayIndex)
@@ -220,6 +205,12 @@ public class Calendar : MonoBehaviour
 
         if (currentDayIndex != -1)
         {
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
+        // Verificar si hay un día actual seleccionado
+        if (currentDayIndex != -1)
+        {
+            // Actualizar el color del día actual
             days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
         }
     }
@@ -252,6 +243,16 @@ public class Calendar : MonoBehaviour
         days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
 
         UpdateCurrentDateText(); // Actualizar el texto de la fecha actual
+    }
+
+    void UpdateCurrentDayColor()
+    {
+        // Verificar si hay un día actual seleccionado
+        if (currentDayIndex != -1)
+        {
+            // Actualizar el color del día actual
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
     }
 
     public void CloseCalendar()

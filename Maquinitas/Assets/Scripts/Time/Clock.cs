@@ -7,11 +7,14 @@ using TMPro;
 public class Clock : MonoBehaviour
 {
     public float tiempoInicial;
+    public Calendar calendar;
     [Range(-30.0f, 30.0f)]
     private float escalaDeTiempo = 1;
 
     static public float tiempoDeUnDiaSegundos = 1440f;
     static public float tiempoDelJuego = 0f;
+    
+    
     private float tiempoAMostrarEnMinutos = 0f;
     private float escalaDeTiempoAlPausar, escalaDelTiempoInicial;
     private bool estaPausado = false;
@@ -44,6 +47,7 @@ public class Clock : MonoBehaviour
         if (tiempoDelJuego > tiempoDeUnDiaSegundos)
         {
             tiempoDelJuego = 0f;
+            calendar.AdvanceDay();
             //dineroFinDia = MoneyManager.DineroTotal;
             //FinDiaCanv.SetActive(true);
             //moneyThisday.text = "You have this day: " + (dineroFinDia);
@@ -60,7 +64,7 @@ public class Clock : MonoBehaviour
             //    loseImage.SetActive(true);
             //    winCondition.text = "You earned less than " + moneyToWin + ", YOU LOSE";
             //}
-            Pausa();
+            //Pausa();
         }
     }
 
@@ -93,7 +97,7 @@ public class Clock : MonoBehaviour
         else if (escalaDeTiempo == 2)
         {
             estaPausado = false;
-            escalaDeTiempo = 4;
+            escalaDeTiempo = 80;
         }
         else
         {

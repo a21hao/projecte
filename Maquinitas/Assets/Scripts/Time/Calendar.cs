@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.UI;
+using TMPro;
 
 public class Calendar : MonoBehaviour
 {
@@ -11,18 +12,23 @@ public class Calendar : MonoBehaviour
         public int dayNum;
         public Color dayColor;
         public GameObject obj;
+        public List<string> events; // Lista de eventos
+
+        private Image image;
 
         public Day(int dayNum, Color dayColor, GameObject obj)
         {
             this.dayNum = dayNum;
             this.obj = obj;
+            this.image = obj.GetComponent<Image>();
+            this.events = new List<string>(); // Inicializa la lista de eventos
             UpdateColor(dayColor);
             UpdateDay(dayNum);
         }
 
         public void UpdateColor(Color newColor)
         {
-            obj.GetComponent<Image>().color = newColor;
+            image.color = newColor;
             dayColor = newColor;
         }
 
@@ -31,11 +37,11 @@ public class Calendar : MonoBehaviour
             this.dayNum = newDayNum;
             if (dayColor == Color.white || dayColor == Color.green)
             {
-                obj.GetComponentInChildren<Text>().text = (dayNum + 1).ToString();
+                obj.GetComponentInChildren<TextMeshProUGUI>().text = (dayNum + 1).ToString();
             }
             else
             {
-                obj.GetComponentInChildren<Text>().text = "";
+                obj.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
     }
@@ -43,88 +49,215 @@ public class Calendar : MonoBehaviour
     private List<Day> days = new List<Day>();
 
     public Transform[] weeks;
+    public TextMeshProUGUI MonthAndYear;
+    public TextMeshProUGUI currentDateText;
 
-    public Text MonthAndYear;
+    private int currentYear = 1;
+    private int currentSeasonIndex = 0;
+    private int currentDayIndex = 0;
+    Color brown = new Color(0.6f, 0.4f, 0.2f);
 
-    public DateTime currDate = DateTime.Now;
+    [SerializeField] private GameObject botonNext;
+    [SerializeField] private GameObject botonPrevius;
+    [SerializeField] private GameObject close;
 
     private void Start()
     {
-        UpdateCalendar(DateTime.Now.Year, DateTime.Now.Month);
+        currentYear = 1;
+        currentSeasonIndex = 0;
+        UpdateCalendar(currentYear, currentSeasonIndex);
+        UpdateCurrentDateText();
+        UpdateCurrentDayColor();
     }
 
-    void UpdateCalendar(int year, int month)
+    void UpdateCurrentDateText()
     {
-        string[] monthNames = { "Primavera", "Verano", "Otoño", "Invierno" };
+        string currentDate = "Día " + (currentDayIndex + 1) + ", " + currentYear.ToString() + " " + GetSeasonName(currentSeasonIndex);
+        currentDateText.text = currentDate;
+    }
 
-        currDate = new DateTime(year, month, 1);
-        MonthAndYear.text = monthNames[month - 1] + " " + year.ToString();
 
-        if (days.Count == 0)
+    void UpdateCalendar(int year, int seasonIndex)
+    {
+        // Verificar si el año está dentro del rango permitido
+        if (year < 1 || year > 99)
         {
-            for (int w = 0; w < 4; w++)
+            Debug.LogWarning("El año está fuera del rango permitido.");
+            return;
+        }
+
+        MonthAndYear.text = year.ToString() + " " + GetSeasonName(seasonIndex);
+
+        int totalDays = 28;
+        days = new List<Day>(totalDays);
+
+        int startDay = 0;
+        int endDay = 27;
+
+        // Verificar si estamos en el primer año y la última estación es invierno
+        if (year == 1 && seasonIndex == 3)
+        {
+            endDay = 0; // El último día es el 28 de invierno del año 1
+        }
+        // Verificar si estamos en el último año y la última estación es invierno
+        else if (year == 99 && seasonIndex == 3)
+        {
+            endDay = 27; // El último día es el 28 de invierno del año 99
+        }
+
+        // Dentro de la función UpdateCalendar
+        for (int w = 0; w < 6; w++)
+        {
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 7; i++)
+                int currDay = (w * 7) + i;
+                if (currDay < startDay || currDay - startDay > endDay)
                 {
-                    Day newDay;
-                    int currDay = (w * 7) + i;
-                    if (currDay >= DateTime.DaysInMonth(year, month))
-                    {
-                        newDay = new Day(currDay - DateTime.DaysInMonth(year, month), Color.grey, weeks[w].GetChild(i).gameObject);
-                    }
-                    else
-                    {
-                        newDay = new Day(currDay, Color.white, weeks[w].GetChild(i).gameObject);
-                    }
-                    days.Add(newDay);
+                    continue;
                 }
+
+                // Crear el nuevo día
+                GameObject dayObject = weeks[w].GetChild(i).gameObject;
+                Day newDay = new Day(currDay - startDay, Color.white, dayObject);
+                days.Add(newDay);
             }
+        }
+    }
+
+    string GetSeasonName(int seasonIndex)
+    {
+        string[] seasons = { "Primavera", "Verano", "Otoño", "Invierno" };
+        return seasons[seasonIndex];
+    }
+
+    public void NextSeason()
+    {
+        currentSeasonIndex++;
+        if (currentSeasonIndex >= 4)
+        {
+            currentSeasonIndex = 0;
+            currentYear++;
+        }
+        UpdateCalendar(currentYear, currentSeasonIndex);
+
+        // Desactivar el botón de mes siguiente si llegamos al último año
+        if (currentYear >= 99 && currentSeasonIndex == 3)
+        {
+            botonNext.SetActive(false);
         }
         else
         {
-            for (int i = 0; i < 28; i++)
-            {
-                if (i >= DateTime.DaysInMonth(year, month))
-                {
-                    days[i].UpdateColor(Color.grey);
-                }
-                else
-                {
-                    days[i].UpdateColor(Color.white);
-                }
-
-                days[i].UpdateDay(i);
-            }
+            botonNext.SetActive(true);
         }
-
-        if (DateTime.Now.Year == year && DateTime.Now.Month == month)
+        if (currentYear <= 1 && currentSeasonIndex == 0)
         {
-            days[(DateTime.Now.Day - 1)].UpdateColor(Color.green);
-        }
-    }
-
-    int GetMonthStartDay(int year, int month)
-    {
-        DateTime temp = new DateTime(year, month, 1);
-        return (int)temp.DayOfWeek;
-    }
-
-    int GetTotalNumberOfDays(int year, int month)
-    {
-        return DateTime.DaysInMonth(year, month);
-    }
-
-    public void SwitchMonth(int direction)
-    {
-        if (direction < 0)
-        {
-            currDate = currDate.AddMonths(-1);
+            botonPrevius.SetActive(false);
         }
         else
         {
-            currDate = currDate.AddMonths(1);
+            botonPrevius.SetActive(true);
+        }
+    }
+
+    public void PreviousSeason()
+    {
+        currentSeasonIndex--;
+        if (currentSeasonIndex < 0)
+        {
+            currentSeasonIndex = 3;
+            currentYear--;
+        }
+        UpdateCalendar(currentYear, currentSeasonIndex);
+
+        // Desactivar el botón de mes anterior si llegamos al primer año
+        if (currentYear <= 1 && currentSeasonIndex == 0)
+        {
+            botonPrevius.SetActive(false);
+        }
+        else
+        {
+            botonPrevius.SetActive(true);
+        }
+        if (currentYear >= 99 && currentSeasonIndex == 3)
+        {
+            botonNext.SetActive(false);
+        }
+        else
+        {
+            botonNext.SetActive(true);
+        }
+        // Verificar si hay un día actual seleccionado
+        if (currentDayIndex != -1)
+        {
+            // Actualizar el color del día actual
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
+    }
+
+    public void SetCurrentDay(int dayIndex)
+    {
+        if (currentDayIndex != -1)
+        {
+            days[currentDayIndex].UpdateColor(Color.white);
         }
 
-        UpdateCalendar(currDate.Year, currDate.Month);
+        currentDayIndex = dayIndex;
+
+        if (currentDayIndex != -1)
+        {
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
+        // Verificar si hay un día actual seleccionado
+        if (currentDayIndex != -1)
+        {
+            // Actualizar el color del día actual
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
     }
+
+    public void AdvanceDay()
+    {
+        // Avanzar al siguiente día en el calendario
+        if (currentDayIndex != -1)
+        {
+            days[currentDayIndex].UpdateColor(Color.white);
+        }
+
+        currentDayIndex++;
+        if (currentDayIndex >= days.Count)
+        {
+            // Pasar al siguiente mes si se alcanza el día 28
+            currentSeasonIndex++;
+            if (currentSeasonIndex >= 4)
+            {
+                currentSeasonIndex = 0;
+                currentYear++;
+            }
+
+            UpdateCalendar(currentYear, currentSeasonIndex);
+
+            // Restablecer el índice del día
+            currentDayIndex = 0;
+        }
+
+        days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+
+        UpdateCurrentDateText(); // Actualizar el texto de la fecha actual
+    }
+
+    void UpdateCurrentDayColor()
+    {
+        // Verificar si hay un día actual seleccionado
+        if (currentDayIndex != -1)
+        {
+            // Actualizar el color del día actual
+            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        }
+    }
+
+    public void CloseCalendar()
+    {
+        close.SetActive(false);
+    }
+
 }

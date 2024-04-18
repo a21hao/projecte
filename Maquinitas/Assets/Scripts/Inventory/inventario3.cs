@@ -174,6 +174,7 @@ public class inventario3 : MonoBehaviour
             //Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10));
             //Vector3 positionSpawn = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z);
             Debug.Log(hit.collider.gameObject.name);
+            hit.collider.gameObject.GetComponent<MachineInventory>().PutItem(objetoSeleccionado.GetComponent<Item>());
             //vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, prefabVendingMachine.transform.rotation);
             
         }

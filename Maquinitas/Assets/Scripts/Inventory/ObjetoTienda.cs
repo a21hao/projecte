@@ -6,6 +6,7 @@ public class ObjetoTienda : MonoBehaviour
     public string nombreText;
     public Sprite spriteImage;
     public string precioObjeto;
+    public int precioVenta;
     public string descripcionObjeto;
     public GameObject objeto3d;
     public int id;
@@ -44,5 +45,10 @@ public class ObjetoTienda : MonoBehaviour
     public void SetObject3d(GameObject obj)
     {
         this.objeto3d = obj;
+    }
+
+    public void SetPrecioVenta(int prec)
+    {
+        precioVenta = prec;
     }
 }

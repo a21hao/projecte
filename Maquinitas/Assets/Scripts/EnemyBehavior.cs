@@ -60,8 +60,13 @@ public class EnemyBehavior : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<AAA>(out AAA Vending_)){
+        /*if(other.TryGetComponent<AAA>(out AAA Vending_)){
             Vending_.Buy();
+            AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+        }*/
+        if (other.TryGetComponent<MachineInventory>(out MachineInventory Vending_))
+        {
+            Vending_.VenderItem(1, 1);
             AudioManager.instance.PlayOneShot(buySound, this.transform.position);
         }
     }

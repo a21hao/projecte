@@ -19,16 +19,32 @@ public class ButtonManager : MonoBehaviour
     private Animator perfilAnimator;
     private Animator upgradesAnimator;
     private Animator ajustesAnimator;
+    private bool canUseToggleTablet;
+    private bool isTabletInUse;
+    
+    [SerializeField]
+    private GameObject cameraMap;
+    private CameraMapMoving cmm;
+    private CameraZoomOrthografic czo;
 
     private void Start()
     {
+        Debug.Log("StartEntered");
+        cmm = cameraMap.GetComponent<CameraMapMoving>();
+        czo = cameraMap.GetComponent<CameraZoomOrthografic>();
+        canUseToggleTablet = true;
+        isTabletInUse = false;
+        Debug.Log(cmm == null);
+        perfilAnimator = perfil.GetComponent<Animator>();
         almacenAnimator = almacen.GetComponent<Animator>();
         amazingAnimator = amazing.GetComponent<Animator>();
         tabletAnimator = tablet.GetComponent<Animator>();
-        mapaAnimator = mapa.GetComponent<Animator>();
-        perfilAnimator = perfil.GetComponent<Animator>();
         upgradesAnimator = upgrades.GetComponent<Animator>();
+        mapaAnimator = mapa.GetComponent<Animator>();
+            
         ajustesAnimator = ajustes.GetComponent<Animator>();
+        
+        
     }
 
     IEnumerator ToggleGameObject(GameObject obj, Animator animator)
@@ -36,17 +52,27 @@ public class ButtonManager : MonoBehaviour
         animator.SetTrigger("Abrir");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length*5);
         obj.SetActive(!obj.activeSelf);
+        if(obj == tablet)
+        {
+            Debug.Log("he entrado");
+            
+        }
     }
 
 
     public void ToggleAmazing()
     {
-        StartCoroutine(ToggleGameObject(amazing, amazingAnimator));
+        //StartCoroutine(ToggleGameObject(amazing, amazingAnimator));
+
+        amazingAnimator.SetTrigger("Abrir");
+        if (!amazing.activeSelf) amazing.SetActive(true);
     }
 
     public void ToggleAlmacen()
     {
-        StartCoroutine(ToggleGameObject(almacen, almacenAnimator));
+        //StartCoroutine(ToggleGameObject(almacen, almacenAnimator));
+        almacenAnimator.SetTrigger("Abrir");
+        if (!almacen.activeSelf) almacen.SetActive(true);
     }
 
     public void ToggleMapa()
@@ -56,7 +82,9 @@ public class ButtonManager : MonoBehaviour
 
     public void TogglePerfil()
     {
-        StartCoroutine(ToggleGameObject(perfil, perfilAnimator));
+        //StartCoroutine(ToggleGameObject(perfil, perfilAnimator));
+        perfilAnimator.SetTrigger("Abrir");
+        if (!perfil.activeSelf) perfil.SetActive(true);
     }
 
     public void ToggleAjustes()
@@ -66,12 +94,23 @@ public class ButtonManager : MonoBehaviour
 
     public void ToggleUpgrades()
     {
-        StartCoroutine(ToggleGameObject(upgrades, upgradesAnimator));
+        //StartCoroutine(ToggleGameObject(upgrades, upgradesAnimator));
+        
     }
 
     public void ToggleTablet()
     {
-        StartCoroutine(ToggleGameObject(tablet, tabletAnimator));
+        //StartCoroutine(ToggleGameObject(tablet, tabletAnimator));
+        if(canUseToggleTablet)
+        {
+            if (!tablet.activeSelf) tablet.SetActive(true);
+            tabletAnimator.SetTrigger("Abrir");
+            cmm.CanUseCameraMap(isTabletInUse);
+            czo.CanZoom(isTabletInUse);
+            isTabletInUse = !isTabletInUse;
+            
+        }
+        
     }
 
     public void ToggleCalendar(GameObject obj)
@@ -89,4 +128,10 @@ public class ButtonManager : MonoBehaviour
         ToggleAjustes();
         ToggleTablet();
     }
+
+    public void CanUseToggleTablet(bool canUse)
+    {
+        canUseToggleTablet = canUse;
+    }
+
 }

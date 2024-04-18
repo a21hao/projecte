@@ -1385,7 +1385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &622823914
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -7194,6 +7194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceToObject: 2
+  prefabCanvasAdvisor: {fileID: 0}
 --- !u!4 &1048603316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a1d7cb9007a1a744aac6d5b9244e358, type: 3}
@@ -8141,7 +8142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &1378385176
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -14842,6 +14843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NieveFX
       objectReference: {fileID: 0}
+    - target: {fileID: 3354521721706367492, guid: fbb45d2978e85b948b39129008f22f9d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7891971172482820421, guid: fbb45d2978e85b948b39129008f22f9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -929.6468
@@ -14898,6 +14903,10 @@ PrefabInstance:
     - target: {fileID: 5337763780916094360, guid: bd9979fdc90d8b4449849a240c5fc21c, type: 3}
       propertyPath: m_Name
       value: LluviaFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337763780916094360, guid: bd9979fdc90d8b4449849a240c5fc21c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8709324859590903616, guid: bd9979fdc90d8b4449849a240c5fc21c, type: 3}
       propertyPath: m_LocalPosition.x

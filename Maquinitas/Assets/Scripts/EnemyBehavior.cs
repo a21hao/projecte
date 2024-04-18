@@ -6,7 +6,7 @@ using FMODUnity;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] private EventReference buy;
+    [SerializeField] private EventReference buySound;
 
     public float speed = 3f;
 

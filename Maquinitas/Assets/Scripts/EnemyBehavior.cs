@@ -6,7 +6,7 @@ using FMODUnity;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] private EventReference buySound;
+    [SerializeField] private EventReference buy;
 
     public float speed = 3f;
 
@@ -85,7 +85,8 @@ public class EnemyBehavior : MonoBehaviour
             if (WishList[0] == Vending_.getItemID())
             {
                 Vending_.Buy();
-                AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+                AudioManager.instance.PlayOneShot(buy, this.transform.position);
+                Debug.Log("TE HAS SALTADO EL AUDIO");
             }
             else
             {

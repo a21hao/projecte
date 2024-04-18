@@ -55,10 +55,10 @@ MonoBehaviour:
   Path: ../../../Desktop/FMOD/Maquinitas/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638466440314139846
+  lastModified: 638490657576973076
   FileSizes:
   - Name: Desktop
-    Value: 41312
+    Value: 41056
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -85,7 +85,7 @@ MonoBehaviour:
   - {fileID: -3690743404276204726}
   StringsBanks:
   - {fileID: 698741820261703698}
-  cacheTime: 638466440314354942
+  cacheTime: 638490657576973076
   cacheVersion: 131617
 --- !u!114 &698741820261703698
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 10
   Length: 0
 --- !u!114 &8057009843461525813
 MonoBehaviour:

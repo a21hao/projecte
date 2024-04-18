@@ -10,7 +10,9 @@ public class VendingSpawner : MonoBehaviour
     [SerializeField]
     private GameObject prefabVendingMachine;
     private GameObject vendingInstantiate;
+    //private GameObject lastVendingInstantiate;
     private VendingMachineController vmc;
+    private VendingMachineController lastvmc;
     private bool isDraging;
     private bool hasClicked;
     [SerializeField]
@@ -30,7 +32,7 @@ public class VendingSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasClicked && !Mouse.current.leftButton.isPressed)
+        /*if (hasClicked && !Mouse.current.leftButton.isPressed)
         {
             
             Debug.Log("enter");
@@ -46,8 +48,17 @@ public class VendingSpawner : MonoBehaviour
             {
                 Destroy(vendingInstantiate);
             }
+        }*/
+        if (hasClicked && !Mouse.current.leftButton.isPressed)
+        {
+            hasClicked = false;
+            if(lastvmc!=null)
+            {
+                lastvmc.ChangeCanUseCamera(true);
+            }          
+            
         }
-        if (isDraging)
+            if (isDraging)
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
 
@@ -80,9 +91,23 @@ public class VendingSpawner : MonoBehaviour
             }
             if (Mouse.current.leftButton.isPressed && !hasClicked)
             {
+                
                 isDraging = false;
                 hasClicked = true;
-                
+                lastvmc = vmc;
+                pvm.changeVisibilityPoints(false);
+                if (isInGoodPosition)
+                {
+                    pvm.changePointVendingToBusy(pointVending, true);
+                    vmc.GetOutImageCanvas();
+                    machineCollider.enabled = true;
+                    
+                }
+                else
+                {
+                    Destroy(vendingInstantiate);
+                }
+
             }
 
         }
@@ -102,7 +127,10 @@ public class VendingSpawner : MonoBehaviour
             //Instantiate(prefab, hit.point, Quaternion.identity);
             //Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10));
             //Vector3 positionSpawn = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z);
-            vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, prefabVendingMachine.transform.rotation);
+            Quaternion rotation = Quaternion.Euler(0, 90, 0);
+            //vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, prefabVendingMachine.transform.rotation);
+            vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, rotation);
+            pvm.changeVisibilityPoints(true);
             vmc = vendingInstantiate.GetComponent<VendingMachineController>();
             machineCollider = vendingInstantiate.GetComponent<BoxCollider>();
             machineCollider.enabled = false;

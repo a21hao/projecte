@@ -36,12 +36,17 @@ public class AAA : MonoBehaviour
 
     public void Buy()
     {
-        if (stock > 0)
+
+        //if (stock > 0)
+
+        
+        if (item1.stock > 0)
+
         {
             
             stock -= 1;
             money += item1.precio;
-            Debug.Log(item1.precio);
+            
             //moneyUI.text = money.ToString();
             MoneyManager.IncrementarDinero(item1.precio);           
 

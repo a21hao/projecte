@@ -21,11 +21,13 @@ public class CameraZoomOrthografic : MonoBehaviour
     private Vector3 vectorZoom;
     private Vector3 lastposition;
     private float initialOthograifcSize;
+    private bool canZoom;
 
     private void Awake()
     {
         // Suscríbete a las acciones del mouse scroll
         //Input.mouseScrollDelta += ZoomWithMouseScroll;
+        canZoom = true;
         vcam = GetComponent<CinemachineVirtualCamera>();
         currentMiddleRigRadius = 0;
         newMiddleRigRadius = 0;
@@ -40,12 +42,16 @@ public class CameraZoomOrthografic : MonoBehaviour
 
     private void Update()
     {
-        // Actualiza el nivel de zoom
-        if (NewControls.scrollValue.y != 0)
+        if(canZoom)
         {
-            ZoomWithMouseScroll(NewControls.scrollValue);
+            // Actualiza el nivel de zoom
+            if (NewControls.scrollValue.y != 0)
+            {
+                ZoomWithMouseScroll(NewControls.scrollValue);
+            }
+            UpdateZoomLevel();
         }
-        UpdateZoomLevel();
+        
     }
 
     private void ZoomWithMouseScroll(Vector2 scrollDelta)
@@ -84,5 +90,10 @@ public class CameraZoomOrthografic : MonoBehaviour
             newMiddleRigRadius = currentMiddleRigRadius + zoomSpeed;
         else if (zoomYAxis > 0)
             newMiddleRigRadius = currentMiddleRigRadius - zoomSpeed;
+    }
+
+    public void CanZoom(bool canUse)
+    {
+        canZoom = canUse;
     }
 }

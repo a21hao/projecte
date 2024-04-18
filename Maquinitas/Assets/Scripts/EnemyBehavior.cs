@@ -45,7 +45,7 @@ public class EnemyBehavior : MonoBehaviour
         
         //Debug.Log(rotation);
 
-        // Aplica la rotación al objeto
+        // Aplica la rotaciï¿½n al objeto
         transform.rotation = rotation;
     }
 
@@ -81,17 +81,25 @@ public class EnemyBehavior : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        if(other.TryGetComponent<AAA>(out AAA Vending_)){
-            if (WishList[0] == Vending_.getItemID())
-            {
-                Vending_.Buy();
-                AudioManager.instance.PlayOneShot(buy, this.transform.position);
-                Debug.Log("TE HAS SALTADO EL AUDIO");
-            }
-            else
-            {
-                Debug.Log("CYKA BLYAAAAAAAAAAAAAAAAT");
-            }
+        // if(other.TryGetComponent<AAA>(out AAA Vending_)){
+        //     if (WishList[0] == Vending_.getItemID())
+        //     {
+        //         Vending_.Buy();
+        //         AudioManager.instance.PlayOneShot(buy, this.transform.position);
+        //         Debug.Log("TE HAS SALTADO EL AUDIO");
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("CYKA BLYAAAAAAAAAAAAAAAAT");
+        //     }
+        /*if(other.TryGetComponent<AAA>(out AAA Vending_)){
+            Vending_.Buy();
+            AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+        }*/
+        if (other.TryGetComponent<MachineInventory>(out MachineInventory Vending_))
+        {
+            Vending_.VenderItem(1, 1);
+            AudioManager.instance.PlayOneShot(buySound, this.transform.position);
         }
     }
 

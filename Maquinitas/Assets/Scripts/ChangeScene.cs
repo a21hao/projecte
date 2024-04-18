@@ -7,11 +7,11 @@ public class ChangeScene : MonoBehaviour
 {
     public void EscenaPrincipal()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     public void EscenaMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void Salir()
     {

@@ -8,12 +8,14 @@ public class Tienda : MonoBehaviour
 {
     [SerializeField] GameObject prefabObjetoTienda;
     [SerializeField] Transform contenidoScrollView;
-    [SerializeField] List<ObjectBase> listaObjetosTienda;
-
+    [SerializeField] private GameObject objectsOfGame; 
+    //[SerializeField] List<ObjectBase> listaObjetosTienda;
+    private List<ObjectBase> listaObjetosTienda;
     private Dictionary<int, GameObject> dicionarioTienda = new Dictionary<int, GameObject>();
 
     private void Awake()
     {
+        listaObjetosTienda = objectsOfGame.GetComponent<ObjectsList>().objectsList();
         InstanciarObjetosTienda();
     }
 
@@ -50,6 +52,9 @@ public class Tienda : MonoBehaviour
 
         scriptObjetoTienda.SetTipo(objeto.tipo.ToString());
         //Debug.Log("Tipo enviado a ObjetoTienda: " + objeto.tipo.ToString());
+        scriptObjetoTienda.SetObject3d(objeto.objeto3d);
+
+        scriptObjetoTienda.SetPrecioVenta(objeto.precioVenta);
     }
 
     public GameObject ObtenerObjetoPorID(int id)

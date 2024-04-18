@@ -144,7 +144,7 @@ MonoBehaviour:
       Data3: 1067966340
       Data4: -1873524955
     Path: event:/SFX/ItemBought
-  speed: 1
+  speed: 10
 --- !u!54 &3362920208801667198
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -136,7 +136,7 @@ public class Inventario : MonoBehaviour
             if (slot.GetComponentInChildren<Item>() != null)
             {
                 Item item = slot.GetComponentInChildren<Item>();
-                if (tipo == null || item.tipo == tipo)
+                if (tipo == "All" || item.tipo == tipo)
                 {
                     slot.SetActive(true);
                 }

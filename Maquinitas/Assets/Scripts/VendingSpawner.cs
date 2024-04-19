@@ -95,11 +95,13 @@ public class VendingSpawner : MonoBehaviour
                 hasClicked = true;
                 lastvmc = vmc;
                 pvm.changeVisibilityPoints(false);
-                if (isInGoodPosition)
+                if (isInGoodPosition && MoneyManager.DineroTotal >= vmc.GetMoneyToBuyMachine())
                 {
                     pvm.changePointVendingToBusy(pointVending, true);
                     vmc.GetOutImageCanvas();
+                    vmc.GetOutTextCanvas();
                     machineCollider.enabled = true;
+                    MoneyManager.DecrementarDinero(vmc.GetMoneyToBuyMachine());
                     
                 }
                 else

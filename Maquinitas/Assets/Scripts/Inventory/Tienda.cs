@@ -69,14 +69,22 @@ public class Tienda : MonoBehaviour
         foreach (KeyValuePair<int, GameObject> kvp in dicionarioTienda)
         {
             ObjetoTienda objetoTienda = kvp.Value.GetComponent<ObjetoTienda>();
-            if (tipo != null && objetoTienda.tipo != tipo)
-            {
-                kvp.Value.SetActive(false);
-            }
-            else
+            if (tipo == "All") 
             {
                 kvp.Value.SetActive(true);
             }
+            else
+            {
+                if (tipo != null && objetoTienda.tipo != tipo)
+                {
+                    kvp.Value.SetActive(false);
+                }
+                else
+                {
+                    kvp.Value.SetActive(true);
+                }
+            }
+            
         }
     }
 }

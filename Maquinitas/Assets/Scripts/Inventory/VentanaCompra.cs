@@ -15,7 +15,7 @@ public class VentanaCompra : MonoBehaviour
     [SerializeField] private TextMeshProUGUI precioText;
     [SerializeField] private TextMeshProUGUI descripcionText;
     [SerializeField] private Slider cantidadSlider;
-    [SerializeField] private TextMeshProUGUI cantidadTexto;
+    [SerializeField] private TMP_InputField cantidadTexto;
 
     private void Start()
     {
@@ -30,6 +30,9 @@ public class VentanaCompra : MonoBehaviour
             descripcionText.text = objetoTienda.descripcionObjeto;
         }
         cantidadSlider.maxValue = 999;
+
+        cantidadSlider.onValueChanged.AddListener(ActualizarCantidadTexto);
+        cantidadTexto.onValueChanged.AddListener(ActualizarCantidadSlider);
     }
 
     public void ActualizarCantidadTexto(float cantidad)
@@ -40,6 +43,15 @@ public class VentanaCompra : MonoBehaviour
             float precio = float.Parse(objetoTienda.precioObjeto);
             float precioTotal = (cantidad * precio);
             precioText.text = Mathf.RoundToInt(precioTotal).ToString();
+        }
+    }
+
+    public void ActualizarCantidadSlider(string cantidad)
+    {
+        int valor;
+        if (int.TryParse(cantidad, out valor))
+        {
+            cantidadSlider.value = valor;
         }
     }
 

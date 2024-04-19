@@ -7,12 +7,15 @@ using FMODUnity;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private EventReference buySound;
+    [SerializeField] private GameObject wishListGO;
 
     public float speed = 3f;
 
     private Transform target;
     private int wayPoint = 1;
     private MovementBehavior _mvb;
+    private Wishlist wishList;
+    private int iditemToWish;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,9 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         //Debug.Log(dir);
         Quaternion rotation = Quaternion.LookRotation(dir);
+        wishList = GameObject.Find("GameManager/WishList").GetComponent<Wishlist>();
+        iditemToWish = wishList.ItemToWishId();
+
         
         //Debug.Log(rotation);
 
@@ -66,7 +72,7 @@ public class EnemyBehavior : MonoBehaviour
         }*/
         if (other.TryGetComponent<MachineInventory>(out MachineInventory Vending_))
         {
-            Vending_.VenderItem(1, 1);
+            Vending_.VenderItem(iditemToWish, 1);
             AudioManager.instance.PlayOneShot(buySound, this.transform.position);
         }
     }

@@ -321,8 +321,8 @@ public class Calendar : MonoBehaviour
 
     public void RainingProbability()
     {
-        if (currentSeasonIndex == 0 || currentSeasonIndex == 2) {
-            // Generar un número aleatorio entre 0 y 100
+        if (currentSeasonIndex == 0 || currentSeasonIndex == 2)
+        {
             float randomNum = UnityEngine.Random.Range(0f, 100f);
 
             // Verificar si el número aleatorio está dentro de la probabilidad especificada
@@ -335,7 +335,6 @@ public class Calendar : MonoBehaviour
 
         if (currentSeasonIndex == 1)
         {
-            // Generar un número aleatorio entre 0 y 100
             float randomNum = UnityEngine.Random.Range(0f, 100f);
 
             // Verificar si el número aleatorio está dentro de la probabilidad especificada

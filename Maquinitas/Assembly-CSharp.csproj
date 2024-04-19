@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\VendingSpawner.cs" />
     <Compile Include="Assets\Scripts\Inventory\ObjetoTienda.cs" />
     <Compile Include="Assets\Scripts\SoundScripts\VolumeSlider.cs" />
+    <Compile Include="Assets\Scripts\Phone\PhoneScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Scripts\Inventory\ObjectsList.cs" />
     <Compile Include="Assets\Scripts\CameraZoomOrthografic.cs" />
+    <Compile Include="Assets\OnEnableSetScrollRectAtTop.cs" />
     <Compile Include="Assets\Scripts\AAA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Inventory\ObjectBase.cs" />

@@ -29,6 +29,8 @@ public class VentanaCompra : MonoBehaviour
             precioText.text = objetoTienda.precioObjeto;
             descripcionText.text = objetoTienda.descripcionObjeto;
         }
+        //cantidadSlider.maxValue = 999;
+        cantidadSlider.maxValue = (int)(MoneyManager.DineroTotal / (float.Parse(objetoTienda.precioObjeto)));
 
         cantidadSlider.onValueChanged.AddListener(ActualizarCantidadTexto);
         cantidadTexto.onValueChanged.AddListener(ActualizarCantidadSlider);
@@ -42,7 +44,7 @@ public class VentanaCompra : MonoBehaviour
         {
             float precio = float.Parse(objetoTienda.precioObjeto);
             float precioTotal = (cantidad * precio);
-            precioText.text = Mathf.RoundToInt(precioTotal).ToString();
+            precioText.text = "-"+ Mathf.RoundToInt(precioTotal).ToString()+ "�";
         }
     }
 
@@ -79,6 +81,7 @@ public class VentanaCompra : MonoBehaviour
         {
             Debug.Log("Inventario lleno");
         }
+        Cancelar();
     }
 
     public void Cancelar()

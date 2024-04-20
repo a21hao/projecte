@@ -26,16 +26,28 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     Vector3 initialPos;
     private Vector2 pointerOffset;
 
+    [SerializeField]
+    private GameObject cameraMap;
+    private CameraMapMoving cmm;
+    private CameraZoomOrthografic czo;
+
     private void Start()
     {
         phoneRectTransform = GetComponent<RectTransform>();
         initialPos = transform.position;
+        cmm = cameraMap.GetComponent<CameraMapMoving>();
+        czo = cameraMap.GetComponent<CameraZoomOrthografic>();
     }
 
     public void OnPointerClick()
     {
         if (!opened)
+        {
             StartCoroutine(StartOpenAnimation());
+            cmm.CanUseCameraMap(opened);
+            czo.CanZoom(opened);
+        }
+
     }
 
     IEnumerator StartOpenAnimation()

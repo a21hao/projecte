@@ -8,7 +8,7 @@ public class VentanaCompra : MonoBehaviour
     public ObjetoTienda objetoTienda;
 
     [SerializeField] private MoneyManager moneyManager;
-    [SerializeField] private Inventario inventario;
+    [SerializeField] private Inventario3 inventario;
     [SerializeField] private GameObject prefabObjetoInventario;
     [SerializeField] private TextMeshProUGUI nombreText;
     [SerializeField] private Image spriteImage;
@@ -20,7 +20,7 @@ public class VentanaCompra : MonoBehaviour
     private void Start()
     {
         moneyManager = GameObject.FindWithTag("Money").GetComponent<MoneyManager>();
-        inventario = FindObjectOfType<Inventario>(true);
+        inventario = FindObjectOfType<Inventario3>(true);
         Debug.Log(inventario);
         if (objetoTienda != null)
         {

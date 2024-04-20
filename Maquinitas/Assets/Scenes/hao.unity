@@ -2507,6 +2507,18 @@ PrefabInstance:
       value: Directional Light
       objectReference: {fileID: 0}
     - target: {fileID: 7851348155201915539, guid: 6b8c45bd3e6cea243aec5147a9bc3467, type: 3}
+      propertyPath: m_Intensity
+      value: 3.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851348155201915539, guid: 6b8c45bd3e6cea243aec5147a9bc3467, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851348155201915539, guid: 6b8c45bd3e6cea243aec5147a9bc3467, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851348155201915539, guid: 6b8c45bd3e6cea243aec5147a9bc3467, type: 3}
       propertyPath: m_Shadows.m_Resolution
       value: 1
       objectReference: {fileID: 0}

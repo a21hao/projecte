@@ -7,6 +7,6 @@ public class DayCicle : MonoBehaviour
     {
         float tiempoDelJuego = Clock.tiempoDelJuego;
         float grados = ((tiempoDelJuego / Clock.tiempoDeUnDiaSegundos) * 360f);
-        transform.localEulerAngles = new Vector3(grados, -90f, 0f);
+        transform.localEulerAngles = new Vector3(grados, -120f, 0f);
     }
 }

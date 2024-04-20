@@ -23,8 +23,8 @@ public class MachineInventory : MonoBehaviour
     private Slot[] slots;
     void Start()
     {
-        objAndStats = GameObject.Find("Canvas/Menú/PerfilT").gameObject.GetComponent<ObjectivesAndStats>();
-        Debug.Log("Objs and stats " + objAndStats != null);
+        //objAndStats = GameObject.Find("Canvas/Menú/PerfilT").gameObject.GetComponent<ObjectivesAndStats>();
+        //Debug.Log("Objs and stats " + objAndStats != null);
         slotsparent = transform.Find("Slots");
         slots = new Slot[maxSlots];
         for (int i = 0; i < slots.Length; i++)
@@ -160,7 +160,7 @@ public class MachineInventory : MonoBehaviour
                         }
                         slots[i].quantity -= cantidad;
                         MoneyManager.IncrementarDinero(cantidad * slots[i].item.precioVenta);
-                        objAndStats.updateStat(slots[i].item.GetID(), cantidad);
+                        //objAndStats.updateStat(slots[i].item.GetID(), cantidad);
                         //SoldItem.Invoke(slots[i].item.GetID(), cantidad);
                         cantidad = 0;
                         
@@ -174,7 +174,7 @@ public class MachineInventory : MonoBehaviour
                         }
                         cantidad -= slots[i].quantity;
                         MoneyManager.IncrementarDinero(slots[i].quantity * slots[i].item.precioVenta);
-                        objAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
+                        //objAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //SoldItem.Invoke(slots[i].item.GetID(), slots[i].quantity);
                         slots[i].quantity = 0;                        
                         slots[i].item = null;

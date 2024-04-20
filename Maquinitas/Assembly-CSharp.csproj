@@ -80,8 +80,8 @@
     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\NewInputActions\InputActions.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Inventario.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventario4.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -134,12 +134,12 @@
     <Compile Include="Assets\Scripts\NewControls.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\DatosGuardado\InventarioData.cs" />
-    <Compile Include="Assets\Scripts\Inventory\inventario3.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\TableAnimationIntermediaryScript.cs" />
     <Compile Include="Assets\Scripts\Time\TextTime.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Time\Calendar.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventario3.cs" />
     <Compile Include="Assets\Scripts\Perfil\ObjectivesAndStats.cs" />
     <Compile Include="Assets\Scripts\Inventory\Tienda.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />

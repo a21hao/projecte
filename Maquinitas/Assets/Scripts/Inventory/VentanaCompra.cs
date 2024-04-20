@@ -70,7 +70,7 @@ public class VentanaCompra : MonoBehaviour
         {
             GameObject nuevoObjeto = Instantiate(prefabObjetoInventario);
             Item itemComponent = nuevoObjeto.GetComponent<Item>();
-            itemComponent.SetInformacion(objetoTienda.nombreText, objetoTienda.spriteImage, objetoTienda.precioObjeto, objetoTienda.descripcionObjeto, objetoTienda.id, objetoTienda.tipo, cantidad,objetoTienda.objeto3d,objetoTienda.precioVenta);
+            itemComponent.SetInformacion(objetoTienda.nombreText, objetoTienda.spriteImage, objetoTienda.precioObjeto, objetoTienda.descripcionObjeto, objetoTienda.id, objetoTienda.tipo, cantidad, objetoTienda.objeto3d, objetoTienda.precioVenta);
             nuevoObjeto.transform.SetParent(emptySlot.transform);
             nuevoObjeto.transform.localScale = Vector3.one;
             nuevoObjeto.transform.localPosition = Vector3.zero;
@@ -81,7 +81,7 @@ public class VentanaCompra : MonoBehaviour
         }
     }
 
-        public void Cancelar()
+    public void Cancelar()
     {
         CerrarVentana();
     }

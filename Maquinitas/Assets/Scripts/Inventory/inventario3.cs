@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class inventario3 : MonoBehaviour
+public class Inventario3 : MonoBehaviour
 {
     // Start is called before the first frame update
     //[SerializeField]

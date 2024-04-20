@@ -97,7 +97,7 @@ public class Clock : MonoBehaviour
         else if (escalaDeTiempo == 2)
         {
             estaPausado = false;
-            escalaDeTiempo = 80;
+            escalaDeTiempo = 25;
         }
         else
         {

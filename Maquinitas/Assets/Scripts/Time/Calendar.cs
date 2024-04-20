@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Globalization;
+using Unity.VisualScripting;
 
 public class Calendar : MonoBehaviour
 {
@@ -12,23 +14,27 @@ public class Calendar : MonoBehaviour
         public int dayNum;
         public Color dayColor;
         public GameObject obj;
-        public List<string> events; // Lista de eventos
+        public List<string> events;
+        public Sprite image;
+        public string eventName;
 
-        private Image image;
+        private Image dayImage;
+        private TextMeshProUGUI dayText;
 
         public Day(int dayNum, Color dayColor, GameObject obj)
         {
             this.dayNum = dayNum;
             this.obj = obj;
-            this.image = obj.GetComponent<Image>();
-            this.events = new List<string>(); // Inicializa la lista de eventos
+            this.dayImage = obj.GetComponent<Image>();
+            this.dayText = obj.GetComponentInChildren<TextMeshProUGUI>();
+            this.events = new List<string>();
             UpdateColor(dayColor);
             UpdateDay(dayNum);
         }
 
         public void UpdateColor(Color newColor)
         {
-            image.color = newColor;
+            dayImage.color = newColor;
             dayColor = newColor;
         }
 
@@ -37,12 +43,23 @@ public class Calendar : MonoBehaviour
             this.dayNum = newDayNum;
             if (dayColor == Color.white || dayColor == Color.green)
             {
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = (dayNum + 1).ToString();
+                dayText.text = (dayNum + 1).ToString();
             }
             else
             {
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = "";
+                dayText.text = "";
             }
+        }
+
+        public void SetImage(Sprite sprite)
+        {
+            image = sprite;
+            dayImage.sprite = sprite;
+        }
+
+        public void SetEventName(string name)
+        {
+            eventName = name;
         }
     }
 
@@ -51,11 +68,22 @@ public class Calendar : MonoBehaviour
     public Transform[] weeks;
     public TextMeshProUGUI MonthAndYear;
     public TextMeshProUGUI currentDateText;
+    public TextMeshProUGUI eventNameText;
 
-    private int currentYear = 1;
-    private int currentSeasonIndex = 0;
-    private int currentDayIndex = 0;
-    Color brown = new Color(0.6f, 0.4f, 0.2f);
+    [SerializeField] private Sprite defaultImage;
+    [SerializeField] private Sprite sprite1;
+    [SerializeField] private Sprite sprite2;
+
+    [SerializeField] private GameObject rainingFX;
+    [SerializeField] private GameObject snowingFX;
+
+    bool isRaining;
+    bool isSnowing;
+
+    [SerializeField] private int currentYear = 20;
+    [SerializeField] private int currentSeasonIndex = 3;
+    [SerializeField] private int currentDayIndex = 0;
+    //Color brown = new Color(0.6f, 0.4f, 0.2f);
 
     [SerializeField] private GameObject botonNext;
     [SerializeField] private GameObject botonPrevius;
@@ -122,6 +150,20 @@ public class Calendar : MonoBehaviour
                 days.Add(newDay);
             }
         }
+
+        //Eventos del primer mes
+        SetAllDaysImage(defaultImage);
+        if (days.Count >= 5 && currentSeasonIndex == 0)
+        {
+            Sprite daySprite = sprite1;
+            days[4].SetImage(daySprite);
+        }
+        if (days.Count >= 10 && currentSeasonIndex == 0)
+        {
+            Sprite daySprite2 = sprite2;
+            days[9].SetImage(daySprite2);
+        }
+
     }
 
     string GetSeasonName(int seasonIndex)
@@ -138,6 +180,7 @@ public class Calendar : MonoBehaviour
             currentSeasonIndex = 0;
             currentYear++;
         }
+
         UpdateCalendar(currentYear, currentSeasonIndex);
 
         // Desactivar el botón de mes siguiente si llegamos al último año
@@ -186,12 +229,6 @@ public class Calendar : MonoBehaviour
         {
             botonNext.SetActive(true);
         }
-        // Verificar si hay un día actual seleccionado
-        if (currentDayIndex != -1)
-        {
-            // Actualizar el color del día actual
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
-        }
     }
 
     public void SetCurrentDay(int dayIndex)
@@ -205,18 +242,23 @@ public class Calendar : MonoBehaviour
 
         if (currentDayIndex != -1)
         {
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+            days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
         }
         // Verificar si hay un día actual seleccionado
         if (currentDayIndex != -1)
         {
             // Actualizar el color del día actual
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+            days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
         }
     }
 
     public void AdvanceDay()
     {
+        rainingFX.SetActive(false);
+        isRaining = false;
+        snowingFX.SetActive(false);
+        isSnowing = false;
+
         // Avanzar al siguiente día en el calendario
         if (currentDayIndex != -1)
         {
@@ -240,9 +282,84 @@ public class Calendar : MonoBehaviour
             currentDayIndex = 0;
         }
 
-        days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+        days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
 
         UpdateCurrentDateText(); // Actualizar el texto de la fecha actual
+
+        //Eventos
+        SetAllDaysImage(defaultImage);
+        if (days.Count >= 5 && currentSeasonIndex == 0)
+        {
+            Sprite daySprite = sprite1;
+            days[4].SetImage(daySprite);
+            if (currentDayIndex == 4 && currentSeasonIndex == 0)
+            {
+                Raining();
+            }
+        }
+        if (days.Count >= 10 && currentSeasonIndex == 0)
+        {
+            Sprite daySprite2 = sprite2;
+            days[9].SetImage(daySprite2);
+        }
+
+        RainingProbability();
+        SnowingProbability();
+    }
+
+    private void Raining()
+    {
+        rainingFX.SetActive(true);
+        isRaining = true;
+    }
+
+    private void Snowing()
+    {
+        snowingFX.SetActive(true);
+        isSnowing = true;
+    }
+
+    public void RainingProbability()
+    {
+        if (currentSeasonIndex == 0 || currentSeasonIndex == 2)
+        {
+            float randomNum = UnityEngine.Random.Range(0f, 100f);
+
+            // Verificar si el número aleatorio está dentro de la probabilidad especificada
+            if (randomNum <= 10f)
+            {
+                // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
+                Raining();
+            }
+        }
+
+        if (currentSeasonIndex == 1)
+        {
+            float randomNum = UnityEngine.Random.Range(0f, 100f);
+
+            // Verificar si el número aleatorio está dentro de la probabilidad especificada
+            if (randomNum <= 5f)
+            {
+                // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
+                Raining();
+            }
+        }
+    }
+
+    public void SnowingProbability()
+    {
+        if (currentSeasonIndex == 3)
+        {
+            // Generar un número aleatorio entre 0 y 100
+            float randomNum = UnityEngine.Random.Range(0f, 100f);
+
+            // Verificar si el número aleatorio está dentro de la probabilidad especificada
+            if (randomNum <= 15f)
+            {
+                // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
+                Snowing();
+            }
+        }
     }
 
     void UpdateCurrentDayColor()
@@ -251,7 +368,7 @@ public class Calendar : MonoBehaviour
         if (currentDayIndex != -1)
         {
             // Actualizar el color del día actual
-            days[currentDayIndex].UpdateColor(new Color(0.6f, 0.4f, 0.2f));
+            days[currentDayIndex].UpdateColor(new Color(0f, 1f, 0f));
         }
     }
 
@@ -260,4 +377,27 @@ public class Calendar : MonoBehaviour
         close.SetActive(false);
     }
 
+    public void SetAllDaysImage(Sprite image)
+    {
+        foreach (Day day in days)
+        {
+            day.SetImage(image);
+        }
+    }
+
+    // Método para mostrar el nombre del evento cuando el ratón está encima del día
+    public void ShowEventName(int dayIndex)
+    {
+        if (dayIndex >= 0 && dayIndex < days.Count)
+        {
+            if (!string.IsNullOrEmpty(days[dayIndex].eventName))
+            {
+                eventNameText.text = days[dayIndex].eventName;
+            }
+            else
+            {
+                eventNameText.text = "";
+            }
+        }
+    }
 }

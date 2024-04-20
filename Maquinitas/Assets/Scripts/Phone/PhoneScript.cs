@@ -8,7 +8,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     [Header("Open Animation")]
     [Space]
     [SerializeField] float openAnimationDuration;
-    [Range(1f, 10f)] public float openedScale = 3f;
+    [Range(1f, 10f)] public float openedScale = 6f;
     [SerializeField] AnimationCurve openAnimationCurve;
 
     float openAnimationTime = 0f;

@@ -29,10 +29,10 @@ public class VentanaCompra : MonoBehaviour
             precioText.text = objetoTienda.precioObjeto;
             descripcionText.text = objetoTienda.descripcionObjeto;
         }
-        cantidadSlider.maxValue = 999;
 
         cantidadSlider.onValueChanged.AddListener(ActualizarCantidadTexto);
         cantidadTexto.onValueChanged.AddListener(ActualizarCantidadSlider);
+        cantidadSlider.maxValue = (int)(MoneyManager.DineroTotal/(float.Parse(objetoTienda.precioObjeto)));
     }
 
     public void ActualizarCantidadTexto(float cantidad)

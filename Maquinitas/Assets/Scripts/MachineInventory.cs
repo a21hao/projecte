@@ -143,10 +143,12 @@ public class MachineInventory : MonoBehaviour
     
     public void VenderItem(int ID, int cantidad)
     {
+        
         for(int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item != null)
             {
+                Debug.Log(slots[i].item.GetID());
                 if(slots[i].item.GetID() == ID && cantidad > 0 && slots[i].quantity > 0)
                 {
                     if (slots[i].quantity > cantidad)

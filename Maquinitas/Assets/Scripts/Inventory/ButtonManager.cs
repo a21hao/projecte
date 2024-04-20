@@ -19,6 +19,7 @@ public class ButtonManager : MonoBehaviour
     private Animator perfilAnimator;
     private Animator upgradesAnimator;
     private Animator ajustesAnimator;
+    private Animator calendarAnimator;
     private bool canUseToggleTablet;
     private bool isTabletInUse;
     
@@ -41,10 +42,9 @@ public class ButtonManager : MonoBehaviour
         tabletAnimator = tablet.GetComponent<Animator>();
         upgradesAnimator = upgrades.GetComponent<Animator>();
         mapaAnimator = mapa.GetComponent<Animator>();
-            
         ajustesAnimator = ajustes.GetComponent<Animator>();
-        
-        
+        calendarAnimator = calendar.GetComponent<Animator>();
+
     }
 
     IEnumerator ToggleGameObject(GameObject obj, Animator animator)
@@ -89,7 +89,9 @@ public class ButtonManager : MonoBehaviour
 
     public void ToggleAjustes()
     {
-        StartCoroutine(ToggleGameObject(ajustes, ajustesAnimator));
+        //StartCoroutine(ToggleGameObject(ajustes, ajustesAnimator));
+        ajustesAnimator.SetTrigger("Abrir");
+        if (!ajustes.activeSelf) ajustes.SetActive(true);
     }
 
     public void ToggleUpgrades()
@@ -115,7 +117,9 @@ public class ButtonManager : MonoBehaviour
 
     public void ToggleCalendar(GameObject obj)
     {
-        obj.SetActive(!obj.activeSelf);
+        //obj.SetActive(!obj.activeSelf);
+        perfilAnimator.SetTrigger("Abrir");
+        if (!calendar.activeSelf) calendar.SetActive(true);
     }
 
 

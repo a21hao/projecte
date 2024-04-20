@@ -117,9 +117,4 @@ public class Clock : MonoBehaviour
         //FinDiaCanv.SetActive(false);
         Play();
     }
-
-    public void GoTomenu()
-    {
-
-    }
 }

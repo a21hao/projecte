@@ -29,7 +29,7 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("StartEntered");
+        //Debug.Log("StartEntered");
         cmm = cameraMap.GetComponent<CameraMapMoving>();
         czo = cameraMap.GetComponent<CameraZoomOrthografic>();
         canUseToggleTablet = true;

@@ -34,6 +34,7 @@ public class VentanaCompra : MonoBehaviour
 
         cantidadSlider.onValueChanged.AddListener(ActualizarCantidadTexto);
         cantidadTexto.onValueChanged.AddListener(ActualizarCantidadSlider);
+        cantidadSlider.maxValue = (int)(MoneyManager.DineroTotal/(float.Parse(objetoTienda.precioObjeto)));
     }
 
     public void ActualizarCantidadTexto(float cantidad)

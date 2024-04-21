@@ -122,9 +122,4 @@ public class Clock : MonoBehaviour
         fnd.DisactiveFinalDay();
         Play();
     }
-
-    public void GoTomenu()
-    {
-
-    }
 }

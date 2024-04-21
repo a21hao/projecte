@@ -41,7 +41,7 @@ public class EnemyBehavior : MonoBehaviour
         
         //Debug.Log(rotation);
 
-        // Aplica la rotación al objeto
+        // Aplica la rotaciï¿½n al objeto
         transform.rotation = rotation;
     }
 

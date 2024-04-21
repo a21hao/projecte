@@ -24,7 +24,7 @@ public class MachineInventory : MonoBehaviour
     private Slot[] slots;
     void Start()
     {
-        //objAndStats = GameObject.Find("Canvas/Menú/Phone/Perfil").gameObject.GetComponent<ObjectivesAndStats>();
+        //objAndStats = GameObject.Find("Canvas/Menï¿½/Phone/Perfil").gameObject.GetComponent<ObjectivesAndStats>();
         //Debug.Log("Objs and stats " + objAndStats != null);
         slotsparent = transform.Find("Slots");
         slots = new Slot[maxSlots];
@@ -160,6 +160,7 @@ public class MachineInventory : MonoBehaviour
         {
             if (slots[i].item != null)
             {
+                Debug.Log(slots[i].item.GetID());
                 if(slots[i].item.GetID() == ID && cantidad > 0 && slots[i].quantity > 0)
                 {
                     if (slots[i].quantity > cantidad)

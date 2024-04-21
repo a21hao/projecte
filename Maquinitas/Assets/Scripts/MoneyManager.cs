@@ -42,6 +42,7 @@ public class MoneyManager : MonoBehaviour
 
     private static void ActualizarTextoDinero()
     {
+
         
         textoDinero.text = dineroTotal.ToString() + "¥";
         /*

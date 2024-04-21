@@ -15,32 +15,12 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638493122684619638
+  lastModified: 638493307416905744
   FileSizes:
   - Name: Desktop
     Value: 2332384
   Exists: 1
---- !u!114 &-2645618508199062669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Ambience.bank
-  m_EditorClassIdentifier: 
-  Path: ../SoundStuff/Maquinitas/Build/Desktop/Ambience.bank
-  Name: Ambience
-  StudioPath: bank:/Ambience
-  lastModified: 638493137021095904
-  FileSizes:
-  - Name: Desktop
-    Value: 649632
-  Exists: 1
---- !u!114 &-1467587046460443862
+--- !u!114 &-3961455762147113037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,14 +39,41 @@ MonoBehaviour:
     Data3: 1875349694
     Data4: 1400535046
   Banks:
-  - {fileID: -2645618508199062669}
+  - {fileID: 9055930859407135874}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 65184
+  Length: 59951
+--- !u!114 &-1517784571350633767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Win
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Win
+  Guid:
+    Data1: -1919510091
+    Data2: 1096273489
+    Data3: -1277592131
+    Data4: -173262638
+  Banks:
+  - {fileID: -237727773890272714}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-1203067013137275271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +89,7 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638493137020870885
+  lastModified: 638493307416391951
   FileSizes:
   - Name: Desktop
     Value: 1486
@@ -102,10 +109,10 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638493124937223984
+  lastModified: 638493307417103094
   FileSizes:
   - Name: Desktop
-    Value: 13056
+    Value: 103616
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -124,18 +131,47 @@ MonoBehaviour:
   - {fileID: -1203067013137275271}
   - {fileID: -5210938445908851240}
   - {fileID: -237727773890272714}
-  - {fileID: -2645618508199062669}
+  - {fileID: 9055930859407135874}
   EditorEvents:
   - {fileID: 8057009843461525813}
   - {fileID: 6600985971267947334}
-  - {fileID: -1467587046460443862}
+  - {fileID: -3961455762147113037}
+  - {fileID: 2176636035415057971}
+  - {fileID: -1517784571350633767}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1203067013137275271}
   StringsBanks:
   - {fileID: 2207695179255626263}
-  cacheTime: 638493137021095904
+  cacheTime: 638493307417103094
   cacheVersion: 131617
+--- !u!114 &2176636035415057971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Game Over
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Game Over
+  Guid:
+    Data1: 179970113
+    Data2: 1090693923
+    Data3: -990387061
+    Data4: 1965771872
+  Banks:
+  - {fileID: -237727773890272714}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &2207695179255626263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,10 +187,10 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638493137020875882
+  lastModified: 638493307416569719
   FileSizes:
   - Name: Desktop
-    Value: 1106
+    Value: 1192
   Exists: 1
 --- !u!114 &6600985971267947334
 MonoBehaviour:
@@ -210,3 +246,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 173160
+--- !u!114 &9055930859407135874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.bank
+  m_EditorClassIdentifier: 
+  Path: ../SoundStuff/Maquinitas/Build/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 638493307416203399
+  FileSizes:
+  - Name: Desktop
+    Value: 762016
+  Exists: 1

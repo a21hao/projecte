@@ -7,11 +7,15 @@ public class ChangeScene : MonoBehaviour
 {
     public void EscenaPrincipal()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("PrincipalMapMaquina");
     }
     public void EscenaMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MenuPrincipal");
+    }
+    public void EscenaCredit()
+    {
+        SceneManager.LoadScene("Credits");
     }
     public void Salir()
     {

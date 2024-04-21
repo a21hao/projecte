@@ -6,7 +6,7 @@ using TMPro;
 
 public class MoneyManager : MonoBehaviour
 {
-    private static int dineroTotal = 2000;
+    private static int dineroTotal = 145555;
     
 
     [SerializeField] private static TMP_Text textoDinero;
@@ -14,7 +14,7 @@ public class MoneyManager : MonoBehaviour
     private void Start()
     {
         //textoDinero.text = dineroTotal.ToString();
-        dineroTotal = 1900;
+        dineroTotal = 145999;
         textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
         textoDinero.text = dineroTotal.ToString() + "¥";
     }

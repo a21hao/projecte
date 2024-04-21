@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using FMODUnity;
+using UnityEngine.InputSystem.LowLevel;
 
 public class ObjectivesAndStats : MonoBehaviour
 {
@@ -29,6 +31,11 @@ public class ObjectivesAndStats : MonoBehaviour
     private TextMeshProUGUI textLose;
     /*[SerializeField]
     private GameObject objectivesAndStatsIntermediaryGO;*/
+    [SerializeField] private GameObject botonCreditos;
+    [SerializeField] private GameObject botonMenu;
+
+    [SerializeField] private EventReference winSound;
+    [SerializeField] private EventReference loseSound;
 
     public class Objective
     {
@@ -351,7 +358,7 @@ public class ObjectivesAndStats : MonoBehaviour
             Instance.objectives[2].objectiveCompleted = true;
             Instance.objectives[2].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
             Instance.CheckAllObjectivesCompleted();
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene("Credits");
         }
     }
 
@@ -365,11 +372,14 @@ public class ObjectivesAndStats : MonoBehaviour
         }
         if(allCompleted)
         {
+            Time.timeScale = 1;
+            botonMenu.SetActive(false);
             GameOverOrWin.SetActive(true);
             winImage.SetActive(true);
             loseImage.SetActive(false);
             Wintext.SetActive(true);
             Losetext.SetActive(false);
+            AudioManager.instance.PlayOneShot(winSound, this.transform.position);
             //textLoseOrWin.text = "All objectives completed, Congratulations YOU WIN";
         }
     }
@@ -379,11 +389,15 @@ public class ObjectivesAndStats : MonoBehaviour
         Debug.Log("Ha entrado");
         if(daysTanscurred >= daysAfterLose)
         {
+            Time.timeScale = 1;
+            botonCreditos.SetActive(false);
+            botonMenu.SetActive(true);
             GameOverOrWin.SetActive(true);
             winImage.SetActive(false);
             loseImage.SetActive(true);
             Wintext.SetActive(false);
             textLose.text = "You don't achived all objectives before the " + daysAfterLose + " days, YOU LOSE, but you can continue playing";
+            AudioManager.instance.PlayOneShot(loseSound, this.transform.position);
         }
     }
 

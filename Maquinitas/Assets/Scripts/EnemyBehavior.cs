@@ -10,11 +10,11 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private GameObject wishListGO;
     private List<Vector3> positions;
 
-				[SerializeField]
-				private ParticleSystem SiItem;
+    [SerializeField]
+    private ParticleSystem SiItem;
 
-				[SerializeField]
-				private ParticleSystem NoItem;
+    [SerializeField]
+    private ParticleSystem NoItem;
     public float speed = 3f;
     private float lastSpeed;
 
@@ -30,7 +30,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        
+
     }
     void Start()
     {
@@ -43,7 +43,7 @@ public class EnemyBehavior : MonoBehaviour
         wishList = GameObject.Find("GameManager/WishList").GetComponent<Wishlist>();
         iditemToWish = wishList.ItemToWishId();
 
-        
+
         //Debug.Log(rotation);
 
         // Aplica la rotaci�n al objeto
@@ -62,7 +62,7 @@ public class EnemyBehavior : MonoBehaviour
         if (Vector3.Distance(transform.position, target) <= 0.2f)
         {
             GetNextWaypoint();
-            
+
         }
     }
 
@@ -90,27 +90,27 @@ public class EnemyBehavior : MonoBehaviour
         {
             //Vending_.VenderItem(1, 1);
             //AudioManager.instance.PlayOneShot(buySound, this.transform.position);
-												
-            if(itemsSolded < itemsWantToSold)
+
+            if (itemsSolded < itemsWantToSold)
             {
                 lastSpeed = speed;
                 itemsSolded += Vending_.VenderItem(iditemToWish, 1);
-                if (itemsSolded > 0) {
+                if (itemsSolded > 0)
+                {
                     speed = 0f;
                     Vector3 dirMachine = Vending_.gameObject.transform.position - transform.position;
                     Quaternion rotation = Quaternion.LookRotation(dirMachine);
                     transform.rotation = rotation;
                     StartCoroutine(WaitBuying(lastSpeed));
                     Instantiate(SiItem, this.transform.position, this.transform.rotation);
-																				AudioManager.instance.PlayOneShot(buySound, this.transform.position);
-																}
-                
+                    AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+                }
+                else
+                {
+                    Instantiate(NoItem, this.transform.position, this.transform.rotation);
+                }
             }
         }
-								else
-								{
-												Instantiate(NoItem, this.transform.position, this.transform.rotation);
-								}
     }
 
 

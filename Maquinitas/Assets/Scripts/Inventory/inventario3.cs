@@ -170,13 +170,20 @@ public class Inventario3 : MonoBehaviour
             if (slot.GetComponentInChildren<Item>() != null)
             {
                 Item item = slot.GetComponentInChildren<Item>();
-                if (tipo == null || item.tipo == tipo)
+                if (tipo == "All")
                 {
                     slot.SetActive(true);
                 }
                 else
                 {
-                    slot.SetActive(false);
+                    if (tipo == null || item.tipo == tipo)
+                    {
+                        slot.SetActive(true);
+                    }
+                    else
+                    {
+                        slot.SetActive(false);
+                    }
                 }
             }
         }

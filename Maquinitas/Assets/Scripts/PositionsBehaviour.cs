@@ -5,7 +5,7 @@ using UnityEngine;
 public class PositionsBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Vector3[] positions;
+    public List<Vector3> positions;
     void Start()
     {
         
@@ -17,8 +17,13 @@ public class PositionsBehaviour : MonoBehaviour
         
     }
 
-    public void setPositions(Vector3[] positionss)
+    public void setPositions(List<Vector3> positionss)
     {
         positions = positionss;
+    }
+
+    public List<Vector3> GetPositions()
+    {
+        return positions;
     }
 }

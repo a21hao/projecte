@@ -6,7 +6,7 @@ using TMPro;
 
 public class MoneyManager : MonoBehaviour
 {
-    private static int dineroTotal = 1000;
+    private static int dineroTotal = 2000;
     
 
     [SerializeField] private static TMP_Text textoDinero;
@@ -14,9 +14,9 @@ public class MoneyManager : MonoBehaviour
     private void Start()
     {
         //textoDinero.text = dineroTotal.ToString();
-        dineroTotal = 1000;
+        dineroTotal = 1900;
         textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
-        textoDinero.text = dineroTotal.ToString();
+        textoDinero.text = dineroTotal.ToString() + "¥";
     }
 
     public static int DineroTotal
@@ -28,6 +28,8 @@ public class MoneyManager : MonoBehaviour
     public static void IncrementarDinero(int cantidad)
     {
         dineroTotal += cantidad;
+        if (dineroTotal >= 2500) ObjectivesAndStats.cumplirObjetivo2500Y();
+        if (dineroTotal >= 15000) ObjectivesAndStats.cumplirObjetivo15000Yenes();
         ActualizarTextoDinero();
     }
 
@@ -40,8 +42,9 @@ public class MoneyManager : MonoBehaviour
 
     private static void ActualizarTextoDinero()
     {
+
         
-        textoDinero.text = dineroTotal.ToString();
+        textoDinero.text = dineroTotal.ToString() + "¥";
         /*
         MoneyManager[] moneyManagers = FindObjectsOfType<MoneyManager>();
         foreach (MoneyManager manager in moneyManagers)

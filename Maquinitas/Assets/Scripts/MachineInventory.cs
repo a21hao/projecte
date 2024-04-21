@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Progress;
+
 
 public class MachineInventory : MonoBehaviour
 {
     // Start is called before the first frame update
     private int maxSlots = 15;
     private Transform slotsparent;
+    private bool firtItemInserted = false;
+    //private ObjectivesAndStats objAndStats;
     
     public class Slot
     {
@@ -22,6 +24,8 @@ public class MachineInventory : MonoBehaviour
     private Slot[] slots;
     void Start()
     {
+        //objAndStats = GameObject.Find("Canvas/Men�/Phone/Perfil").gameObject.GetComponent<ObjectivesAndStats>();
+        //Debug.Log("Objs and stats " + objAndStats != null);
         slotsparent = transform.Find("Slots");
         slots = new Slot[maxSlots];
         for (int i = 0; i < slots.Length; i++)
@@ -44,11 +48,20 @@ public class MachineInventory : MonoBehaviour
 
     public void PutItem(Item itemm)
     {
+        if (firtItemInserted)
+        {
+            if (CheckIfMachineIsEmty())
+            {
+                ObjectivesAndStats.cumplirObjetivoRellenaMaquinaCuandoEsteVacia();
+            }
+        }
         int quantityOfitemm = itemm.GetCantidad();
         quantityOfitemm -= HasSlotOfThatItem(itemm);
         itemm.SetCantidad(quantityOfitemm);
         quantityOfitemm -= putItemsWithoutOthers(itemm);
         itemm.SetCantidad(quantityOfitemm);
+        ObjectivesAndStats.cumplirObjetivoColocaPrimerObjetoEnMaquina();
+        firtItemInserted = true;
         
     }
 
@@ -60,7 +73,6 @@ public class MachineInventory : MonoBehaviour
         
         for (int i = 0; i < slots.Length; i++)
         {
-            Debug.Log(slots[i]);
             if (slots[i].item != null)
             {
                 if (slots[i].item.GetID() == itemm.GetID() && slots[i].quantity > 0 && slots[i].quantity < 4 & QuantityItemInitial > 0)
@@ -141,12 +153,14 @@ public class MachineInventory : MonoBehaviour
         return QuantityToRest;
     }
     
-    public void VenderItem(int ID, int cantidad)
+    public int VenderItem(int ID, int cantidad)
     {
+        int itemsSold = 0;
         for(int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item != null)
             {
+                Debug.Log(slots[i].item.GetID());
                 if(slots[i].item.GetID() == ID && cantidad > 0 && slots[i].quantity > 0)
                 {
                     if (slots[i].quantity > cantidad)
@@ -155,8 +169,12 @@ public class MachineInventory : MonoBehaviour
                         {
                             Destroy(slots[i].itemsObjects[j]);
                         }
+                        itemsSold += cantidad;
                         slots[i].quantity -= cantidad;
                         MoneyManager.IncrementarDinero(cantidad * slots[i].item.precioVenta);
+                        ObjectivesAndStats.updateStat(slots[i].item.GetID(), cantidad);
+                       // objAndStats.updateStat(slots[i].item.GetID(), cantidad);
+                        //SoldItem.Invoke(slots[i].item.GetID(), cantidad);
                         cantidad = 0;
                         
                     }
@@ -167,8 +185,12 @@ public class MachineInventory : MonoBehaviour
                             if (slots[i].itemsObjects[j] != null)
                             Destroy(slots[i].itemsObjects[j]);
                         }
+                        itemsSold += slots[i].quantity;
                         cantidad -= slots[i].quantity;
                         MoneyManager.IncrementarDinero(slots[i].quantity * slots[i].item.precioVenta);
+                        ObjectivesAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
+                        //objAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
+                        //SoldItem.Invoke(slots[i].item.GetID(), slots[i].quantity);
                         slots[i].quantity = 0;                        
                         slots[i].item = null;
                     }
@@ -176,7 +198,22 @@ public class MachineInventory : MonoBehaviour
                 
             }
             
+            
         }
+        return itemsSold;
+    }
+
+    private bool CheckIfMachineIsEmty()
+    {
+        bool isEmpty = true;
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].quantity > 0)
+            {
+                isEmpty = false;
+            }
+        }
+        return isEmpty;
     }
         
        

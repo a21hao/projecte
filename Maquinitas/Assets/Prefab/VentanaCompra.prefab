@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 999
   m_WholeNumbers: 1
-  m_Value: 13
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1484,7 +1484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.6887817, y: -0.0000019073486}
+  m_AnchoredPosition: {x: 1.6887665, y: -0.0000019073486}
   m_SizeDelta: {x: 23.3777, y: -0.0000076294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7962338986602507534
@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 4542032694946744620}
   - component: {fileID: 8767960119486354599}
   m_Layer: 5
-  m_Name: Aceptar
+  m_Name: Comprar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Aceptar
+  m_text: Comprar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   precioText: {fileID: 1937786109922381792}
   descripcionText: {fileID: 8190517694429456529}
   cantidadSlider: {fileID: 8466429748083414657}
-  cantidadTexto: {fileID: 4552988074431254587}
+  cantidadTexto: {fileID: 4736592523224387687}
 --- !u!1 &7102254938853737504
 GameObject:
   m_ObjectHideFlags: 0

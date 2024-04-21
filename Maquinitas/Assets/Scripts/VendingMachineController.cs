@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 using Cinemachine;
 
 public class VendingMachineController : MonoBehaviour, IPointerClickHandler
@@ -26,6 +27,12 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     private Color originalColor;
     private Material matMachine;
     private Image imgCanvas;
+    [SerializeField]
+    private int MoneyToBuyMachine;
+    private TextMeshProUGUI textMoneyMachine;
+    private Color originalColorText;
+    private Animator canvasTextAnimator;
+    private GameObject canvasText;
 
     void Awake()
     {
@@ -35,6 +42,16 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         originalColor = matMachine.color;
         Transform img = gameObject.transform.Find("Canvas/Image");
         imgCanvas = img.gameObject.GetComponent<Image>();
+        Transform textMoneyMachinetr = gameObject.transform.Find("Canvastext/TextMoneyMachine");
+        textMoneyMachine = textMoneyMachinetr.gameObject.GetComponent<TextMeshProUGUI>();
+        textMoneyMachine.text = MoneyToBuyMachine.ToString() + "¥";
+        originalColorText = textMoneyMachine.color;
+        textMoneyMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+        Debug.Log(textMoneyMachine.color);
+        Transform canvasTexttr = gameObject.transform.Find("Canvastext");
+        canvasText = gameObject.transform.Find("Canvastext").gameObject;
+        //canvasTextAnimator = canvasTexttr.gameObject.GetComponent<Animator>();
+        //canvasTextAnimator.enabled = false;
     }
     void Start()
     {
@@ -61,6 +78,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         if(canChangeToCamera)
         {
             cameraVendingMachine.Priority = 12;
+            ObjectivesAndStats.cumplirAccedeAVistaDeMaquina();
             StartCoroutine(ChangeToPerspectiveinTwoSeconds());
         }
     }
@@ -118,6 +136,42 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         cameraVendingMachine.Priority = 10;      
     }
 
+    private IEnumerator textAnimation()
+    {
+        float tiempoPasado = 0f;
+        float tiempo2 = 0f;
+        float tiempo3 = 0f;
+        float tiempo4 = 0f;
+        while (tiempoPasado < 1.4f)
+        {
+            if(tiempoPasado <= 0.35f)
+            {
+                canvasText.transform.localPosition = new Vector3(tiempoPasado / 0.35f * 0.83f, tiempoPasado / 0.35f * 2.89f, 0f);
+            }
+            else if(tiempoPasado>0.35f&&tiempoPasado<=0.70f) {
+                
+                canvasText.transform.localPosition = new Vector3(0.83f - (tiempo2 / 0.35f * (0.83f-0.09f)), 2.89f + (tiempo2 / 0.35f * (3.16f - 2.89f)),0f);
+                tiempo2 += Time.deltaTime;
+            }
+            else if (tiempoPasado > 0.70f && tiempoPasado <= 1.05f)
+            {
+                
+                canvasText.transform.localPosition = new Vector3(0.09f + (tiempo3 / 0.35f * (1.18f - 0.09f)), 3.16f + (tiempo3 / 0.35f * (3.42f - 3.16f)), 0f);
+                tiempo3 += Time.deltaTime;
+            }
+            else if (tiempoPasado > 1.05f && tiempoPasado <= 1.4f)
+            {
+                
+                canvasText.transform.localPosition = new Vector3(1.18f - (tiempo4 / 0.35f * (1.18f - 0.02f)), 3.42f + (tiempo4 / 0.35f * (3.88f - 3.42f)), 0f);
+                tiempo4 += Time.deltaTime;
+            }
+
+            tiempoPasado += Time.deltaTime;
+            yield return null;
+        }
+        
+    }
+
     public void ChangeCanUseCamera(bool canChange)
     {
         canChangeToCamera = canChange;
@@ -130,13 +184,34 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
 
             //originalColor = materialMachine.color;
             //Debug.Log(matMachine);
-            matMachine.color = Color.gray;
-            imgCanvas.color = Color.gray;
+            if (MoneyManager.DineroTotal >= MoneyToBuyMachine)
+            {
+                matMachine.color = Color.gray;
+                imgCanvas.color = Color.gray;
+                textMoneyMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+            }
+            else
+            {
+                matMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+                imgCanvas.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+                textMoneyMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+            }
         }
         else
         {
-            matMachine.color = originalColor;
-            imgCanvas.color = new Color(11f/255f,97f/255f,174f/255f,0.8f);
+            if(MoneyManager.DineroTotal >= MoneyToBuyMachine)
+            {
+                matMachine.color = originalColor;
+                imgCanvas.color = new Color(11f / 255f, 97f / 255f, 174f / 255f, 0.8f);
+                textMoneyMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+            }
+            else
+            {
+                matMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+                imgCanvas.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+                textMoneyMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
+            }
+            
             //imgCanvas.color = Color.blue;
         }
         
@@ -145,5 +220,26 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     public void GetOutImageCanvas()
     {
         imgCanvas.color = new Color(1f, 1f, 1f, 0f);
-    } 
+        textMoneyMachine.color = new Color(1f, 1f, 1f, 0f);
+    }
+
+    public void GetOutTextCanvas()
+    {
+        /*canvasTextAnimator.enabled = true;
+        canvasTextAnimator.SetTrigger("BuyMachine");*/
+        //StartCoroutine(textAnimation());
+        canvasText.SetActive(false);
+        
+    }
+
+
+    public int GetMoneyToBuyMachine()
+    {
+        return MoneyToBuyMachine;
+    }
+
+    public void DisableAnimatortext()
+    {
+        canvasTextAnimator.enabled = false;
+    }
 }

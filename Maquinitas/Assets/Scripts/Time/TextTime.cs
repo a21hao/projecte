@@ -32,6 +32,8 @@ public class TextTime : MonoBehaviour
         hora = (int)tiempoEnMinutos / 60;
         min = (int)tiempoEnMinutos % 60;
 
+        hora = (hora + 7) % 24;
+
         //Crear la cadena de caracteres con 2 digitos para los minutos, separados por ":"
         textoDelReloj = hora.ToString("00") + ":" + min.ToString("00");
 

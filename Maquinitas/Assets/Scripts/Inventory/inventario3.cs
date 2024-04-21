@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class inventario3 : MonoBehaviour
+public class Inventario3 : MonoBehaviour
 {
     // Start is called before the first frame update
     //[SerializeField]
@@ -16,6 +16,7 @@ public class inventario3 : MonoBehaviour
     public LayerMask capasRaycast;
     public GraphicRaycaster graphRay;
     public static Transform canvas;
+    //public Canvas canv;
     public GameObject objetoSeleccionado;
     public Transform exParent;
     public Transform contenido;
@@ -59,6 +60,8 @@ public class inventario3 : MonoBehaviour
                         exParent = objetoSeleccionado.transform.parent.transform;
                         exParent.GetComponent<Image>().fillCenter = false;
                         objetoSeleccionado.transform.SetParent(canvas);
+                        //objetoSeleccionado.transform.position = exParent.gameObject.transform.position;
+                        //objetoSeleccionado.transform.localPosition = new Vector3(0f, 0f, 0f);
                         objetoArrastrado = true;
                         scrollRect.enabled = false;
                     }
@@ -71,6 +74,7 @@ public class inventario3 : MonoBehaviour
         if (objetoSeleccionado != null && Mouse.current.leftButton.isPressed)
         {
             objetoSeleccionado.GetComponent<RectTransform>().localPosition = CanvasScreen(Mouse.current.position.ReadValue());
+            //objetoSeleccionado.transform.localPosition/*.GetComponent<RectTransform>().localPosition*/ = CanvasScreen(Mouse.current.position.ReadValue(), canv);
         }
 
         if (objetoSeleccionado != null && !Mouse.current.leftButton.isPressed)
@@ -113,6 +117,10 @@ public class inventario3 : MonoBehaviour
             }
             putInMachine();
             objetoSeleccionado.transform.localPosition = Vector3.zero;
+            if (objetoSeleccionado.GetComponent<Item>().GetCantidad() <= 0)
+            {
+                Destroy(objetoSeleccionado);
+            }
             objetoSeleccionado = null;
             objetoArrastrado = false;
             scrollRect.enabled = true;
@@ -133,6 +141,20 @@ public class inventario3 : MonoBehaviour
         return null;
     }
 
+    /*public Vector2 CanvasScreen(Vector2 screenPos, Canvas canvas)
+    {
+        // Convertir la posición de la pantalla a un punto en el espacio del mundo
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPos);
+
+        // Convertir el punto del mundo a un punto en el espacio local del Canvas
+        Vector2 localPos = canvas.transform.InverseTransformPoint(worldPoint);
+
+        // Ajustar la posición local basada en el pivote del RectTransform del Canvas
+        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+        localPos += new Vector2(canvasRect.sizeDelta.x * canvasRect.pivot.x, canvasRect.sizeDelta.y * canvasRect.pivot.y);
+
+        return localPos;
+    }*/
     public Vector2 CanvasScreen(Vector2 screenPos)
     {
         Vector2 viewportPoint = Camera.main.ScreenToViewportPoint(screenPos);

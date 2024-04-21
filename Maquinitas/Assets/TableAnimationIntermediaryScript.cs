@@ -5,6 +5,7 @@ using UnityEngine;
 public class TableAnimationIntermediaryScript : MonoBehaviour
 {
     [SerializeField] ButtonManager buttonManager;
+    
 
     public void Abrir(float f)
     {

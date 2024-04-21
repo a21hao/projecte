@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6913513102589808799}
   - component: {fileID: 3852360698366836732}
   - component: {fileID: 3362920208801667198}
+  - component: {fileID: -2580232388355224468}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5341349015664504705}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.96, z: 0}
+  m_LocalPosition: {x: 0, y: 0.016, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -107,10 +108,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.53826463
+  m_Height: 1.8308206
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.0554659, z: 0.038264632}
 --- !u!114 &6913513102589808799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +147,7 @@ MonoBehaviour:
     Path: event:/SFX/ItemBought
   SiItem: {fileID: 1657425127468024782, guid: b519f20e3c3b4e24590aced83360583c, type: 3}
   NoItem: {fileID: 2943814611308947294, guid: cc984735e115c4a4e81dd75ac27725b5, type: 3}
+  wishListGO: {fileID: 0}
   speed: 10
 --- !u!54 &3362920208801667198
 Rigidbody:
@@ -174,6 +176,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &-2580232388355224468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341349015664504705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b640304c9390d45ae2f9e5ec344cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions: []
 --- !u!1001 &7696895053728013957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee00018be21b8545959cd20fe0a8046, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09
+      value: 0.764
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee00018be21b8545959cd20fe0a8046, type: 3}
       propertyPath: m_LocalPosition.z

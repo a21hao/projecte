@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ObjectivesAndStats : MonoBehaviour
@@ -350,6 +351,7 @@ public class ObjectivesAndStats : MonoBehaviour
             Instance.objectives[2].objectiveCompleted = true;
             Instance.objectives[2].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
             Instance.CheckAllObjectivesCompleted();
+            SceneManager.LoadScene(1);
         }
     }
 

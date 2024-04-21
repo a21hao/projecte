@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DatosGuardado\LogicaGuardadoInventario.cs" />
+    <Compile Include="Assets\Scripts\Animations\AnimationSpeed.cs" />
     <Compile Include="Assets\Scripts\ClassObjectiveAndStats.cs" />
     <Compile Include="Assets\Scripts\Wishlist.cs" />
     <Compile Include="Assets\Scripts\VendingSpawner.cs" />

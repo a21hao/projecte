@@ -78,6 +78,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         if(canChangeToCamera)
         {
             cameraVendingMachine.Priority = 12;
+            ObjectivesAndStats.cumplirAccedeAVistaDeMaquina();
             StartCoroutine(ChangeToPerspectiveinTwoSeconds());
         }
     }

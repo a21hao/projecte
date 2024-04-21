@@ -72,6 +72,7 @@ public class ButtonManager : MonoBehaviour
     {
         //StartCoroutine(ToggleGameObject(almacen, almacenAnimator));
         almacenAnimator.SetTrigger("Abrir");
+        ObjectivesAndStats.cumplirObjetivoAbreElAlmacen();
         if (!almacen.activeSelf) almacen.SetActive(true);
     }
 

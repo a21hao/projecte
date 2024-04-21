@@ -12,6 +12,7 @@ public class Wishlist : MonoBehaviour
     private GameObject objectsOfGame;
     void Start()
     {
+        //random = new System.Random();
         listItemsWishlist = objectsOfGame.GetComponent<ObjectsList>().objectsList();
         //Debug.Log(listItemsWishlist.Count);
         idsObjects = new List<int>();
@@ -26,11 +27,14 @@ public class Wishlist : MonoBehaviour
 
     public int ItemToWishId()
     {
-        Debug.Log(idsObjects.Count);
+        //Debug.Log(idsObjects.Count);
         //int randId = 
-        Random.InitState(System.Environment.TickCount);
+        if(Random.Range(0,100)>30)Random.InitState(System.Environment.TickCount);
         int idRandom = Random.Range(0, idsObjects.Count);
-        Debug.Log(idRandom);
+        //random.Next(min, max);
+        
+        //int idRandom = random.Next(0, idsObjects.Count);
+        //Debug.Log(idRandom);
         return idsObjects[idRandom];
     }
 

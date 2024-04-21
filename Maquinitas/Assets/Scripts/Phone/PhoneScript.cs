@@ -43,9 +43,10 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         if (!opened)
         {
-            StartCoroutine(StartOpenAnimation());
             cmm.CanUseCameraMap(opened);
             czo.CanZoom(opened);
+            StartCoroutine(StartOpenAnimation());
+            
         }
 
     }
@@ -74,7 +75,13 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     public void Close()
     {
         if(opened)
+        {
+            cmm.CanUseCameraMap(opened);
+            czo.CanZoom(opened);
             StartCoroutine(StartCloseAnimation());
+            
+        }
+            
     }
 
     IEnumerator StartCloseAnimation()

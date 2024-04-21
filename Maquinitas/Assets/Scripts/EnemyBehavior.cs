@@ -16,11 +16,16 @@ public class EnemyBehavior : MonoBehaviour
     private MovementBehavior _mvb;
     private Wishlist wishList;
     private int iditemToWish;
+    private ObjectivesAndStats objAndStats;
+    private PathBehavior pthBeh;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = PathBehavior.Waypoints[2];
+        Debug.Log(pthBeh == null);
+        Debug.Log(pthBeh.GetWaypoints());
+        target = pthBeh.Waypoints[2];
+        
         _mvb = GetComponent<MovementBehavior>();
         Vector3 dir = target.position - transform.position;
         //Debug.Log(dir);
@@ -53,14 +58,14 @@ public class EnemyBehavior : MonoBehaviour
 
     void GetNextWaypoint()
     {
-        if (wayPoint >= PathBehavior.Waypoints.Length - 1)
+        if (wayPoint >= pthBeh.Waypoints.Length - 1)
         {
             Destroy(this.gameObject);
             return;
         }
 
         wayPoint++;
-        target = PathBehavior.Waypoints[wayPoint];
+        target = pthBeh.Waypoints[wayPoint];
         Vector3 dir = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(dir);
     }

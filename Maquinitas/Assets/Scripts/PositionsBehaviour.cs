@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-public class ClassObjectiveAndStats : ScriptableObject
+
+public class PositionsBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Vector3[] positions;
     void Start()
     {
         
@@ -14,5 +15,10 @@ public class ClassObjectiveAndStats : ScriptableObject
     void Update()
     {
         
+    }
+
+    public void setPositions(Vector3[] positionss)
+    {
+        positions = positionss;
     }
 }

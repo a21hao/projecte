@@ -8596,6 +8596,15 @@ MonoBehaviour:
   - {fileID: 0}
   MonthAndYear: {fileID: 0}
   currentDateText: {fileID: 0}
+  eventNameText: {fileID: 0}
+  defaultImage: {fileID: 0}
+  sprite1: {fileID: 0}
+  sprite2: {fileID: 0}
+  rainingFX: {fileID: 0}
+  snowingFX: {fileID: 0}
+  currentYear: 20
+  currentSeasonIndex: 3
+  currentDayIndex: 0
   botonNext: {fileID: 0}
   botonPrevius: {fileID: 0}
   close: {fileID: 0}

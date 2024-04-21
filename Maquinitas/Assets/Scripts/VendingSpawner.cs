@@ -100,6 +100,7 @@ public class VendingSpawner : MonoBehaviour
                     pvm.changePointVendingToBusy(pointVending, true);
                     vmc.GetOutImageCanvas();
                     vmc.GetOutTextCanvas();
+                    ObjectivesAndStats.cumplirObjetivoTutorialColocarMaquina();
                     machineCollider.enabled = true;
                     MoneyManager.DecrementarDinero(vmc.GetMoneyToBuyMachine());
                     

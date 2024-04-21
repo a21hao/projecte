@@ -11,12 +11,15 @@ public class EnemyBehavior : MonoBehaviour
     private List<Vector3> positions;
 
     public float speed = 3f;
+    private float lastSpeed;
 
     private Vector3 target;
     private int wayPoint = 0;
     private MovementBehavior _mvb;
     private Wishlist wishList;
     private int iditemToWish;
+    private int itemsWantToSold = 1;
+    private int itemsSolded = 0;
     private ObjectivesAndStats objAndStats;
 
     // Start is called before the first frame update
@@ -27,7 +30,7 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         target = positions[0];
-        
+        lastSpeed = speed;
         _mvb = GetComponent<MovementBehavior>();
         Vector3 dir = target - transform.position;
         //Debug.Log(dir);
@@ -80,13 +83,36 @@ public class EnemyBehavior : MonoBehaviour
         }*/
         if (other.TryGetComponent<MachineInventory>(out MachineInventory Vending_))
         {
-            Vending_.VenderItem(iditemToWish, 1);
-            AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+            if(itemsSolded < itemsWantToSold)
+            {
+                lastSpeed = speed;
+                itemsSolded += Vending_.VenderItem(iditemToWish, 1);
+                AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+                if (itemsSolded > 0) {
+                    speed = 0f;
+                    Vector3 dirMachine = Vending_.gameObject.transform.position - transform.position;
+                    Quaternion rotation = Quaternion.LookRotation(dirMachine);
+                    transform.rotation = rotation;
+                    StartCoroutine(WaitBuying(lastSpeed));
+                }
+                
+            }
+            
         }
     }
+
 
     public void setPositions(List<Vector3> pos)
     {
         positions = pos;
+    }
+
+    private IEnumerator WaitBuying(float speedd)
+    {
+        yield return new WaitForSeconds(1f);
+        speed = speedd;
+        Vector3 dir = target - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(dir);
+        transform.rotation = rotation;
     }
 }

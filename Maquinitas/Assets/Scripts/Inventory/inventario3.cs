@@ -117,6 +117,10 @@ public class Inventario3 : MonoBehaviour
             }
             putInMachine();
             objetoSeleccionado.transform.localPosition = Vector3.zero;
+            if (objetoSeleccionado.GetComponent<Item>().GetCantidad() <= 0)
+            {
+                Destroy(objetoSeleccionado);
+            }
             objetoSeleccionado = null;
             objetoArrastrado = false;
             scrollRect.enabled = true;

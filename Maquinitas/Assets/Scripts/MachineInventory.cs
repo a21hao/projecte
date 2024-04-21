@@ -153,8 +153,9 @@ public class MachineInventory : MonoBehaviour
         return QuantityToRest;
     }
     
-    public void VenderItem(int ID, int cantidad)
+    public int VenderItem(int ID, int cantidad)
     {
+        int itemsSold = 0;
         for(int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item != null)
@@ -167,6 +168,7 @@ public class MachineInventory : MonoBehaviour
                         {
                             Destroy(slots[i].itemsObjects[j]);
                         }
+                        itemsSold += cantidad;
                         slots[i].quantity -= cantidad;
                         MoneyManager.IncrementarDinero(cantidad * slots[i].item.precioVenta);
                         ObjectivesAndStats.updateStat(slots[i].item.GetID(), cantidad);
@@ -182,6 +184,7 @@ public class MachineInventory : MonoBehaviour
                             if (slots[i].itemsObjects[j] != null)
                             Destroy(slots[i].itemsObjects[j]);
                         }
+                        itemsSold += slots[i].quantity;
                         cantidad -= slots[i].quantity;
                         MoneyManager.IncrementarDinero(slots[i].quantity * slots[i].item.precioVenta);
                         ObjectivesAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
@@ -194,7 +197,9 @@ public class MachineInventory : MonoBehaviour
                 
             }
             
+            
         }
+        return itemsSold;
     }
 
     private bool CheckIfMachineIsEmty()

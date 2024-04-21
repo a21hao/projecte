@@ -30,6 +30,7 @@ public class Clock : MonoBehaviour
     //private TextMeshProUGUI ernaedThisDay;
     //private TextMeshProUGUI moneyThisday;
     //private TextMeshProUGUI winCondition;
+    private FinalDayManager fnd;
 
     void Start()
     {
@@ -39,6 +40,7 @@ public class Clock : MonoBehaviour
         //ernaedThisDay = textEarnedMoneyDay.GetComponent<TextMeshProUGUI>();
         //moneyThisday = textMoneyThisDay.GetComponent<TextMeshProUGUI>();
         //winCondition = winConditiontext.GetComponent<TextMeshProUGUI>();
+        fnd = GameObject.Find("GameManager/FinalDayManager").gameObject.GetComponent<FinalDayManager>();
     }
 
     void Update()
@@ -48,6 +50,8 @@ public class Clock : MonoBehaviour
         {
             tiempoDelJuego = 0f;
             calendar.AdvanceDay();
+            fnd.FinishDay();
+            Pausa();
             //dineroFinDia = MoneyManager.DineroTotal;
             //FinDiaCanv.SetActive(true);
             //moneyThisday.text = "You have this day: " + (dineroFinDia);
@@ -70,13 +74,13 @@ public class Clock : MonoBehaviour
 
     public void Pausa()
     {
-        if (!estaPausado)
-        {
+        //if (!estaPausado)
+        //{
             estaPausado = true;
-            escalaDeTiempoAlPausar = escalaDeTiempo;
+            //escalaDeTiempoAlPausar = escalaDeTiempo;
             escalaDeTiempo = 0;
             Time.timeScale = escalaDeTiempo;
-        }
+        //}
     }
 
     public void Play()
@@ -97,12 +101,12 @@ public class Clock : MonoBehaviour
         else if (escalaDeTiempo == 2)
         {
             estaPausado = false;
-            escalaDeTiempo = 25;
+            escalaDeTiempo = 10;
         }
         else
         {
             estaPausado = false;
-            escalaDeTiempo = 2;
+            escalaDeTiempo = 1;
         }
         Time.timeScale = escalaDeTiempo;
     }
@@ -115,6 +119,7 @@ public class Clock : MonoBehaviour
     public void resumeGame()
     {
         //FinDiaCanv.SetActive(false);
+        fnd.DisactiveFinalDay();
         Play();
     }
 }

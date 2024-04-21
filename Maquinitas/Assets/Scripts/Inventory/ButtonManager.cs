@@ -10,16 +10,16 @@ public class ButtonManager : MonoBehaviour
     public GameObject perfil;
     public GameObject ajustes;
     public GameObject upgrades;
-    public GameObject tablet;
-    public GameObject calendar;
+    [SerializeField] private GameObject tablet;
+    [SerializeField] private GameObject calendar;
     private Animator almacenAnimator;
     private Animator amazingAnimator;
     private Animator tabletAnimator;
     private Animator mapaAnimator;
     private Animator perfilAnimator;
     private Animator upgradesAnimator;
-    private Animator ajustesAnimator;
-    private Animator calendarAnimator;
+    [SerializeField] private Animator ajustesAnimator;
+    [SerializeField] private Animator calendarAnimator;
     private bool canUseToggleTablet;
     private bool isTabletInUse;
     
@@ -44,7 +44,6 @@ public class ButtonManager : MonoBehaviour
         mapaAnimator = mapa.GetComponent<Animator>();
         ajustesAnimator = ajustes.GetComponent<Animator>();
         calendarAnimator = calendar.GetComponent<Animator>();
-
     }
 
     IEnumerator ToggleGameObject(GameObject obj, Animator animator)
@@ -72,6 +71,7 @@ public class ButtonManager : MonoBehaviour
     {
         //StartCoroutine(ToggleGameObject(almacen, almacenAnimator));
         almacenAnimator.SetTrigger("Abrir");
+        ObjectivesAndStats.cumplirObjetivoAbreElAlmacen();
         if (!almacen.activeSelf) almacen.SetActive(true);
     }
 
@@ -115,10 +115,10 @@ public class ButtonManager : MonoBehaviour
         
     }
 
-    public void ToggleCalendar(GameObject obj)
+    public void ToggleCalendar()
     {
         //obj.SetActive(!obj.activeSelf);
-        perfilAnimator.SetTrigger("Abrir");
+        calendarAnimator.SetTrigger("Abrir");
         if (!calendar.activeSelf) calendar.SetActive(true);
     }
 

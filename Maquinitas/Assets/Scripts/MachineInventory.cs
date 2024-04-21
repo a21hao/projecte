@@ -9,7 +9,8 @@ public class MachineInventory : MonoBehaviour
     // Start is called before the first frame update
     private int maxSlots = 15;
     private Transform slotsparent;
-    private ObjectivesAndStats objAndStats;
+    private bool firtItemInserted = false;
+    //private ObjectivesAndStats objAndStats;
     
     public class Slot
     {
@@ -23,7 +24,7 @@ public class MachineInventory : MonoBehaviour
     private Slot[] slots;
     void Start()
     {
-        //objAndStats = GameObject.Find("Canvas/Menú/PerfilT").gameObject.GetComponent<ObjectivesAndStats>();
+        //objAndStats = GameObject.Find("Canvas/Menú/Phone/Perfil").gameObject.GetComponent<ObjectivesAndStats>();
         //Debug.Log("Objs and stats " + objAndStats != null);
         slotsparent = transform.Find("Slots");
         slots = new Slot[maxSlots];
@@ -47,11 +48,20 @@ public class MachineInventory : MonoBehaviour
 
     public void PutItem(Item itemm)
     {
+        if (firtItemInserted)
+        {
+            if (CheckIfMachineIsEmty())
+            {
+                ObjectivesAndStats.cumplirObjetivoRellenaMaquinaCuandoEsteVacia();
+            }
+        }
         int quantityOfitemm = itemm.GetCantidad();
         quantityOfitemm -= HasSlotOfThatItem(itemm);
         itemm.SetCantidad(quantityOfitemm);
         quantityOfitemm -= putItemsWithoutOthers(itemm);
         itemm.SetCantidad(quantityOfitemm);
+        ObjectivesAndStats.cumplirObjetivoColocaPrimerObjetoEnMaquina();
+        firtItemInserted = true;
         
     }
 
@@ -63,7 +73,6 @@ public class MachineInventory : MonoBehaviour
         
         for (int i = 0; i < slots.Length; i++)
         {
-            Debug.Log(slots[i]);
             if (slots[i].item != null)
             {
                 if (slots[i].item.GetID() == itemm.GetID() && slots[i].quantity > 0 && slots[i].quantity < 4 & QuantityItemInitial > 0)
@@ -162,7 +171,8 @@ public class MachineInventory : MonoBehaviour
                         }
                         slots[i].quantity -= cantidad;
                         MoneyManager.IncrementarDinero(cantidad * slots[i].item.precioVenta);
-                        //objAndStats.updateStat(slots[i].item.GetID(), cantidad);
+                        ObjectivesAndStats.updateStat(slots[i].item.GetID(), cantidad);
+                       // objAndStats.updateStat(slots[i].item.GetID(), cantidad);
                         //SoldItem.Invoke(slots[i].item.GetID(), cantidad);
                         cantidad = 0;
                         
@@ -176,6 +186,7 @@ public class MachineInventory : MonoBehaviour
                         }
                         cantidad -= slots[i].quantity;
                         MoneyManager.IncrementarDinero(slots[i].quantity * slots[i].item.precioVenta);
+                        ObjectivesAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //objAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //SoldItem.Invoke(slots[i].item.GetID(), slots[i].quantity);
                         slots[i].quantity = 0;                        
@@ -186,6 +197,19 @@ public class MachineInventory : MonoBehaviour
             }
             
         }
+    }
+
+    private bool CheckIfMachineIsEmty()
+    {
+        bool isEmpty = true;
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].quantity > 0)
+            {
+                isEmpty = false;
+            }
+        }
+        return isEmpty;
     }
         
        

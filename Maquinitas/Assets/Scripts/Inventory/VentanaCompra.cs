@@ -64,6 +64,7 @@ public class VentanaCompra : MonoBehaviour
         {
             float precio = float.Parse(objetoTienda.precioObjeto);
             int precioTotal = Mathf.RoundToInt(cantidad * precio);
+            if(cantidad > 0) ObjectivesAndStats.cumplirObjetivoCompraTuPrimerProducto();
             MoneyManager.DecrementarDinero(precioTotal);
         }
 

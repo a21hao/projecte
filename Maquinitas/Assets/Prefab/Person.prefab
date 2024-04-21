@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6913513102589808799}
   - component: {fileID: 3852360698366836732}
   - component: {fileID: 3362920208801667198}
+  - component: {fileID: -2580232388355224468}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -144,6 +145,7 @@ MonoBehaviour:
       Data3: 1067966340
       Data4: -1873524955
     Path: event:/SFX/ItemBought
+  wishListGO: {fileID: 0}
   speed: 10
 --- !u!54 &3362920208801667198
 Rigidbody:
@@ -172,6 +174,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &-2580232388355224468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341349015664504705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b640304c9390d45ae2f9e5ec344cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7696895053728013957
 PrefabInstance:
   m_ObjectHideFlags: 0

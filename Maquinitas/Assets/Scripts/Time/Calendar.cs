@@ -89,6 +89,10 @@ public class Calendar : MonoBehaviour
     [SerializeField] private GameObject botonPrevius;
     [SerializeField] private GameObject close;
 
+    [SerializeField] private GameObject rainingImage;
+    [SerializeField] private GameObject snowingImage;
+    [SerializeField] private GameObject sunImage;
+
     private void Start()
     {
         currentYear = 1;
@@ -305,6 +309,24 @@ public class Calendar : MonoBehaviour
 
         RainingProbability();
         SnowingProbability();
+        if (isRaining == false && isSnowing == false)
+        {
+            sunImage.SetActive(true);
+            rainingImage.SetActive(false);
+            snowingImage.SetActive(false);
+        }
+        if (isRaining == true)
+        {
+            sunImage.SetActive(false);
+            rainingImage.SetActive(true);
+            snowingImage.SetActive(false);
+        }
+        if (isSnowing == true)
+        {
+            sunImage.SetActive(false);
+            rainingImage.SetActive(false);
+            snowingImage.SetActive(true);
+        }
     }
 
     private void Raining()
@@ -326,7 +348,7 @@ public class Calendar : MonoBehaviour
             float randomNum = UnityEngine.Random.Range(0f, 100f);
 
             // Verificar si el número aleatorio está dentro de la probabilidad especificada
-            if (randomNum <= 10f)
+            if (randomNum <= 35f)
             {
                 // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
                 Raining();
@@ -338,7 +360,7 @@ public class Calendar : MonoBehaviour
             float randomNum = UnityEngine.Random.Range(0f, 100f);
 
             // Verificar si el número aleatorio está dentro de la probabilidad especificada
-            if (randomNum <= 5f)
+            if (randomNum <= 10f)
             {
                 // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
                 Raining();
@@ -354,7 +376,7 @@ public class Calendar : MonoBehaviour
             float randomNum = UnityEngine.Random.Range(0f, 100f);
 
             // Verificar si el número aleatorio está dentro de la probabilidad especificada
-            if (randomNum <= 15f)
+            if (randomNum <= 40f)
             {
                 // Activar el GameObject si el número aleatorio es menor o igual a la probabilidad
                 Snowing();

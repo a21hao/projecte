@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GMObjectivesAndStats : MonoBehaviour
 {
-    private List<Objective> tutorialObjectives;
+    /*private List<Objective> tutorialObjectives;
     private List<Objective> objectives;
     private List<ObjectBase> objectsListt;
     private List<Stat> stats;
@@ -84,5 +84,5 @@ public class GMObjectivesAndStats : MonoBehaviour
     void Update()
     {
         
-    }
+    }*/
 }

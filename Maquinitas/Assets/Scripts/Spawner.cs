@@ -5,7 +5,8 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 
-    public GameObject prefab;
+    public GameObject prefabPerson;
+    private PathBehavior pth;
     private float spawnTime;
     private float timer;
 
@@ -13,6 +14,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pth = gameObject.GetComponent<PathBehavior>();
         spawnTime = 1f;
         timer = 0;
     }
@@ -25,7 +27,9 @@ public class Spawner : MonoBehaviour
         if(timer >= spawnTime)
         {
             timer = 0;
-            Instantiate(prefab, transform.position, Quaternion.identity);
+            GameObject person =Instantiate(prefabPerson, transform.position, Quaternion.identity);
+            PositionsBehaviour pthPerson = person.GetComponent<PositionsBehaviour>();
+            //pthPerson.setWaypoints(pth.GetWaypoints());
         }
     }
 }

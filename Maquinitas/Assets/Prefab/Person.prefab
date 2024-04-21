@@ -144,6 +144,8 @@ MonoBehaviour:
       Data3: 1067966340
       Data4: -1873524955
     Path: event:/SFX/ItemBought
+  SiItem: {fileID: 1657425127468024782, guid: b519f20e3c3b4e24590aced83360583c, type: 3}
+  NoItem: {fileID: 2943814611308947294, guid: cc984735e115c4a4e81dd75ac27725b5, type: 3}
   speed: 10
 --- !u!54 &3362920208801667198
 Rigidbody:

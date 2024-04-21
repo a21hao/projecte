@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e93a8982-631b-4fc5-89b6-ff16571b5381}">
+		<property name="assetPath">
+			<value>moneda maquina.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.95999999999999996</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c7abd220-389d-4eec-a2d6-188f2238b557}</destination>
+		</relationship>
+	</object>
+</objects>

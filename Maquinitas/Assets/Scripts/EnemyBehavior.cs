@@ -8,7 +8,13 @@ public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private EventReference buySound;
 
-    public float speed = 3f;
+				[SerializeField]
+				private ParticleSystem SiItem;
+
+				[SerializeField]
+				private ParticleSystem NoItem;
+
+				public float speed = 3f;
 
     private Transform target;
     private int wayPoint = 1;
@@ -68,6 +74,11 @@ public class EnemyBehavior : MonoBehaviour
         {
             Vending_.VenderItem(1, 1);
             AudioManager.instance.PlayOneShot(buySound, this.transform.position);
+												Instantiate(SiItem, this.transform.position, this.transform.rotation);
         }
+								else
+								{
+												Instantiate(NoItem, this.transform.position, this.transform.rotation);
+								}
     }
 }

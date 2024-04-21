@@ -15,11 +15,58 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638467448290037658
+  lastModified: 638493122684619638
   FileSizes:
   - Name: Desktop
-    Value: 2332320
+    Value: 2332384
   Exists: 1
+--- !u!114 &-2645618508199062669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.bank
+  m_EditorClassIdentifier: 
+  Path: ../SoundStuff/Maquinitas/Build/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 638493137021095904
+  FileSizes:
+  - Name: Desktop
+    Value: 649632
+  Exists: 1
+--- !u!114 &-1467587046460443862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Ambience
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Ambience
+  Guid:
+    Data1: 1106271387
+    Data2: 1299172250
+    Data3: 1875349694
+    Data4: 1400535046
+  Banks:
+  - {fileID: -2645618508199062669}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 65184
 --- !u!114 &-1203067013137275271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,10 +82,10 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638467448265648396
+  lastModified: 638493137020870885
   FileSizes:
   - Name: Desktop
-    Value: 1340
+    Value: 1486
   Exists: 1
 --- !u!114 &-237727773890272714
 MonoBehaviour:
@@ -55,10 +102,10 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638467448290942353
+  lastModified: 638493124937223984
   FileSizes:
   - Name: Desktop
-    Value: 41312
+    Value: 13056
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -77,15 +124,17 @@ MonoBehaviour:
   - {fileID: -1203067013137275271}
   - {fileID: -5210938445908851240}
   - {fileID: -237727773890272714}
+  - {fileID: -2645618508199062669}
   EditorEvents:
   - {fileID: 8057009843461525813}
   - {fileID: 6600985971267947334}
+  - {fileID: -1467587046460443862}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1203067013137275271}
   StringsBanks:
   - {fileID: 2207695179255626263}
-  cacheTime: 638467448290942353
+  cacheTime: 638493137021095904
   cacheVersion: 131617
 --- !u!114 &2207695179255626263
 MonoBehaviour:
@@ -102,10 +151,10 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638467448265658433
+  lastModified: 638493137020875882
   FileSizes:
   - Name: Desktop
-    Value: 980
+    Value: 1106
   Exists: 1
 --- !u!114 &6600985971267947334
 MonoBehaviour:

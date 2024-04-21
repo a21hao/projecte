@@ -34,6 +34,8 @@ public class Spawner : MonoBehaviour
         if(timer >= spawnTime)
         {
             timer = 0;
+            spawnTime = Random.Range(4, 15);
+
             GameObject person =Instantiate(prefabPerson, transform.position, Quaternion.identity);
             EnemyBehavior psPerson = person.GetComponent<EnemyBehavior>();
             psPerson.setPositions(positions);

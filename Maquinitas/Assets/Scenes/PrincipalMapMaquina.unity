@@ -16230,7 +16230,7 @@ PrefabInstance:
       objectReference: {fileID: 6999779418458124664}
     - target: {fileID: 1086014863667955289, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
       propertyPath: currentDayIndex
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1086014863667955289, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
       propertyPath: weeks.Array.size
@@ -24316,7 +24316,7 @@ PrefabInstance:
       objectReference: {fileID: 1567333270}
     - target: {fileID: 8408152957544097966, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
       propertyPath: daysAfterLose
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8408152957544097966, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
       propertyPath: winSound.Path

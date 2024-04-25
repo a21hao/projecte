@@ -106,7 +106,7 @@ public class Clock : MonoBehaviour
         else
         {
             estaPausado = false;
-            escalaDeTiempo = 1;
+            escalaDeTiempo = 2;
         }
         Time.timeScale = escalaDeTiempo;
     }

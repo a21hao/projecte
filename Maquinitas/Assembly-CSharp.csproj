@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Time\DayCicle.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\CameraZoom.cs" />
+    <Compile Include="Assets\Scripts\PantallaMenu\ScreenOption.cs" />
     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventario.cs" />
@@ -91,17 +92,18 @@
     <Compile Include="Assets\Scripts\VendingMachineController.cs" />
     <Compile Include="Assets\Scripts\PointsVendingMachine.cs" />
     <Compile Include="Assets\Scripts\PathBehavior.cs" />
+    <Compile Include="Assets\Scripts\PantallaMenu\OpcionsButtons.cs" />
     <Compile Include="Assets\Scripts\MovementBehaviour.cs" />
     <Compile Include="Assets\Scripts\MoneyManager.cs" />
     <Compile Include="Assets\Scripts\SoundScripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\NewControls.cs" />
+    <Compile Include="Assets\Scripts\Menu\Perfil\ObjectivesAndStats.cs" />
     <Compile Include="Assets\DatosGuardado\InventarioData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Time\TextTime.cs" />
     <Compile Include="Assets\Scripts\Menu\Ayuda.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Time\Calendar.cs" />
-    <Compile Include="Assets\Scripts\Perfil\ObjectivesAndStats.cs" />
     <Compile Include="Assets\Scripts\Animations\AnimationSpeed.cs" />
     <Compile Include="Assets\Scripts\Wishlist.cs" />
     <Compile Include="Assets\Scripts\VendingSpawner.cs" />
@@ -138,7 +140,6 @@
     <Compile Include="Assets\Scripts\Time\Clock.cs" />
     <Compile Include="Assets\Scripts\ButtonOnClick.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-    <Compile Include="Assets\Scripts\Arrastrar\DraggableWindows.cs" />
     <Compile Include="Assets\Scripts\Inventory\UIObjetoTienda.cs" />
     <Compile Include="Assets\Scripts\MovementBehavior.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />

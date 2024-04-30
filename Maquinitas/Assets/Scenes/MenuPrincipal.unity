@@ -3487,6 +3487,7 @@ MonoBehaviour:
   masterVolume: 1
   musicVolume: 1
   SFXVolume: 1
+  ambienceVolume: 1
 --- !u!4 &1703502722
 Transform:
   m_ObjectHideFlags: 0
@@ -3755,6 +3756,7 @@ MonoBehaviour:
   masterSlider: {fileID: 648292362}
   musicSlider: {fileID: 1256428246}
   SFXSlider: {fileID: 1538937578}
+  ambienceSlider: {fileID: 0}
 --- !u!1 &2030087893
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,6 +3978,13 @@ MonoBehaviour:
       Data3: 1373702540
       Data4: -2096314094
     Path: event:/Music/Music
+  <ambience>k__BackingField:
+    Guid:
+      Data1: -361789303
+      Data2: 1337155009
+      Data3: 192411267
+      Data4: -939402069
+    Path: event:/Ambience/ambience
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

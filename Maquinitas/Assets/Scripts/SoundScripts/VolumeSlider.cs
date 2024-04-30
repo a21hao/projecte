@@ -43,10 +43,10 @@ public class VolumeSlider : MonoBehaviour
             case VolumeType.SFX:
                 volumeSlider.value = AudioManager.instance.SFXVolume;
                 break;
-												case VolumeType.AMBIENCE:
-																volumeSlider.value = AudioManager.instance.ambienceVolume;
-																break;
-												default:
+			case VolumeType.AMBIENCE:
+				volumeSlider.value = AudioManager.instance.ambienceVolume;
+			   break;
+			default:
                 Debug.LogWarning("???????como???????");
             break;
         }

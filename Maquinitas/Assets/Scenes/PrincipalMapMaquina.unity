@@ -16045,6 +16045,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6357531667884017952, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6416118416492339027, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
       propertyPath: perfil
       value: 
@@ -16081,6 +16085,26 @@ PrefabInstance:
       propertyPath: calendarAnimator
       value: 
       objectReference: {fileID: 4984259458075331451}
+    - target: {fileID: 6524094583787720519, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: <ambience>k__BackingField.Path
+      value: event:/Ambience/Ambience
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524094583787720519, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: <ambience>k__BackingField.Guid.Data1
+      value: 1106271387
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524094583787720519, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: <ambience>k__BackingField.Guid.Data2
+      value: 1299172250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524094583787720519, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: <ambience>k__BackingField.Guid.Data3
+      value: 1875349694
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524094583787720519, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: <ambience>k__BackingField.Guid.Data4
+      value: 1400535046
+      objectReference: {fileID: 0}
     - target: {fileID: 7569642726739837132, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
       propertyPath: directionalLight
       value: 

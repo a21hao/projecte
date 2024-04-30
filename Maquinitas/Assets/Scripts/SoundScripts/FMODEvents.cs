@@ -19,7 +19,11 @@ public class FMODEvents : MonoBehaviour
         {
             Debug.LogError("More than 1  audio manager in scene");
         }
-        instance = this;
+        else
+        {
+            instance = this;
+            Debug.Log("ASDASDASDASDASDASDASD");
+        }
     }
 
 

@@ -48,7 +48,6 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
             StartCoroutine(StartOpenAnimation());
             
         }
-
     }
 
     IEnumerator StartOpenAnimation()

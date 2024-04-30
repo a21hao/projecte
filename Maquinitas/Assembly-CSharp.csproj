@@ -111,6 +111,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier2d.cs" />
     <Compile Include="Assets\Scripts\SoundScripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\NewControls.cs" />
+    <Compile Include="Assets\Scripts\Animations\Phone\PhoneScript.cs" />
     <Compile Include="Assets\Scripts\Menu\Perfil\ObjectivesAndStats.cs" />
     <Compile Include="Assets\DatosGuardado\InventarioData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
@@ -132,7 +133,6 @@
     <Compile Include="Assets\LeanTween\Testing\TestingOptionalCancel.cs" />
     <Compile Include="Assets\Scripts\SoundScripts\VolumeSlider.cs" />
     <Compile Include="Assets\Scripts\DisableAnimatortext.cs" />
-    <Compile Include="Assets\Scripts\Phone\PhoneScript.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />

@@ -61,7 +61,6 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
             transform.position = Vector3.Lerp(transform.position, transform.parent.position, interpolationRatio);
             transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(openedScale, openedScale, transform.localScale.z), interpolationRatio);
 
-
             openAnimationTime += Time.deltaTime;
 
             yield return null;

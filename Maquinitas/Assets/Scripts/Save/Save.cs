@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.InputSystem;
 
 public class Save : MonoBehaviour
 {
@@ -11,7 +14,20 @@ public class Save : MonoBehaviour
     {
         cameraMain = GameObject.FindGameObjectWithTag("Camera");
 
-        saveFile = Application.dataPath + "/BlueBook/save.json";
+        //saveFile = Application.dataPath + "/BlueBook/save.json";
+        saveFile = Path.Combine("Assets", "BlueBook", "save.json");
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            LoadGame();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SaveGame();
+        }
     }
 
     private void LoadGame()

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.IO;
 
 public class MoneyManager : MonoBehaviour
 {
@@ -29,7 +28,6 @@ public class MoneyManager : MonoBehaviour
         if (dineroTotal >= 2500) ObjectivesAndStats.cumplirObjetivo2500Y();
         if (dineroTotal >= 15000) ObjectivesAndStats.cumplirObjetivo15000Yenes();
         ActualizarTextoDinero();
-        SaveMoneyData();
     }
 
     public static void DecrementarDinero(int cantidad)
@@ -37,7 +35,6 @@ public class MoneyManager : MonoBehaviour
         Debug.Log(cantidad + "menos");
         dineroTotal -= cantidad;
         ActualizarTextoDinero();
-        SaveMoneyData();
     }
 
     private static void ActualizarTextoDinero()
@@ -52,17 +49,4 @@ public class MoneyManager : MonoBehaviour
             manager.textoDinero.text = dineroTotal.ToString();
         }*/
     }
-
-    private static void SaveMoneyData()
-    {
-        Save.SaveData(dineroTotal, "save.json");
-        Debug.Log("Dinero guardado en el archivo: " + dineroTotal);
-    }
-
-    private static void LoadMoneyData()
-    {
-        dineroTotal = Save.LoadData<int>("save.json");
-        Debug.Log("Dinero cargado desde el archivo: " + dineroTotal);
-    }
-
 }

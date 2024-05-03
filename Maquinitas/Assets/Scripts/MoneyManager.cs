@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class MoneyManager : MonoBehaviour
 {
     private static int dineroTotal = 145555;
-    
-
     [SerializeField] private static TMP_Text textoDinero;
 
     private void Start()
     {
         //textoDinero.text = dineroTotal.ToString();
-        dineroTotal = 145999;
         textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
         textoDinero.text = dineroTotal.ToString() + "¥";
     }
@@ -31,6 +29,7 @@ public class MoneyManager : MonoBehaviour
         if (dineroTotal >= 2500) ObjectivesAndStats.cumplirObjetivo2500Y();
         if (dineroTotal >= 15000) ObjectivesAndStats.cumplirObjetivo15000Yenes();
         ActualizarTextoDinero();
+        SaveMoneyData();
     }
 
     public static void DecrementarDinero(int cantidad)
@@ -38,6 +37,7 @@ public class MoneyManager : MonoBehaviour
         Debug.Log(cantidad + "menos");
         dineroTotal -= cantidad;
         ActualizarTextoDinero();
+        SaveMoneyData();
     }
 
     private static void ActualizarTextoDinero()
@@ -51,5 +51,15 @@ public class MoneyManager : MonoBehaviour
         {
             manager.textoDinero.text = dineroTotal.ToString();
         }*/
+    }
+
+    private static void SaveMoneyData()
+    {
+        Save.SaveData(dineroTotal, "moneyData.json");
+    }
+
+    private static void LoadMoneyData()
+    {
+        dineroTotal = Save.LoadData<int>("moneyData.json");
     }
 }

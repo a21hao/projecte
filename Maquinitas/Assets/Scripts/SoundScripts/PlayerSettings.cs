@@ -8,14 +8,15 @@ public class PlayerSettings : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXSlider;
 	[SerializeField] private Slider ambienceSlider;
-				// Start is called before the first frame update
-				void Start()
+
+	// Start is called before the first frame update
+	void Start()
     {
         masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-		ambienceSlider.value = PlayerPrefs.GetFloat("ambienceVolume");
-				}
+		ambienceSlider.value = PlayerPrefs.GetFloat("AmbienceVolume");
+	}
 
     public void SetMasterPref()
     {
@@ -29,9 +30,9 @@ public class PlayerSettings : MonoBehaviour
     {
         PlayerPrefs.SetFloat("SFXVolume", SFXSlider.value);
     }
-				public void SetAmbiencePref()
-				{
-								PlayerPrefs.SetFloat("AmbiencewVolume", ambienceSlider.value);
-				}
+	public void SetAmbiencePref()
+	{
+		PlayerPrefs.SetFloat("AmbienceVolume", ambienceSlider.value);
+	}
 
 }

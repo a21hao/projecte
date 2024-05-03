@@ -13,7 +13,7 @@ public class VolumeSlider : MonoBehaviour
 
         SFX,
 
-								AMBIENCE
+		AMBIENCE
     }
 
     [SerializeField] private VolumeType volumeType;
@@ -25,12 +25,13 @@ public class VolumeSlider : MonoBehaviour
         volumeSlider = this.GetComponentInChildren<Slider>();
     }
 
-				private void Start()
-				{
-								
-				}
+	private void Start()
+	{
+        
 
-				private void Update()
+    }
+
+	private void Update()
     {
         switch (volumeType)
         {
@@ -65,12 +66,12 @@ public class VolumeSlider : MonoBehaviour
             case VolumeType.SFX:
                 AudioManager.instance.SFXVolume = volumeSlider.value;
                 break;
-												case VolumeType.AMBIENCE:
-																AudioManager.instance.ambienceVolume = volumeSlider.value;
-																break;
-												default:
+			case VolumeType.AMBIENCE:
+				AudioManager.instance.ambienceVolume = volumeSlider.value;
+			break;
+			default:
                 Debug.LogWarning("???????como???????");
-                break;
+            break;
         }
     }
 }

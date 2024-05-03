@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(musicPlaying);
+        
 
         if (!musicPlaying)
         {
@@ -71,7 +71,12 @@ public class AudioManager : MonoBehaviour
 
             musicPlaying = true;
         }
-        Debug.Log(musicPlaying);
+
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+        SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+        ambienceVolume = PlayerPrefs.GetFloat("AmbienceVolume");
+
     }
 
     private void Update()

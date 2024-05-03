@@ -1,43 +1,42 @@
 using UnityEngine;
 using System.IO;
 
-public static class Save
+public class Save : MonoBehaviour
 {
-    public static void SaveData<T>(T data, string fileName)
+    public GameObject cameraMain;
+    public string saveFile;
+    public GameInfo gameInfo = new GameInfo();
+
+    private void Awake()
     {
-        string savePath = GetSavePath(fileName);
-        string jsonData = JsonUtility.ToJson(data);
-        File.WriteAllText(savePath, jsonData);
+        cameraMain = GameObject.FindGameObjectWithTag("Camera");
+
+        saveFile = Application.dataPath + "/BlueBook/save.json";
     }
 
-    public static T LoadData<T>(string fileName)
+    private void LoadGame()
     {
-        string savePath = GetSavePath(fileName);
-        if (File.Exists(savePath))
+        if (File.Exists(saveFile))
         {
-            string jsonData = File.ReadAllText(savePath);
-            return JsonUtility.FromJson<T>(jsonData);
+            string content = File.ReadAllText(saveFile);
+            gameInfo = JsonUtility.FromJson<GameInfo>(content);
         }
         else
         {
-            Debug.LogWarning("No se encontró ningún archivo de datos guardado: " + fileName);
-            return default(T);
+            Debug.Log("no existents");
         }
     }
 
-    private static string GetSavePath(string fileName)
+    private void SaveGame()
     {
-        // Obtiene la ruta de la carpeta AppData/Local
-        string localAppDataPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
-
-        // Comprueba si la carpeta BlueBook existe, si no, la crea
-        string blueBookPath = Path.Combine(localAppDataPath, "BlueBook");
-        if (!Directory.Exists(blueBookPath))
+        GameInfo newInfo = new GameInfo()
         {
-            Directory.CreateDirectory(blueBookPath);
-        }
+            position = cameraMain.transform.position
+        };
 
-        // Obtiene la ruta completa para el archivo de guardado dentro de la carpeta BlueBook
-        return Path.Combine(blueBookPath, fileName);
+        string cadenaJSON = JsonUtility.ToJson(newInfo);
+        File.WriteAllText(saveFile, cadenaJSON);
+
+        Debug.Log("Saved");
     }
 }

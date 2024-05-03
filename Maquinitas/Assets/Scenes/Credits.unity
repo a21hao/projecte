@@ -462,7 +462,7 @@ MonoBehaviour:
     \nAdri\xE1n Aranda Frolencio\n\nPortavoz Programador: \nHaojie Lin\n\nArtistas:\nAdri\xE1n
     Aranda Frolencio\nChristian De La Hoz Garc\xEDa\nXavier Mench\xF3n Villar\n\nProgramadores:
     \nHaojie Lin\nAlbert Montserrat Salvatella\nJoel Salvador Biosca\n\nMusica:\nJoel
-    Salvador Biosca\n\nAgradecimientos\n\nDavid Sanz Rayas\nDavid Sierra\nFran \nLaura
+    Salvador Biosca\n\nAgradecimientos\n\nDavid Sanz Raya\nDavid Sierra\nFran \nLaura
     Carrillo\nEdu\n\n\n\n\n\nGracias!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -811,6 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8f7c605a7015a4b99de326133250a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continueBoton: {fileID: 0}
 --- !u!1 &1313668687
 GameObject:
   m_ObjectHideFlags: 0

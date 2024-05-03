@@ -13,28 +13,39 @@ public class ChangeScene : MonoBehaviour
     public void EscenaPrincipal()
     {
         SceneManager.LoadScene("PrincipalMapMaquina");
-        string savePath = Path.Combine(Application.persistentDataPath, "moneyData.json");
+        string savePath = Path.Combine(Application.persistentDataPath, "save.json");
         if (File.Exists(savePath))
         {
-            continueBoton.interactable = true;
-            LoadMoneyData();
+            continueBoton.interactable = LoadMoneyData();
         }
     }
+
+
     public void EscenaMenu()
     {
         SceneManager.LoadScene("MenuPrincipal");
     }
+
     public void EscenaCredit()
     {
         SceneManager.LoadScene("Credits");
     }
+    
     public void Salir()
     {
         Application.Quit();
     }
 
-    private static void LoadMoneyData()
+    private static bool LoadMoneyData()
     {
-        Save.LoadData<int>("moneyData.json");
+        int dineroCargado = Save.LoadData<int>("moneyData.json");
+        if (dineroCargado != default(int))
+        {
+            return true; // Los datos se cargaron correctamente
+        }
+        else
+        {
+            return false; // No se pudieron cargar los datos
+        }
     }
 }

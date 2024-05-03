@@ -55,11 +55,14 @@ public class MoneyManager : MonoBehaviour
 
     private static void SaveMoneyData()
     {
-        Save.SaveData(dineroTotal, "moneyData.json");
+        Save.SaveData(dineroTotal, "save.json");
+        Debug.Log("Dinero guardado en el archivo: " + dineroTotal);
     }
 
     private static void LoadMoneyData()
     {
-        dineroTotal = Save.LoadData<int>("moneyData.json");
+        dineroTotal = Save.LoadData<int>("save.json");
+        Debug.Log("Dinero cargado desde el archivo: " + dineroTotal);
     }
+
 }

@@ -14,6 +14,7 @@ TagManager:
   - tablet
   - Maquina
   - Canvas
+  - Camera
   layers:
   - Default
   - TransparentFX

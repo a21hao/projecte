@@ -33,14 +33,14 @@ public class ButtonManager : MonoBehaviour
         //Debug.Log("StartEntered");
         cmm = cameraMap.GetComponent<CameraMapMoving>();
         czo = cameraMap.GetComponent<CameraZoomOrthografic>();
+        upgradesAnimator = upgrades.GetComponent<Animator>();
         canUseToggleTablet = true;
         isTabletInUse = false;
         Debug.Log(cmm == null);
         perfilAnimator = perfil.GetComponent<Animator>();
         almacenAnimator = almacen.GetComponent<Animator>();
         amazingAnimator = amazing.GetComponent<Animator>();
-        tabletAnimator = tablet.GetComponent<Animator>();
-        upgradesAnimator = upgrades.GetComponent<Animator>();
+        tabletAnimator = tablet.GetComponent<Animator>();       
         mapaAnimator = mapa.GetComponent<Animator>();
         ajustesAnimator = ajustes.GetComponent<Animator>();
         calendarAnimator = calendar.GetComponent<Animator>();
@@ -96,8 +96,10 @@ public class ButtonManager : MonoBehaviour
 
     public void ToggleUpgrades()
     {
+        upgradesAnimator.SetTrigger("Abrir");
+        if (!upgrades.activeSelf) upgrades.SetActive(true);
         //StartCoroutine(ToggleGameObject(upgrades, upgradesAnimator));
-        
+
     }
 
     public void ToggleTablet()

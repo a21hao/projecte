@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjetoTienda : MonoBehaviour
+public class ObjetoUpgrade : MonoBehaviour
 {
     public string nombreText;
     public Sprite spriteImage;
@@ -12,6 +12,11 @@ public class ObjetoTienda : MonoBehaviour
     public int id;
     public string tipo;
     public int categoria;
+    public bool isVisible = true;
+    public bool isActivated = false;
+    public int priceOfUpgrade;
+    public string descripcionUpgrade;
+    public int incrementoDePrecio;
 
     public void SetNombre(string nombre)
     {
@@ -56,5 +61,26 @@ public class ObjetoTienda : MonoBehaviour
     public void SetCategoria(int categ)
     {
         categoria = categ;
+    }
+
+    public void SetIsActivated(bool activ)
+    {
+        isActivated = activ;
+    }
+
+    public void SetIsVisible(bool visibl)
+    {
+        isVisible = visibl;
+    }
+
+    public void SetPriceOfUpgrade(int price)
+    {
+        priceOfUpgrade = price;
+    }
+
+    public void SetDescripcionEIncrementoUpgrade(int subida)
+    {
+        descripcionUpgrade = "Contrata publicidad para la " + nombreText + ", que consigue subir un " + subida + "% el precio de venta de la " + nombreText;
+        incrementoDePrecio = subida;
     }
 }

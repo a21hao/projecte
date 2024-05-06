@@ -55,6 +55,8 @@ public class Tienda : MonoBehaviour
         scriptObjetoTienda.SetObject3d(objeto.objeto3d);
 
         scriptObjetoTienda.SetPrecioVenta(objeto.precioVenta);
+
+        scriptObjetoTienda.SetCategoria(objeto.categoria);
     }
 
     public GameObject ObtenerObjetoPorID(int id)

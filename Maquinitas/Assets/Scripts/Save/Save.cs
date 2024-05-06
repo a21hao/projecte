@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEngine.InputSystem;
 
 public class Save : MonoBehaviour
 {
@@ -14,23 +13,11 @@ public class Save : MonoBehaviour
     {
         cameraMain = GameObject.FindGameObjectWithTag("Camera");
 
-        //saveFile = Application.dataPath + "/BlueBook/save.json";
-        saveFile = Path.Combine("Assets", "BlueBook", "save.json");
+        saveFile = Application.dataPath + "/save.json";
+        //saveFile = Path.Combine("Assets", "BlueBook", "save.json");
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            LoadGame();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SaveGame();
-        }
-    }
-
-    private void LoadGame()
+    public void LoadGame()
     {
         if (File.Exists(saveFile))
         {
@@ -43,7 +30,7 @@ public class Save : MonoBehaviour
         }
     }
 
-    private void SaveGame()
+    public void SaveGame()
     {
         GameInfo newInfo = new GameInfo()
         {

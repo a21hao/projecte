@@ -12774,8 +12774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.9744, y: 385.74}
-  m_SizeDelta: {x: 838.1845, y: 119.83}
+  m_AnchoredPosition: {x: 0.000011921, y: 385.74}
+  m_SizeDelta: {x: 858.07, y: 119.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998053208
 MonoBehaviour:
@@ -19952,7 +19952,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98ca4f1667462f349a542298ca1cb0ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8cf4c6cf9ac93914ab76eab3e360f0de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21820,7 +21820,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f1db5f5387a8704f831a975e432f062, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 687f2cbd947baef4e8c10d497d0e2e63, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32264,7 +32264,7 @@ PrefabInstance:
     - {fileID: 7343440042837140009, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 154865015408734610, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
-      insertIndex: 2
+      insertIndex: 3
       addedObject: {fileID: 1579284697}
     - targetCorrespondingSourceObject: {fileID: 5850595162654552469, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
       insertIndex: -1

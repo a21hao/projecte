@@ -8,6 +8,7 @@ public class MoneyManager : MonoBehaviour
 {
     private static int dineroTotal = 145555;
     [SerializeField] private static TMP_Text textoDinero;
+    private GameInfo moneyinfo;
 
     private void Start()
     {

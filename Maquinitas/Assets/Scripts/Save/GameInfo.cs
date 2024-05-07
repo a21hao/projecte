@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public class GameInfo
 {
-    public Vector3 position;
-    public int money;
+    public int money = 2000;
 }

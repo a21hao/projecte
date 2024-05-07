@@ -47,7 +47,6 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         textMoneyMachine.text = MoneyToBuyMachine.ToString() + "¥";
         originalColorText = textMoneyMachine.color;
         textMoneyMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
-        Debug.Log(textMoneyMachine.color);
         Transform canvasTexttr = gameObject.transform.Find("Canvastext");
         canvasText = gameObject.transform.Find("Canvastext").gameObject;
         //canvasTextAnimator = canvasTexttr.gameObject.GetComponent<Animator>();
@@ -184,7 +183,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
 
             //originalColor = materialMachine.color;
             //Debug.Log(matMachine);
-            if (MoneyManager.DineroTotal >= MoneyToBuyMachine)
+            if (MoneyManager.instance.DineroTotal >= MoneyToBuyMachine)
             {
                 matMachine.color = Color.gray;
                 imgCanvas.color = Color.gray;
@@ -199,7 +198,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            if(MoneyManager.DineroTotal >= MoneyToBuyMachine)
+            if(MoneyManager.instance.DineroTotal >= MoneyToBuyMachine)
             {
                 matMachine.color = originalColor;
                 imgCanvas.color = new Color(11f / 255f, 97f / 255f, 174f / 255f, 0.8f);

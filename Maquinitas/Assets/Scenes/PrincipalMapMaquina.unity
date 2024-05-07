@@ -18053,6 +18053,30 @@ PrefabInstance:
       propertyPath: textoDinero
       value: 
       objectReference: {fileID: 7452100100191837687}
+    - target: {fileID: 3144245293001628537, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: NuevoDinero.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144245293001628537, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: NuevoDinero.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1579284698}
+    - target: {fileID: 3144245293001628537, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: NuevoDinero.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144245293001628537, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: NuevoDinero.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActualizarUpgrades
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144245293001628537, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: NuevoDinero.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Upgrades, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144245293001628537, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      propertyPath: NuevoDinero.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4467346559059158416, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
       propertyPath: masterVolume
       value: 1
@@ -19991,6 +20015,7 @@ MonoBehaviour:
   cat1incrementodesubida: 10
   cat2incrementodesubida: 0
   cat3incrementodesubida: 0
+  maxUpgrades: 3
 --- !u!4 &1583113260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6008f4b02d7933a4bac41449019471cb, type: 3}
@@ -32244,13 +32269,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5850595162654552469, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
       insertIndex: -1
       addedObject: {fileID: 297509418}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2256294094612609197, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 8704383830408728488}
-    - targetCorrespondingSourceObject: {fileID: 2256294094612609197, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 8704383830408728487}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
 --- !u!4 &1971992625 stripped
 Transform:
@@ -44740,65 +44759,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2256294094612609197, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
   m_PrefabInstance: {fileID: 1971770645}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8704383830408728487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8704383830408728480}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9116958240b5f4246be2422ae5d2041b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EventSystem: {fileID: 0}
---- !u!114 &8704383830408728488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8704383830408728480}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af819f1f4ed92c42be70f3380aa0955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capasRaycast:
-    serializedVersion: 2
-    m_Bits: 0
-  graphRay: {fileID: 0}
-  objetoSeleccionado: {fileID: 0}
-  exParent: {fileID: 0}
-  contenido: {fileID: 0}
-  scrollRect: {fileID: 0}
-  slots:
-  - {fileID: 1046591740}
-  - {fileID: 920484488}
-  - {fileID: 497487154}
-  - {fileID: 813951204}
-  - {fileID: 410130639}
-  - {fileID: 1279065515}
-  - {fileID: 1767410220}
-  - {fileID: 1112359583}
-  - {fileID: 577691285}
-  - {fileID: 1767478023}
-  - {fileID: 1498304020}
-  - {fileID: 488614796}
-  - {fileID: 794596357}
-  - {fileID: 2104076747}
-  - {fileID: 965714776}
-  - {fileID: 1458340777}
-  - {fileID: 625927478}
-  - {fileID: 849270685}
-  - {fileID: 138208794}
-  - {fileID: 998841093}
-  - {fileID: 1788848907}
-  - {fileID: 1440610488}
-  - {fileID: 6716418}
-  - {fileID: 1137857207}
-  - {fileID: 2044249260}
 --- !u!114 &8704383830408728489 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4170240511833395579, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}

@@ -36,7 +36,6 @@ public class ButtonManager : MonoBehaviour
         upgradesAnimator = upgrades.GetComponent<Animator>();
         canUseToggleTablet = true;
         isTabletInUse = false;
-        Debug.Log(cmm == null);
         perfilAnimator = perfil.GetComponent<Animator>();
         almacenAnimator = almacen.GetComponent<Animator>();
         amazingAnimator = amazing.GetComponent<Animator>();

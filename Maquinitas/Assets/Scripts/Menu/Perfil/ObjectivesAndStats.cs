@@ -208,7 +208,6 @@ public class ObjectivesAndStats : MonoBehaviour
 
     private void InstantiateStatsInPerfil()
     {
-        Debug.Log("Ha entrado stats");
         for (int i = 0; i < stats.Count; i++)
         {
             GameObject instantiatedStat = Instantiate(statPrefab, contentParent);

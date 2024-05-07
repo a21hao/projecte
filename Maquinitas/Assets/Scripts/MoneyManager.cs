@@ -3,44 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class MoneyManager : MonoBehaviour
 {
-    private static int dineroTotal = 145555;
+    private int dineroTotal = 1100;
+
+    public UnityEvent<int> NuevoDinero;
+
+    public static MoneyManager instance;
     
 
     [SerializeField] private static TMP_Text textoDinero;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         //textoDinero.text = dineroTotal.ToString();
-        dineroTotal = 145999;
+        
+        //dineroTotal = 900;
         textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
         textoDinero.text = dineroTotal.ToString() + "¥";
     }
 
-    public static int DineroTotal
+    public int DineroTotal
     {
         get { return dineroTotal; }
         set { dineroTotal = value; }
     }
 
-    public static void IncrementarDinero(int cantidad)
+    public void IncrementarDinero(int cantidad)
     {
         dineroTotal += cantidad;
         if (dineroTotal >= 2500) ObjectivesAndStats.cumplirObjetivo2500Y();
         if (dineroTotal >= 15000) ObjectivesAndStats.cumplirObjetivo15000Yenes();
+        NuevoDinero.Invoke(dineroTotal);
         ActualizarTextoDinero();
     }
 
-    public static void DecrementarDinero(int cantidad)
+    public void DecrementarDinero(int cantidad)
     {
         Debug.Log(cantidad + "menos");
         dineroTotal -= cantidad;
+        NuevoDinero.Invoke(dineroTotal);
         ActualizarTextoDinero();
     }
 
-    private static void ActualizarTextoDinero()
+    private void ActualizarTextoDinero()
     {
 
         

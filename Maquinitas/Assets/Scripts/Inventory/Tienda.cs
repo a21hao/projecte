@@ -59,6 +59,13 @@ public class Tienda : MonoBehaviour
         scriptObjetoTienda.SetCategoria(objeto.categoria);
     }
 
+    public void ActualizarPrecioVentaPorId(int id, int nuevoPrecioVenta)
+    {
+        GameObject objetoAActualizar = ObtenerObjetoPorID(id);
+        objetoAActualizar.GetComponent<ObjetoTienda>().SetPrecioVenta(nuevoPrecioVenta);
+        objetoAActualizar.GetComponent<UIObjetoTienda>().ActualizarPrecioVenta(nuevoPrecioVenta);
+    }
+
     public GameObject ObtenerObjetoPorID(int id)
     {
         GameObject objetoTienda;

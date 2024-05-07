@@ -7,11 +7,12 @@ public class UIUpgrades : MonoBehaviour
     public Canvas canvas;
 
     [SerializeField] private ObjetoUpgrade objetoUpgrade;
-    [SerializeField] private GameObject ventanaCompraPrefab;
+    [SerializeField] private GameObject ventanaCompraUpgradePrefab;
     [SerializeField] private TextMeshProUGUI nombreTextUI;
-    //[SerializeField] private Image spritePublicidad;
+    [SerializeField] private Image spritePublicidad;
     [SerializeField] private Image spriteProduct;
     [SerializeField] private TextMeshProUGUI precioTextUI;
+    [SerializeField] private TextMeshProUGUI numberOfUpgradesText;
 
     private void Start()
     {
@@ -22,27 +23,30 @@ public class UIUpgrades : MonoBehaviour
             nombreTextUI.text = "Publicidad de " + objetoUpgrade.nombreText;
             spriteProduct.sprite = objetoUpgrade.spriteImage;
             precioTextUI.text = objetoUpgrade.priceOfUpgrade.ToString() + "¥";
+            numberOfUpgradesText.text = objetoUpgrade.numberOfUpgrades.ToString();
         }
     }
 
-    private void UpgradePriceAdvertising(int price)
+    public void ActulizarUpgradeUI()
     {
-        precioTextUI.text = price.ToString();
+        numberOfUpgradesText.text = objetoUpgrade.numberOfUpgrades.ToString();
+        if (objetoUpgrade.isVisible) spritePublicidad.color = Color.white;
+        else spritePublicidad.color = Color.gray;
     }
 
     public void MostrarVentanaCompra()
     {
-        if (ventanaCompraPrefab != null)
+        if (ventanaCompraUpgradePrefab != null)
         {
             if (canvas != null)
             {
                 Vector3 centroCanvas = canvas.transform.position;
 
-                GameObject ventanaCompraInstance = Instantiate(ventanaCompraPrefab, centroCanvas, Quaternion.identity, canvas.transform);
-                VentanaCompra ventanaCompra = ventanaCompraInstance.GetComponent<VentanaCompra>();
+                GameObject ventanaCompraInstance = Instantiate(ventanaCompraUpgradePrefab, centroCanvas, Quaternion.identity, canvas.transform);
+                VentanaUpgrade ventanaCompra = ventanaCompraInstance.GetComponent<VentanaUpgrade>();
                 if (ventanaCompra != null && objetoUpgrade != null)
                 {
-                    //ventanaCompra.objetoTienda = objetoUpgrade;
+                    ventanaCompra.SetObjetoUpgrade(objetoUpgrade);
                 }
             }
             else

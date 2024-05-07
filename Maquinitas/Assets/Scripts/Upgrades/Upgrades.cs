@@ -15,6 +15,7 @@ public class Upgrades : MonoBehaviour
     [SerializeField] private int cat1incrementodesubida;
     [SerializeField] private int cat2incrementodesubida;
     [SerializeField] private int cat3incrementodesubida;
+    [SerializeField] private int maxUpgrades;
     //[SerializeField] List<ObjectBase> listaObjetosTienda;
     private List<ObjectBase> listaObjetosTienda;
     private Dictionary<int, GameObject> dicionarioUpgrades = new Dictionary<int, GameObject>();
@@ -109,6 +110,8 @@ public class Upgrades : MonoBehaviour
             scriptObjetoUpgrade.SetPriceOfUpgrade(PrecioUpgradesCategoria3);
             scriptObjetoUpgrade.SetDescripcionEIncrementoUpgrade(cat3incrementodesubida);
         }
+
+        scriptObjetoUpgrade.SetMaxUpgrades(maxUpgrades);
     }
 
     public GameObject ObtenerObjetoPorID(int id)
@@ -116,6 +119,26 @@ public class Upgrades : MonoBehaviour
         GameObject objetoTienda;
         dicionarioUpgrades.TryGetValue(id, out objetoTienda);
         return objetoTienda;
+    }
+
+    public void ActualizarUpgrades(int nuevoDinero)
+    {
+        foreach (KeyValuePair<int, GameObject> kvp in dicionarioUpgrades)
+        {
+            ObjetoUpgrade objetoUpgrade = kvp.Value.GetComponent<ObjetoUpgrade>();
+            UIUpgrades uiUpgrades = kvp.Value.GetComponent<UIUpgrades>();
+            if (nuevoDinero >= objetoUpgrade.priceOfUpgrade && objetoUpgrade.numberOfUpgrades < maxUpgrades)
+            {
+                objetoUpgrade.isVisible = true;
+                uiUpgrades.ActulizarUpgradeUI();
+            }
+            else
+            {
+                objetoUpgrade.isVisible = false;
+                uiUpgrades.ActulizarUpgradeUI();
+            }
+
+        }
     }
 
     public void FiltrarPorTipo(string tipo = null)

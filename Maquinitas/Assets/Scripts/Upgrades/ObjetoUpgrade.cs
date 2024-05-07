@@ -13,10 +13,12 @@ public class ObjetoUpgrade : MonoBehaviour
     public string tipo;
     public int categoria;
     public bool isVisible = true;
-    public bool isActivated = false;
+    //public bool isActivated = false;
     public int priceOfUpgrade;
     public string descripcionUpgrade;
     public int incrementoDePrecio;
+    public int numberOfUpgrades = 0;
+    public int MaxUpgrades = 3;
 
     public void SetNombre(string nombre)
     {
@@ -63,10 +65,10 @@ public class ObjetoUpgrade : MonoBehaviour
         categoria = categ;
     }
 
-    public void SetIsActivated(bool activ)
+    /*public void SetIsActivated(bool activ)
     {
         isActivated = activ;
-    }
+    }*/
 
     public void SetIsVisible(bool visibl)
     {
@@ -82,5 +84,10 @@ public class ObjetoUpgrade : MonoBehaviour
     {
         descripcionUpgrade = "Contrata publicidad para la " + nombreText + ", que consigue subir un " + subida + "% el precio de venta de la " + nombreText;
         incrementoDePrecio = subida;
+    }
+
+    public void SetMaxUpgrades(int maxUpg)
+    {
+        MaxUpgrades = maxUpg;
     }
 }

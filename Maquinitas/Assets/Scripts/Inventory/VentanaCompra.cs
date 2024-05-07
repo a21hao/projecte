@@ -16,6 +16,7 @@ public class VentanaCompra : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descripcionText;
     [SerializeField] private Slider cantidadSlider;
     [SerializeField] private TMP_InputField cantidadTexto;
+    private string lastString = "1";
 
     private void Start()
     {
@@ -26,15 +27,16 @@ public class VentanaCompra : MonoBehaviour
         {
             nombreText.text = objetoTienda.nombreText;
             spriteImage.sprite = objetoTienda.spriteImage;
-            precioText.text = objetoTienda.precioObjeto;
+            precioText.text = "-" + objetoTienda.precioObjeto + "¥";
             descripcionText.text = objetoTienda.descripcionObjeto;
+            cantidadTexto.text = "1";
         }
         //cantidadSlider.maxValue = 999;
-        cantidadSlider.maxValue = (int)(MoneyManager.DineroTotal / (float.Parse(objetoTienda.precioObjeto)));
+        cantidadSlider.maxValue = (int)(MoneyManager.instance.DineroTotal / (float.Parse(objetoTienda.precioObjeto)));
 
         cantidadSlider.onValueChanged.AddListener(ActualizarCantidadTexto);
         cantidadTexto.onValueChanged.AddListener(ActualizarCantidadSlider);
-        cantidadSlider.maxValue = (int)(MoneyManager.DineroTotal/(float.Parse(objetoTienda.precioObjeto)));
+        cantidadSlider.maxValue = (int)(MoneyManager.instance.DineroTotal/(float.Parse(objetoTienda.precioObjeto)));
     }
 
     public void ActualizarCantidadTexto(float cantidad)
@@ -44,7 +46,12 @@ public class VentanaCompra : MonoBehaviour
         {
             float precio = float.Parse(objetoTienda.precioObjeto);
             float precioTotal = (cantidad * precio);
-            precioText.text = "-"+ Mathf.RoundToInt(precioTotal).ToString()+ "�";
+            if(Mathf.RoundToInt(precioTotal) != 0)
+            precioText.text = "-"+ Mathf.RoundToInt(precioTotal).ToString()+ "¥";
+            else
+            {
+                precioText.text = "0¥";
+            }
         }
     }
 
@@ -54,7 +61,23 @@ public class VentanaCompra : MonoBehaviour
         if (int.TryParse(cantidad, out valor))
         {
             cantidadSlider.value = valor;
+            if (valor > ((int)(MoneyManager.instance.DineroTotal / (float.Parse(objetoTienda.precioObjeto)))))
+            {
+                cantidadTexto.text = ((int)(MoneyManager.instance.DineroTotal / (float.Parse(objetoTienda.precioObjeto)))).ToString();
+                
+            }
+            lastString = cantidadTexto.text;
         }
+        else
+        {
+            if(cantidad != "") cantidadTexto.text = lastString;
+            else
+            {
+                precioText.text = "0¥";
+            }
+        }
+
+
     }
 
     public void Comprar()
@@ -65,7 +88,7 @@ public class VentanaCompra : MonoBehaviour
             float precio = float.Parse(objetoTienda.precioObjeto);
             int precioTotal = Mathf.RoundToInt(cantidad * precio);
             if(cantidad > 0) ObjectivesAndStats.cumplirObjetivoCompraTuPrimerProducto();
-            MoneyManager.DecrementarDinero(precioTotal);
+            MoneyManager.instance.DecrementarDinero(precioTotal);
         }
 
         GameObject emptySlot = inventario.GetSlotVacio();

@@ -10,6 +10,7 @@ public class MachineInventory : MonoBehaviour
     private int maxSlots = 15;
     private Transform slotsparent;
     private bool firtItemInserted = false;
+    private ObjectsList objects;
     //private ObjectivesAndStats objAndStats;
     
     public class Slot
@@ -26,6 +27,7 @@ public class MachineInventory : MonoBehaviour
     {
         //objAndStats = GameObject.Find("Canvas/Men�/Phone/Perfil").gameObject.GetComponent<ObjectivesAndStats>();
         //Debug.Log("Objs and stats " + objAndStats != null);
+        objects = GameObject.Find("ObjectList").GetComponent<ObjectsList>();
         slotsparent = transform.Find("Slots");
         slots = new Slot[maxSlots];
         for (int i = 0; i < slots.Length; i++)
@@ -34,16 +36,9 @@ public class MachineInventory : MonoBehaviour
             slot.slotparent = slotsparent.GetChild(i);
             slot.itemsObjects = new GameObject[4];
             slots[i] = slot;
-            Debug.Log(slots[i]);
         }
         
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PutItem(Item itemm)
@@ -171,7 +166,7 @@ public class MachineInventory : MonoBehaviour
                         }
                         itemsSold += cantidad;
                         slots[i].quantity -= cantidad;
-                        MoneyManager.IncrementarDinero(cantidad * slots[i].item.precioVenta);
+                        MoneyManager.instance.IncrementarDinero(cantidad * objects.VendingPriceOfObjectbyId(slots[i].item.GetID())/*slots[i].item.precioVenta*/);
                         ObjectivesAndStats.updateStat(slots[i].item.GetID(), cantidad);
                        // objAndStats.updateStat(slots[i].item.GetID(), cantidad);
                         //SoldItem.Invoke(slots[i].item.GetID(), cantidad);
@@ -187,7 +182,7 @@ public class MachineInventory : MonoBehaviour
                         }
                         itemsSold += slots[i].quantity;
                         cantidad -= slots[i].quantity;
-                        MoneyManager.IncrementarDinero(slots[i].quantity * slots[i].item.precioVenta);
+                        MoneyManager.instance.IncrementarDinero(slots[i].quantity * objects.VendingPriceOfObjectbyId(slots[i].item.GetID()));
                         ObjectivesAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //objAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //SoldItem.Invoke(slots[i].item.GetID(), slots[i].quantity);

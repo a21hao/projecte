@@ -25,7 +25,7 @@ public class FinalDayManager : MonoBehaviour
     private int daysTranscurred;
     void Start()
     {
-        dineroInicioDia = MoneyManager.DineroTotal;
+        dineroInicioDia = MoneyManager.instance.DineroTotal;
         ernaedThisDay = textEarnedMoneyDay.GetComponent<TextMeshProUGUI>();
         moneyThisday = textMoneyThisDay.GetComponent<TextMeshProUGUI>();
         winCondition = winConditiontext.GetComponent<TextMeshProUGUI>();
@@ -43,7 +43,7 @@ public class FinalDayManager : MonoBehaviour
 
     public void FinishDay()
     {
-        dineroFinDia = MoneyManager.DineroTotal;
+        dineroFinDia = MoneyManager.instance.DineroTotal;
         FinDiaCanv.SetActive(true);
         moneyThisday.text = "You have this day: " + (dineroFinDia);
         ernaedThisDay.text = "You earned this day: " + (dineroFinDia - dineroInicioDia);

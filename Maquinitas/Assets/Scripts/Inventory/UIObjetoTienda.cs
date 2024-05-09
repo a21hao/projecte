@@ -11,6 +11,7 @@ public class UIObjetoTienda : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nombreTextUI;
     [SerializeField] private Image spriteImageUI;
     [SerializeField] private TextMeshProUGUI precioTextUI;
+    [SerializeField] private TextMeshProUGUI precioVentaTextUI;
 
     private void Start()
     {
@@ -20,7 +21,8 @@ public class UIObjetoTienda : MonoBehaviour
         {
             nombreTextUI.text = objetoTienda.nombreText;
             spriteImageUI.sprite = objetoTienda.spriteImage;
-            precioTextUI.text = objetoTienda.precioObjeto;
+            precioTextUI.text = "C/" + objetoTienda.precioObjeto + "¥";
+            precioVentaTextUI.text = "V/" + objetoTienda.precioVenta.ToString() + "¥";
         }
     }
 
@@ -48,5 +50,10 @@ public class UIObjetoTienda : MonoBehaviour
         {
             Debug.LogError("Prefab de la ventana de compra no asignado en UIObjetoTienda.");
         }
+    }
+
+    public void ActualizarPrecioVenta(int nuevoPrecio)
+    {
+        precioVentaTextUI.text = "V/" + nuevoPrecio + "¥";
     }
 }

@@ -19,7 +19,7 @@ public class AAA : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        item1.stock = maxStock;
+        //item1.stock = maxStock;
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class AAA : MonoBehaviour
             money += item1.precio;
             
             //moneyUI.text = money.ToString();
-            MoneyManager.IncrementarDinero(item1.precio);           
+            MoneyManager.instance.IncrementarDinero(item1.precio);           
 
         }
     }

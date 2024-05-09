@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\FinalDayManager.cs" />
     <Compile Include="Assets\DatosGuardado\LogicaGuardadoInventario.cs" />
     <Compile Include="Assets\Scripts\ClassObjectiveAndStats.cs" />
+    <Compile Include="Assets\Scripts\Upgrades\Upgrades.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
     <Compile Include="Assets\Scripts\FPS\FPSSetter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Assets\Scripts\Menu\Ayuda.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\Scripts\Upgrades\ObjetoUpgrade.cs" />
     <Compile Include="Assets\Scripts\Time\Calendar.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\Scripts\Save\Save.cs" />
@@ -145,6 +147,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingColorTweening.cs" />
+    <Compile Include="Assets\Scripts\Inventory\VentanaUpgrade.cs" />
+    <Compile Include="Assets\Scripts\ScriptsCamera\CameraZoomOrthografic.cs" />
     <Compile Include="Assets\Scripts\SoundScripts\FMODEvents.cs" />
     <Compile Include="Assets\Scripts\Save\GameInfo.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
@@ -157,7 +161,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Scripts\Inventory\ObjectsList.cs" />
-    <Compile Include="Assets\Scripts\CameraZoomOrthografic.cs" />
     <Compile Include="Assets\Scripts\GMObjectivesAndStats.cs" />
     <Compile Include="Assets\OnEnableSetScrollRectAtTop.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
@@ -176,6 +179,7 @@
     <Compile Include="Assets\Scripts\IsometricCamera.cs" />
     <Compile Include="Assets\LeanTween\Testing\PerformanceTests.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\Inventory\UIUpgrades.cs" />
     <Compile Include="Assets\Scripts\ChangeEnableObject.cs" />
     <Compile Include="Assets\Scripts\Time\Clock.cs" />
     <Compile Include="Assets\Scripts\ButtonOnClick.cs" />

@@ -11,6 +11,7 @@ public class ObjetoTienda : MonoBehaviour
     public GameObject objeto3d;
     public int id;
     public string tipo;
+    public int categoria;
 
     public void SetNombre(string nombre)
     {
@@ -50,5 +51,10 @@ public class ObjetoTienda : MonoBehaviour
     public void SetPrecioVenta(int prec)
     {
         precioVenta = prec;
+    }
+
+    public void SetCategoria(int categ)
+    {
+        categoria = categ;
     }
 }

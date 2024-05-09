@@ -15688,7 +15688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   letter: {fileID: 1390311722}
-  eliminado: 0
+  eliminado: 1
 --- !u!114 &1390311725
 MonoBehaviour:
   m_ObjectHideFlags: 0

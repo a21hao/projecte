@@ -15,6 +15,8 @@ public class MoneyManager : MonoBehaviour
         //textoDinero.text = dineroTotal.ToString();
         textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
         textoDinero.text = dineroTotal.ToString() + "¥";
+        moneyinfo = new GameInfo();
+        dineroTotal = this moneyinfo;
     }
 
     public static int DineroTotal

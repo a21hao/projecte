@@ -8,9 +8,8 @@ public class CartaInicial : MonoBehaviour
     [SerializeField] private GameObject letter;
     public bool eliminado = false;
 
-    private void Start()
+    private void Awake()
     {
-        letter = GetComponent<GameObject>();
         if (eliminado == true)
         {
             Destroy(letter);

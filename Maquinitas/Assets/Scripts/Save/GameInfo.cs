@@ -6,5 +6,10 @@ using System;
 [System.Serializable]
 public class GameInfo
 {
-    public int money = 2000;
+    public int money;
+
+    public GameInfo()
+    {
+        money = 2000;
+    }
 }

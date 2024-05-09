@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,62 +7,52 @@ using UnityEngine.Events;
 
 public class MoneyManager : MonoBehaviour
 {
-    private int dineroTotal = 1100;
-
+    private GameInfo moneyinfo;
     public UnityEvent<int> NuevoDinero;
-
     public static MoneyManager instance;
-    
 
     [SerializeField] private static TMP_Text textoDinero;
-    private GameInfo moneyinfo;
 
     private void Awake()
     {
         instance = this;
     }
+
     private void Start()
     {
-        //textoDinero.text = dineroTotal.ToString();
-        textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
-        textoDinero.text = dineroTotal.ToString() + "¥";
         moneyinfo = new GameInfo();
-        dineroTotal = this moneyinfo;
+        textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
+        ActualizarTextoDinero();
     }
 
     public int DineroTotal
     {
-        get { return dineroTotal; }
-        set { dineroTotal = value; }
+        get { return moneyinfo.money;
+            ActualizarTextoDinero();
+        } 
+        set { moneyinfo.money = value; 
+            ActualizarTextoDinero(); }
     }
 
     public void IncrementarDinero(int cantidad)
     {
-        dineroTotal += cantidad;
-        if (dineroTotal >= 2500) ObjectivesAndStats.cumplirObjetivo2500Y();
-        if (dineroTotal >= 15000) ObjectivesAndStats.cumplirObjetivo15000Yenes();
-        NuevoDinero.Invoke(dineroTotal);
+        DineroTotal += cantidad;
+        if (DineroTotal >= 2500) ObjectivesAndStats.cumplirObjetivo2500Y();
+        if (DineroTotal >= 15000) ObjectivesAndStats.cumplirObjetivo15000Yenes();
+        NuevoDinero.Invoke(DineroTotal);
         ActualizarTextoDinero();
     }
 
     public void DecrementarDinero(int cantidad)
     {
-        Debug.Log(cantidad + "menos");
-        dineroTotal -= cantidad;
-        NuevoDinero.Invoke(dineroTotal);
+        Debug.Log(cantidad + " menos");
+        DineroTotal -= cantidad;
+        NuevoDinero.Invoke(DineroTotal);
         ActualizarTextoDinero();
     }
 
     private void ActualizarTextoDinero()
     {
-
-        
-        textoDinero.text = dineroTotal.ToString() + "¥";
-        /*
-        MoneyManager[] moneyManagers = FindObjectsOfType<MoneyManager>();
-        foreach (MoneyManager manager in moneyManagers)
-        {
-            manager.textoDinero.text = dineroTotal.ToString();
-        }*/
+        textoDinero.text = DineroTotal.ToString() + "¥";
     }
 }

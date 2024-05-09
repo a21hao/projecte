@@ -3249,7 +3249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveFile: 
   gameInfo:
-    money: 0
+    money: 2000
 --- !u!1001 &274915437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7205,7 +7205,7 @@ GameObject:
   - component: {fileID: 555359508}
   - component: {fileID: 555359507}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Save
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7278,7 +7278,7 @@ MonoBehaviour:
       - m_Target: {fileID: 274859786}
         m_TargetAssemblyTypeName: Save, Assembly-CSharp
         m_MethodName: SaveGame
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11528,64 +11528,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 818690450}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &907396934
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.8240933
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1494675
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -14.187202
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-      propertyPath: m_Name
-      value: PolyStation
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7869873546869171050, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c9f8bfa8e4b46444288e76dcf46fb451, type: 3}
 --- !u!4 &909891117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6008f4b02d7933a4bac41449019471cb, type: 3}
@@ -14495,12 +14437,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125011666}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1105.5773, y: -557.9513, z: 478.1372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4716364875151103327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1125011668
 MonoBehaviour:
@@ -18662,6 +18604,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4716364875857814124, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
       insertIndex: -1
       addedObject: {fileID: 274859785}
+    - targetCorrespondingSourceObject: {fileID: 4716364875857814124, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1125011667}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8394069eb4da30e4591d55dba739d879, type: 3}
 --- !u!1 &1448910837
@@ -19389,7 +19334,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274093399}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: ToggleUpgrades
         m_Mode: 1
@@ -30154,7 +30099,7 @@ GameObject:
   - component: {fileID: 1922342909}
   - component: {fileID: 1922342908}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33020,7 +32965,7 @@ PrefabInstance:
     - target: {fileID: 8634285311273524944, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 274093399}
+      objectReference: {fileID: 0}
     - target: {fileID: 8634285311273524944, guid: dddab48bdc20fe246be6e5bc90bd1773, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -46187,5 +46132,3 @@ SceneRoots:
   - {fileID: 1764899060}
   - {fileID: 1090912149}
   - {fileID: 1444984627}
-  - {fileID: 1125011667}
-  - {fileID: 907396934}

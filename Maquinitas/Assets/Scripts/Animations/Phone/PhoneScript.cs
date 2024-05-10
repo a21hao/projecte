@@ -30,6 +30,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     private GameObject cameraMap;
     private CameraMapMoving cmm;
     private CameraZoomOrthografic czo;
+    private bool isInAnimation;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
         initialPos = transform.position;
         cmm = cameraMap.GetComponent<CameraMapMoving>();
         czo = cameraMap.GetComponent<CameraZoomOrthografic>();
+        isInAnimation = false;
     }
 
     public void OnPointerClick()
@@ -45,6 +47,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
         {
             cmm.CanUseCameraMap(opened);
             czo.CanZoom(opened);
+            isInAnimation = true;
             StartCoroutine(StartOpenAnimation());
             
         }
@@ -68,6 +71,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         openAnimationTime = 0f;
         opened = true;
+        isInAnimation = false;
     }
 
     public void Close()
@@ -76,6 +80,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
         {
             cmm.CanUseCameraMap(opened);
             czo.CanZoom(opened);
+            isInAnimation = true;
             StartCoroutine(StartCloseAnimation());
             
         }
@@ -101,18 +106,19 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         closeAnimationTime = 0f;
         opened = false;
+        isInAnimation = false;
 
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(opened)
+        if(opened && !isInAnimation)
             pointerOffset = eventData.position - phoneRectTransform.anchoredPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (opened)
+        if (opened && !isInAnimation)
             phoneRectTransform.anchoredPosition = eventData.position - pointerOffset;
     }
 

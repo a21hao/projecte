@@ -29,6 +29,7 @@ public class Save : MonoBehaviour
 
             //Sobreescribimos la información local con la guardada
             gameInfo.money = loadGameInfo.money;
+            MoneyManager.instance.DineroTotal = loadGameInfo.money;
             gameInfo.positionSun = sun.transform.position;
         }
         else
@@ -47,7 +48,7 @@ public class Save : MonoBehaviour
     {
         GameInfo newInfo = new GameInfo()
         {
-            money = gameInfo.money,
+            money = MoneyManager.instance.DineroTotal, //gameInfo.money,
             positionSun = sun.transform.position,
             time = gameInfo.time,
         };

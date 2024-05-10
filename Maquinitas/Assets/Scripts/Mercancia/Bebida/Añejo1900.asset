@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: "A\xF1ejo1900"
   m_EditorClassIdentifier: 
-  ID: 4
+  ID: 5
   categoria: 2
-  nombre: Wisky Adrian Xavier 1936
-  sprite: {fileID: 21300000, guid: 3e15a6452a9a6a8409e8b8cd9af770de, type: 3}
+  nombre: "A\xF1ejo 1900"
+  sprite: {fileID: 21300000, guid: df66c17026d47f4439df1cd3df366bb7, type: 3}
   tipo: 0
-  descripcion: Botella de Wisky
-  objeto3d: {fileID: 3516279200918442781, guid: 7198bbeeee282784baaa2b251f51fa1e, type: 3}
-  precio: 150
-  precioVenta: 254
+  descripcion: Botella de wisky Adrian Xavier
+  objeto3d: {fileID: 838626693211412365, guid: 156476686a2708b4cb35b1dbd2946699, type: 3}
+  precio: 120
+  precioVenta: 203
   stock: 0

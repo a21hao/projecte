@@ -55,7 +55,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     IEnumerator StartOpenAnimation()
     {
-        while(openAnimationTime < openAnimationDuration)
+        while(openAnimationTime <= openAnimationDuration)
         {
             float time = openAnimationTime / openAnimationDuration;
 
@@ -89,7 +89,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     IEnumerator StartCloseAnimation()
     {
-        while(closeAnimationTime < closeAnimationDuration) 
+        while(closeAnimationTime <= closeAnimationDuration) 
         {
             float time = closeAnimationTime / closeAnimationDuration;
 
@@ -112,7 +112,7 @@ public class PhoneScript : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(opened && !isInAnimation)
+
             pointerOffset = eventData.position - phoneRectTransform.anchoredPosition;
     }
 

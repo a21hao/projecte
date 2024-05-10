@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using System.Collections;
 
 public class MoneyManager : MonoBehaviour
 {
-    private GameInfo moneyinfo;
     public UnityEvent<int> NuevoDinero;
     public static MoneyManager instance;
 
@@ -20,18 +20,24 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
-        moneyinfo = new GameInfo();
         textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
+        StartCoroutine(_LoadInfo());
+    }
+
+    IEnumerator _LoadInfo()
+    {
+        while (Save.GetGameInfo() == null)
+        {
+            yield return null;
+        }
         ActualizarTextoDinero();
+
     }
 
     public int DineroTotal
     {
-        get { return moneyinfo.money;
-            ActualizarTextoDinero();
-        } 
-        set { moneyinfo.money = value; 
-            ActualizarTextoDinero(); }
+        get { return Save.GetGameInfo().money; }
+        set { Save.GetGameInfo().money = value; }
     }
 
     public void IncrementarDinero(int cantidad)

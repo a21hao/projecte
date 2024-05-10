@@ -3250,6 +3250,9 @@ MonoBehaviour:
   saveFile: 
   gameInfo:
     money: 2000
+    positionSun: {x: 0, y: 0, z: 0}
+    time: 
+  sun: {fileID: 279150983}
 --- !u!1001 &274915437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3391,6 +3394,11 @@ PrefabInstance:
       addedObject: {fileID: 303103958}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1d7cb9007a1a744aac6d5b9244e358, type: 3}
+--- !u!1 &279150983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6135885921713394996, guid: 6b8c45bd3e6cea243aec5147a9bc3467, type: 3}
+  m_PrefabInstance: {fileID: 949152954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &281265808
 GameObject:
   m_ObjectHideFlags: 0
@@ -12358,6 +12366,10 @@ PrefabInstance:
     - target: {fileID: 6135885921713394996, guid: 6b8c45bd3e6cea243aec5147a9bc3467, type: 3}
       propertyPath: m_Name
       value: Directional Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135885921713394996, guid: 6b8c45bd3e6cea243aec5147a9bc3467, type: 3}
+      propertyPath: m_TagString
+      value: Sun
       objectReference: {fileID: 0}
     - target: {fileID: 6301992157258566989, guid: 6b8c45bd3e6cea243aec5147a9bc3467, type: 3}
       propertyPath: directionalLight

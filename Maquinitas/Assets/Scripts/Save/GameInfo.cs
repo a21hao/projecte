@@ -7,6 +7,8 @@ using System;
 public class GameInfo
 {
     public int money;
+    public Vector3 positionSun;
+    public float time;
 
     public GameInfo()
     {

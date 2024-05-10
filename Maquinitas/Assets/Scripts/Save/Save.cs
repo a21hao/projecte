@@ -7,11 +7,13 @@ using Unity.VisualScripting;
 public class Save : MonoBehaviour
 {
     public string saveFile;
-    [SerializeField] private GameInfo gameInfo;
+    [SerializeField] static private GameInfo gameInfo;
+    [SerializeField] private GameObject sun;
 
     private void Awake()
-    { 
+    {
         saveFile = Application.dataPath + "/save.json";
+        sun = GameObject.FindGameObjectWithTag("Sun");
     }
 
     [ContextMenu("Load")]
@@ -21,15 +23,23 @@ public class Save : MonoBehaviour
         {
             string content = File.ReadAllText(saveFile);
             GameInfo loadGameInfo = JsonUtility.FromJson<GameInfo>(content);
-            
+            gameInfo = new GameInfo(); //Machamos/inicializamos gameInfo (información local) 
+
             Debug.Log("load");
-            
+
+            //Sobreescribimos la información local con la guardada
             gameInfo.money = loadGameInfo.money;
+            gameInfo.positionSun = sun.transform.position;
         }
         else
         {
             Debug.Log("no existents");
         }
+    }
+
+    public static GameInfo GetGameInfo()
+    {
+        return gameInfo;
     }
 
     [ContextMenu("Save")]
@@ -38,6 +48,8 @@ public class Save : MonoBehaviour
         GameInfo newInfo = new GameInfo()
         {
             money = gameInfo.money,
+            positionSun = sun.transform.position,
+            time = gameInfo.time,
         };
 
         string cadenaJSON = JsonUtility.ToJson(newInfo);

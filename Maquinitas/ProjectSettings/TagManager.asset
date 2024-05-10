@@ -15,6 +15,7 @@ TagManager:
   - Maquina
   - Canvas
   - Camera
+  - Sun
   layers:
   - Default
   - TransparentFX

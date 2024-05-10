@@ -14,32 +14,15 @@ public class Clock : MonoBehaviour
     static public float tiempoDeUnDiaSegundos = 1440f;
     static public float tiempoDelJuego = 0f;
     
-    
     private float tiempoAMostrarEnMinutos = 0f;
     private float escalaDeTiempoAlPausar, escalaDelTiempoInicial;
     private bool estaPausado = false;
-    //private int dineroInicioDia;
-    //private int dineroFinDia;
-    //[SerializeField] private GameObject FinDiaCanv;
-    //[SerializeField] private GameObject textEarnedMoneyDay;
-    //[SerializeField] private GameObject textMoneyThisDay;
-    //[SerializeField] private GameObject winConditiontext;
-    //[SerializeField] private GameObject winImage;
-    //[SerializeField] private GameObject loseImage;
-    //[SerializeField] private int moneyToWin;
-    //private TextMeshProUGUI ernaedThisDay;
-    //private TextMeshProUGUI moneyThisday;
-    //private TextMeshProUGUI winCondition;
     private FinalDayManager fnd;
 
     void Start()
     {
         escalaDelTiempoInicial = escalaDeTiempo;
         tiempoAMostrarEnMinutos = tiempoInicial;
-        //dineroInicioDia = MoneyManager.DineroTotal;
-        //ernaedThisDay = textEarnedMoneyDay.GetComponent<TextMeshProUGUI>();
-        //moneyThisday = textMoneyThisDay.GetComponent<TextMeshProUGUI>();
-        //winCondition = winConditiontext.GetComponent<TextMeshProUGUI>();
         fnd = GameObject.Find("GameManager/FinalDayManager").gameObject.GetComponent<FinalDayManager>();
     }
 
@@ -52,23 +35,6 @@ public class Clock : MonoBehaviour
             calendar.AdvanceDay();
             fnd.FinishDay();
             Pausa();
-            //dineroFinDia = MoneyManager.DineroTotal;
-            //FinDiaCanv.SetActive(true);
-            //moneyThisday.text = "You have this day: " + (dineroFinDia);
-            //ernaedThisDay.text = "You earned this day: " + (dineroFinDia - dineroInicioDia);
-            //if (dineroFinDia - dineroInicioDia >= moneyToWin)
-            //{
-            //    winImage.SetActive(true);
-            //    loseImage.SetActive(false);
-            //    winCondition.text = "You earned more than " + moneyToWin + ", YOU WIN";
-            //}
-            //else
-            //{
-            //    winImage.SetActive(false);
-            //    loseImage.SetActive(true);
-            //    winCondition.text = "You earned less than " + moneyToWin + ", YOU LOSE";
-            //}
-            //Pausa();
         }
     }
 
@@ -118,7 +84,6 @@ public class Clock : MonoBehaviour
 
     public void resumeGame()
     {
-        //FinDiaCanv.SetActive(false);
         fnd.DisactiveFinalDay();
         Play();
     }

@@ -34,7 +34,7 @@ public class Inventario3 : MonoBehaviour
         pointerData = new PointerEventData(eventSystem);
         raycastResults = new List<RaycastResult>();
 
-        canvas = transform.parent.transform;
+        canvas = GetComponentInParent<Canvas>().transform;
         capaMaquina = LayerMask.GetMask("Maquina");
     }
 
@@ -53,7 +53,7 @@ public class Inventario3 : MonoBehaviour
             {
                 foreach (var result in raycastResults)
                 {
-                    
+
                     if (result.gameObject.GetComponent<Item>())
                     {
                         objetoSeleccionado = result.gameObject;
@@ -66,7 +66,7 @@ public class Inventario3 : MonoBehaviour
                         scrollRect.enabled = false;
                     }
                 }
-                
+
             }
             raycastResults.Clear();
         }
@@ -112,7 +112,7 @@ public class Inventario3 : MonoBehaviour
                             resultado.gameObject.transform.localPosition = Vector3.zero;
                         }
                     }
-                    
+
                 }
             }
             putInMachine();
@@ -159,8 +159,8 @@ public class Inventario3 : MonoBehaviour
     {
         Vector2 viewportPoint = Camera.main.ScreenToViewportPoint(screenPos);
         Vector2 canvasSize = canvas.GetComponent<RectTransform>().sizeDelta;
-
-        return (new Vector2(viewportPoint.x * canvasSize.x, viewportPoint.y * canvasSize.y) - (canvasSize / 2));
+        Vector2 retVal = (new Vector2(viewportPoint.x * canvasSize.x, viewportPoint.y * canvasSize.y) - (canvasSize / 2));
+        return retVal;
     }
 
     public void FiltrarPorTipo(string tipo = null)
@@ -170,13 +170,20 @@ public class Inventario3 : MonoBehaviour
             if (slot.GetComponentInChildren<Item>() != null)
             {
                 Item item = slot.GetComponentInChildren<Item>();
-                if (tipo == null || item.tipo == tipo)
+                if (tipo == "All")
                 {
                     slot.SetActive(true);
                 }
                 else
                 {
-                    slot.SetActive(false);
+                    if (tipo == null || item.tipo == tipo)
+                    {
+                        slot.SetActive(true);
+                    }
+                    else
+                    {
+                        slot.SetActive(false);
+                    }
                 }
             }
         }
@@ -198,7 +205,7 @@ public class Inventario3 : MonoBehaviour
             Debug.Log(hit.collider.gameObject.name);
             hit.collider.gameObject.GetComponent<MachineInventory>().PutItem(objetoSeleccionado.GetComponent<Item>());
             //vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, prefabVendingMachine.transform.rotation);
-            
+
         }
     }
 

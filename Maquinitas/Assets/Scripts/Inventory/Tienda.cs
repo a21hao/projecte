@@ -55,6 +55,15 @@ public class Tienda : MonoBehaviour
         scriptObjetoTienda.SetObject3d(objeto.objeto3d);
 
         scriptObjetoTienda.SetPrecioVenta(objeto.precioVenta);
+
+        scriptObjetoTienda.SetCategoria(objeto.categoria);
+    }
+
+    public void ActualizarPrecioVentaPorId(int id, int nuevoPrecioVenta)
+    {
+        GameObject objetoAActualizar = ObtenerObjetoPorID(id);
+        objetoAActualizar.GetComponent<ObjetoTienda>().SetPrecioVenta(nuevoPrecioVenta);
+        objetoAActualizar.GetComponent<UIObjetoTienda>().ActualizarPrecioVenta(nuevoPrecioVenta);
     }
 
     public GameObject ObtenerObjetoPorID(int id)

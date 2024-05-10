@@ -7,14 +7,6 @@ public class ObjectsList : MonoBehaviour
     // Start is called before the first frame update
     public List<ObjectBase> listObjects;
 
-    private void Start()
-    {
-        for(int i = 0; i < listObjects.Count; i++)
-        {
-            Debug.Log(listObjects[i].ID + " " + listObjects[i].nombre);
-        }
-    }
-
     public List<ObjectBase> objectsList()
     {
         return listObjects;
@@ -30,6 +22,29 @@ public class ObjectsList : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public int VendingPriceOfObjectbyId(int id)
+    {
+        for (int i = 0; i < listObjects.Count; i++)
+        {
+            if (listObjects[i].ID == id)
+            {
+                return listObjects[i].precioVenta;
+            }
+        }
+        return 0;
+    }
+
+    public void ActualizeVendingPriceOfObjectbyId(int id, int newPrice)
+    {
+        for (int i = 0; i < listObjects.Count; i++)
+        {
+            if (listObjects[i].ID == id)
+            {
+                listObjects[i].precioVenta = newPrice;
+            }
+        }
     }
 
     public ObjectBase getObjectbyName(string name)

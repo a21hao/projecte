@@ -264,7 +264,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3126764e-9d10-48ca-9712-f7807e5cb998"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

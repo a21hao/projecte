@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: Coli
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 21
+  categoria: 1
   nombre: 
   sprite: {fileID: 0}
   tipo: 0

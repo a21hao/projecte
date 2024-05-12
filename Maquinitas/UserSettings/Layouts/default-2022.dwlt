@@ -16,15 +16,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 43
-<<<<<<< HEAD
-    width: 1440
-    height: 817
-=======
     width: 1920
     height: 997
->>>>>>> origin/maquinitasUpgrades
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -49,13 +44,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
-    width: 1440
-    height: 817
-=======
     width: 1920
     height: 997
->>>>>>> origin/maquinitasUpgrades
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -79,11 +69,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
-    width: 1440
-=======
     width: 1920
->>>>>>> origin/maquinitasUpgrades
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -104,13 +90,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
-    y: 797
-    width: 1440
-=======
     y: 977
     width: 1920
->>>>>>> origin/maquinitasUpgrades
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -133,21 +114,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-<<<<<<< HEAD
-    width: 1440
-    height: 767
-  m_MinSize: {x: 300, y: 100}
-  m_MaxSize: {x: 24288, y: 16192}
-  vertical: 0
-  controlID: 4442
-=======
     width: 1920
     height: 947
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 47
->>>>>>> origin/maquinitasUpgrades
+  controlID: 124
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,21 +139,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
-    width: 1138
-    height: 767
-  m_MinSize: {x: 200, y: 100}
-  m_MaxSize: {x: 16192, y: 16192}
-  vertical: 1
-  controlID: 4443
-=======
-    width: 1518
+    width: 1517
     height: 947
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 48
->>>>>>> origin/maquinitasUpgrades
+  controlID: 41
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -201,21 +164,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
-    width: 1138
-    height: 444
+    width: 1517
+    height: 548
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 4444
-=======
-    width: 1518
-    height: 395
-  m_MinSize: {x: 200, y: 50}
-  m_MaxSize: {x: 16192, y: 8096}
-  vertical: 0
-  controlID: 49
->>>>>>> origin/maquinitasUpgrades
+  controlID: 42
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -233,17 +187,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
-    width: 270
-    height: 444
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-=======
-    width: 372
-    height: 395
+    width: 360
+    height: 548
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
->>>>>>> origin/maquinitasUpgrades
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -264,17 +211,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 270
+    x: 360
     y: 0
-    width: 868
-    height: 444
-=======
-    x: 372
-    y: 0
-    width: 1146
-    height: 395
->>>>>>> origin/maquinitasUpgrades
+    width: 1157
+    height: 548
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
@@ -301,23 +241,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
-    y: 444
-    width: 1138
-    height: 323
+    y: 548
+    width: 1517
+    height: 399
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 4489
-=======
-    y: 395
-    width: 1518
-    height: 552
-  m_MinSize: {x: 200, y: 50}
-  m_MaxSize: {x: 16192, y: 8096}
-  vertical: 0
-  controlID: 94
->>>>>>> origin/maquinitasUpgrades
+  controlID: 100
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -328,31 +258,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
-    width: 598
-    height: 323
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 19}
-=======
-    width: 799
-    height: 552
+    width: 797
+    height: 399
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 18}
->>>>>>> origin/maquinitasUpgrades
   m_Panes:
   - {fileID: 18}
   - {fileID: 19}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -368,21 +290,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 598
+    x: 797
     y: 0
-    width: 540
-    height: 323
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-=======
-    x: 799
-    y: 0
-    width: 719
-    height: 552
+    width: 720
+    height: 399
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
->>>>>>> origin/maquinitasUpgrades
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -403,21 +316,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 1138
+    x: 1517
     y: 0
-    width: 302
-    height: 767
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-=======
-    x: 1518
-    y: 0
-    width: 402
+    width: 403
     height: 947
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
->>>>>>> origin/maquinitasUpgrades
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -443,17 +347,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 598
-    y: 517
-    width: 538
-    height: 302
-=======
-    x: 799
-    y: 468
-    width: 717
-    height: 531
->>>>>>> origin/maquinitasUpgrades
+    x: 797
+    y: 621
+    width: 718
+    height: 378
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -464,10 +361,8 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
-  m_SerializedViewNames:
-  - UnityEditor.DeviceSimulation.SimulatorWindow
-  m_SerializedViewValues:
-  - C:\Users\a21haolinlin_inspedr\Desktop\GitHub\Projecte\Maquinitas\Library\PlayModeViewStates\670667573675d504d9b1f4cc6e870b4d
+  m_SerializedViewNames: []
+  m_SerializedViewValues: []
   m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
@@ -508,40 +403,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-<<<<<<< HEAD
-      width: 538
-      height: 281
-    m_Scale: {x: 0.26018518, y: 0.26018518}
-    m_Translation: {x: 269, y: 140.5}
-=======
-      width: 717
-      height: 510
-    m_Scale: {x: 0.3734375, y: 0.3734375}
-    m_Translation: {x: 358.5, y: 255}
->>>>>>> origin/maquinitasUpgrades
+      width: 718
+      height: 357
+    m_Scale: {x: 0.33055556, y: 0.33055556}
+    m_Translation: {x: 359, y: 178.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-<<<<<<< HEAD
-      x: -1033.879
+      x: -1086.0504
       y: -540
-      width: 2067.758
+      width: 2172.1008
       height: 1080
     m_MinimalGUI: 1
-  m_defaultScale: 0.26018518
-  m_LastWindowPixelSize: {x: 538, y: 302}
-=======
-      x: -960
-      y: -682.8452
-      width: 1920
-      height: 1365.6904
-    m_MinimalGUI: 1
-  m_defaultScale: 0.3734375
-  m_LastWindowPixelSize: {x: 717, y: 531}
->>>>>>> origin/maquinitasUpgrades
+  m_defaultScale: 0.33055556
+  m_LastWindowPixelSize: {x: 718, y: 378}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -569,13 +447,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-<<<<<<< HEAD
-    width: 269
-    height: 423
-=======
-    width: 371
-    height: 374
->>>>>>> origin/maquinitasUpgrades
+    width: 359
+    height: 527
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -589,15 +462,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-<<<<<<< HEAD
-      m_SelectedIDs: 6c440100
-      m_LastClickedID: 83052
-      m_ExpandedIDs: da5efeff0a6cfefffccefeff1ecffeffded5feffacd9fefff0e3feff78f0feff520dffff7a0dffff8010ffff961dffff7421fffffc2dffff4c2fffff46440100c66d0100
-=======
-      m_SelectedIDs: 688e0000
+      m_SelectedIDs: da340000
       m_LastClickedID: 0
-      m_ExpandedIDs: 38ceffff0efbffff
->>>>>>> origin/maquinitasUpgrades
+      m_ExpandedIDs: a2c5fffff8c6ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -641,17 +508,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 270
+    x: 360
     y: 73
-    width: 866
-    height: 423
-=======
-    x: 372
-    y: 73
-    width: 1144
-    height: 374
->>>>>>> origin/maquinitasUpgrades
+    width: 1155
+    height: 527
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -744,9 +604,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -111, y: 26}
+      snapOffset: {x: 67.5, y: -188}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 1
+      snapCorner: 2
       id: Orientation
       index: 0
       layout: 4
@@ -882,16 +742,16 @@ MonoBehaviour:
       layout: 4
       size: {x: 0, y: 0}
       sizeOverriden: 0
-    - dockPosition: 0
-      containerId: Floating
-      floating: 1
+    - dockPosition: 1
+      containerId: overlay-container--right
+      floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: -351, y: -242}
+      snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 3
+      snapCorner: 0
       id: Scene View/Particles
-      index: 1
+      index: 6
       layout: 4
       size: {x: 0, y: 0}
       sizeOverriden: 0
@@ -930,7 +790,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Cinemachine Tool Settings
-      index: 6
+      index: 7
       layout: 4
       size: {x: 0, y: 0}
       sizeOverriden: 0
@@ -943,7 +803,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/TrailRenderer
-      index: 7
+      index: 8
       layout: 4
       size: {x: 0, y: 0}
       sizeOverriden: 0
@@ -952,7 +812,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 911, y: 419}
+      snapOffset: {x: 48, y: 48}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: UnityEditor.SceneViewCameraOverlay
@@ -969,20 +829,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: APV Overlay
-      index: 8
-      layout: 4
-      size: {x: 0, y: 0}
-      sizeOverriden: 0
-    - dockPosition: 0
-      containerId: Floating
-      floating: 1
-      collapsed: 0
-      displayed: 1
-      snapOffset: {x: -216, y: -300}
-      snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 3
-      id: AINavigationOverlay
-      index: 0
+      index: 9
       layout: 4
       size: {x: 0, y: 0}
       sizeOverriden: 0
@@ -1010,15 +857,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-<<<<<<< HEAD
-    m_Target: {x: 55.548767, y: 6.6008987, z: 30.51212}
+    m_Target: {x: -14.939823, y: -17.526217, z: 34.333344}
     speed: 2
-    m_Value: {x: 55.548767, y: 6.6008987, z: 30.51212}
-=======
-    m_Target: {x: 6.651162, y: 1.723251, z: -15.1140995}
-    speed: 2
-    m_Value: {x: 6.651162, y: 1.723251, z: -15.1140995}
->>>>>>> origin/maquinitasUpgrades
+    m_Value: {x: -14.939823, y: -17.526217, z: 34.333344}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1046,9 +887,9 @@ MonoBehaviour:
       m_Size: {x: 0, y: 0}
     yGrid:
       m_Fade:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -1060,34 +901,24 @@ MonoBehaviour:
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
-    m_ShowGrid: 0
+    m_ShowGrid: 1
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-<<<<<<< HEAD
-    m_Target: {x: 0.34095576, y: -0.34633836, z: 0.1369015, w: 0.8631932}
+    m_Target: {x: -0.124691196, y: 0.86550975, z: -0.40567923, w: -0.26602668}
     speed: 2
-    m_Value: {x: 0.34094802, y: -0.34633046, z: 0.13689838, w: 0.86317354}
+    m_Value: {x: -0.12529951, y: 0.8651093, z: -0.40549156, w: -0.26732454}
   m_Size:
-    m_Target: 104.45812
+    m_Target: 26.968061
     speed: 2
-    m_Value: 104.45812
-=======
-    m_Target: {x: -0.14068417, y: -0.7264419, z: 0.15622884, w: -0.6543285}
-    speed: 2
-    m_Value: {x: -0.14218126, y: -0.7315621, z: 0.1607775, w: -0.64711046}
-  m_Size:
-    m_Target: 28.0675
-    speed: 2
-    m_Value: 26.85885
->>>>>>> origin/maquinitasUpgrades
+    m_Value: 26.968061
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 2
-    m_SpeedNormalized: 1
+    m_Speed: 1
+    m_SpeedNormalized: 0.5
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1098,7 +929,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: -0.09695835, y: -0.89174, z: 0.22847243, w: -0.37849084}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -1125,10 +956,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 361
+    x: 350
     y: 73
-    width: 1155
-    height: 558
+    width: 1223
+    height: 511
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1144,10 +975,6 @@ MonoBehaviour:
     - {fileID: -1690989607911232657, guid: 61cba77e15153c14aa4bd7f2ad320523, type: 2}
     - {fileID: -5354050552920028695, guid: 4f90b32dfc915d542899a1628109a07f, type: 2}
     - {fileID: 8589344967196654058, guid: e393f0467f46a9d409febc47c6ce6ec4, type: 2}
-    - {fileID: -5006299796961686361, guid: 97986700f7f5891428225dadb1e0ac0a, type: 2}
-    - {fileID: 8732846302768115852, guid: 7a92edc57816f8f4e8913f688f749655, type: 2}
-    - {fileID: 6172735860914650818, guid: d54764329a708c24c9aa957c4b0e8c09, type: 2}
-    - {fileID: 567679705568758514, guid: 1b02d1a9846cad9458c33e8051a8048a, type: 2}
     m_ValueSerializationHelper:
     - e00: 1
       e01: 0
@@ -1197,74 +1024,10 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 2.011357
-      e01: 0
-      e02: 0
-      e03: -84.266945
-      e10: 0
-      e11: 2.011357
-      e12: 0
-      e13: 106.87858
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 4f90b32dfc915d542899a1628109a07f, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: e393f0467f46a9d409febc47c6ce6ec4, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -5354050552920028695, guid: 4f90b32dfc915d542899a1628109a07f, type: 2}
+  - m_Target: {fileID: 8589344967196654058, guid: e393f0467f46a9d409febc47c6ce6ec4, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -1298,15 +1061,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
-    y: 517
-    width: 597
-    height: 302
-=======
-    y: 468
-    width: 798
-    height: 531
->>>>>>> origin/maquinitasUpgrades
+    y: 621
+    width: 796
+    height: 378
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1328,41 +1085,24 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-<<<<<<< HEAD
-    - Assets/Scripts/SoundScripts
-=======
-    - Assets/Productos/Categoria3/PolyStation
->>>>>>> origin/maquinitasUpgrades
+    - "Assets/Modelos/PROPS/MOBILIARIO P\xDABLICO"
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
-  m_StartGridSize: 58
+  m_StartGridSize: 64
   m_LastFolders:
-<<<<<<< HEAD
-  - Assets/Scripts/SoundScripts
+  - "Assets/Modelos/PROPS/MOBILIARIO P\xDABLICO"
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\a22joesalbio_inspedr\GitHub\Projecte\Maquinitas
+  m_LastProjectPath: E:\GitGut\Projecte\Maquinitas
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 86}
-    m_SelectedIDs: be6a0100
-    m_LastClickedID: 92862
-    m_ExpandedIDs: 0000000004de000006de00008ade000000ca9a3b
-=======
-  - Assets/Productos/Categoria3/PolyStation
-  m_LastFoldersGridSize: 58
-  m_LastProjectPath: C:\Users\a20albmonsal_inspedr\GitHub\Projecte\Maquinitas
-  m_LockTracker:
-    m_IsLocked: 0
-  m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 648e0000
-    m_LastClickedID: 36452
-    m_ExpandedIDs: 00000000c68d0000fe8d00004c8e000000ca9a3bffffff7f
->>>>>>> origin/maquinitasUpgrades
+    scrollPos: {x: 0, y: 14}
+    m_SelectedIDs: da340000
+    m_LastClickedID: 13530
+    m_ExpandedIDs: 00000000063400001a340000da34000030a0000032a00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1390,11 +1130,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-<<<<<<< HEAD
-    m_ExpandedIDs: 0000000004de000006de000000ca9a3b
-=======
-    m_ExpandedIDs: 00000000c68d0000
->>>>>>> origin/maquinitasUpgrades
+    m_ExpandedIDs: 0000000030a0000032a00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1419,17 +1155,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-<<<<<<< HEAD
-    m_SelectedInstanceIDs: 46440100
-    m_LastClickedInstanceID: 83014
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000a255010000000000f6150100169000007a9900007c9900000e7f0000589000005a90000050cc0100f8720000
-=======
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000a2550100f6150100169000007a9900007c9900000e7f0000589000005a90000050cc0100f8720000b8a200001c48010012480100908b000048850800c00100004266000000000000688e0000
->>>>>>> origin/maquinitasUpgrades
+    m_ExpandedInstanceIDs: c6230000a255010000000000f6150100169000007a9900007c9900000e7f0000589000005a90000050cc0100f8720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1454,7 +1183,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 58
+    m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
 --- !u!114 &19
@@ -1477,16 +1206,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-<<<<<<< HEAD
-    y: 517
-    width: 597
-    height: 302
-=======
-    y: 468
-    width: 798
-    height: 531
->>>>>>> origin/maquinitasUpgrades
+    x: -1920
+    y: 621
+    width: 796
+    height: 378
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1517,17 +1240,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 1138
+    x: 1517
     y: 73
-    width: 301
-    height: 746
-=======
-    x: 1518
-    y: 73
-    width: 401
+    width: 402
     height: 926
->>>>>>> origin/maquinitasUpgrades
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1541,7 +1257,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 188
+    m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1

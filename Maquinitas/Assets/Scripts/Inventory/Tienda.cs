@@ -12,10 +12,17 @@ public class Tienda : MonoBehaviour
     //[SerializeField] List<ObjectBase> listaObjetosTienda;
     private List<ObjectBase> listaObjetosTienda;
     private Dictionary<int, GameObject> dicionarioTienda = new Dictionary<int, GameObject>();
+    private int categoriaDeIncio = 1;
 
     private void Awake()
     {
         listaObjetosTienda = objectsOfGame.GetComponent<ObjectsList>().objectsList();
+        
+    }
+
+    private void Start()
+    {
+        categoriaDeIncio = ObjectivesAndStats.Instance.categoriaActual;
         InstanciarObjetosTienda();
     }
 
@@ -25,10 +32,29 @@ public class Tienda : MonoBehaviour
 
         foreach (ObjectBase objeto in listaObjetosTienda)
         {
-            GameObject objetoTienda = Instantiate(prefabObjetoTienda, contenidoScrollView);
-            ConfigurarObjetoTienda(objetoTienda, objeto);
+            if(objeto.categoria <= categoriaDeIncio)
+            {
+                GameObject objetoTienda = Instantiate(prefabObjetoTienda, contenidoScrollView);
+                ConfigurarObjetoTienda(objetoTienda, objeto);
 
-            dicionarioTienda.Add(objeto.ID, objetoTienda);
+                dicionarioTienda.Add(objeto.ID, objetoTienda);
+            }
+            
+        }
+    }
+
+    public void InstanciarObjetosTiendaDeCategoria(int cat)
+    {
+        foreach (ObjectBase objeto in listaObjetosTienda)
+        {
+            if (objeto.categoria == cat && categoriaDeIncio < cat)
+            {
+                GameObject objetoTienda = Instantiate(prefabObjetoTienda, contenidoScrollView);
+                ConfigurarObjetoTienda(objetoTienda, objeto);
+
+                dicionarioTienda.Add(objeto.ID, objetoTienda);
+            }
+
         }
     }
 

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: Coli
   m_EditorClassIdentifier: 
-  ID: 21
+  ID: 14
   categoria: 1
-  nombre: 
-  sprite: {fileID: 0}
+  nombre: Coli
+  sprite: {fileID: 21300000, guid: f30405147dae7fc458c9b0b64b64847f, type: 3}
   tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  descripcion: Lata de coli
+  objeto3d: {fileID: 7817139358317711656, guid: 86a26513c28c25849bfe53a1b6a11d99, type: 3}
+  precio: 40
+  precioVenta: 56
   stock: 0

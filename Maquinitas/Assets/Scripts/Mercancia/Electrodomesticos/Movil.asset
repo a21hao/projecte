@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: Movil
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 20
   categoria: 3
-  nombre: 
-  sprite: {fileID: 0}
-  tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  nombre: Movil
+  sprite: {fileID: 21300000, guid: 6bf32f2807ba1ec489d73f4f37915410, type: 3}
+  tipo: 5
+  descripcion: Movil
+  objeto3d: {fileID: 1743902485747357404, guid: 0a4d9844a09542a44b2453f72378a8bf, type: 3}
+  precio: 500
+  precioVenta: 1000
   stock: 0

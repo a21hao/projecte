@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: Cola
   m_EditorClassIdentifier: 
-  ID: 10
+  ID: 23
   categoria: 1
-  nombre: 
-  sprite: {fileID: 0}
+  nombre: Cola
+  sprite: {fileID: 21300000, guid: 782749461c1b6e24ab9e4cf05af03b36, type: 3}
   tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  descripcion: Botella de cola
+  objeto3d: {fileID: 3053906067294346378, guid: 34f96cb82cb795d4da746c931abcfb79, type: 3}
+  precio: 50
+  precioVenta: 70
   stock: 0

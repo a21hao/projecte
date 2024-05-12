@@ -59,6 +59,8 @@ public class NewControls : MonoBehaviour
         Player.FindAction("EscButton").canceled += OnnEscButtonCanceled;
         Player.FindAction("MouseClick").performed += OnnMouseClick;
         Player.FindAction("MouseClick").canceled += OnnMouseClickCanceled;
+        Player.FindAction("AddMoney").performed += OnnAddMoney;
+        Player.FindAction("SubstractMoney").performed += OnnSubstractMoney;
         /*playerActions = new InputActions();
         playerActions.Player.Forward.performed += OnRun;
         playerActions.Player.Forward.canceled += OnStopRun;
@@ -213,6 +215,21 @@ public class NewControls : MonoBehaviour
     private void OnnEscButtonCanceled(InputAction.CallbackContext ctx)
     {
         isEscPressed = false;
+    }
+
+    private void OnnAddMoney(InputAction.CallbackContext ctx)
+    {
+        MoneyManager.instance.IncrementarDinero(3000);
+    }
+
+    private void OnnSubstractMoney(InputAction.CallbackContext ctx)
+    {
+        if (MoneyManager.instance.DineroTotal - 2500 < 0)
+        {
+            MoneyManager.instance.DineroTotal = 0;
+            MoneyManager.instance.ActualizarTextoDinero();
+        }
+        else MoneyManager.instance.DecrementarDinero(2500);
     }
 
     private void OnnScroll(InputAction.CallbackContext ctx)

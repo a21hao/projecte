@@ -141,6 +141,24 @@ public class Inventario3 : MonoBehaviour
         return null;
     }
 
+    public Item GetItemOfSlotByIdItem(int idItem)
+    {
+        foreach (Transform child in contenido)
+        {
+            if (child.childCount > 0)
+            {
+                Item itemToReturn = null;
+                itemToReturn = child.GetChild(0).gameObject.GetComponent<Item>();
+                if(itemToReturn != null)
+                {
+                    if(itemToReturn.GetID() == idItem)
+                    return itemToReturn;
+                }
+            }
+        }
+        return null;
+    }
+
     /*public Vector2 CanvasScreen(Vector2 screenPos, Canvas canvas)
     {
         // Convertir la posición de la pantalla a un punto en el espacio del mundo

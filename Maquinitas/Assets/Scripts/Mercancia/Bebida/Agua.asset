@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 19
   categoria: 1
-  nombre: 
-  sprite: {fileID: 0}
+  nombre: Agua
+  sprite: {fileID: 21300000, guid: cf7b8c0462a1d0c4696e89dff67bd9c3, type: 3}
   tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  descripcion: Botella de Agua
+  objeto3d: {fileID: 3828430087599855632, guid: 9b07bcd63a6d6164db839f607d53bd44, type: 3}
+  precio: 34
+  precioVenta: 47
   stock: 0

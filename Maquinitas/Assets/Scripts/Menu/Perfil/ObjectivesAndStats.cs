@@ -16,8 +16,26 @@ public class ObjectivesAndStats : MonoBehaviour
     [SerializeField]
     private Transform contentParent;
     [SerializeField]
-    private Transform ObjectivesTitle;
-    private int indexOfObjectiveTitle;
+    private Transform ObjectivesTitleTutorial;
+    private int indexOfObjectiveTitleTutorial;
+    [SerializeField]
+    private Transform ObjectivesCat1Title;
+    private int indexOfObjectivesCat1Title;
+    [SerializeField]
+    private Transform ObjectivesCat2Title;
+    private int indexOfObjectivesCat2Title;
+    [SerializeField]
+    private Tienda tienda;
+    [SerializeField]
+    private Upgrades upgrades;
+    [SerializeField]
+    private Wishlist wishlist;
+    [SerializeField]
+    private int NumberOfMachinesForObjective;
+
+    [SerializeField]
+    private TextMeshProUGUI categoriaActualText;
+
     private int indexOfStatsTitle;
     [SerializeField]
     private GameObject itemsListGO;
@@ -45,6 +63,7 @@ public class ObjectivesAndStats : MonoBehaviour
         public bool objectiveCompleted = false;
         public List<Objective> objectivesToNeedForComplete;
         public GameObject objectiveObj;
+        public int catObjective = 0;
         
 
         public Objective()
@@ -93,15 +112,22 @@ public class ObjectivesAndStats : MonoBehaviour
     private List<ObjectBase> objectsListt;
     private List<Stat> stats;
     private Objective objectiveInCourse;
+    public int categoriaActual = 1;
+    public int categoriaMaxima = 3;
+    private bool objectivesCat1Completed = false;
+    private bool objectivesCat2Completed = false;
+    private ObjectsList objects;
+    private bool hadWin = false;
 
     //private GameObject instantiatedObjective;
     // Start is called before the first frame update
     void Awake()
     {
-
         Instance = this;
+        objects = FindObjectOfType<ObjectsList>();
+        categoriaActualText.text = "CATEGORIA ACTUAL: CATEGORIA " + categoriaActual.ToString();
         textLose = Losetext.GetComponent<TextMeshProUGUI>();
-        indexOfObjectiveTitle = ObjectivesTitle.GetSiblingIndex();
+        indexOfObjectiveTitleTutorial = ObjectivesTitleTutorial.GetSiblingIndex();
         objectsListt = itemsListGO.GetComponent<ObjectsList>().objectsList();
         stats = new List<Stat>();
         //Tutorial Objectives
@@ -146,16 +172,34 @@ public class ObjectivesAndStats : MonoBehaviour
         objectives.Add(objectiveg1);*/
         Objective objectiveg2 = new Objective();
         objectiveg2.nameOfObjective = "Compra alguna maquina mas";
+        objectiveg2.catObjective = 1;
         objectiveg2.objectivesToNeedForComplete.Add(objectivet7);
         objectives.Add(objectiveg2);
         Objective objectiveg3 = new Objective();
-        objectiveg3.nameOfObjective = "Vende al menos 20 unidad de cada producto de la categoria 1";
+        objectiveg3.nameOfObjective = "Vende al menos 20 unidades de cada producto de la categoria 1";
+        objectiveg3.catObjective = 1;
         objectiveg3.objectivesToNeedForComplete.Add(objectiveg2);
         objectives.Add(objectiveg3);
         Objective objectiveg4 = new Objective();
-        objectiveg4.nameOfObjective = "Consigue 15000 yenes";
+        objectiveg4.nameOfObjective = "Consigue 10000 yenes";
+        objectiveg4.catObjective = 1;
         objectiveg4.objectivesToNeedForComplete.Add(objectiveg2);
         objectives.Add(objectiveg4);
+        Objective objectiveg5 = new Objective();
+        objectiveg5.nameOfObjective = "Vende al menos 20 unidades de cada producto de la categoria 2";
+        objectiveg5.catObjective = 2;
+        //objectiveg5.objectivesToNeedForComplete.Add(objectiveg2);
+        objectives.Add(objectiveg5);
+        Objective objectiveg6 = new Objective();
+        objectiveg6.nameOfObjective = "Consigue 100000 yenes";
+        objectiveg6.catObjective = 2;
+        //objectiveg4.objectivesToNeedForComplete.Add(objectiveg2);
+        objectives.Add(objectiveg6);
+        Objective objectiveg7 = new Objective();
+        objectiveg7.nameOfObjective = "Pon " + NumberOfMachinesForObjective + " maquinas";
+        objectiveg7.catObjective = 2;
+        //objectiveg7.objectivesToNeedForComplete.Add(objectiveg2);
+        objectives.Add(objectiveg7);
         //StatsGame
         for (int i = 0; i < objectsListt.Count; i++)
         {
@@ -176,6 +220,10 @@ public class ObjectivesAndStats : MonoBehaviour
 
     }
 
+    private void IncrementarCategoriaActual()
+    {
+        categoriaActual += 1;
+    }
     private void InstantiateObjectivesInPerfil()
     {
         for(int i = 0; i < tutorialObjectives.Count; i++)
@@ -184,22 +232,41 @@ public class ObjectivesAndStats : MonoBehaviour
             TextMeshProUGUI textObjective= instantiatedObjective.transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>();
             //-->GameObject checked = instantiatedObjective.transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>();
             textObjective.text = tutorialObjectives[i].nameOfObjective;
-            indexOfObjectiveTitle += 1;
-            instantiatedObjective.transform.SetSiblingIndex(indexOfObjectiveTitle);
+            indexOfObjectiveTitleTutorial += 1;
+            instantiatedObjective.transform.SetSiblingIndex(indexOfObjectiveTitleTutorial);
             tutorialObjectives[i].objectiveObj = instantiatedObjective;
             //if (tutorialObjectives[i].objectiveCompleted) tutorialObjectives[i]
 
         }
-
+        indexOfObjectivesCat1Title = ObjectivesCat1Title.GetSiblingIndex();
         for (int i = 0; i < objectives.Count; i++)
         {
-            GameObject instantiatedObjective = Instantiate(objectivePrefab, contentParent);
-            TextMeshProUGUI textObjective = instantiatedObjective.transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>();
-            //-->GameObject checked = instantiatedObjective.transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>();
-            textObjective.text = objectives[i].nameOfObjective;
-            indexOfObjectiveTitle += 1;
-            instantiatedObjective.transform.SetSiblingIndex(indexOfObjectiveTitle);
-            objectives[i].objectiveObj = instantiatedObjective;
+            if(objectives[i].catObjective == 1)
+            {
+                GameObject instantiatedObjective = Instantiate(objectivePrefab, contentParent);
+                TextMeshProUGUI textObjective = instantiatedObjective.transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>();
+                //-->GameObject checked = instantiatedObjective.transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>();
+                textObjective.text = objectives[i].nameOfObjective;               
+                indexOfObjectivesCat1Title += 1;
+                instantiatedObjective.transform.SetSiblingIndex(indexOfObjectivesCat1Title);
+                objectives[i].objectiveObj = instantiatedObjective;
+            }
+            //if (tutorialObjectives[i].objectiveCompleted) tutorialObjectives[i]
+
+        }
+        indexOfObjectivesCat2Title = ObjectivesCat2Title.GetSiblingIndex();
+        for (int i = 0; i < objectives.Count; i++)
+        {
+            if (objectives[i].catObjective == 2)
+            {
+                GameObject instantiatedObjective = Instantiate(objectivePrefab, contentParent);
+                TextMeshProUGUI textObjective = instantiatedObjective.transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>();
+                //-->GameObject checked = instantiatedObjective.transform.Find("ObjectiveText").GetComponent<TextMeshProUGUI>();
+                textObjective.text = objectives[i].nameOfObjective;
+                indexOfObjectivesCat2Title += 1;
+                instantiatedObjective.transform.SetSiblingIndex(indexOfObjectivesCat2Title);
+                objectives[i].objectiveObj = instantiatedObjective;
+            }
             //if (tutorialObjectives[i].objectiveCompleted) tutorialObjectives[i]
 
         }
@@ -218,6 +285,8 @@ public class ObjectivesAndStats : MonoBehaviour
             TextMeshProUGUI numberUnitysInfoText = instantiatedStat.transform.Find("StatsInfo").GetComponent<TextMeshProUGUI>();
             numberUnitysInfoText.text = stats[i].numberOfUnitsSold.ToString();
             stats[i].textNumberSold = numberUnitysInfoText;
+            TextMeshProUGUI catInfo = instantiatedStat.transform.Find("StatsInfo/CatInfo").GetComponent<TextMeshProUGUI>();
+            catInfo.text = "cat " + (objects.getObjectbyId(stats[i].idItem).categoria).ToString();
             Image imgStatInfo = instantiatedStat.transform.Find("StatsInfo/spriteInfo").gameObject.GetComponent<Image>();
             imgStatInfo.sprite = stats[i].spriteObject;
             indexOfStatsTitle += 1;
@@ -228,7 +297,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void updateStat(int idItemm, int cantidad)
+    public void updateStat(int idItemm, int cantidad)
     {
         for(int i = 0; i < Instance.stats.Count; i++)
         {
@@ -238,15 +307,24 @@ public class ObjectivesAndStats : MonoBehaviour
                 Instance.stats[i].textNumberSold.text = Instance.stats[i].numberOfUnitsSold.ToString();
             }
         }
-        bool statsMoreThan20units = true;
+        bool statsMoreThan20unitsCat1 = true;
         for (int i = 0; i < Instance.stats.Count; i++)
         {
-            if(Instance.stats[i].numberOfUnitsSold < 20)
+            if(Instance.stats[i].numberOfUnitsSold < 20 && objects.getObjectbyId(stats[i].idItem).categoria == 1)
             {
-                statsMoreThan20units = false;
+                statsMoreThan20unitsCat1 = false;
             }
         }
-        if (statsMoreThan20units) ObjectivesAndStats.cumplirObjetivo20unidProducto();
+        if (statsMoreThan20unitsCat1) ObjectivesAndStats.Instance.cumplirObjetivo20unidProductoCat1();
+        bool statsMoreThan20unitsCat2 = true;
+        for (int i = 0; i < Instance.stats.Count; i++)
+        {
+            if (Instance.stats[i].numberOfUnitsSold < 20 && objects.getObjectbyId(stats[i].idItem).categoria == 2)
+            {
+                statsMoreThan20unitsCat2 = false;
+            }
+        }
+        if (statsMoreThan20unitsCat2) ObjectivesAndStats.Instance.cumplirObjetivoVende20ProductosDeCategoria2();
     }
 
     
@@ -262,11 +340,11 @@ public class ObjectivesAndStats : MonoBehaviour
         }
         else
         {
-            ObjectivesAndStats.cumplirObjetivoCompraAlgunaMaquinaMas();
+            ObjectivesAndStats.Instance.cumplirObjetivoCompraAlgunaMaquinaMas();
         }
     }
 
-    public static void cumplirObjetivoCompraTuPrimerProducto()
+    public void cumplirObjetivoCompraTuPrimerProducto()
     {
         if (!Instance.tutorialObjectives[1].objectiveCompleted)
         {
@@ -275,7 +353,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirObjetivoAbreElAlmacen()
+    public void cumplirObjetivoAbreElAlmacen()
     {
         if (!Instance.tutorialObjectives[2].objectiveCompleted)
         {
@@ -284,7 +362,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirAccedeAVistaDeMaquina()
+    public void cumplirAccedeAVistaDeMaquina()
     {
         if (!Instance.tutorialObjectives[3].objectiveCompleted)
         {
@@ -293,7 +371,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirObjetivoColocaPrimerObjetoEnMaquina()
+    public void cumplirObjetivoColocaPrimerObjetoEnMaquina()
     {
         if (!Instance.tutorialObjectives[4].objectiveCompleted)
         {
@@ -303,7 +381,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirObjetivo30Segundos()
+    public void cumplirObjetivo30Segundos()
     {
         if (!Instance.tutorialObjectives[5].objectiveCompleted)
         {
@@ -312,7 +390,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirObjetivoRellenaMaquinaCuandoEsteVacia()
+    public void cumplirObjetivoRellenaMaquinaCuandoEsteVacia()
     {
         if (!Instance.tutorialObjectives[6].objectiveCompleted)
         {
@@ -321,7 +399,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirObjetivo2500Y()
+    public void cumplirObjetivo2500Y()
     {
         if (!Instance.tutorialObjectives[7].objectiveCompleted)
         {
@@ -330,7 +408,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirObjetivoCompraAlgunaMaquinaMas()
+    public void cumplirObjetivoCompraAlgunaMaquinaMas()
     {
         if (!Instance.objectives[0].objectiveCompleted)
         {
@@ -340,7 +418,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirObjetivo20unidProducto()
+    public void cumplirObjetivo20unidProductoCat1()
     {
         if (!Instance.objectives[1].objectiveCompleted)
         {
@@ -350,7 +428,7 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
-    public static void cumplirObjetivo15000Yenes()
+    public void cumplirObjetivo10000Yenes()
     {
         if (!Instance.objectives[2].objectiveCompleted)
         {
@@ -361,8 +439,43 @@ public class ObjectivesAndStats : MonoBehaviour
         }
     }
 
+    public void cumplirObjetivoVende20ProductosDeCategoria2()
+    {
+        if (!Instance.objectives[3].objectiveCompleted)
+        {
+            Instance.objectives[3].objectiveCompleted = true;
+            Instance.objectives[3].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Instance.CheckAllObjectivesCompleted();
+            //SceneManager.LoadScene("Credits");
+        }
+    }
+
+    public void cumplirObjetivo100000Yenes()
+    {
+        if (!Instance.objectives[4].objectiveCompleted)
+        {
+            Instance.objectives[4].objectiveCompleted = true;
+            Instance.objectives[4].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Instance.CheckAllObjectivesCompleted();
+            //SceneManager.LoadScene("Credits");
+        }
+    }
+
+    public void cumplirObjetivoPonLasMaquinasNecesarias(int busys)
+    { 
+        if (!Instance.objectives[5].objectiveCompleted && busys >= NumberOfMachinesForObjective)
+        {
+            Instance.objectives[5].objectiveCompleted = true;
+            Instance.objectives[5].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Instance.CheckAllObjectivesCompleted();
+            //SceneManager.LoadScene("Credits");
+        }
+    }
+
     public void CheckAllObjectivesCompleted()
     {
+        CheckAllObjectivesCompletedCAT1();
+        CheckAllObjectivesCompletedCAT2();
         bool allCompleted = true;
         for(int i = 0; i < Instance.objectives.Count; i++)
         {
@@ -379,14 +492,53 @@ public class ObjectivesAndStats : MonoBehaviour
             Wintext.SetActive(true);
             Losetext.SetActive(false);
             AudioManager.instance.PlayOneShot(winSound, this.transform.position);
+            hadWin = true;
             //textLoseOrWin.text = "All objectives completed, Congratulations YOU WIN";
+        }
+    }
+
+    public void CheckAllObjectivesCompletedCAT1()
+    {
+        bool allCompleted = true;
+        for (int i = 0; i < objectives.Count; i++)
+        {
+            if (!objectives[i].objectiveCompleted && objectives[i].catObjective == 1)
+                allCompleted = false;
+        }
+        if (allCompleted && !objectivesCat1Completed)
+        {
+            objectivesCat1Completed = true;
+            if (categoriaActual < 2) categoriaActual = 2;
+            //wishlist.SetCategoria(categoriaActual);
+            categoriaActualText.text = "CATEGORIA ACTUAL: CATEGORIA " + categoriaActual.ToString();
+            tienda.InstanciarObjetosTiendaDeCategoria(2);
+            upgrades.InstanciarObjetosUpgradesDeCategoria(2);
+        }
+    }
+
+    public void CheckAllObjectivesCompletedCAT2()
+    {
+        bool allCompleted = true;
+        for (int i = 0; i < objectives.Count; i++)
+        {
+            if (!objectives[i].objectiveCompleted && objectives[i].catObjective == 2)
+                allCompleted = false;
+        }
+        if (allCompleted && !objectivesCat2Completed)
+        {
+            objectivesCat2Completed = true;
+            if (categoriaActual < 3) categoriaActual = 3;
+            categoriaActualText.text = "CATEGORIA ACTUAL: CATEGORIA " + categoriaActual.ToString();
+            //wishlist.SetCategoria(categoriaActual);
+            tienda.InstanciarObjetosTiendaDeCategoria(3);
+            upgrades.InstanciarObjetosUpgradesDeCategoria(3);
         }
     }
 
     public void CheckIfLose(int daysTanscurred)
     {
         Debug.Log("Ha entrado");
-        if(daysTanscurred >= daysAfterLose)
+        if(daysTanscurred >= daysAfterLose && !hadWin)
         {
             Time.timeScale = 1;
             botonCreditos.SetActive(false);
@@ -418,12 +570,7 @@ public class ObjectivesAndStats : MonoBehaviour
     IEnumerator Esperar30sYcumplirObjetivo()
     {
         yield return new WaitForSeconds(30f);
-        ObjectivesAndStats.cumplirObjetivo30Segundos();
+        ObjectivesAndStats.Instance.cumplirObjetivo30Segundos();
     }
 
-
-    void Update()
-    {
-        
-    }
 }

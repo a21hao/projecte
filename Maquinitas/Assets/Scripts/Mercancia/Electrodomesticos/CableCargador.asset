@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: CableCargador
   m_EditorClassIdentifier: 
-  ID: 7
+  ID: 10
   categoria: 2
-  nombre: 
-  sprite: {fileID: 0}
-  tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  nombre: Cable Cargador
+  sprite: {fileID: 21300000, guid: d770c1da49bcc7c4e880392f90293008, type: 3}
+  tipo: 5
+  descripcion: Cable cargador
+  objeto3d: {fileID: 3495946665072213713, guid: 6debf322a4d5ca0468061ed4888dfc1e, type: 3}
+  precio: 170
+  precioVenta: 288
   stock: 0

@@ -71,6 +71,24 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AddMoney"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e607fcc-eb2e-4ab7-8636-8b425ebcf471"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SubstractMoney"",
+                    ""type"": ""Button"",
+                    ""id"": ""898aa50f-1c58-4604-a55e-2c388f93bd26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +289,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""EscButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2496ebd1-2770-4290-b4ad-4a8d7590f0f6"",
+                    ""path"": ""<Keyboard>/numpadPlus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddMoney"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b6dbcd6-c5ed-4437-874d-9d25385c4b6a"",
+                    ""path"": ""<Keyboard>/numpadMinus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SubstractMoney"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -284,6 +324,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_MouseClick = m_Player.FindAction("MouseClick", throwIfNotFound: true);
         m_Player_MouseScroll = m_Player.FindAction("MouseScroll", throwIfNotFound: true);
         m_Player_MoveCursor = m_Player.FindAction("MoveCursor", throwIfNotFound: true);
+        m_Player_AddMoney = m_Player.FindAction("AddMoney", throwIfNotFound: true);
+        m_Player_SubstractMoney = m_Player.FindAction("SubstractMoney", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,6 +392,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MouseClick;
     private readonly InputAction m_Player_MouseScroll;
     private readonly InputAction m_Player_MoveCursor;
+    private readonly InputAction m_Player_AddMoney;
+    private readonly InputAction m_Player_SubstractMoney;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -359,6 +403,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @MouseClick => m_Wrapper.m_Player_MouseClick;
         public InputAction @MouseScroll => m_Wrapper.m_Player_MouseScroll;
         public InputAction @MoveCursor => m_Wrapper.m_Player_MoveCursor;
+        public InputAction @AddMoney => m_Wrapper.m_Player_AddMoney;
+        public InputAction @SubstractMoney => m_Wrapper.m_Player_SubstractMoney;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -383,6 +429,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MoveCursor.started += instance.OnMoveCursor;
             @MoveCursor.performed += instance.OnMoveCursor;
             @MoveCursor.canceled += instance.OnMoveCursor;
+            @AddMoney.started += instance.OnAddMoney;
+            @AddMoney.performed += instance.OnAddMoney;
+            @AddMoney.canceled += instance.OnAddMoney;
+            @SubstractMoney.started += instance.OnSubstractMoney;
+            @SubstractMoney.performed += instance.OnSubstractMoney;
+            @SubstractMoney.canceled += instance.OnSubstractMoney;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -402,6 +454,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @MoveCursor.started -= instance.OnMoveCursor;
             @MoveCursor.performed -= instance.OnMoveCursor;
             @MoveCursor.canceled -= instance.OnMoveCursor;
+            @AddMoney.started -= instance.OnAddMoney;
+            @AddMoney.performed -= instance.OnAddMoney;
+            @AddMoney.canceled -= instance.OnAddMoney;
+            @SubstractMoney.started -= instance.OnSubstractMoney;
+            @SubstractMoney.performed -= instance.OnSubstractMoney;
+            @SubstractMoney.canceled -= instance.OnSubstractMoney;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -426,5 +484,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMouseClick(InputAction.CallbackContext context);
         void OnMouseScroll(InputAction.CallbackContext context);
         void OnMoveCursor(InputAction.CallbackContext context);
+        void OnAddMoney(InputAction.CallbackContext context);
+        void OnSubstractMoney(InputAction.CallbackContext context);
     }
 }

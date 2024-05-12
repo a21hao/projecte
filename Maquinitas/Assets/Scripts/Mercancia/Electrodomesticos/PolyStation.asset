@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: PolyStation
   m_EditorClassIdentifier: 
-  ID: 23
+  ID: 16
   categoria: 3
-  nombre: 
-  sprite: {fileID: 0}
-  tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  nombre: Polystation
+  sprite: {fileID: 21300000, guid: ec3de7feae280c942946eb413bc3af17, type: 3}
+  tipo: 5
+  descripcion: Consola polystation
+  objeto3d: {fileID: 455013334425659640, guid: e672130b7606cb74783a1a26bb667e61, type: 3}
+  precio: 800
+  precioVenta: 1600
   stock: 0

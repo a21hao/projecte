@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: Cascos
   m_EditorClassIdentifier: 
-  ID: 24
+  ID: 13
   categoria: 2
-  nombre: 
-  sprite: {fileID: 0}
-  tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  nombre: Cascos
+  sprite: {fileID: 21300000, guid: e6f678067c134be459fd352d65b345bd, type: 3}
+  tipo: 5
+  descripcion: Cascos
+  objeto3d: {fileID: 8156434111509396952, guid: 27718b53b08b0ba408163e8ffe5d88e2, type: 3}
+  precio: 200
+  precioVenta: 339
   stock: 0

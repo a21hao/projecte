@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: PelotaBasquet
   m_EditorClassIdentifier: 
-  ID: 16
+  ID: 6
   categoria: 2
-  nombre: 
-  sprite: {fileID: 0}
-  tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  nombre: Pelota de Basquet
+  sprite: {fileID: 21300000, guid: 5139c144321118945a051ffc6b4dfc92, type: 3}
+  tipo: 4
+  descripcion: pelota basquet
+  objeto3d: {fileID: 656988798312051382, guid: 4b9db8af51c69d04f89f91d8f183dc8e, type: 3}
+  precio: 100
+  precioVenta: 169
   stock: 0

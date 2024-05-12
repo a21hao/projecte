@@ -8,6 +8,8 @@ public class VendingSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject prefabVendingMachine;
+    public GameObject prefabVendingMachine2;
+    public GameObject prefabVendingMachine3;
     private GameObject vendingInstantiate;
     //private GameObject lastVendingInstantiate;
     private VendingMachineController vmc;
@@ -116,7 +118,7 @@ public class VendingSpawner : MonoBehaviour
        
     }
 
-    public void SpawnVendingMachine()
+    public void SpawnVendingMachine(int cat)
     {
         hasClicked = false;
         Vector2 mousePosition = Mouse.current.position.ReadValue();
@@ -131,7 +133,9 @@ public class VendingSpawner : MonoBehaviour
             //Vector3 positionSpawn = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z);
             Quaternion rotation = Quaternion.Euler(0, 90, 0);
             //vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, prefabVendingMachine.transform.rotation);
-            vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, rotation);
+            if(cat == 1) vendingInstantiate = Instantiate(prefabVendingMachine, hit.point, rotation);
+            if(cat == 2) vendingInstantiate = Instantiate(prefabVendingMachine2, hit.point, rotation);
+            if(cat == 3) vendingInstantiate = Instantiate(prefabVendingMachine3, hit.point, rotation);
             pvm.changeVisibilityPoints(true);
             vmc = vendingInstantiate.GetComponent<VendingMachineController>();
             machineCollider = vendingInstantiate.GetComponent<BoxCollider>();

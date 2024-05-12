@@ -19,10 +19,17 @@ public class Upgrades : MonoBehaviour
     //[SerializeField] List<ObjectBase> listaObjetosTienda;
     private List<ObjectBase> listaObjetosTienda;
     private Dictionary<int, GameObject> dicionarioUpgrades = new Dictionary<int, GameObject>();
+    private int categoriaDeInicio;
 
     private void Awake()
     {
         listaObjetosTienda = objectsOfGame.GetComponent<ObjectsList>().objectsList();
+        
+    }
+
+    private void Start()
+    {
+        categoriaDeInicio = ObjectivesAndStats.Instance.categoriaActual;
         InstanciarObjetosUpgrades();
     }
 
@@ -32,39 +39,59 @@ public class Upgrades : MonoBehaviour
 
         foreach (ObjectBase objeto in listaObjetosTienda)
         {
-            GameObject objetoUpgrade = Instantiate(prefabObjetoUpgrade, contenidoScrollView);
-            ConfigurarObjetoUpgrade(objetoUpgrade, objeto);
+            if(objeto.categoria <= categoriaDeInicio)
+            {
+                GameObject objetoUpgrade = Instantiate(prefabObjetoUpgrade, contenidoScrollView);
+                ConfigurarObjetoUpgrade(objetoUpgrade, objeto);
 
-            dicionarioUpgrades.Add(objeto.ID, objetoUpgrade);
+                dicionarioUpgrades.Add(objeto.ID, objetoUpgrade);
+            }
+            
         }
     }
 
-   /* private void ConfigurarObjetoTienda(GameObject objetoTienda, ObjectBase objeto)
+    public void InstanciarObjetosUpgradesDeCategoria(int cat)
     {
-        ObjetoTienda scriptObjetoTienda = objetoTienda.GetComponent<ObjetoTienda>();
-        scriptObjetoTienda.SetNombre(objeto.nombre);
-        //Debug.Log("Nombre enviado a ObjetoTienda: " + objeto.nombre);
 
-        scriptObjetoTienda.SetSprite(objeto.sprite);
-        //Debug.Log("Sprite enviado a ObjetoTienda: " + objeto.sprite);
+        foreach (ObjectBase objeto in listaObjetosTienda)
+        {
+            if (objeto.categoria == cat && categoriaDeInicio < cat)
+            {
+                GameObject objetoUpgrade = Instantiate(prefabObjetoUpgrade, contenidoScrollView);
+                ConfigurarObjetoUpgrade(objetoUpgrade, objeto);
 
-        scriptObjetoTienda.SetPrecio(objeto.precio.ToString());
-        //Debug.Log("Precio enviado a ObjetoTienda: " + objeto.precio);
+                dicionarioUpgrades.Add(objeto.ID, objetoUpgrade);
+            }
 
-        scriptObjetoTienda.SetDescripcion(objeto.descripcion);
-        //Debug.Log("Descripcion enviada a ObjetoTienda: " + objeto.descripcion);
+        }
+    }
 
-        scriptObjetoTienda.SetID(objeto.ID);
-        //Debug.Log("ID enviado a ObjetoTienda: " + objeto.ID);
+    /* private void ConfigurarObjetoTienda(GameObject objetoTienda, ObjectBase objeto)
+     {
+         ObjetoTienda scriptObjetoTienda = objetoTienda.GetComponent<ObjetoTienda>();
+         scriptObjetoTienda.SetNombre(objeto.nombre);
+         //Debug.Log("Nombre enviado a ObjetoTienda: " + objeto.nombre);
 
-        scriptObjetoTienda.SetTipo(objeto.tipo.ToString());
-        //Debug.Log("Tipo enviado a ObjetoTienda: " + objeto.tipo.ToString());
-        scriptObjetoTienda.SetObject3d(objeto.objeto3d);
+         scriptObjetoTienda.SetSprite(objeto.sprite);
+         //Debug.Log("Sprite enviado a ObjetoTienda: " + objeto.sprite);
 
-        scriptObjetoTienda.SetPrecioVenta(objeto.precioVenta);
+         scriptObjetoTienda.SetPrecio(objeto.precio.ToString());
+         //Debug.Log("Precio enviado a ObjetoTienda: " + objeto.precio);
 
-        scriptObjetoTienda.SetCategoria(objeto.categoria);
-    }*/
+         scriptObjetoTienda.SetDescripcion(objeto.descripcion);
+         //Debug.Log("Descripcion enviada a ObjetoTienda: " + objeto.descripcion);
+
+         scriptObjetoTienda.SetID(objeto.ID);
+         //Debug.Log("ID enviado a ObjetoTienda: " + objeto.ID);
+
+         scriptObjetoTienda.SetTipo(objeto.tipo.ToString());
+         //Debug.Log("Tipo enviado a ObjetoTienda: " + objeto.tipo.ToString());
+         scriptObjetoTienda.SetObject3d(objeto.objeto3d);
+
+         scriptObjetoTienda.SetPrecioVenta(objeto.precioVenta);
+
+         scriptObjetoTienda.SetCategoria(objeto.categoria);
+     }*/
 
     private void ConfigurarObjetoUpgrade(GameObject objetoUpgrade, ObjectBase objeto)
     {

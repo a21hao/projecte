@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: BandejaSushi
   m_EditorClassIdentifier: 
-  ID: 12
+  ID: 19
   categoria: 2
-  nombre: 
-  sprite: {fileID: 0}
-  tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  nombre: Bandeja Sushi
+  sprite: {fileID: 21300000, guid: 5bdd69fa861d48e4ba552740cc854b87, type: 3}
+  tipo: 1
+  descripcion: Caja de sushi
+  objeto3d: {fileID: 8484694819024944501, guid: 35357f981a329ec4fb7386f529e0cb6e, type: 3}
+  precio: 130
+  precioVenta: 220
   stock: 0

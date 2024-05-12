@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5341349015664504705}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.016, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -147,8 +147,10 @@ MonoBehaviour:
     Path: event:/SFX/ItemBought
   SiItem: {fileID: 1657425127468024782, guid: b519f20e3c3b4e24590aced83360583c, type: 3}
   NoItem: {fileID: 2943814611308947294, guid: cc984735e115c4a4e81dd75ac27725b5, type: 3}
-  wishListGO: {fileID: 0}
-  speed: 10
+  speed: 8
+  itemsWantToBuyCat1: 2
+  itemsWantToBuyCat2: 5
+  itemsWantToBuyCat3: 9
 --- !u!54 &3362920208801667198
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d195d7bb366ed64592365420bed3b0e, type: 3}
   m_Name: BolitasDeArroz
   m_EditorClassIdentifier: 
-  ID: 15
+  ID: 13
   categoria: 2
-  nombre: 
+  nombre: Bolitas de Arroz
   sprite: {fileID: 0}
-  tipo: 0
-  descripcion: 
-  objeto3d: {fileID: 0}
-  precio: 0
-  precioVenta: 0
+  tipo: 1
+  descripcion: Bandeja de bolitas de arroz
+  objeto3d: {fileID: 6414079420461736672, guid: de71f0c6e3b22984891ea3db134cff67, type: 3}
+  precio: 85
+  precioVenta: 144
   stock: 0

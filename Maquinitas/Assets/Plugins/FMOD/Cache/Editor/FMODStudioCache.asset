@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638493271957852772
+  lastModified: 638493307416203399
   FileSizes:
   - Name: Desktop
     Value: 762016
@@ -103,7 +103,7 @@ MonoBehaviour:
   - {fileID: 2658978296440870049}
   StringsBanks:
   - {fileID: 6490451891461055212}
-  cacheTime: 638493273094195110
+  cacheTime: 638493307417103094
   cacheVersion: 131617
 --- !u!114 &415296241881119545
 MonoBehaviour:
@@ -174,7 +174,7 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638493273092725152
+  lastModified: 638493307416391951
   FileSizes:
   - Name: Desktop
     Value: 1486
@@ -194,7 +194,7 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638493122684619638
+  lastModified: 638493307416905744
   FileSizes:
   - Name: Desktop
     Value: 2332384
@@ -214,7 +214,7 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638493273092730110
+  lastModified: 638493307416569719
   FileSizes:
   - Name: Desktop
     Value: 1192
@@ -234,7 +234,7 @@ MonoBehaviour:
   Path: ../SoundStuff/Maquinitas/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638493273094195110
+  lastModified: 638493307417103094
   FileSizes:
   - Name: Desktop
     Value: 103616

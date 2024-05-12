@@ -17,12 +17,14 @@ public class MoneyManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        
     }
 
     private void Start()
     {
         textoDinero = GameObject.Find("Canvas/Dinero/TextoDinero").GetComponent<TMP_Text>();
         StartCoroutine(_LoadInfo());
+        ActualizarTextoDinero();
     }
 
     IEnumerator _LoadInfo()

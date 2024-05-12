@@ -36,7 +36,19 @@ public class ButtonAnimation : MonoBehaviour
     {
         for (int i = 0; i < childButtons.Length; i++)
         {
-            childButtons[i].SetActive(true);
+            childButtons[i].SetActive(false);
+            if(ObjectivesAndStats.Instance.categoriaActual >= 1)
+            {
+                childButtons[2].SetActive(true);
+            }
+            if (ObjectivesAndStats.Instance.categoriaActual >= 2)
+            {
+                childButtons[1].SetActive(true);
+            }
+            if (ObjectivesAndStats.Instance.categoriaActual == 3)
+            {
+                childButtons[0].SetActive(true);
+            }
             LeanTween.scale(childButtons[i], expandedScale, expandDuration).setEaseOutBack();
         }
     }

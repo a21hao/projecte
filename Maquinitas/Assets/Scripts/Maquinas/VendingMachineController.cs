@@ -23,32 +23,37 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     private Vector3 positionCameraInPerspective;
     [SerializeField]
     private float FOVinPerspective;
+    [SerializeField]
     private MeshRenderer mshMachine;
     private Color originalColor;
     private Material matMachine;
+    [SerializeField]
     private Image imgCanvas;
     [SerializeField]
     private int MoneyToBuyMachine;
+    [SerializeField]
     private TextMeshProUGUI textMoneyMachine;
     private Color originalColorText;
     private Animator canvasTextAnimator;
+    [SerializeField]
     private GameObject canvasText;
 
     void Awake()
     {
-        Transform cube = gameObject.transform.Find("Máquina_Low_Poly/Cube");
-        mshMachine = cube.gameObject.GetComponent<MeshRenderer>();
-        matMachine = mshMachine.materials[1];
+        //Transform cube = gameObject.transform.Find("MaquinaExpendedora/Maquina/MaquinaObject");
+        //Debug.Log(cube);
+        //mshMachine = cube.gameObject.GetComponent<MeshRenderer>();
+        matMachine = mshMachine.materials[0];
         originalColor = matMachine.color;
-        Transform img = gameObject.transform.Find("Canvas/Image");
-        imgCanvas = img.gameObject.GetComponent<Image>();
-        Transform textMoneyMachinetr = gameObject.transform.Find("Canvastext/TextMoneyMachine");
-        textMoneyMachine = textMoneyMachinetr.gameObject.GetComponent<TextMeshProUGUI>();
+        //Transform img = gameObject.transform.Find("Canvas/Image");
+        //imgCanvas = img.gameObject.GetComponent<Image>();
+        //Transform textMoneyMachinetr = gameObject.transform.Find("Canvastext/TextMoneyMachine");
+        //textMoneyMachine = textMoneyMachinetr.gameObject.GetComponent<TextMeshProUGUI>();
         textMoneyMachine.text = MoneyToBuyMachine.ToString() + "¥";
         originalColorText = textMoneyMachine.color;
         textMoneyMachine.color = new Color(215f / 255f, 76f / 255f, 76f / 255f, 0.8f);
-        Transform canvasTexttr = gameObject.transform.Find("Canvastext");
-        canvasText = gameObject.transform.Find("Canvastext").gameObject;
+        //Transform canvasTexttr = gameObject.transform.Find("Canvastext");
+        //canvasText = gameObject.transform.Find("Canvastext").gameObject;
         //canvasTextAnimator = canvasTexttr.gameObject.GetComponent<Animator>();
         //canvasTextAnimator.enabled = false;
     }
@@ -77,7 +82,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         if(canChangeToCamera)
         {
             cameraVendingMachine.Priority = 12;
-            ObjectivesAndStats.cumplirAccedeAVistaDeMaquina();
+            ObjectivesAndStats.Instance.cumplirAccedeAVistaDeMaquina();
             StartCoroutine(ChangeToPerspectiveinTwoSeconds());
         }
     }

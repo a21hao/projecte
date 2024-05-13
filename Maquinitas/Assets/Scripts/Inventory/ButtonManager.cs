@@ -70,13 +70,14 @@ public class ButtonManager : MonoBehaviour
     {
         //StartCoroutine(ToggleGameObject(almacen, almacenAnimator));
         almacenAnimator.SetTrigger("Abrir");
-        ObjectivesAndStats.cumplirObjetivoAbreElAlmacen();
+        ObjectivesAndStats.Instance.cumplirObjetivoAbreElAlmacen();
         if (!almacen.activeSelf) almacen.SetActive(true);
     }
 
     public void ToggleMapa()
     {
         //StartCoroutine(ToggleGameObject(mapa, mapaAnimator));
+        //mapaAnimator.SetTrigger("Abrir");
         if (!mapa.activeSelf) mapa.SetActive(true);
     }
 
@@ -128,6 +129,7 @@ public class ButtonManager : MonoBehaviour
     public void ToggleAll()
     {
         ToggleAmazing();
+        ToggleMapa();
         ToggleAlmacen();
         ToggleTablet();
         TogglePerfil();

@@ -8,9 +8,9 @@ using System.Collections;
 
 public class MoneyManager : MonoBehaviour
 {
+    public int dineroTotal = 1500;
     public UnityEvent<int> NuevoDinero;
     public static MoneyManager instance;
-    public int dineroTotal = 1500;
     [SerializeField] private static TMP_Text textoDinero;
 
     private void Awake()
@@ -43,10 +43,11 @@ public class MoneyManager : MonoBehaviour
 
     public void IncrementarDinero(int cantidad)
     {
-        DineroTotal += cantidad;
-        if (DineroTotal >= 2500) ObjectivesAndStats.cumplirObjetivo2500Y();
-        if (DineroTotal >= 15000) ObjectivesAndStats.cumplirObjetivo15000Yenes();
-        NuevoDinero.Invoke(DineroTotal);
+        dineroTotal += cantidad;
+        if (dineroTotal >= 2500) ObjectivesAndStats.Instance.cumplirObjetivo2500Y();
+        if (dineroTotal >= 10000) ObjectivesAndStats.Instance.cumplirObjetivo10000Yenes();
+        if (dineroTotal >= 100000) ObjectivesAndStats.Instance.cumplirObjetivo100000Yenes();
+        NuevoDinero.Invoke(dineroTotal);
         ActualizarTextoDinero();
     }
 
@@ -58,8 +59,8 @@ public class MoneyManager : MonoBehaviour
         ActualizarTextoDinero();
     }
 
-    private void ActualizarTextoDinero()
+    public void ActualizarTextoDinero()
     {
-        textoDinero.text = DineroTotal.ToString() + "¥";
+        textoDinero.text = DineroTotal.ToString() + "ï¿½";
     }
 }

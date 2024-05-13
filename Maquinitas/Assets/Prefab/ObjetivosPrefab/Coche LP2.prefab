@@ -193,6 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5003003654191088995}
+  - component: {fileID: 2687136178101228719}
   m_Layer: 0
   m_Name: Coche LP2
   m_TagString: Untagged
@@ -218,6 +219,19 @@ Transform:
   - {fileID: 5586969687294660800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2687136178101228719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911206499759973715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6304c6d08b19d34a8aa8f0e8e62dd31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
 --- !u!1 &8819018881284826325
 GameObject:
   m_ObjectHideFlags: 0

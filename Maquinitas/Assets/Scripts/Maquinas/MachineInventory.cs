@@ -7,10 +7,17 @@ using UnityEngine;
 public class MachineInventory : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int maxSlots = 15;
+    
+    [SerializeField]
     private Transform slotsparent;
+    [SerializeField]
+    private int maxSlots = 15;
+    [SerializeField]
+    private int maxQuantityOfSlot = 4;
     private bool firtItemInserted = false;
     private ObjectsList objects;
+    [SerializeField]
+    private int maxItemsToPut;
     //private ObjectivesAndStats objAndStats;
     
     public class Slot
@@ -28,11 +35,12 @@ public class MachineInventory : MonoBehaviour
         //objAndStats = GameObject.Find("Canvas/Men�/Phone/Perfil").gameObject.GetComponent<ObjectivesAndStats>();
         //Debug.Log("Objs and stats " + objAndStats != null);
         objects = GameObject.Find("ObjectList").GetComponent<ObjectsList>();
-        slotsparent = transform.Find("Slots");
+        //slotsparent = transform.Find("Slots");
         slots = new Slot[maxSlots];
         for (int i = 0; i < slots.Length; i++)
         {
             Slot slot = new Slot();
+            slot.maxQuantity = maxQuantityOfSlot;
             slot.slotparent = slotsparent.GetChild(i);
             slot.itemsObjects = new GameObject[4];
             slots[i] = slot;
@@ -43,19 +51,29 @@ public class MachineInventory : MonoBehaviour
 
     public void PutItem(Item itemm)
     {
+        Debug.Log("Ha entrado maquina");
+        int quantityOfitemmInitial = itemm.GetCantidad();
+        int quantityOfitemm = itemm.GetCantidad();
+        if(quantityOfitemmInitial > maxItemsToPut)
+        {            
+            itemm.SetCantidad(maxItemsToPut);
+            quantityOfitemm = maxItemsToPut;
+        }
+        
         if (firtItemInserted)
         {
             if (CheckIfMachineIsEmty())
             {
-                ObjectivesAndStats.cumplirObjetivoRellenaMaquinaCuandoEsteVacia();
+                ObjectivesAndStats.Instance.cumplirObjetivoRellenaMaquinaCuandoEsteVacia();
             }
         }
-        int quantityOfitemm = itemm.GetCantidad();
-        quantityOfitemm -= HasSlotOfThatItem(itemm);
+        int quantityToRest = HasSlotOfThatItem(itemm);
+        quantityOfitemmInitial -= quantityToRest;
+        quantityOfitemm -= quantityToRest;
         itemm.SetCantidad(quantityOfitemm);
-        quantityOfitemm -= putItemsWithoutOthers(itemm);
-        itemm.SetCantidad(quantityOfitemm);
-        ObjectivesAndStats.cumplirObjetivoColocaPrimerObjetoEnMaquina();
+        quantityOfitemmInitial -= putItemsWithoutOthers(itemm);
+        itemm.SetCantidad(quantityOfitemmInitial);
+        ObjectivesAndStats.Instance.cumplirObjetivoColocaPrimerObjetoEnMaquina();
         firtItemInserted = true;
         
     }
@@ -167,7 +185,7 @@ public class MachineInventory : MonoBehaviour
                         itemsSold += cantidad;
                         slots[i].quantity -= cantidad;
                         MoneyManager.instance.IncrementarDinero(cantidad * objects.VendingPriceOfObjectbyId(slots[i].item.GetID())/*slots[i].item.precioVenta*/);
-                        ObjectivesAndStats.updateStat(slots[i].item.GetID(), cantidad);
+                        ObjectivesAndStats.Instance.updateStat(slots[i].item.GetID(), cantidad);
                        // objAndStats.updateStat(slots[i].item.GetID(), cantidad);
                         //SoldItem.Invoke(slots[i].item.GetID(), cantidad);
                         cantidad = 0;
@@ -183,7 +201,7 @@ public class MachineInventory : MonoBehaviour
                         itemsSold += slots[i].quantity;
                         cantidad -= slots[i].quantity;
                         MoneyManager.instance.IncrementarDinero(slots[i].quantity * objects.VendingPriceOfObjectbyId(slots[i].item.GetID()));
-                        ObjectivesAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
+                        ObjectivesAndStats.Instance.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //objAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //SoldItem.Invoke(slots[i].item.GetID(), slots[i].quantity);
                         slots[i].quantity = 0;                        

@@ -87,24 +87,32 @@ public class VentanaCompra : MonoBehaviour
         {
             float precio = float.Parse(objetoTienda.precioObjeto);
             int precioTotal = Mathf.RoundToInt(cantidad * precio);
-            if(cantidad > 0) ObjectivesAndStats.cumplirObjetivoCompraTuPrimerProducto();
+            if(cantidad > 0) ObjectivesAndStats.Instance.cumplirObjetivoCompraTuPrimerProducto();
             MoneyManager.instance.DecrementarDinero(precioTotal);
         }
-
-        GameObject emptySlot = inventario.GetSlotVacio();
-        if (emptySlot != null)
+        Item itemReturned = inventario.GetItemOfSlotByIdItem(objetoTienda.id);
+        if(itemReturned != null)
         {
-            GameObject nuevoObjeto = Instantiate(prefabObjetoInventario);
-            Item itemComponent = nuevoObjeto.GetComponent<Item>();
-            itemComponent.SetInformacion(objetoTienda.nombreText, objetoTienda.spriteImage, objetoTienda.precioObjeto, objetoTienda.descripcionObjeto, objetoTienda.id, objetoTienda.tipo, cantidad, objetoTienda.objeto3d, objetoTienda.precioVenta);
-            nuevoObjeto.transform.SetParent(emptySlot.transform);
-            nuevoObjeto.transform.localScale = Vector3.one;
-            nuevoObjeto.transform.localPosition = Vector3.zero;
+            itemReturned.SetCantidad(itemReturned.GetCantidad() + cantidad);
         }
-        else
-        {
-            Debug.Log("Inventario lleno");
+        else {
+            GameObject emptySlot = inventario.GetSlotVacio();
+            if (emptySlot != null)
+            {
+                GameObject nuevoObjeto = Instantiate(prefabObjetoInventario);
+                Item itemComponent = nuevoObjeto.GetComponent<Item>();
+                itemComponent.SetInformacion(objetoTienda.nombreText, objetoTienda.spriteImage, objetoTienda.precioObjeto, objetoTienda.descripcionObjeto, objetoTienda.id, objetoTienda.tipo, cantidad, objetoTienda.objeto3d, objetoTienda.precioVenta);
+                nuevoObjeto.transform.SetParent(emptySlot.transform);
+                nuevoObjeto.transform.localScale = Vector3.one;
+                nuevoObjeto.transform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                Debug.Log("Inventario lleno");
+            }
         }
+        
+        
         Cancelar();
     }
 

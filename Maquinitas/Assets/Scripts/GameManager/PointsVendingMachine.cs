@@ -14,6 +14,7 @@ public class PointsVendingMachine : MonoBehaviour
     private float DistanceToObject;
     [SerializeField]
     private GameObject prefabCanvasAdvisor;
+    private int NumberOfPointsVendingBusy = 0;
 
     public class PointVending
     {
@@ -107,6 +108,11 @@ public class PointsVendingMachine : MonoBehaviour
         if(index != -1)
         {
             pointsVendingMachine[index].isBusy = isBusy;
+            if(isBusy)
+            {
+                NumberOfPointsVendingBusy += 1;
+            }
+            ObjectivesAndStats.Instance.cumplirObjetivoPonLasMaquinasNecesarias(NumberOfPointsVendingBusy);
         }
         
         

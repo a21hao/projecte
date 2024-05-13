@@ -73,6 +73,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\EventosMapa\FinalDayManager.cs" />
     <Compile Include="Assets\Scripts\PantallaMenu\ScreenOption.cs" />
+    <Compile Include="Assets\Scripts\Mapa\MapButtonRaycast.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventario.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />

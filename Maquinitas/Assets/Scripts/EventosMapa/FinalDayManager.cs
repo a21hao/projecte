@@ -15,6 +15,7 @@ public class FinalDayManager : MonoBehaviour
     [SerializeField] private GameObject winImage;
     [SerializeField] private GameObject loseImage;
     [SerializeField] private GameObject soldItems;
+    [SerializeField] private Clock clock;
     //[SerializeField] private int moneyToWin;
     private TextMeshProUGUI ernaedThisDay;
     private TextMeshProUGUI moneyThisday;
@@ -23,6 +24,7 @@ public class FinalDayManager : MonoBehaviour
     private TextMeshProUGUI winCondition;
     private int itemSoldInitialday;
     private int daysTranscurred;
+
     void Start()
     {
         dineroInicioDia = MoneyManager.instance.DineroTotal;
@@ -71,5 +73,6 @@ public class FinalDayManager : MonoBehaviour
     public void DisactiveFinalDay()
     {
         FinDiaCanv.SetActive(false);
+        clock.Play();
     }
 }

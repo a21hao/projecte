@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8f7c605a7015a4b99de326133250a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continueBoton: {fileID: 0}
+  saveFile: 
+  save: {fileID: 0}
 --- !u!1 &1317937979275688913
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +91,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a17dba4abb61214e80c011426e0838a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dineroTotal: 1500
+  NuevoDinero:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2243803481638888360
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +185,13 @@ MonoBehaviour:
       Data3: 1373702540
       Data4: -2096314094
     Path: event:/Music/Music
+  <ambience>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &4880060930023562739
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8df5bd2eaaf91647992860febfa6064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionalLight: {fileID: 0}
 --- !u!1 &5314465630670829246
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,9 +303,21 @@ MonoBehaviour:
   - {fileID: 0}
   MonthAndYear: {fileID: 0}
   currentDateText: {fileID: 0}
+  eventNameText: {fileID: 0}
+  defaultImage: {fileID: 0}
+  sprite1: {fileID: 21300000, guid: 781e3f679c926144c8d086d3e2fc4bf3, type: 3}
+  sprite2: {fileID: 21300000, guid: 9d7490bf56bc21948a11f411a6b3b708, type: 3}
+  rainingFX: {fileID: 0}
+  snowingFX: {fileID: 0}
+  currentYear: 1
+  currentSeasonIndex: 0
+  currentDayIndex: 0
   botonNext: {fileID: 0}
   botonPrevius: {fileID: 0}
   close: {fileID: 0}
+  rainingImage: {fileID: 0}
+  snowingImage: {fileID: 0}
+  sunImage: {fileID: 0}
 --- !u!1 &6357531667884017952
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +366,7 @@ MonoBehaviour:
   masterVolume: 1
   musicVolume: 1
   SFXVolume: 1
+  ambienceVolume: 1
 --- !u!1 &6835390067657947989
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +419,9 @@ MonoBehaviour:
   upgrades: {fileID: 0}
   tablet: {fileID: 0}
   calendar: {fileID: 0}
+  ajustesAnimator: {fileID: 0}
+  calendarAnimator: {fileID: 0}
+  cameraMap: {fileID: 0}
 --- !u!1 &6866803651585186323
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,4 +653,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabVendingMachine: {fileID: 2291900163162743457, guid: 529944d5d7cd8c14f81f4f3253159e0d, type: 3}
+  prefabVendingMachine2: {fileID: 0}
+  prefabVendingMachine3: {fileID: 0}
   pointsOfVendingMachineFather: {fileID: 0}

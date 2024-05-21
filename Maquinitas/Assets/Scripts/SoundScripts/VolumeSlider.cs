@@ -33,7 +33,7 @@ public class VolumeSlider : MonoBehaviour
 
 	private void Update()
     {
-        switch (volumeType)
+        /*switch (volumeType)
         {
             case VolumeType.MASTER:
                 volumeSlider.value = AudioManager.instance.masterVolume;
@@ -50,7 +50,7 @@ public class VolumeSlider : MonoBehaviour
 			default:
                 Debug.LogWarning("???????como???????");
             break;
-        }
+        }*/
     }
 
     public void OnSliderValueChange()

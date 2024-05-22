@@ -60,7 +60,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         cameraVendingMachine = gameObject.transform.GetComponentInChildren<CinemachineVirtualCamera>();
-        ortograficaCamera = CameraMapMoving.mapVirtualCamera;
+        //ortograficaCamera = CameraMapMoving.mapVirtualCamera;
         objetoCameraVendingMachine = transform.GetChild(0).gameObject;
         initialLocalPositionCameraVending = objetoCameraVendingMachine.transform.localPosition;
         
@@ -87,7 +87,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private IEnumerator TransicionSuave()
+    /*private IEnumerator TransicionSuave()
     {
         float tiempoPasado = 0f;
         while (tiempoPasado < duracionTransicion)
@@ -100,7 +100,7 @@ public class VendingMachineController : MonoBehaviour, IPointerClickHandler
             tiempoPasado += Time.deltaTime;
             yield return null;
         }
-    }
+    }*/
 
     private IEnumerator ChangeTypeOfCamerain2Seconds()
     {

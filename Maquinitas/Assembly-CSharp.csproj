@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\GameManager\VendingSpawner.cs" />
     <Compile Include="Assets\Scripts\PantallaMenu\OpcionsButtons.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
+    <Compile Include="Assets\Scripts\Props\FarolasController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier2d.cs" />
     <Compile Include="Assets\Scripts\SoundScripts\PlayerSettings.cs" />

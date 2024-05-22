@@ -59,6 +59,7 @@ public class CameraMapMoving : MonoBehaviour
     private void Awake()
     {
         mapVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        Debug.Log(mapVirtualCamera);
         canUseCameraMap = true;
         pointRightUp = pointRightUpVillage;
         pointLeftDown = pointLeftDownVillage;
@@ -169,6 +170,7 @@ public class CameraMapMoving : MonoBehaviour
         transform.position = pointVillage.transform.position;
         pointRightUp = pointRightUpVillage;
         pointLeftDown = pointLeftDownVillage;
+        Debug.Log(mapVirtualCamera);
         mapVirtualCamera.m_Lens.OrthographicSize = 18;//orthoSizeVillage;
         Debug.Log(mapVirtualCamera.m_Lens.OrthographicSize);
         cb.ManualUpdate();
@@ -179,6 +181,7 @@ public class CameraMapMoving : MonoBehaviour
         transform.position = pointCity.transform.position;
         pointRightUp = pointRightUpCity;
         pointLeftDown = pointLeftDownCity;
+        Debug.Log(mapVirtualCamera);
         mapVirtualCamera.m_Lens.OrthographicSize = 50;
         Debug.Log(mapVirtualCamera.m_Lens.OrthographicSize);
         cb.ManualUpdate();

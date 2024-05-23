@@ -365,6 +365,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 341137127401483608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &862291112921253443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2301640898819890829}
+  m_Layer: 0
+  m_Name: puntoSpawnVentas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2301640898819890829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862291112921253443}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06, y: 2.993, z: -0.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8003338250478720633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &880613280274022318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,6 +1225,7 @@ Transform:
   - {fileID: 3293963680290539496}
   - {fileID: 1934479910097871159}
   - {fileID: 2190323993495019215}
+  - {fileID: 2301640898819890829}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5876881757143481576
@@ -1254,6 +1286,9 @@ MonoBehaviour:
   maxSlots: 15
   maxQuantityOfSlot: 8
   maxItemsToPut: 8
+  prefabVenta: {fileID: 1573717749732753475, guid: d683d8926b6f4764187694693b9969cb, type: 3}
+  puntoDeSpawnVenta: {fileID: 2301640898819890829}
+  timeSpawner: 0.5
 --- !u!114 &1281024818798116872
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,14 @@ public class MachineInventory : MonoBehaviour
     private ObjectsList objects;
     [SerializeField]
     private int maxItemsToPut;
+    [SerializeField]
+    private GameObject prefabVenta;
+    [SerializeField]
+    private Transform puntoDeSpawnVenta;
+    private List<GameObject> listaDeVentas;
+    [SerializeField]
+    private float timeSpawner;
+    private float counterTime = 0;
     //private ObjectivesAndStats objAndStats;
     
     public class Slot
@@ -34,6 +42,7 @@ public class MachineInventory : MonoBehaviour
     {
         //objAndStats = GameObject.Find("Canvas/Men�/Phone/Perfil").gameObject.GetComponent<ObjectivesAndStats>();
         //Debug.Log("Objs and stats " + objAndStats != null);
+        listaDeVentas = new List<GameObject>();
         objects = GameObject.Find("ObjectList").GetComponent<ObjectsList>();
         //slotsparent = transform.Find("Slots");
         slots = new Slot[maxSlots];
@@ -176,6 +185,9 @@ public class MachineInventory : MonoBehaviour
                 Debug.Log(slots[i].item.GetID());
                 if(slots[i].item.GetID() == ID && cantidad > 0 && slots[i].quantity > 0)
                 {
+                    GameObject prefVenta = Instantiate(prefabVenta, puntoDeSpawnVenta.position, Quaternion.identity);
+                    int cantidadVenta = 0;
+                    int precioVenta = 0;
                     if (slots[i].quantity > cantidad)
                     {
                         for(int j = slots[i].quantity - 1; j > slots[i].quantity - 1 - cantidad; j--)
@@ -185,6 +197,8 @@ public class MachineInventory : MonoBehaviour
                         itemsSold += cantidad;
                         slots[i].quantity -= cantidad;
                         MoneyManager.instance.IncrementarDinero(cantidad * objects.VendingPriceOfObjectbyId(slots[i].item.GetID())/*slots[i].item.precioVenta*/);
+                        cantidadVenta += cantidad;
+                        precioVenta += cantidad * objects.VendingPriceOfObjectbyId(slots[i].item.GetID());
                         ObjectivesAndStats.Instance.updateStat(slots[i].item.GetID(), cantidad);
                        // objAndStats.updateStat(slots[i].item.GetID(), cantidad);
                         //SoldItem.Invoke(slots[i].item.GetID(), cantidad);
@@ -201,12 +215,19 @@ public class MachineInventory : MonoBehaviour
                         itemsSold += slots[i].quantity;
                         cantidad -= slots[i].quantity;
                         MoneyManager.instance.IncrementarDinero(slots[i].quantity * objects.VendingPriceOfObjectbyId(slots[i].item.GetID()));
+                        cantidadVenta += slots[i].quantity;
+                        precioVenta += slots[i].quantity * objects.VendingPriceOfObjectbyId(slots[i].item.GetID());
                         ObjectivesAndStats.Instance.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //objAndStats.updateStat(slots[i].item.GetID(), slots[i].quantity);
                         //SoldItem.Invoke(slots[i].item.GetID(), slots[i].quantity);
                         slots[i].quantity = 0;                        
                         slots[i].item = null;
                     }
+                    prefabVenta.GetComponent<VentasPrefab>().SetTextVenta("+" + precioVenta + "¥");
+                    prefabVenta.GetComponent<VentasPrefab>().SetImageVenta(slots[i].item.spriteImage.sprite);
+                    prefabVenta.GetComponent<VentasPrefab>().SetCantidadVenta(cantidadVenta);
+                    prefabVenta.SetActive(false);
+                    listaDeVentas.Add(prefVenta);
                 } 
                 
             }
@@ -228,7 +249,25 @@ public class MachineInventory : MonoBehaviour
         }
         return isEmpty;
     }
+
+    private void Update()
+    {
+
+        if(listaDeVentas.Count > 0)
+        {
+            counterTime += Time.deltaTime;
+            if(counterTime >= timeSpawner)
+            {
+                listaDeVentas[0].SetActive(true);
+                listaDeVentas.RemoveAt(0);
+                counterTime = 0;
+            }
+        }
         
-       
-    
- }
+    }
+
+
+
+
+
+}

@@ -36,7 +36,6 @@ public class Clock : MonoBehaviour
     void Update()
     {
         tiempoDelJuego += Time.deltaTime * escalaDeTiempo;
-        Debug.Log(tiempoDelJuego);
         if (tiempoDelJuego > tiempoDeUnDiaSegundos)
         {
             tiempoDelJuego = 0f;

@@ -36,15 +36,30 @@ public class ButtonAnimation : MonoBehaviour
     {
         for (int i = 0; i < childButtons.Length; i++)
         {
-            childButtons[i].SetActive(true);
-            LeanTween.scale(childButtons[i], expandedScale, expandDuration).setEaseOutBack();
+            childButtons[i].SetActive(false);
+            if(ObjectivesAndStats.Instance.categoriaActual >= 1)
+            {
+                childButtons[0].SetActive(true);
+                LeanTween.scale(childButtons[0], expandedScale, expandDuration).setEaseOutBack();
+            }
+            if (ObjectivesAndStats.Instance.categoriaActual >= 2)
+            {
+                childButtons[1].SetActive(true);
+                LeanTween.scale(childButtons[1], expandedScale, expandDuration).setEaseOutBack();
+            }
+            if (ObjectivesAndStats.Instance.categoriaActual >= 3)
+            {
+                childButtons[2].SetActive(true);
+                LeanTween.scale(childButtons[2], expandedScale, expandDuration).setEaseOutBack();
+            }
+
         }
     }
 
     private void CollapseButtons()
     {
         for (int i = 0; i < childButtons.Length; i++)
-        {
+        {          
             LeanTween.scale(childButtons[i], originalScales[i], expandDuration).setEaseInBack();
         }
     }

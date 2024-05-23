@@ -183,6 +183,8 @@ public class CameraMapMoving : MonoBehaviour
         pointLeftDown = pointLeftDownCity;
         Debug.Log(mapVirtualCamera);
         mapVirtualCamera.m_Lens.OrthographicSize = 50;
+        /*LensSettings newSettings = new LensSettings()
+        newSettings.OrthographicSize = 50;*/
         Debug.Log(mapVirtualCamera.m_Lens.OrthographicSize);
         cb.ManualUpdate();
     }

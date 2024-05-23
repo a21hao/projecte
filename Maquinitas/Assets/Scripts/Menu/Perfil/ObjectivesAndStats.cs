@@ -98,6 +98,7 @@ public class ObjectivesAndStats : MonoBehaviour
     public class Stat
     {
         public int idItem;
+        public int category;
         public int numberOfUnitsSold = 0;
         public Sprite spriteObject;
         public string name;
@@ -208,6 +209,7 @@ public class ObjectivesAndStats : MonoBehaviour
             stat.name = objectsListt[i].nombre;
             stat.spriteObject = objectsListt[i].sprite;
             stat.numberOfUnitsSold = 0;
+            stat.category = objectsListt[i].categoria;
             stats.Add(stat);
         }
 
@@ -326,6 +328,38 @@ public class ObjectivesAndStats : MonoBehaviour
         }
         if (statsMoreThan20unitsCat2) ObjectivesAndStats.Instance.cumplirObjetivoVende20ProductosDeCategoria2();
     }
+
+    public void updateStatCategory(int cat, int cantidad)
+    {
+        for(int i = 0; i < Instance.stats.Count; i++)
+        {
+            if (stats[i].category == cat)
+            {
+                stats[i].numberOfUnitsSold += cantidad;
+                stats[i].textNumberSold.text = stats[i].textNumberSold.text = Instance.stats[i].numberOfUnitsSold.ToString();
+            }
+        }
+        bool statsMoreThan20unitsCat1 = true;
+        for (int i = 0; i < Instance.stats.Count; i++)
+        {
+            if (Instance.stats[i].numberOfUnitsSold < 20 && stats[i].category == 1)
+            {
+                statsMoreThan20unitsCat1 = false;
+            }
+        }
+        if (statsMoreThan20unitsCat1) ObjectivesAndStats.Instance.cumplirObjetivo20unidProductoCat1();
+        bool statsMoreThan20unitsCat2 = true;
+        for (int i = 0; i < Instance.stats.Count; i++)
+        {
+            if (Instance.stats[i].numberOfUnitsSold < 20 && stats[i].category == 2)
+            {
+                statsMoreThan20unitsCat2 = false;
+            }
+        }
+        if (statsMoreThan20unitsCat2) ObjectivesAndStats.Instance.cumplirObjetivoVende20ProductosDeCategoria2();
+    }
+
+
 
     
 

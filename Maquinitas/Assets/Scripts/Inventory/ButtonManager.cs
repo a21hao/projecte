@@ -77,9 +77,9 @@ public class ButtonManager : MonoBehaviour
     public void ToggleMapa()
     {
         //StartCoroutine(ToggleGameObject(mapa, mapaAnimator));
-        //mapaAnimator.SetTrigger("Abrir");
+        mapaAnimator.SetTrigger("Abrir");
         if (!mapa.activeSelf) mapa.SetActive(true);
-        else mapa.SetActive(false);
+        //else mapa.SetActive(false);
     }
 
     public void TogglePerfil()

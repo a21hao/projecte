@@ -89,6 +89,33 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AddStatsCat1"",
+                    ""type"": ""Button"",
+                    ""id"": ""ade773ed-a1d5-4a09-b128-9659919a1821"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AddStatsCat2"",
+                    ""type"": ""Button"",
+                    ""id"": ""12d01490-0942-4323-bbcb-d6ff21e63ad3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AddStatsCat3"",
+                    ""type"": ""Button"",
+                    ""id"": ""231737f8-92a6-4946-ac09-025a4b41574d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -311,6 +338,39 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""SubstractMoney"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f32b360f-3de1-4fb8-9266-3e2c0d12a244"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddStatsCat1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cec3711-f6dc-4056-b1b8-8cfdff4b9400"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddStatsCat2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a927f513-a970-49a8-bc5e-774fae6ba154"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddStatsCat3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -326,6 +386,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_MoveCursor = m_Player.FindAction("MoveCursor", throwIfNotFound: true);
         m_Player_AddMoney = m_Player.FindAction("AddMoney", throwIfNotFound: true);
         m_Player_SubstractMoney = m_Player.FindAction("SubstractMoney", throwIfNotFound: true);
+        m_Player_AddStatsCat1 = m_Player.FindAction("AddStatsCat1", throwIfNotFound: true);
+        m_Player_AddStatsCat2 = m_Player.FindAction("AddStatsCat2", throwIfNotFound: true);
+        m_Player_AddStatsCat3 = m_Player.FindAction("AddStatsCat3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -394,6 +457,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MoveCursor;
     private readonly InputAction m_Player_AddMoney;
     private readonly InputAction m_Player_SubstractMoney;
+    private readonly InputAction m_Player_AddStatsCat1;
+    private readonly InputAction m_Player_AddStatsCat2;
+    private readonly InputAction m_Player_AddStatsCat3;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -405,6 +471,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @MoveCursor => m_Wrapper.m_Player_MoveCursor;
         public InputAction @AddMoney => m_Wrapper.m_Player_AddMoney;
         public InputAction @SubstractMoney => m_Wrapper.m_Player_SubstractMoney;
+        public InputAction @AddStatsCat1 => m_Wrapper.m_Player_AddStatsCat1;
+        public InputAction @AddStatsCat2 => m_Wrapper.m_Player_AddStatsCat2;
+        public InputAction @AddStatsCat3 => m_Wrapper.m_Player_AddStatsCat3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -435,6 +504,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SubstractMoney.started += instance.OnSubstractMoney;
             @SubstractMoney.performed += instance.OnSubstractMoney;
             @SubstractMoney.canceled += instance.OnSubstractMoney;
+            @AddStatsCat1.started += instance.OnAddStatsCat1;
+            @AddStatsCat1.performed += instance.OnAddStatsCat1;
+            @AddStatsCat1.canceled += instance.OnAddStatsCat1;
+            @AddStatsCat2.started += instance.OnAddStatsCat2;
+            @AddStatsCat2.performed += instance.OnAddStatsCat2;
+            @AddStatsCat2.canceled += instance.OnAddStatsCat2;
+            @AddStatsCat3.started += instance.OnAddStatsCat3;
+            @AddStatsCat3.performed += instance.OnAddStatsCat3;
+            @AddStatsCat3.canceled += instance.OnAddStatsCat3;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -460,6 +538,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SubstractMoney.started -= instance.OnSubstractMoney;
             @SubstractMoney.performed -= instance.OnSubstractMoney;
             @SubstractMoney.canceled -= instance.OnSubstractMoney;
+            @AddStatsCat1.started -= instance.OnAddStatsCat1;
+            @AddStatsCat1.performed -= instance.OnAddStatsCat1;
+            @AddStatsCat1.canceled -= instance.OnAddStatsCat1;
+            @AddStatsCat2.started -= instance.OnAddStatsCat2;
+            @AddStatsCat2.performed -= instance.OnAddStatsCat2;
+            @AddStatsCat2.canceled -= instance.OnAddStatsCat2;
+            @AddStatsCat3.started -= instance.OnAddStatsCat3;
+            @AddStatsCat3.performed -= instance.OnAddStatsCat3;
+            @AddStatsCat3.canceled -= instance.OnAddStatsCat3;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -486,5 +573,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMoveCursor(InputAction.CallbackContext context);
         void OnAddMoney(InputAction.CallbackContext context);
         void OnSubstractMoney(InputAction.CallbackContext context);
+        void OnAddStatsCat1(InputAction.CallbackContext context);
+        void OnAddStatsCat2(InputAction.CallbackContext context);
+        void OnAddStatsCat3(InputAction.CallbackContext context);
     }
 }

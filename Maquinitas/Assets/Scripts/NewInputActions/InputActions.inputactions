@@ -67,6 +67,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AddStatsCat1",
+                    "type": "Button",
+                    "id": "ade773ed-a1d5-4a09-b128-9659919a1821",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AddStatsCat2",
+                    "type": "Button",
+                    "id": "12d01490-0942-4323-bbcb-d6ff21e63ad3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AddStatsCat3",
+                    "type": "Button",
+                    "id": "231737f8-92a6-4946-ac09-025a4b41574d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -287,6 +314,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "SubstractMoney",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f32b360f-3de1-4fb8-9266-3e2c0d12a244",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddStatsCat1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6cec3711-f6dc-4056-b1b8-8cfdff4b9400",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddStatsCat2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a927f513-a970-49a8-bc5e-774fae6ba154",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddStatsCat3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

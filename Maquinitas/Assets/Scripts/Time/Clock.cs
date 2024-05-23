@@ -18,23 +18,47 @@ public class Clock : MonoBehaviour
     private float escalaDeTiempoAlPausar, escalaDelTiempoInicial;
     private bool estaPausado = false;
     private FinalDayManager fnd;
-
+    private bool farolasEncendidas;
+    [SerializeField]
+    private float inicioSolEnSegundos = 60f;
+    [SerializeField]
+    private float inicioNocheEnSegundos = 690f;
+    [SerializeField]
+    private FarolasController farolas;
     void Start()
     {
         escalaDelTiempoInicial = escalaDeTiempo;
         tiempoAMostrarEnMinutos = tiempoInicial;
         fnd = GameObject.Find("GameManager/FinalDayManager").gameObject.GetComponent<FinalDayManager>();
+        farolasEncendidas = false;
     }
 
     void Update()
     {
         tiempoDelJuego += Time.deltaTime * escalaDeTiempo;
+        Debug.Log(tiempoDelJuego);
         if (tiempoDelJuego > tiempoDeUnDiaSegundos)
         {
             tiempoDelJuego = 0f;
             calendar.AdvanceDay();
             fnd.FinishDay();
             Pausa();
+        }
+        if(tiempoDelJuego >= inicioNocheEnSegundos || tiempoDelJuego <= inicioSolEnSegundos)
+        {
+            if(!farolasEncendidas)
+            {
+                farolas.EncenderLuces();
+                farolasEncendidas = true;
+            }
+        }
+        else
+        {
+            if(farolasEncendidas)
+            {
+                farolas.ApagarLuces();
+                farolasEncendidas = false;
+            }
         }
     }
 

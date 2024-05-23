@@ -206,6 +206,7 @@
     <Compile Include="Assets\Scripts\Maquinas\VendingMachineController.cs" />
     <Compile Include="Assets\Scripts\Camaras\CameraZoom.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingMaxTweens.cs" />
+    <Compile Include="Assets\Scripts\Tips\TipController.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\Scripts\Inventory\Tienda.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />

@@ -54,6 +54,8 @@ public class ObjectivesAndStats : MonoBehaviour
 
     [SerializeField] private EventReference winSound;
     [SerializeField] private EventReference loseSound;
+    [SerializeField] private GameObject Tips;
+    [SerializeField] private TextMeshProUGUI tipsText;
 
     public class Objective
     {
@@ -384,6 +386,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.tutorialObjectives[1].objectiveCompleted = true;
             Instance.tutorialObjectives[1].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + tutorialObjectives[1].nameOfObjective;
         }
     }
 
@@ -393,6 +397,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.tutorialObjectives[2].objectiveCompleted = true;
             Instance.tutorialObjectives[2].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + tutorialObjectives[2].nameOfObjective;
         }
     }
 
@@ -402,6 +408,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.tutorialObjectives[3].objectiveCompleted = true;
             Instance.tutorialObjectives[3].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + tutorialObjectives[3].nameOfObjective;
         }
     }
 
@@ -412,6 +420,8 @@ public class ObjectivesAndStats : MonoBehaviour
             Instance.tutorialObjectives[4].objectiveCompleted = true;
             Instance.tutorialObjectives[4].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
             Instance.StartCoroutine(Instance.Esperar30sYcumplirObjetivo());
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + tutorialObjectives[4].nameOfObjective;
         }
     }
 
@@ -421,6 +431,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.tutorialObjectives[5].objectiveCompleted = true;
             Instance.tutorialObjectives[5].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + tutorialObjectives[5].nameOfObjective;
         }
     }
 
@@ -430,6 +442,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.tutorialObjectives[6].objectiveCompleted = true;
             Instance.tutorialObjectives[6].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + tutorialObjectives[6].nameOfObjective;
         }
     }
 
@@ -439,6 +453,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.tutorialObjectives[7].objectiveCompleted = true;
             Instance.tutorialObjectives[7].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + tutorialObjectives[7].nameOfObjective;
         }
     }
 
@@ -448,6 +464,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.objectives[0].objectiveCompleted = true;
             Instance.objectives[0].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + objectives[0].nameOfObjective;
             Instance.CheckAllObjectivesCompleted();
         }
     }
@@ -458,6 +476,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.objectives[1].objectiveCompleted = true;
             Instance.objectives[1].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + objectives[1].nameOfObjective;
             Instance.CheckAllObjectivesCompleted();
         }
     }
@@ -468,6 +488,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.objectives[2].objectiveCompleted = true;
             Instance.objectives[2].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + objectives[2].nameOfObjective;
             Instance.CheckAllObjectivesCompleted();
             //SceneManager.LoadScene("Credits");
         }
@@ -479,6 +501,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.objectives[3].objectiveCompleted = true;
             Instance.objectives[3].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + objectives[3].nameOfObjective;
             Instance.CheckAllObjectivesCompleted();
             //SceneManager.LoadScene("Credits");
         }
@@ -490,6 +514,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.objectives[4].objectiveCompleted = true;
             Instance.objectives[4].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + objectives[4].nameOfObjective;
             Instance.CheckAllObjectivesCompleted();
             //SceneManager.LoadScene("Credits");
         }
@@ -501,6 +527,8 @@ public class ObjectivesAndStats : MonoBehaviour
         {
             Instance.objectives[5].objectiveCompleted = true;
             Instance.objectives[5].objectiveObj.transform.Find("checkObjective/Cheked").gameObject.SetActive(true);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has cumplido el objetivo " + objectives[5].nameOfObjective;
             Instance.CheckAllObjectivesCompleted();
             //SceneManager.LoadScene("Credits");
         }
@@ -547,6 +575,8 @@ public class ObjectivesAndStats : MonoBehaviour
             categoriaActualText.text = "CATEGORIA ACTUAL: CATEGORIA " + categoriaActual.ToString();
             tienda.InstanciarObjetosTiendaDeCategoria(2);
             upgrades.InstanciarObjetosUpgradesDeCategoria(2);
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has pasado a la categoria 2, tienes nuevas recompensas, mira el perfil para verlas";
         }
     }
 
@@ -563,6 +593,8 @@ public class ObjectivesAndStats : MonoBehaviour
             objectivesCat2Completed = true;
             if (categoriaActual < 3) categoriaActual = 3;
             categoriaActualText.text = "CATEGORIA ACTUAL: CATEGORIA " + categoriaActual.ToString();
+            Tips.SetActive(true);
+            tipsText.text = "Felicidades has pasado a la categoria 3, tienes nuevas recompensas, mira el perfil para verlas";
             //wishlist.SetCategoria(categoriaActual);
             tienda.InstanciarObjetosTiendaDeCategoria(3);
             upgrades.InstanciarObjetosUpgradesDeCategoria(3);

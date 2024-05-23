@@ -61,6 +61,9 @@ public class NewControls : MonoBehaviour
         Player.FindAction("MouseClick").canceled += OnnMouseClickCanceled;
         Player.FindAction("AddMoney").performed += OnnAddMoney;
         Player.FindAction("SubstractMoney").performed += OnnSubstractMoney;
+        Player.FindAction("AddStatsCat1").performed += OnnAddStatsCat1;
+        Player.FindAction("AddStatsCat2").performed += OnnAddStatsCat2;
+        Player.FindAction("AddStatsCat3").performed += OnnAddStatsCat3;
         /*playerActions = new InputActions();
         playerActions.Player.Forward.performed += OnRun;
         playerActions.Player.Forward.canceled += OnStopRun;
@@ -230,6 +233,21 @@ public class NewControls : MonoBehaviour
             MoneyManager.instance.ActualizarTextoDinero();
         }
         else MoneyManager.instance.DecrementarDinero(2500);
+    }
+
+    private void OnnAddStatsCat1(InputAction.CallbackContext ctx)
+    {
+        ObjectivesAndStats.Instance.updateStatCategory(1, 10);
+    }
+
+    private void OnnAddStatsCat2(InputAction.CallbackContext ctx)
+    {
+        ObjectivesAndStats.Instance.updateStatCategory(2, 10);
+    }
+
+    private void OnnAddStatsCat3(InputAction.CallbackContext ctx)
+    {
+        ObjectivesAndStats.Instance.updateStatCategory(3, 10);
     }
 
     private void OnnScroll(InputAction.CallbackContext ctx)

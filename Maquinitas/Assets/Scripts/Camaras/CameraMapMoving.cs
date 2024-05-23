@@ -10,14 +10,32 @@ public class CameraMapMoving : MonoBehaviour
     //float distance = 10;
     private Vector3 _lastMousePosition;
     [SerializeField]
-    private GameObject pointRightUp;
+    private GameObject pointRightUpVillage;
     [SerializeField]
+    private GameObject pointLeftDownVillage;
+    [SerializeField]
+    private GameObject pointRightUpCity;
+    [SerializeField]
+    private GameObject pointLeftDownCity;
+    private GameObject pointRightUp;
     private GameObject pointLeftDown;
     [SerializeField]
     private float velocityDragCamera;
     private Vector3 directionCameraz;
     private Vector3 directionCamerax;
     private bool canUseCameraMap;
+    private bool isInVillage;
+    [SerializeField]
+    private GameObject pointVillage;
+    [SerializeField]
+    private GameObject pointCity;
+    [SerializeField]
+    private int orthoSizeVillage;
+    [SerializeField]
+    private int orthoSizeCity;
+    [SerializeField]
+    private CinemachineBrain cb;
+
 
 
     static public CinemachineVirtualCamera mapVirtualCamera;
@@ -41,7 +59,10 @@ public class CameraMapMoving : MonoBehaviour
     private void Awake()
     {
         mapVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        Debug.Log(mapVirtualCamera);
         canUseCameraMap = true;
+        pointRightUp = pointRightUpVillage;
+        pointLeftDown = pointLeftDownVillage;
     }
     void Start()
     {
@@ -142,6 +163,30 @@ public class CameraMapMoving : MonoBehaviour
     public void CanUseCameraMap(bool canUse)
     {
         canUseCameraMap = canUse;
+    }
+
+    public void ChangeCameraToVillage()
+    {
+        transform.position = pointVillage.transform.position;
+        pointRightUp = pointRightUpVillage;
+        pointLeftDown = pointLeftDownVillage;
+        Debug.Log(mapVirtualCamera);
+        mapVirtualCamera.m_Lens.OrthographicSize = 18;//orthoSizeVillage;
+        Debug.Log(mapVirtualCamera.m_Lens.OrthographicSize);
+        cb.ManualUpdate();
+    }
+
+    public void ChangeCameraToCity()
+    {
+        transform.position = pointCity.transform.position;
+        pointRightUp = pointRightUpCity;
+        pointLeftDown = pointLeftDownCity;
+        Debug.Log(mapVirtualCamera);
+        mapVirtualCamera.m_Lens.OrthographicSize = 50;
+        /*LensSettings newSettings = new LensSettings()
+        newSettings.OrthographicSize = 50;*/
+        Debug.Log(mapVirtualCamera.m_Lens.OrthographicSize);
+        cb.ManualUpdate();
     }
 
 }
